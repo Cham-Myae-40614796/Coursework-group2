@@ -36,7 +36,7 @@ The aim of this code review is to set-up the development enviroment for the proj
 - Create docker-compose for running both above dockerfiles. 
   
 5. Set-up GitHub Actions.
-- 
+
 6. Create branches.
 - Create branches including master, develop, feature, and release branches.
 
