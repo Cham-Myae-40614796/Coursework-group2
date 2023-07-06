@@ -27,6 +27,6 @@ The aim of this code review is to set-up the development enviroment for the proj
 
 1. Set-up the project.
 2. Create product backlog.
-3. Create Dockerfile project set-up and works.
+3. Create Dockerfile for project set-up and works.
 4. Set-up GitHub Actions.
 5. Create branches.
