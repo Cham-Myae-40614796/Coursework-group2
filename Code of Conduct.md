@@ -37,8 +37,8 @@ Any *level 1* rules breaking are punished using point system which will be distr
 |   1    | Absent regular group meeting without a valid reason              |           *2* pts |
 |   2    | Absent group meeting on Thursday                                 |           *5* pts |
 |   3    | Absent class without advanced informed                           |           *2* pts |
-|   4    | Opening/Copying other members codes without their consent        |          *10* pts |
-|   5    | Fail to protect one's code and breached                          |          *10* pts |
+|   4    | Opening/Copying other group codes without their consent          |          *10* pts |
+|   5    | Fail to protect group's code and breached                        |          *10* pts |
 |   6    | Incompleteness of assigned tasks (vary depending on task weight) |  *5* pts for each |
 
 # ***Further Rules will be added according to encounter situations ***
