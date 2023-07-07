@@ -51,16 +51,12 @@ The aim of this code review is to set-up the development enviroment for the proj
 
 ![workflow](https://github.com/Cham-Myae-40614796/coursework-group2/actions/workflows/main.yml/badge.svg?style=plastic)
 
-[![LICENSE](https://img.shields.io/github/license/Cham-Myae-40614796/coursework-group2.svg?style=plastic)](https://github.com/Cham-Myae-40614796/coursework-group2/blob/master/LICENSE)
-
-[![Releases](https://img.shields.io/github/release/Cham-Myae-40614796/coursework-group2/all.svg?style=plastic)](https://github.com/Cham-Myae-40614796/coursework-group2/releases)
-
-![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/Cham-Myae-40614796/Coursework-group2/main.yml)
-
 ![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/Cham-Myae-40614796/Coursework-group2/main.yml?branch=develop)
 
-![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/m/Cham-Myae-40614796/Coursework-group2/master)
+[![Releases](https://img.shields.io/github/release/Cham-Myae-40614796/coursework-group2/all.svg?style=plastic)](https://github.com/Cham-Myae-40614796/coursework-group2/blob/releases)
 
-![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/m/Cham-Myae-40614796/Coursework-group2/develop)
+![GitHub commit activity in develop(branch)](https://img.shields.io/github/commit-activity/m/Cham-Myae-40614796/Coursework-group2/develop)
 
 ![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/Cham-Myae-40614796/Coursework-group2)
+
+[![LICENSE](https://img.shields.io/github/license/Cham-Myae-40614796/coursework-group2.svg?style=plastic)](https://github.com/Cham-Myae-40614796/coursework-group2/blob/master/LICENSE)
