@@ -10,10 +10,12 @@ There are a number of tools which are using in the project and. They are:
 
 # Team Members 
 
-- Cham Myae Pyae Sone (Product owner)
-- Htet Myat Thiri 
-- Kyi Phyu Khin
-- Thar Htet Nyan (Scrum master)
+|Member               |Matriculation No. | Role  |
+|:-------------------:|:----------------:|:-----:|
+| Cham Myae Pyae Sone |40614796 |Product owner   |
+| Htet Myat Thiri     |40614785 |                |
+| Kyi Phyu Khin       |40614804 |                |
+| Thar Htet Nyan      |40614795 |Scrum master    |
 
 # Code Review 1
 
@@ -36,7 +38,8 @@ The aim of this code review is to set-up the development enviroment for the proj
 - Create docker-compose for running both above dockerfiles. 
   
 5. Set-up GitHub Actions.
-
+- Customize the own Actions to automate the workflows in GitHub.
+  
 6. Create branches.
 - Create branches including master, develop, feature, and release branches.
 
@@ -44,6 +47,7 @@ The aim of this code review is to set-up the development enviroment for the proj
 
 8. Define code of conduct. 
 
+# Workflow status
 
 ![workflow](https://github.com/Cham-Myae-40614796/coursework-group2/actions/workflows/main.yml/badge.svg?style=plastic)
 
