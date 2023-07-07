@@ -53,7 +53,7 @@ The aim of this code review is to set-up the development enviroment for the proj
 
 [![LICENSE](https://img.shields.io/github/license/Cham-Myae-40614796/coursework-group2.svg?style=plastic)](https://github.com/Cham-Myae-40614796/coursework-group2/blob/master/LICENSE)
 
-[![Releases](https://img.shields.io/github/release/Cham-Myae-40614796/coursework-group2/all.svg?style=plastic)](https://github.com/Cham-Myae-40614796/coursework-group2/releases)
+[![Releases](https://img.shields.io/github/release/Cham-Myae-40614796/coursework-group2/all.svg?style=plastic)](https://github.com/Cham-Myae-40614796/coursework-group2/blob/releases)
 
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/Cham-Myae-40614796/Coursework-group2/main.yml)
 
