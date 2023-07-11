@@ -54,7 +54,7 @@ public class CityReport {
                 cty.setCityName(resultData.getString("city.Name"));
                 cty.setCountryName(resultData.getString("country.Name"));
                 cty.setDistrict(resultData.getString("city.District"));
-                cty.setPopulation(resultData.getDouble("city.Population"));
+                cty.setPopulation(resultData.getInt("city.Population"));
                 cities.add(cty);
             }
             return cities;
@@ -113,7 +113,7 @@ public class CityReport {
                 cty.setCityName(resultData.getString("city.Name"));
                 cty.setCountryName(resultData.getString("country.Name"));
                 cty.setDistrict(resultData.getString("city.District"));
-                cty.setPopulation(resultData.getDouble("city.Population"));
+                cty.setPopulation(resultData.getInt("city.Population"));
                 cities.add(cty);
             }
             return cities;
@@ -172,7 +172,7 @@ public class CityReport {
                 cty.setCityName(resultData.getString("city.Name"));
                 cty.setCountryName(resultData.getString("country.Name"));
                 cty.setDistrict(resultData.getString("city.District"));
-                cty.setPopulation(resultData.getDouble("city.Population"));
+                cty.setPopulation(resultData.getInt("city.Population"));
                 cities.add(cty);
             }
             return cities;
