@@ -56,8 +56,6 @@ public class DatabaseConnection {
                 // Connect to database
                 conn = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
-                // Wait a bit
-                Thread.sleep(10000);
                 // Exit retry loop
                 break;
             } catch (SQLException sqle) {
