@@ -28,6 +28,11 @@ public class CityReport {
 
     public void generateCityReport() {
 
+        displayCitiesInWorld();
+        displayCitiesInContinent();
+        displayCitiesInRegion();
+        displayCitiesInCountry();
+        displayCitiesInDistrict();
         displayTopCitiesInWorld();
         displayTopCitiesInContinent();
         displayTopCitiesInRegion();
