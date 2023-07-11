@@ -32,7 +32,7 @@ public class CityReport {
         displayTopCitiesInContinent();
         displayTopCitiesInRegion();
         displayTopCitiesInCountry();
-        extractTopCitiesInDistrict();
+        displayTopCitiesInDistrict();
     }
 
     private ArrayList<City> extractTopCitiesInWorld()
