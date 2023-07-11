@@ -75,7 +75,7 @@ public class CityReport {
         ArrayList<City> extractedCities = extractCitiesInWorld();
         System.out.println();
         System.out.printf("---------------------------------------------------------------------------------------------%n");
-        System.out.printf("| %-89s |%n", "Top " + topLimit + " Populated Cities in the World");
+        System.out.printf("| %-89s |%n", "Populated Cities in the World");
         System.out.printf("---------------------------------------------------------------------------------------------%n");
         System.out.printf(tableFormat, "City Name", "Country Name", "District", "Population");
         System.out.printf("---------------------------------------------------------------------------------------------%n");
@@ -132,7 +132,7 @@ public class CityReport {
         ArrayList<City> extractedCities = extractCitiesInContinent();
         System.out.println();
         System.out.printf("---------------------------------------------------------------------------------------------%n");
-        System.out.printf("| %-89s |%n", "Top " + topLimit + " Populated Cities in the Continent (" + continent + ")");
+        System.out.printf("| %-89s |%n", "Populated Cities in the Continent (" + continent + ")");
         System.out.printf("---------------------------------------------------------------------------------------------%n");
         System.out.printf(tableFormat, "City Name", "Country Name", "District", "Population");
         System.out.printf("---------------------------------------------------------------------------------------------%n");
@@ -189,7 +189,7 @@ public class CityReport {
         ArrayList<City> extractedCities = extractCitiesInRegion();
         System.out.println();
         System.out.printf("---------------------------------------------------------------------------------------------%n");
-        System.out.printf("| %-89s |%n", "Top " + topLimit + " Populated Cities in the Region (" + region + ")");
+        System.out.printf("| %-89s |%n", "Populated Cities in the Region (" + region + ")");
         System.out.printf("---------------------------------------------------------------------------------------------%n");
         System.out.printf(tableFormat, "City Name", "Country Name", "District", "Population");
         System.out.printf("---------------------------------------------------------------------------------------------%n");
@@ -246,7 +246,7 @@ public class CityReport {
         ArrayList<City> extractedCities = extractCitiesInCountry();
         System.out.println();
         System.out.printf("---------------------------------------------------------------------------------------------%n");
-        System.out.printf("| %-89s |%n", "Top " + topLimit + " Populated Cities in the Country (" + country + ")");
+        System.out.printf("| %-89s |%n", "Populated Cities in the Country (" + country + ")");
         System.out.printf("---------------------------------------------------------------------------------------------%n");
         System.out.printf(tableFormat, "City Name", "Country Name", "District", "Population");
         System.out.printf("---------------------------------------------------------------------------------------------%n");
@@ -303,7 +303,7 @@ public class CityReport {
         ArrayList<City> extractedCities = extractCitiesInDistrict();
         System.out.println();
         System.out.printf("---------------------------------------------------------------------------------------------%n");
-        System.out.printf("| %-89s |%n", "Top " + topLimit + " Populated Cities in the District (" + district + ")");
+        System.out.printf("| %-89s |%n", "Populated Cities in the District (" + district + ")");
         System.out.printf("---------------------------------------------------------------------------------------------%n");
         System.out.printf(tableFormat, "City Name", "Country Name", "District", "Population");
         System.out.printf("---------------------------------------------------------------------------------------------%n");
