@@ -19,6 +19,8 @@ public class CityReport {
     private String country = "Algeria";
     private String district = "Adana";
 
+    private String tableFormat = "| %-20s | %-20s | %-20s | %-20s |%n";
+
 
     public void setConn(Connection conn) {
         this.conn = conn;
@@ -30,6 +32,7 @@ public class CityReport {
         displayTopCitiesInContinent();
         displayTopCitiesInRegion();
         displayTopCitiesInCountry();
+        extractTopCitiesInDistrict();
     }
 
     private ArrayList<City> extractTopCitiesInWorld()
@@ -74,13 +77,12 @@ public class CityReport {
         System.out.println();
         System.out.printf("---------------------------------------------------------------------------------------------%n");
         System.out.printf("| %-89s |%n", "Top " + topLimit + " Populated Cities in the World");
-        String format = "| %-20s | %-20s | %-20s | %-20s |%n";
         System.out.printf("---------------------------------------------------------------------------------------------%n");
-        System.out.printf(format, "City Name", "Country Name", "District", "Population");
+        System.out.printf(tableFormat, "City Name", "Country Name", "District", "Population");
         System.out.printf("---------------------------------------------------------------------------------------------%n");
         for (int i = 0; i < extractedCities.size();i++)
         {
-            System.out.printf(format,
+            System.out.printf(tableFormat,
                     extractedCities.get(i).getCityName(),
                     extractedCities.get(i).getCountryName(),
                     extractedCities.get(i).getDistrict(),
@@ -133,13 +135,12 @@ public class CityReport {
         System.out.println();
         System.out.printf("---------------------------------------------------------------------------------------------%n");
         System.out.printf("| %-89s |%n", "Top " + topLimit + " Populated Cities in the Continent (" + continent + ")");
-        String format = "| %-20s | %-20s | %-20s | %-20s |%n";
         System.out.printf("---------------------------------------------------------------------------------------------%n");
-        System.out.printf(format, "City Name", "Country Name", "District", "Population");
+        System.out.printf(tableFormat, "City Name", "Country Name", "District", "Population");
         System.out.printf("---------------------------------------------------------------------------------------------%n");
         for (int i = 0; i < extractedCities.size();i++)
         {
-            System.out.printf(format,
+            System.out.printf(tableFormat,
                     extractedCities.get(i).getCityName(),
                     extractedCities.get(i).getCountryName(),
                     extractedCities.get(i).getDistrict(),
@@ -192,13 +193,12 @@ public class CityReport {
         System.out.println();
         System.out.printf("---------------------------------------------------------------------------------------------%n");
         System.out.printf("| %-89s |%n", "Top " + topLimit + " Populated Cities in the Region (" + region + ")");
-        String format = "| %-20s | %-20s | %-20s | %-20s |%n";
         System.out.printf("---------------------------------------------------------------------------------------------%n");
-        System.out.printf(format, "City Name", "Country Name", "District", "Population");
+        System.out.printf(tableFormat, "City Name", "Country Name", "District", "Population");
         System.out.printf("---------------------------------------------------------------------------------------------%n");
         for (int i = 0; i < extractedCities.size();i++)
         {
-            System.out.printf(format,
+            System.out.printf(tableFormat,
                     extractedCities.get(i).getCityName(),
                     extractedCities.get(i).getCountryName(),
                     extractedCities.get(i).getDistrict(),
@@ -251,13 +251,12 @@ public class CityReport {
         System.out.println();
         System.out.printf("---------------------------------------------------------------------------------------------%n");
         System.out.printf("| %-89s |%n", "Top " + topLimit + " Populated Cities in the Country (" + country + ")");
-        String format = "| %-20s | %-20s | %-20s | %-20s |%n";
         System.out.printf("---------------------------------------------------------------------------------------------%n");
-        System.out.printf(format, "City Name", "Country Name", "District", "Population");
+        System.out.printf(tableFormat, "City Name", "Country Name", "District", "Population");
         System.out.printf("---------------------------------------------------------------------------------------------%n");
         for (int i = 0; i < extractedCities.size();i++)
         {
-            System.out.printf(format,
+            System.out.printf(tableFormat,
                     extractedCities.get(i).getCityName(),
                     extractedCities.get(i).getCountryName(),
                     extractedCities.get(i).getDistrict(),
@@ -310,13 +309,12 @@ public class CityReport {
         System.out.println();
         System.out.printf("---------------------------------------------------------------------------------------------%n");
         System.out.printf("| %-89s |%n", "Top " + topLimit + " Populated Cities in the District (" + district + ")");
-        String format = "| %-20s | %-20s | %-20s | %-20s |%n";
         System.out.printf("---------------------------------------------------------------------------------------------%n");
-        System.out.printf(format, "City Name", "Country Name", "District", "Population");
+        System.out.printf(tableFormat, "City Name", "Country Name", "District", "Population");
         System.out.printf("---------------------------------------------------------------------------------------------%n");
         for (int i = 0; i < extractedCities.size();i++)
         {
-            System.out.printf(format,
+            System.out.printf(tableFormat,
                     extractedCities.get(i).getCityName(),
                     extractedCities.get(i).getCountryName(),
                     extractedCities.get(i).getDistrict(),
