@@ -38,7 +38,7 @@ public class City {
         return District;
     }
 
-    public double getPopulation() {
+    public int getPopulation() {
         return Population;
     }
 }
