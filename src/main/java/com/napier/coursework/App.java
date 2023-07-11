@@ -7,10 +7,16 @@ public class App {
 
     public static void main(String[] args){
 
-        DatabaseConnection db_conn = new DatabaseConnection();
-        db_conn.connect();
-        System.out.println("Hello World!");
-        db_conn.disconnect();
+        DatabaseConnection dbConn = new DatabaseConnection();
+        dbConn.connect();
+
+
+        CityReport cr = new CityReport();
+        cr.setConn(dbConn.getConn());
+        cr.generateCityReport();
+
+        dbConn.disconnect();
+
 
     }
 
