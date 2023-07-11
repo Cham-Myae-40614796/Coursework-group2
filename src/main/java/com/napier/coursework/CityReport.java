@@ -33,7 +33,7 @@ public class CityReport {
                 "INNER JOIN country " +
                 "ON city.CountryCode = country.Code " +
                 "ORDER BY city.Population DESC ";
-        displayCities(query, "World", "");
+        displayCities(query, "World", "", false);
 
         query = "SELECT city.Name, country.Name, city.District, city.Population " +
                 "FROM city " +
@@ -41,7 +41,7 @@ public class CityReport {
                 "ON city.CountryCode = country.Code " +
                 "WHERE country.Continent = '" + continent + "' " +
                 "ORDER BY city.Population DESC ";
-        displayCities(query, "Continent", continent);
+        displayCities(query, "Continent", continent, false);
 
         query = "SELECT city.Name, country.Name, city.District, city.Population " +
                 "FROM city " +
@@ -49,7 +49,7 @@ public class CityReport {
                 "ON city.CountryCode = country.Code " +
                 "WHERE country.Region = '" + region + "' " +
                 "ORDER BY city.Population DESC ";
-        displayCities(query, "Region", region);
+        displayCities(query, "Region", region, false);
 
         query = "SELECT city.Name, country.Name, city.District, city.Population " +
                 "FROM city " +
@@ -57,7 +57,7 @@ public class CityReport {
                 "ON city.CountryCode = country.Code " +
                 "WHERE country.Name = '" + country + "' " +
                 "ORDER BY city.Population DESC ";
-        displayCities(query, "Country", country);
+        displayCities(query, "Country", country, false);
 
         query = "SELECT city.Name, country.Name, city.District, city.Population " +
                 "FROM city " +
@@ -65,7 +65,7 @@ public class CityReport {
                 "ON city.CountryCode = country.Code " +
                 "WHERE city.District = '" + district + "' " +
                 "ORDER BY city.Population DESC ";
-        displayCities(query, "District", district);
+        displayCities(query, "District", district, false);
 
          query = "SELECT city.Name, country.Name, city.District, city.Population " +
                 "FROM city " +
@@ -74,7 +74,7 @@ public class CityReport {
                 "ORDER BY city.Population DESC " +
                 "LIMIT " + Integer.toString(topLimit);
         System.out.println(query);
-        displayCities(query, "World", "");
+        displayCities(query, "World", "", true);
 
         query = "SELECT city.Name, country.Name, city.District, city.Population " +
                 "FROM city " +
@@ -83,7 +83,7 @@ public class CityReport {
                 "WHERE country.Continent = '" + continent + "' " +
                 "ORDER BY city.Population DESC " +
                 "LIMIT " + Integer.toString(topLimit);
-        displayCities(query, "Continent", continent);
+        displayCities(query, "Continent", continent, true);
 
         query = "SELECT city.Name, country.Name, city.District, city.Population " +
                 "FROM city " +
@@ -92,7 +92,7 @@ public class CityReport {
                 "WHERE country.Region = '" + region + "' " +
                 "ORDER BY city.Population DESC " +
                 "LIMIT " + Integer.toString(topLimit);
-        displayCities(query, "Region", region);
+        displayCities(query, "Region", region, true);
 
         query = "SELECT city.Name, country.Name, city.District, city.Population " +
                 "FROM city " +
@@ -101,7 +101,7 @@ public class CityReport {
                 "WHERE country.Name = '" + country + "' " +
                 "ORDER BY city.Population DESC " +
                 "LIMIT " + Integer.toString(topLimit);
-        displayCities(query, "Country", country);
+        displayCities(query, "Country", country, true);
 
         query = "SELECT city.Name, country.Name, city.District, city.Population " +
                 "FROM city " +
@@ -110,7 +110,7 @@ public class CityReport {
                 "WHERE city.District = '" + district + "' " +
                 "ORDER BY city.Population DESC " +
                 "LIMIT " + Integer.toString(topLimit);
-        displayCities(query, "District", district);
+        displayCities(query, "District", district, true);
     }
 
     private ArrayList<City> extractCities(String query)
@@ -143,16 +143,20 @@ public class CityReport {
         }
     }
 
-    private void displayCities(String query, String type, String name)
+    private void displayCities(String query, String type, String name, boolean isTop)
     {
         ArrayList<City> extractedCities = extractCities(query);
         System.out.println();
         System.out.printf("---------------------------------------------------------------------------------------------%n");
-        if (type != "World") {
-            System.out.printf("| %-89s |%n", "Top " + topLimit + " Populated Cities in the " + type + " (" + name + ")");
-        }else {
-            System.out.printf("| %-89s |%n", "Top " + topLimit + " Populated Cities in the " + type);
+        String title = "Populated Cities in the " + type;
+        if (isTop == true){
+            title = "Top " + topLimit + title;
         }
+
+        if (type != "World") {
+            title +=  " (" + name + ")";
+        }
+        System.out.printf("| %-89s |%n", title);
         System.out.printf("---------------------------------------------------------------------------------------------%n");
         System.out.printf(tableFormat, "City Name", "Country Name", "District", "Population");
         System.out.printf("---------------------------------------------------------------------------------------------%n");
