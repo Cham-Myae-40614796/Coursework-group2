@@ -17,7 +17,7 @@ public class CityReport {
     private String continent = "Asia";
     private String region = "Eastern Asia";
     private String country = "Brunei";
-    private String district = "Midlands";
+    private String district = "Adana";
 
 
     public void setConn(Connection conn) {
@@ -217,7 +217,7 @@ public class CityReport {
                     "FROM city " +
                     "INNER JOIN country " +
                     "ON city.CountryCode = country.Code " +
-                    "WHERE country.Country = '" + country + "' " +
+                    "WHERE country.Name = '" + country + "' " +
                     "ORDER BY city.Population DESC " +
                     "LIMIT " + Integer.toString(topLimit);
             // Create an SQL statement
