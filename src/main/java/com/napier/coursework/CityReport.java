@@ -97,9 +97,9 @@ public class CityReport {
                     "FROM city " +
                     "INNER JOIN country " +
                     "ON city.CountryCode = country.Code " +
-                    "ORDER BY city.Population " +
                     "WHERE country.Continent = '" + continent + "' " +
-                    "DESC LIMIT " + Integer.toString(top_limit);
+                    "ORDER BY city.Population DESC " +
+                    "LIMIT " + Integer.toString(top_limit);
             // Create an SQL statement
             Statement stmt = conn.createStatement();
             // Execute SQL statement
