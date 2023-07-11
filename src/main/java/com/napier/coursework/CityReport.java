@@ -29,6 +29,7 @@ public class CityReport {
         displayTopCitiesInWorld();
         displayTopCitiesInContinent();
         displayTopCitiesInRegion();
+        displayTopCitiesInCountry();
     }
 
     private ArrayList<City> extractTopCitiesInWorld()
@@ -207,5 +208,63 @@ public class CityReport {
         System.out.println();
     }
 
+    private ArrayList<City> extractTopCitiesInCountry()
+    {
+        try
+        {
+            // define query
+            String query = "SELECT city.Name, country.Name, city.District, city.Population " +
+                    "FROM city " +
+                    "INNER JOIN country " +
+                    "ON city.CountryCode = country.Code " +
+                    "WHERE country.Country = '" + country + "' " +
+                    "ORDER BY city.Population DESC " +
+                    "LIMIT " + Integer.toString(topLimit);
+            // Create an SQL statement
+            Statement stmt = conn.createStatement();
+            // Execute SQL statement
+            ResultSet resultData = stmt.executeQuery(query);
+            // Extract employee information
+            ArrayList<City> cities = new ArrayList<City>();
+            while (resultData.next())
+            {
+                City cty = new City();
+                cty.setCityName(resultData.getString("city.Name"));
+                cty.setCountryName(resultData.getString("country.Name"));
+                cty.setDistrict(resultData.getString("city.District"));
+                cty.setPopulation(resultData.getInt("city.Population"));
+                cities.add(cty);
+            }
+            return cities;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return null;
+        }
+    }
+
+    private void displayTopCitiesInCountry()
+    {
+        ArrayList<City> extractedCities = extractTopCitiesInCountry();
+        System.out.println();
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.printf("| %-89s |%n", "Top " + topLimit + " Populated Cities in the Country (" + country + ")");
+        String format = "| %-20s | %-20s | %-20s | %-20s |%n";
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.printf(format, "City Name", "Country Name", "District", "Population");
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        for (int i = 0; i < extractedCities.size();i++)
+        {
+            System.out.printf(format,
+                    extractedCities.get(i).getCityName(),
+                    extractedCities.get(i).getCountryName(),
+                    extractedCities.get(i).getDistrict(),
+                    extractedCities.get(i).getPopulation());
+        }
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.println();
+    }
 
 }
