@@ -13,8 +13,8 @@ There are a number of tools which are using in the project and. They are:
 |Member               |Matriculation No. | Role  |
 |:-------------------:|:----------------:|:-----:|
 | Cham Myae Pyae Sone |40614796 |Product owner   |
-| Htet Myat Thiri     |40614785 |                |
-| Kyi Phyu Khin       |40614804 |                |
+| Htet Myat Thiri     |40614785 |   Member       |
+| Kyi Phyu Khin       |40614804 |   Member       |
 | Thar Htet Nyan      |40614795 |Scrum master    |
 
 # Code Review 1
