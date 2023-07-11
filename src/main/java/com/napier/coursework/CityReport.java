@@ -66,7 +66,8 @@ public class CityReport {
         }
     }
 
-    private void displayTopCitiesInWorld(){
+    private void displayTopCitiesInWorld()
+    {
         ArrayList<City> extracted_cities = extractTopCitiesInWorld();
         System.out.println();
         System.out.printf("---------------------------------------------------------------------------------------------%n");
@@ -97,7 +98,7 @@ public class CityReport {
                     "INNER JOIN country " +
                     "ON city.CountryCode = country.Code " +
                     "ORDER BY city.Population " +
-                    "WHERE country.Continent = " + continent + " " +
+                    "WHERE country.Continent = '" + continent + "' " +
                     "DESC LIMIT " + Integer.toString(top_limit);
             // Create an SQL statement
             Statement stmt = conn.createStatement();
@@ -124,7 +125,8 @@ public class CityReport {
         }
     }
 
-    private void displayTopCitiesInContinent(){
+    private void displayTopCitiesInContinent()
+    {
         ArrayList<City> extracted_cities = extractTopCitiesInContinent();
         System.out.println();
         System.out.printf("---------------------------------------------------------------------------------------------%n");
