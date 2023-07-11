@@ -62,6 +62,9 @@ public class CityReport {
 
     public void displayTopCitiesInContinent(){
         ArrayList<City> extracted_cities = extractTopCitiesInContinent();
+        System.out.println();
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.printf("| %-89s |%n", "Top " + top_limit + " Populated Cities in the World");
         String format = "| %-20s | %-20s | %-20s | %-20s |%n";
         System.out.printf("---------------------------------------------------------------------------------------------%n");
         System.out.printf(format, "City Name", "Country Name", "District", "Population");
@@ -75,5 +78,7 @@ public class CityReport {
                     extracted_cities.get(i).getPopulation());
 //            System.out.println("Code: " + extracted_cities.get(i).Code + "Capital: " + lol.get(i).Capital);
         }
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.println();
     }
 }
