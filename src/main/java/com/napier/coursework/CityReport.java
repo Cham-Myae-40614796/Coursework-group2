@@ -275,7 +275,7 @@ public class CityReport {
                     "FROM city " +
                     "INNER JOIN country " +
                     "ON city.CountryCode = country.Code " +
-                    "WHERE country.District = '" + district + "' " +
+                    "WHERE city.District = '" + district + "' " +
                     "ORDER BY city.Population DESC " +
                     "LIMIT " + Integer.toString(topLimit);
             // Create an SQL statement
