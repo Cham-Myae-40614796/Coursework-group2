@@ -22,7 +22,7 @@ public class City {
         District = district;
     }
 
-    public void setPopulation(double population) {
+    public void setPopulation(int population) {
         Population = population;
     }
 
