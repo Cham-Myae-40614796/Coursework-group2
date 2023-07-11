@@ -14,16 +14,22 @@ public class CityReport {
     private Connection conn = null;
 
     private int top_limit = 5;
+    private String continent = "Asia";
+    private String region = "Eastern Asia";
+    private String country = "Brunei";
+    private String district = "Midlands";
+
 
     public void setConn(Connection conn) {
         this.conn = conn;
     }
 
     public void generateCityReport() {
-        displayTopCitiesInContinent();
+
+        displayTopCitiesInWorld();
     }
 
-    public ArrayList<City> extractTopCitiesInContinent()
+    private ArrayList<City> extractTopCitiesInWorld()
     {
         try
         {
@@ -33,8 +39,7 @@ public class CityReport {
                     "INNER JOIN country " +
                     "ON city.CountryCode = country.Code " +
                     "ORDER BY city.Population " +
-                    "DESC LIMIT " +
-                    Integer.toString(top_limit);
+                    "DESC LIMIT " + Integer.toString(top_limit);
             // Create an SQL statement
             Statement stmt = conn.createStatement();
             // Execute SQL statement
@@ -60,8 +65,8 @@ public class CityReport {
         }
     }
 
-    public void displayTopCitiesInContinent(){
-        ArrayList<City> extracted_cities = extractTopCitiesInContinent();
+    private void displayTopCitiesInWorld(){
+        ArrayList<City> extracted_cities = extractTopCitiesInWorld();
         System.out.println();
         System.out.printf("---------------------------------------------------------------------------------------------%n");
         System.out.printf("| %-89s |%n", "Top " + top_limit + " Populated Cities in the World");
@@ -76,9 +81,10 @@ public class CityReport {
                     extracted_cities.get(i).getCountryName(),
                     extracted_cities.get(i).getDistrict(),
                     extracted_cities.get(i).getPopulation());
-//            System.out.println("Code: " + extracted_cities.get(i).Code + "Capital: " + lol.get(i).Capital);
         }
         System.out.printf("---------------------------------------------------------------------------------------------%n");
         System.out.println();
     }
+
+
 }
