@@ -7,15 +7,15 @@ public class App {
 
     public static void main(String[] args){
 
-        DatabaseConnection db_conn = new DatabaseConnection();
-        db_conn.connect();
+        DatabaseConnection dbConn = new DatabaseConnection();
+        dbConn.connect();
 
 
         CityReport cr = new CityReport();
-        cr.setConn(db_conn.getConn());
+        cr.setConn(dbConn.getConn());
         cr.generateCityReport();
 
-        db_conn.disconnect();
+        dbConn.disconnect();
 
 
     }

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class CityReport {
     private Connection conn = null;
 
-    private int top_limit = 5;
+    private int topLimit = 5;
     private String continent = "Asia";
     private String region = "Eastern Asia";
     private String country = "Brunei";
@@ -40,20 +40,20 @@ public class CityReport {
                     "INNER JOIN country " +
                     "ON city.CountryCode = country.Code " +
                     "ORDER BY city.Population " +
-                    "DESC LIMIT " + Integer.toString(top_limit);
+                    "DESC LIMIT " + Integer.toString(topLimit);
             // Create an SQL statement
             Statement stmt = conn.createStatement();
             // Execute SQL statement
-            ResultSet result_data = stmt.executeQuery(query);
+            ResultSet resultData = stmt.executeQuery(query);
             // Extract employee information
             ArrayList<City> cities = new ArrayList<City>();
-            while (result_data.next())
+            while (resultData.next())
             {
                 City cty = new City();
-                cty.setCityName(result_data.getString("city.Name"));
-                cty.setCountryName(result_data.getString("country.Name"));
-                cty.setDistrict(result_data.getString("city.District"));
-                cty.setPopulation(result_data.getDouble("city.Population"));
+                cty.setCityName(resultData.getString("city.Name"));
+                cty.setCountryName(resultData.getString("country.Name"));
+                cty.setDistrict(resultData.getString("city.District"));
+                cty.setPopulation(resultData.getDouble("city.Population"));
                 cities.add(cty);
             }
             return cities;
@@ -61,28 +61,28 @@ public class CityReport {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get country details");
+            System.out.println("Failed to get city details");
             return null;
         }
     }
 
     private void displayTopCitiesInWorld()
     {
-        ArrayList<City> extracted_cities = extractTopCitiesInWorld();
+        ArrayList<City> extractedCities = extractTopCitiesInWorld();
         System.out.println();
         System.out.printf("---------------------------------------------------------------------------------------------%n");
-        System.out.printf("| %-89s |%n", "Top " + top_limit + " Populated Cities in the World");
+        System.out.printf("| %-89s |%n", "Top " + topLimit + " Populated Cities in the World");
         String format = "| %-20s | %-20s | %-20s | %-20s |%n";
         System.out.printf("---------------------------------------------------------------------------------------------%n");
         System.out.printf(format, "City Name", "Country Name", "District", "Population");
         System.out.printf("---------------------------------------------------------------------------------------------%n");
-        for (int i = 0; i < extracted_cities.size();i++)
+        for (int i = 0; i < extractedCities.size();i++)
         {
             System.out.printf(format,
-                    extracted_cities.get(i).getCityName(),
-                    extracted_cities.get(i).getCountryName(),
-                    extracted_cities.get(i).getDistrict(),
-                    extracted_cities.get(i).getPopulation());
+                    extractedCities.get(i).getCityName(),
+                    extractedCities.get(i).getCountryName(),
+                    extractedCities.get(i).getDistrict(),
+                    extractedCities.get(i).getPopulation());
         }
         System.out.printf("---------------------------------------------------------------------------------------------%n");
         System.out.println();
@@ -99,20 +99,20 @@ public class CityReport {
                     "ON city.CountryCode = country.Code " +
                     "WHERE country.Continent = '" + continent + "' " +
                     "ORDER BY city.Population DESC " +
-                    "LIMIT " + Integer.toString(top_limit);
+                    "LIMIT " + Integer.toString(topLimit);
             // Create an SQL statement
             Statement stmt = conn.createStatement();
             // Execute SQL statement
-            ResultSet result_data = stmt.executeQuery(query);
+            ResultSet resultData = stmt.executeQuery(query);
             // Extract employee information
             ArrayList<City> cities = new ArrayList<City>();
-            while (result_data.next())
+            while (resultData.next())
             {
                 City cty = new City();
-                cty.setCityName(result_data.getString("city.Name"));
-                cty.setCountryName(result_data.getString("country.Name"));
-                cty.setDistrict(result_data.getString("city.District"));
-                cty.setPopulation(result_data.getDouble("city.Population"));
+                cty.setCityName(resultData.getString("city.Name"));
+                cty.setCountryName(resultData.getString("country.Name"));
+                cty.setDistrict(resultData.getString("city.District"));
+                cty.setPopulation(resultData.getDouble("city.Population"));
                 cities.add(cty);
             }
             return cities;
@@ -120,34 +120,91 @@ public class CityReport {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get country details");
+            System.out.println("Failed to get city details");
             return null;
         }
     }
 
     private void displayTopCitiesInContinent()
     {
-        ArrayList<City> extracted_cities = extractTopCitiesInContinent();
+        ArrayList<City> extractedCities = extractTopCitiesInContinent();
         System.out.println();
         System.out.printf("---------------------------------------------------------------------------------------------%n");
-        System.out.printf("| %-89s |%n", "Top " + top_limit + " Populated Cities in the Continent (" + continent + ")");
+        System.out.printf("| %-89s |%n", "Top " + topLimit + " Populated Cities in the Continent (" + continent + ")");
         String format = "| %-20s | %-20s | %-20s | %-20s |%n";
         System.out.printf("---------------------------------------------------------------------------------------------%n");
         System.out.printf(format, "City Name", "Country Name", "District", "Population");
         System.out.printf("---------------------------------------------------------------------------------------------%n");
-        for (int i = 0; i < extracted_cities.size();i++)
+        for (int i = 0; i < extractedCities.size();i++)
         {
             System.out.printf(format,
-                    extracted_cities.get(i).getCityName(),
-                    extracted_cities.get(i).getCountryName(),
-                    extracted_cities.get(i).getDistrict(),
-                    extracted_cities.get(i).getPopulation());
+                    extractedCities.get(i).getCityName(),
+                    extractedCities.get(i).getCountryName(),
+                    extractedCities.get(i).getDistrict(),
+                    extractedCities.get(i).getPopulation());
         }
         System.out.printf("---------------------------------------------------------------------------------------------%n");
         System.out.println();
     }
 
+    private ArrayList<City> extractTopCitiesInRegion()
+    {
+        try
+        {
+            // define query
+            String query = "SELECT city.Name, country.Name, city.District, city.Population " +
+                    "FROM city " +
+                    "INNER JOIN country " +
+                    "ON city.CountryCode = country.Code " +
+                    "WHERE country.Region = '" + region + "' " +
+                    "ORDER BY city.Population DESC " +
+                    "LIMIT " + Integer.toString(topLimit);
+            // Create an SQL statement
+            Statement stmt = conn.createStatement();
+            // Execute SQL statement
+            ResultSet resultData = stmt.executeQuery(query);
+            // Extract employee information
+            ArrayList<City> cities = new ArrayList<City>();
+            while (resultData.next())
+            {
+                City cty = new City();
+                cty.setCityName(resultData.getString("city.Name"));
+                cty.setCountryName(resultData.getString("country.Name"));
+                cty.setDistrict(resultData.getString("city.District"));
+                cty.setPopulation(resultData.getDouble("city.Population"));
+                cities.add(cty);
+            }
+            return cities;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return null;
+        }
+    }
 
+    private void displayTopCitiesInRegion()
+    {
+        ArrayList<City> extractedCities = extractTopCitiesInRegion();
+        System.out.println();
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.printf("| %-89s |%n", "Top " + topLimit + " Populated Cities in the Region (" + region + ")");
+        String format = "| %-20s | %-20s | %-20s | %-20s |%n";
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.printf(format, "City Name", "Country Name", "District", "Population");
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        for (int i = 0; i < extractedCities.size();i++)
+        {
+            System.out.printf(format,
+                    extractedCities.get(i).getCityName(),
+                    extractedCities.get(i).getCountryName(),
+                    extractedCities.get(i).getDistrict(),
+                    extractedCities.get(i).getPopulation());
+        }
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.println();
+    }
 
 
 }
