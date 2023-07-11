@@ -35,6 +35,290 @@ public class CityReport {
         displayTopCitiesInDistrict();
     }
 
+    private ArrayList<City> extractCitiesInWorld()
+    {
+        try
+        {
+            // define query
+            String query = "SELECT city.Name, country.Name, city.District, city.Population " +
+                    "FROM city " +
+                    "INNER JOIN country " +
+                    "ON city.CountryCode = country.Code " +
+                    "ORDER BY city.Population DESC";
+            // Create an SQL statement
+            Statement stmt = conn.createStatement();
+            // Execute SQL statement
+            ResultSet resultData = stmt.executeQuery(query);
+            // Extract cities information
+            ArrayList<City> cities = new ArrayList<City>();
+            while (resultData.next())
+            {
+                City cty = new City();
+                cty.setCityName(resultData.getString("city.Name"));
+                cty.setCountryName(resultData.getString("country.Name"));
+                cty.setDistrict(resultData.getString("city.District"));
+                cty.setPopulation(resultData.getInt("city.Population"));
+                cities.add(cty);
+            }
+            return cities;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return null;
+        }
+    }
+
+    private void displayCitiesInWorld()
+    {
+        ArrayList<City> extractedCities = extractCitiesInWorld();
+        System.out.println();
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.printf("| %-89s |%n", "Top " + topLimit + " Populated Cities in the World");
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.printf(tableFormat, "City Name", "Country Name", "District", "Population");
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        for (int i = 0; i < extractedCities.size();i++)
+        {
+            System.out.printf(tableFormat,
+                    extractedCities.get(i).getCityName(),
+                    extractedCities.get(i).getCountryName(),
+                    extractedCities.get(i).getDistrict(),
+                    extractedCities.get(i).getPopulation());
+        }
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.println();
+    }
+
+    private ArrayList<City> extractCitiesInContinent()
+    {
+        try
+        {
+            // define query
+            String query = "SELECT city.Name, country.Name, city.District, city.Population " +
+                    "FROM city " +
+                    "INNER JOIN country " +
+                    "ON city.CountryCode = country.Code " +
+                    "WHERE country.Continent = '" + continent + "' " +
+                    "ORDER BY city.Population DESC";
+            // Create an SQL statement
+            Statement stmt = conn.createStatement();
+            // Execute SQL statement
+            ResultSet resultData = stmt.executeQuery(query);
+            // Extract cities information
+            ArrayList<City> cities = new ArrayList<City>();
+            while (resultData.next())
+            {
+                City cty = new City();
+                cty.setCityName(resultData.getString("city.Name"));
+                cty.setCountryName(resultData.getString("country.Name"));
+                cty.setDistrict(resultData.getString("city.District"));
+                cty.setPopulation(resultData.getInt("city.Population"));
+                cities.add(cty);
+            }
+            return cities;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return null;
+        }
+    }
+
+    private void displayCitiesInContinent()
+    {
+        ArrayList<City> extractedCities = extractCitiesInContinent();
+        System.out.println();
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.printf("| %-89s |%n", "Top " + topLimit + " Populated Cities in the Continent (" + continent + ")");
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.printf(tableFormat, "City Name", "Country Name", "District", "Population");
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        for (int i = 0; i < extractedCities.size();i++)
+        {
+            System.out.printf(tableFormat,
+                    extractedCities.get(i).getCityName(),
+                    extractedCities.get(i).getCountryName(),
+                    extractedCities.get(i).getDistrict(),
+                    extractedCities.get(i).getPopulation());
+        }
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.println();
+    }
+
+    private ArrayList<City> extractCitiesInRegion()
+    {
+        try
+        {
+            // define query
+            String query = "SELECT city.Name, country.Name, city.District, city.Population " +
+                    "FROM city " +
+                    "INNER JOIN country " +
+                    "ON city.CountryCode = country.Code " +
+                    "WHERE country.Region = '" + region + "' " +
+                    "ORDER BY city.Population DESC ";
+            // Create an SQL statement
+            Statement stmt = conn.createStatement();
+            // Execute SQL statement
+            ResultSet resultData = stmt.executeQuery(query);
+            // Extract cities information
+            ArrayList<City> cities = new ArrayList<City>();
+            while (resultData.next())
+            {
+                City cty = new City();
+                cty.setCityName(resultData.getString("city.Name"));
+                cty.setCountryName(resultData.getString("country.Name"));
+                cty.setDistrict(resultData.getString("city.District"));
+                cty.setPopulation(resultData.getInt("city.Population"));
+                cities.add(cty);
+            }
+            return cities;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return null;
+        }
+    }
+
+    private void displayCitiesInRegion()
+    {
+        ArrayList<City> extractedCities = extractCitiesInRegion();
+        System.out.println();
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.printf("| %-89s |%n", "Top " + topLimit + " Populated Cities in the Region (" + region + ")");
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.printf(tableFormat, "City Name", "Country Name", "District", "Population");
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        for (int i = 0; i < extractedCities.size();i++)
+        {
+            System.out.printf(tableFormat,
+                    extractedCities.get(i).getCityName(),
+                    extractedCities.get(i).getCountryName(),
+                    extractedCities.get(i).getDistrict(),
+                    extractedCities.get(i).getPopulation());
+        }
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.println();
+    }
+
+    private ArrayList<City> extractCitiesInCountry()
+    {
+        try
+        {
+            // define query
+            String query = "SELECT city.Name, country.Name, city.District, city.Population " +
+                    "FROM city " +
+                    "INNER JOIN country " +
+                    "ON city.CountryCode = country.Code " +
+                    "WHERE country.Name = '" + country + "' " +
+                    "ORDER BY city.Population DESC ";
+            // Create an SQL statement
+            Statement stmt = conn.createStatement();
+            // Execute SQL statement
+            ResultSet resultData = stmt.executeQuery(query);
+            // Extract employee information
+            ArrayList<City> cities = new ArrayList<City>();
+            while (resultData.next())
+            {
+                City cty = new City();
+                cty.setCityName(resultData.getString("city.Name"));
+                cty.setCountryName(resultData.getString("country.Name"));
+                cty.setDistrict(resultData.getString("city.District"));
+                cty.setPopulation(resultData.getInt("city.Population"));
+                cities.add(cty);
+            }
+            return cities;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return null;
+        }
+    }
+
+    private void displayCitiesInCountry()
+    {
+        ArrayList<City> extractedCities = extractCitiesInCountry();
+        System.out.println();
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.printf("| %-89s |%n", "Top " + topLimit + " Populated Cities in the Country (" + country + ")");
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.printf(tableFormat, "City Name", "Country Name", "District", "Population");
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        for (int i = 0; i < extractedCities.size();i++)
+        {
+            System.out.printf(tableFormat,
+                    extractedCities.get(i).getCityName(),
+                    extractedCities.get(i).getCountryName(),
+                    extractedCities.get(i).getDistrict(),
+                    extractedCities.get(i).getPopulation());
+        }
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.println();
+    }
+
+    private ArrayList<City> extractCitiesInDistrict()
+    {
+        try
+        {
+            // define query
+            String query = "SELECT city.Name, country.Name, city.District, city.Population " +
+                    "FROM city " +
+                    "INNER JOIN country " +
+                    "ON city.CountryCode = country.Code " +
+                    "WHERE city.District = '" + district + "' " +
+                    "ORDER BY city.Population DESC ";
+            // Create an SQL statement
+            Statement stmt = conn.createStatement();
+            // Execute SQL statement
+            ResultSet resultData = stmt.executeQuery(query);
+            // Extract cities information
+            ArrayList<City> cities = new ArrayList<City>();
+            while (resultData.next())
+            {
+                City cty = new City();
+                cty.setCityName(resultData.getString("city.Name"));
+                cty.setCountryName(resultData.getString("country.Name"));
+                cty.setDistrict(resultData.getString("city.District"));
+                cty.setPopulation(resultData.getInt("city.Population"));
+                cities.add(cty);
+            }
+            return cities;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return null;
+        }
+    }
+
+    private void displayCitiesInDistrict()
+    {
+        ArrayList<City> extractedCities = extractCitiesInDistrict();
+        System.out.println();
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.printf("| %-89s |%n", "Top " + topLimit + " Populated Cities in the District (" + district + ")");
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.printf(tableFormat, "City Name", "Country Name", "District", "Population");
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        for (int i = 0; i < extractedCities.size();i++)
+        {
+            System.out.printf(tableFormat,
+                    extractedCities.get(i).getCityName(),
+                    extractedCities.get(i).getCountryName(),
+                    extractedCities.get(i).getDistrict(),
+                    extractedCities.get(i).getPopulation());
+        }
+        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.println();
+    }
+
     private ArrayList<City> extractTopCitiesInWorld()
     {
         try
@@ -44,13 +328,13 @@ public class CityReport {
                     "FROM city " +
                     "INNER JOIN country " +
                     "ON city.CountryCode = country.Code " +
-                    "ORDER BY city.Population " +
-                    "DESC LIMIT " + Integer.toString(topLimit);
+                    "ORDER BY city.Population DESC " +
+                    "LIMIT " + Integer.toString(topLimit);
             // Create an SQL statement
             Statement stmt = conn.createStatement();
             // Execute SQL statement
             ResultSet resultData = stmt.executeQuery(query);
-            // Extract employee information
+            // Extract cities information
             ArrayList<City> cities = new ArrayList<City>();
             while (resultData.next())
             {
@@ -108,7 +392,7 @@ public class CityReport {
             Statement stmt = conn.createStatement();
             // Execute SQL statement
             ResultSet resultData = stmt.executeQuery(query);
-            // Extract employee information
+            // Extract cities information
             ArrayList<City> cities = new ArrayList<City>();
             while (resultData.next())
             {
@@ -166,7 +450,7 @@ public class CityReport {
             Statement stmt = conn.createStatement();
             // Execute SQL statement
             ResultSet resultData = stmt.executeQuery(query);
-            // Extract employee information
+            // Extract cities information
             ArrayList<City> cities = new ArrayList<City>();
             while (resultData.next())
             {
@@ -224,7 +508,7 @@ public class CityReport {
             Statement stmt = conn.createStatement();
             // Execute SQL statement
             ResultSet resultData = stmt.executeQuery(query);
-            // Extract employee information
+            // Extract cities information
             ArrayList<City> cities = new ArrayList<City>();
             while (resultData.next())
             {
@@ -282,7 +566,7 @@ public class CityReport {
             Statement stmt = conn.createStatement();
             // Execute SQL statement
             ResultSet resultData = stmt.executeQuery(query);
-            // Extract employee information
+            // Extract cities information
             ArrayList<City> cities = new ArrayList<City>();
             while (resultData.next())
             {
