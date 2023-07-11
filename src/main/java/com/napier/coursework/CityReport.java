@@ -73,7 +73,6 @@ public class CityReport {
                 "ON city.CountryCode = country.Code " +
                 "ORDER BY city.Population DESC " +
                 "LIMIT " + Integer.toString(topLimit);
-        System.out.println(query);
         displayCities(query, "World", "", true);
 
         query = "SELECT city.Name, country.Name, city.District, city.Population " +
@@ -150,7 +149,7 @@ public class CityReport {
         System.out.printf("---------------------------------------------------------------------------------------------%n");
         String title = "Populated Cities in the " + type;
         if (isTop == true){
-            title = "Top " + topLimit + title;
+            title = "Top " + topLimit + " " + title;
         }
 
         if (type != "World") {
