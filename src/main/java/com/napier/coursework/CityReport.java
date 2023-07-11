@@ -28,6 +28,7 @@ public class CityReport {
 
         displayTopCitiesInWorld();
         displayTopCitiesInContinent();
+        displayTopCitiesInRegion();
     }
 
     private ArrayList<City> extractTopCitiesInWorld()

@@ -8,7 +8,7 @@ public class City {
 
     private String District;
 
-    private double Population;
+    private int Population;
 
     public void setCityName(String cityName) {
         CityName = cityName;
