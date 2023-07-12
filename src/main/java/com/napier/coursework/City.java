@@ -30,6 +30,8 @@ public class City {
 
     /**
      * public method to set city name
+     *
+     * @param cityName the name of the city
      */
     public void setCityName(String cityName) {
         CityName = cityName;
@@ -37,6 +39,8 @@ public class City {
 
     /**
      * public method to set country name
+     *
+     * @param countryName the name of the country
      */
     public void setCountryName(String countryName) {
         CountryName = countryName;
@@ -44,6 +48,8 @@ public class City {
 
     /**
      * public method to set district
+     *
+     * @param district the name of the district
      */
     public void setDistrict(String district) {
         District = district;
@@ -51,6 +57,8 @@ public class City {
 
     /**
      * public method to set population
+     *
+     * @param population the number of population
      */
     public void setPopulation(int population) {
         Population = population;
@@ -58,6 +66,8 @@ public class City {
 
     /**
      * public method to return city name
+     *
+     * @return the name of the city
      */
     public String getCityName() {
         return CityName;
@@ -65,6 +75,8 @@ public class City {
 
     /**
      * public method to return country name
+     *
+     * @return the name of the country
      */
     public String getCountryName() {
         return CountryName;
@@ -72,6 +84,8 @@ public class City {
 
     /**
      * public method to return district
+     *
+     * @return the name of the district
      */
     public String getDistrict() {
         return District;
@@ -79,6 +93,8 @@ public class City {
 
     /**
      * public method to return population
+     *
+     * @return the number of population
      */
     public int getPopulation() {
         return Population;
