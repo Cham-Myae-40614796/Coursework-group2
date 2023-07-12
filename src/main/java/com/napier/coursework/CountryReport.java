@@ -26,7 +26,7 @@ public class CountryReport {
 
     public void generateCountryReport(){
         String query = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name "
-                + "FROM country, city" +
+                + "FROM country, city " +
                 "WHERE country.Capital = city.ID " +
                 "ORDER BY country.Population DESC";
         displayCountries(query,"World", "");
