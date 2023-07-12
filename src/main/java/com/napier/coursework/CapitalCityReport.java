@@ -1,7 +1,7 @@
 package com.napier.coursework;
 /**
  * Creates reports related to city
- * Extract data from database and display reports for each user story
+ * Extracts data from database and display reports for each user story
  * @author Thar Htet Nyan
  * @version 0.1.0.2
  * @since 0.1.0.2
@@ -42,6 +42,10 @@ public class CapitalCityReport {
 
     /**
      * public method to set SQL database Connection
+     * conn has a default value of null.
+     * This can be set to use existing database connection.
+     *
+     * @param conn the SQL database connection
      */
     public void setConn(Connection conn) {
         this.conn = conn;
@@ -64,12 +68,13 @@ public class CapitalCityReport {
         displayCapitalCities(whereClause1, "Continent", continent, false);
         // display a table of information on capital cities in a region organized by their population in descending order
         displayCapitalCities(whereClause2, "Region", region, false);
-//
+
     }
 
     /**
      * private method to extract capital cities data from SQL database using query
-     * @return capitalCities the arraylist of extracted capital cities data
+     *
+     * @return the arraylist of extracted capital cities data
      */
     private ArrayList<City> extractCapitalCities(String whereClause, boolean isTop)
     {
