@@ -10,10 +10,13 @@ public class App {
         DatabaseConnection dbConn = new DatabaseConnection();
         dbConn.connect();
 
+        CountryReport cntyr = new CountryReport();
+        cntyr.setConn(dbConn.getConn());
+        cntyr.generateCountryReport();
 
-        CityReport cr = new CityReport();
-        cr.setConn(dbConn.getConn());
-        cr.generateCityReport();
+        CityReport ctyr = new CityReport();
+        ctyr.setConn(dbConn.getConn());
+        ctyr.generateCityReport();
 
         dbConn.disconnect();
 
