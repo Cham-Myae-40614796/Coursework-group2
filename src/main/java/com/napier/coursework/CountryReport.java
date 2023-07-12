@@ -31,6 +31,20 @@ public class CountryReport {
                 "ORDER BY country.Population DESC";
         displayCountries(query,"World", "");
 
+        query = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name "
+                + "FROM country, city" +
+                "WHERE country.Capital = city.ID," +
+                "AND country.Continent = " + continent + " " +
+                "ORDER BY country.Population DESC";
+        displayCountries(query,"Continent", "");
+
+        query = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name "
+                + "FROM country, city" +
+                "WHERE country.Capital = city.ID," +
+                "AND country.Region = " + region + " " +
+                "ORDER BY country.Population DESC";
+        displayCountries(query,"Region", "");
+
 //        System.out.println(getCountries());
     }
 
