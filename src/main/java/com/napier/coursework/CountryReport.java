@@ -59,7 +59,7 @@ public class CountryReport {
             // Create string for SQL statement
             String strSelect = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name "
                     + "FROM country, city" +
-                    "WHERE country.Capital = city.ID" +
+                    "WHERE country.Capital = city.ID " +
                     "ORDER BY country.Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(query);
