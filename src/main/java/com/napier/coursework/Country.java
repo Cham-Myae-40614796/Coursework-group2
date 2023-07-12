@@ -10,7 +10,7 @@ public class Country {
 
     private String Region;
 
-    private String Population;
+    private int Population;
 
     private String Capital;
 
@@ -30,7 +30,7 @@ public class Country {
         Region = region;
     }
 
-    public void setPopulation(String population) {
+    public void setPopulation(int population) {
         Population = population;
     }
 
@@ -54,7 +54,7 @@ public class Country {
         return Region;
     }
 
-    public String getPopulation() {
+    public int getPopulation() {
         return Population;
     }
 

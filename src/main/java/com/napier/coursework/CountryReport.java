@@ -72,7 +72,7 @@ public class CountryReport {
                 coty.setCountryName(rset.getString("country.Name"));
                 coty.setContinent(rset.getString("country.Continent"));
                 coty.setRegion(rset.getString("country.Region"));
-                coty.setPopulation(rset.getString("country.Population"));
+                coty.setPopulation(rset.getInt("country.Population"));
                 coty.setCapital(rset.getString("city.Name"));
                 country.add(coty);
             }
