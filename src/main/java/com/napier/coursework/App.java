@@ -15,6 +15,10 @@ public class App {
         cr.setConn(dbConn.getConn());
         cr.generateCityReport();
 
+        CapitalCityReport ccr = new CapitalCityReport();
+        ccr.setConn(dbConn.getConn());
+        ccr.generateCapitalCityReport();
+
         dbConn.disconnect();
 
 
