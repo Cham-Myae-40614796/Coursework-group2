@@ -8,17 +8,19 @@ package com.napier.coursework;
  */
 
 import java.sql.*;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class CountryReport {
 
     private Connection conn = null;
 
-//    private int topLimit = 5;
+    private int topLimit = 5;
     private String continent = "Asia";
     private String region = "Eastern Asia";
 
-    private String tableFormat = "| %-20s | %-20s | %-20s | %-20s | %-20s | %-20s |%n";
+    private String tableFormat = "| %-5s | %-20s | %-15s | %-20s | %-15s | %-15s |%n";
 
     public void setConn(Connection conn) {
         this.conn = conn;
@@ -36,14 +38,14 @@ public class CountryReport {
                 "WHERE country.Capital = city.ID " +
                 "AND country.Continent = '" + continent + "' " +
                 "ORDER BY country.Population DESC";
-        displayCountries(query,"Continent", "");
+        displayCountries(query,"Continent", continent);
 
         query = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name "
                 + "FROM country, city " +
                 "WHERE country.Capital = city.ID " +
                 "AND country.Region = '" + region + "' " +
                 "ORDER BY country.Population DESC";
-        displayCountries(query,"Region", "");
+        displayCountries(query,"Region", region);
 
 //        System.out.println(getCountries());
     }
@@ -90,27 +92,31 @@ public class CountryReport {
     public void displayCountries(String query, String type, String name){
         ArrayList<Country> extractedCountries = extractCountries(query);
         System.out.println();
-        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.printf("-------------------------------------------------------------------------------------------------------------%n");
         String title = "Populated Countries in the " + type;
 
         if (type != "World") {
             title +=  " (" + name + ")";
         }
-        System.out.printf("| %-89s |%n", title);
-        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.printf("| %-104s |%n", title);
+        System.out.printf("-------------------------------------------------------------------------------------------------------------%n");
         System.out.printf(tableFormat, "Code", "Country Name", "Continent", "Region", "Population", "Capital");
-        System.out.printf("---------------------------------------------------------------------------------------------%n");
-        for (int i = 0; i < extractedCountries.size();i++)
-        {
-            System.out.printf(tableFormat,
-                    extractedCountries.get(i).getCountryCode(),
-                    extractedCountries.get(i).getCountryName(),
-                    extractedCountries.get(i).getContinent(),
-                    extractedCountries.get(i).getRegion(),
-                    extractedCountries.get(i).getPopulation(),
-                    extractedCountries.get(i).getCapital());
+        System.out.printf("-------------------------------------------------------------------------------------------------------------%n");
+        if (extractedCountries != null) {
+            for (int i = 0; i < extractedCountries.size(); i++) {
+                System.out.printf(tableFormat,
+                        extractedCountries.get(i).getCountryCode(),
+                        extractedCountries.get(i).getCountryName(),
+                        extractedCountries.get(i).getContinent(),
+                        extractedCountries.get(i).getRegion(),
+                        extractedCountries.get(i).getPopulation(),
+                        extractedCountries.get(i).getCapital());
+            }
+        } else {
+            // handles null records
+            System.out.printf("| %-104s |%n", "No records");
         }
-        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.printf("-------------------------------------------------------------------------------------------------------------%n");
         System.out.println();
     }
 
