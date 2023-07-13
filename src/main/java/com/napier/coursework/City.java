@@ -24,7 +24,7 @@ public class City {
     private String District;
 
     /**
-     * private string to store city population
+     * private integer to store city population
      */
     private int Population;
 
