@@ -37,7 +37,7 @@ public class CapitalCityReport {
     /**
      * private string to format table
      */
-    private String tableFormat = "| %-20s | %-30s | %-15s |%n";
+    private String tableFormat = "| %-35s | %-37s | %-15s |%n";
 
 
     /**
@@ -143,7 +143,7 @@ public class CapitalCityReport {
 
         // skip a line and make a table
         System.out.println();
-        System.out.printf("---------------------------------------------------------------------------%n");
+        System.out.printf("-------------------------------------------------------------------------------------------------%n");
 
         // define title of table
         String title = "Populated Capital Cities in the " + type;
@@ -157,11 +157,11 @@ public class CapitalCityReport {
             title +=  " (" + name + ")";
         }
         // print out the title
-        System.out.printf("| %-71s |%n", title);
-        System.out.printf("---------------------------------------------------------------------------%n");
+        System.out.printf("| %-93s |%n", title);
+        System.out.printf("-------------------------------------------------------------------------------------------------%n");
         // print out table headings
         System.out.printf(tableFormat, "City Name", "Country Name", "Population");
-        System.out.printf("---------------------------------------------------------------------------%n");
+        System.out.printf("-------------------------------------------------------------------------------------------------%n");
         // print out table records
         if (extractedCapitalCities != null) {
             for (int i = 0; i < extractedCapitalCities.size(); i++) {
@@ -172,9 +172,9 @@ public class CapitalCityReport {
             }
         } else {
             // handles null records
-            System.out.printf("| %-71s |%n", "No records");
+            System.out.printf("| %-93s |%n", "No records");
         }
-        System.out.printf("---------------------------------------------------------------------------%n");
+        System.out.printf("-------------------------------------------------------------------------------------------------%n");
         System.out.println();
     }
 

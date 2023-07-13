@@ -20,7 +20,7 @@ public class CountryReport {
     private String continent = "Asia";
     private String region = "Eastern Asia";
 
-    private String tableFormat = "| %-5s | %-20s | %-15s | %-20s | %-15s | %-15s |%n";
+    private String tableFormat = "| %-5s | %-20s | %-15s | %-20s | %-15s | %-20s |%n";
 
     public void setConn(Connection conn) {
         this.conn = conn;
@@ -87,7 +87,7 @@ public class CountryReport {
     public void displayCountries(String whereClause, String type, String name, boolean isTop){
         ArrayList<Country> extractedCountries = extractCountries(whereClause, isTop);
         System.out.println();
-        System.out.printf("-------------------------------------------------------------------------------------------------------------%n");
+        System.out.printf("------------------------------------------------------------------------------------------------------------------%n");
         String title = "Populated Countries in the " + type;
 
         if (isTop == true){
@@ -96,25 +96,57 @@ public class CountryReport {
         if (type != "World") {
             title +=  " (" + name + ")";
         }
-        System.out.printf("| %-105s |%n", title);
-        System.out.printf("-------------------------------------------------------------------------------------------------------------%n");
+        System.out.printf("| %-110s |%n", title);
+        System.out.printf("------------------------------------------------------------------------------------------------------------------%n");
         System.out.printf(tableFormat, "Code", "Country Name", "Continent", "Region", "Population", "Capital");
-        System.out.printf("-------------------------------------------------------------------------------------------------------------%n");
+        System.out.printf("------------------------------------------------------------------------------------------------------------------%n");
         if (extractedCountries != null) {
             for (int i = 0; i < extractedCountries.size(); i++) {
+
+                String countryNameText = extractedCountries.get(i).getCountryName();
+                String regionText = extractedCountries.get(i).getRegion();
+                String capitalText = extractedCountries.get(i).getCapital();
+
+                String extraCountryNameText = "";
+                String extraRegionText = "";
+                String extraCapitalText = "";
+
+                if (countryNameText.length() > 20) {
+                    extraCountryNameText = countryNameText.substring(20);
+                    countryNameText = countryNameText.substring(0,20);
+                }
+                if (regionText.length() > 20){
+                    extraRegionText = regionText.substring(20);
+                    regionText = regionText.substring(0, 20);
+
+                }
+                if (capitalText.length() > 20) {
+                    extraCapitalText = capitalText.substring(20);
+                    capitalText = capitalText.substring(0, 20);
+                }
+
                 System.out.printf(tableFormat,
                         extractedCountries.get(i).getCountryCode(),
-                        extractedCountries.get(i).getCountryName(),
+                        countryNameText,
                         extractedCountries.get(i).getContinent(),
-                        extractedCountries.get(i).getRegion(),
-                        extractedCountries.get(i).getPopulation(),
-                        extractedCountries.get(i).getCapital());
+                        regionText,
+                        NumberFormat.getInstance(Locale.US).format(extractedCountries.get(i).getPopulation()),
+                        capitalText);
+                if (extraCountryNameText != "" || extraRegionText != "" || extraCapitalText != ""){
+                    System.out.printf(tableFormat,
+                            "",
+                            extraCountryNameText,
+                            "",
+                            extraRegionText,
+                            "",
+                            extraCapitalText);
+                }
             }
         } else {
             // handles null records
-            System.out.printf("| %-105s |%n", "No records");
+            System.out.printf("| %-110s |%n", "No records");
         }
-        System.out.printf("-------------------------------------------------------------------------------------------------------------%n");
+        System.out.printf("------------------------------------------------------------------------------------------------------------------%n");
         System.out.println();
     }
 

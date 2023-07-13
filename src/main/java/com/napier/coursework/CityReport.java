@@ -47,7 +47,7 @@ public class CityReport {
     /**
      * private string to format table
      */
-    private String tableFormat = "| %-20s | %-25s | %-20s | %-15s |%n";
+    private String tableFormat = "| %-35s | %-37s | %-22s | %-15s |%n";
 
 
     /**
@@ -71,8 +71,8 @@ public class CityReport {
         String whereClause = "";
         String whereClause1 = "WHERE country.Continent = '" + continent + "' ";
         String whereClause2 = "WHERE country.Region = '" + region + "' ";
-        String whereClause3 = "WHERE country.Name = '" + region + "' ";
-        String whereClause4 = "WHERE city.District = '" + region + "' ";
+        String whereClause3 = "WHERE country.Name = '" + country + "' ";
+        String whereClause4 = "WHERE city.District = '" + district + "' ";
 
         // display a table of information on cities in the world organized by their population in descending order
         displayCities(whereClause, "World", "", false);
@@ -163,7 +163,7 @@ public class CityReport {
 
         // skip a line and make a table
         System.out.println();
-        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.printf("--------------------------------------------------------------------------------------------------------------------------%n");
 
         // define title of table
         String title = "Populated Cities in the " + type;
@@ -177,11 +177,11 @@ public class CityReport {
             title +=  " (" + name + ")";
         }
         // print out the title
-        System.out.printf("| %-89s |%n", title);
-        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.printf("| %-118s |%n", title);
+        System.out.printf("--------------------------------------------------------------------------------------------------------------------------%n");
         // print out table headings
         System.out.printf(tableFormat, "City Name", "Country Name", "District", "Population");
-        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.printf("--------------------------------------------------------------------------------------------------------------------------%n");
         // print out table records
         if (extractedCities != null) {
             for (int i = 0; i < extractedCities.size(); i++) {
@@ -193,9 +193,9 @@ public class CityReport {
             }
         } else {
           // handles null records
-          System.out.printf("| %-89s |%n", "No records");
+          System.out.printf("| %-118s |%n", "No records");
         }
-        System.out.printf("---------------------------------------------------------------------------------------------%n");
+        System.out.printf("--------------------------------------------------------------------------------------------------------------------------%n");
         System.out.println();
     }
 
