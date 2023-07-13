@@ -165,8 +165,12 @@ public class CapitalCityReport {
         // print out table records
         if (extractedCapitalCities != null) {
             for (int i = 0; i < extractedCapitalCities.size(); i++) {
+                String cityNameText = extractedCapitalCities.get(i).getCityName();
+                if (cityNameText == null) {
+                    cityNameText = "-";
+                }
                 System.out.printf(tableFormat,
-                        extractedCapitalCities.get(i).getCityName(),
+                        cityNameText,
                         extractedCapitalCities.get(i).getCountryName(),
                         NumberFormat.getInstance(Locale.US).format(extractedCapitalCities.get(i).getPopulation()));
             }

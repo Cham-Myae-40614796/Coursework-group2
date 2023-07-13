@@ -58,8 +58,8 @@ public class CountryReport {
     public void generateCountryReport(){
 
         String whereClause = "";
-        String whereClause1 = "AND country.Continent = '" + continent + "' ";
-        String whereClause2 = "AND country.Region = '" + region + "' ";
+        String whereClause1 = "WHERE country.Continent = '" + continent + "' ";
+        String whereClause2 = "WHERE country.Region = '" + region + "' ";
 
         //display the countries in the world needed to be sorted by their number of the population in descending order
         displayCountries(whereClause,"World", "", false);
@@ -94,10 +94,10 @@ public class CountryReport {
             Statement stmt = conn.createStatement();
 
             // Create string for SQL statement
-
-            String query = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name "
-                    + "FROM country, city " +
-                    "WHERE country.Capital = city.ID " +
+            String query = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name " +
+                    "FROM country " +
+                    "INNER JOIN city " +
+                    "ON country.Capital = city.ID" +
                     whereClause +
                     "ORDER BY country.Population DESC ";
 
@@ -135,19 +135,28 @@ public class CountryReport {
      * display the extracted countries data in a tabular format
      */
     public void displayCountries(String whereClause, String type, String name, boolean isTop){
+        // create new arraylist to store the arraylist of extracted countries data
         ArrayList<Country> extractedCountries = extractCountries(whereClause, isTop);
+
+        // skip a line and make a table
         System.out.println();
         System.out.printf("------------------------------------------------------------------------------------------------------------------%n");
-        String title = "Populated Countries in the " + type;
 
+        // define title of table
+        String title = "Populated Countries in the " + type;
+        // if the data is top limited type, add some more text in title
         if (isTop == true){
             title = "Top " + topLimit + " " + title;
         }
+
+        // if the type is not world, add some more text in title
         if (type != "World") {
             title +=  " (" + name + ")";
         }
+        // print out the title
         System.out.printf("| %-110s |%n", title);
         System.out.printf("------------------------------------------------------------------------------------------------------------------%n");
+        // print out table headings
         System.out.printf(tableFormat, "Code", "Country Name", "Continent", "Region", "Population", "Capital");
         System.out.printf("------------------------------------------------------------------------------------------------------------------%n");
         if (extractedCountries != null) {
@@ -161,6 +170,7 @@ public class CountryReport {
                 String extraRegionText = "";
                 String extraCapitalText = "";
 
+                // checks for any exceeding letter limit
                 if (countryNameText.length() > 20) {
                     extraCountryNameText = countryNameText.substring(20);
                     countryNameText = countryNameText.substring(0,20);
@@ -175,6 +185,7 @@ public class CountryReport {
                     capitalText = capitalText.substring(0, 20);
                 }
 
+                // print the record
                 System.out.printf(tableFormat,
                         extractedCountries.get(i).getCountryCode(),
                         countryNameText,
@@ -182,6 +193,7 @@ public class CountryReport {
                         regionText,
                         NumberFormat.getInstance(Locale.US).format(extractedCountries.get(i).getPopulation()),
                         capitalText);
+                // print an extra row if needed
                 if (extraCountryNameText != "" || extraRegionText != "" || extraCapitalText != ""){
                     System.out.printf(tableFormat,
                             "",
