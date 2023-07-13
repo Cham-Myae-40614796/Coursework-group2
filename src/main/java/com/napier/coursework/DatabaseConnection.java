@@ -1,7 +1,7 @@
 package com.napier.coursework;
 /**
  * Represents database connection to SQL
- * Handle Connection and Disconnection to database
+ * Handles Connection and Disconnection to database
  * @author Thar Htet Nyan
  * @version 0.1.0.2
  * @since 0.1.0.2
@@ -20,7 +20,7 @@ public class DatabaseConnection {
      * conn is used in SQL data extraction. It has a default value of null.
      * This can be set to use existing database connection.
      *
-     * @param conn must be something that is not null.
+     * @param conn the SQL database connection
      */
     public void setConn(Connection conn) {
         this.conn = conn;
@@ -82,18 +82,4 @@ public class DatabaseConnection {
         }
     }
 
-//    public ResultSet extract_data(String query){
-//        try {
-//            // Create an SQL statement
-//            Statement stmt = conn.createStatement();
-//            // Execute SQL statement
-//            ResultSet result_data = stmt.executeQuery(query);
-//            return result_data;
-//        } catch (Exception e)
-//        {
-//            System.out.println(e.getMessage());
-//            System.out.println("Failed to get country details");
-//            return null;
-//        }
-//    }
 }
