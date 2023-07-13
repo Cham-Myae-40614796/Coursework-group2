@@ -38,12 +38,8 @@ public class CountryReport {
 
         displayCountries(whereClause2,"Region", region, false);
 
-
-
-//        System.out.println(getCountries());
     }
 
-//    public void displayCountries(){
     public ArrayList<Country> extractCountries(String whereClause, boolean isTop){
 
         try
@@ -77,7 +73,7 @@ public class CountryReport {
                 coty.setCapital(rset.getString("city.Name"));
                 country.add(coty);
             }
-//            System.out.println(country);
+
             return country;
         }
         catch (Exception e)
