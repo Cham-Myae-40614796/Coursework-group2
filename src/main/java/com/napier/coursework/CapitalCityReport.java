@@ -2,7 +2,7 @@ package com.napier.coursework;
 /**
  * Creates reports related to city
  * Extracts data from database and display reports for each user story
- * @author Thar Htet Nyan
+ * @author Thar Htet Nyan, Cham Myae Pyae Sone
  * @version 0.1.0.2
  * @since 0.1.0.2
  */
@@ -68,6 +68,13 @@ public class CapitalCityReport {
         displayCapitalCities(whereClause1, "Continent", continent, false);
         // display a table of information on capital cities in a region organized by their population in descending order
         displayCapitalCities(whereClause2, "Region", region, false);
+
+        // display a table of information on top populated capital cities in the world
+        displayCapitalCities(whereClause,"World", "", true);
+        // display a table of information on top populated capital cities in a continent
+        displayCapitalCities(whereClause1, "Continent", continent, true);
+        // display a table of information on top populated capital cities in a region
+        displayCapitalCities(whereClause2, "Region", region, true);
 
     }
 
