@@ -26,6 +26,7 @@ public class App {
         // Generate the reports
         cr.generateCityReport();
 
+
         // Create a CapitalCityReport Object
         CapitalCityReport ccr = new CapitalCityReport();
         // Set connection for CapitalCityReport Object
