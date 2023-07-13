@@ -27,31 +27,24 @@ public class CountryReport {
     }
 
     public void generateCountryReport(){
-        String query = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name "
-                + "FROM country, city " +
-                "WHERE country.Capital = city.ID " +
-                "ORDER BY country.Population DESC";
-        displayCountries(query,"World", "");
 
-        query = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name "
-                + "FROM country, city " +
-                "WHERE country.Capital = city.ID " +
-                "AND country.Continent = '" + continent + "' " +
-                "ORDER BY country.Population DESC";
-        displayCountries(query,"Continent", continent);
+        String whereClause = "";
+        String whereClause1 = "AND country.Continent = '" + continent + "' ";
+        String whereClause2 = "AND country.Region = '" + region + "' ";
 
-        query = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name "
-                + "FROM country, city " +
-                "WHERE country.Capital = city.ID " +
-                "AND country.Region = '" + region + "' " +
-                "ORDER BY country.Population DESC";
-        displayCountries(query,"Region", region);
+        displayCountries(whereClause,"World", "", false);
+
+        displayCountries(whereClause1,"Continent", continent, false);
+
+        displayCountries(whereClause2,"Region", region, false);
+
+
 
 //        System.out.println(getCountries());
     }
 
 //    public void displayCountries(){
-    public ArrayList<Country> extractCountries(String query){
+    public ArrayList<Country> extractCountries(String whereClause, boolean isTop){
 
         try
         {
@@ -59,10 +52,16 @@ public class CountryReport {
             Statement stmt = conn.createStatement();
 
             // Create string for SQL statement
-            String strSelect = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name "
-                    + "FROM country, city" +
+
+            String query = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name "
+                    + "FROM country, city " +
                     "WHERE country.Capital = city.ID " +
-                    "ORDER BY country.Population DESC";
+                    whereClause +
+                    "ORDER BY country.Population DESC ";
+
+            if (isTop == true){
+                query += "LIMIT " + Integer.toString(topLimit);
+            }
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(query);
             // Extract country information
@@ -89,16 +88,19 @@ public class CountryReport {
         }
     }
 
-    public void displayCountries(String query, String type, String name){
-        ArrayList<Country> extractedCountries = extractCountries(query);
+    public void displayCountries(String whereClause, String type, String name, boolean isTop){
+        ArrayList<Country> extractedCountries = extractCountries(whereClause, isTop);
         System.out.println();
         System.out.printf("-------------------------------------------------------------------------------------------------------------%n");
         String title = "Populated Countries in the " + type;
 
+        if (isTop == true){
+            title = "Top " + topLimit + " " + title;
+        }
         if (type != "World") {
             title +=  " (" + name + ")";
         }
-        System.out.printf("| %-104s |%n", title);
+        System.out.printf("| %-105s |%n", title);
         System.out.printf("-------------------------------------------------------------------------------------------------------------%n");
         System.out.printf(tableFormat, "Code", "Country Name", "Continent", "Region", "Population", "Capital");
         System.out.printf("-------------------------------------------------------------------------------------------------------------%n");
@@ -114,12 +116,12 @@ public class CountryReport {
             }
         } else {
             // handles null records
-            System.out.printf("| %-104s |%n", "No records");
+            System.out.printf("| %-105s |%n", "No records");
         }
         System.out.printf("-------------------------------------------------------------------------------------------------------------%n");
         System.out.println();
     }
 
-    }
+}
 
 
