@@ -1,8 +1,9 @@
 package com.napier.coursework;
 
 /**
+ * Creating reports for countries related issues
  * Get the country data and population data to display them in report
- * @author Cham Myae Pyae Sone
+ * @author Cham Myae Pyae Sone, Htet Myat Thiri
  * @version 0.1.0.2
  * @since 0.1.0.2
  */
@@ -14,32 +15,76 @@ import java.util.Locale;
 
 public class CountryReport {
 
+    /**
+     * Connecting to SQL database
+     */
     private Connection conn = null;
 
+    /**
+     * private integer method limiting printed output for top 5 only
+     */
     private int topLimit = 5;
+
+    /**
+     * private string method for default value set to "Asia" continent
+     */
     private String continent = "Asia";
+
+    /**
+     * private string method for default value set to "Eastern Asia" region
+     */
     private String region = "Eastern Asia";
 
+    /**
+     * private string method for generating table format for output display
+     */
     private String tableFormat = "| %-5s | %-20s | %-15s | %-20s | %-15s | %-15s |%n";
 
+    /**
+     * public method to set SQL database Connection
+     * conn has a default value of null.
+     * This can be set to use existing database connection.
+     *
+     * @param conn the SQL database connection
+     */
     public void setConn(Connection conn) {
         this.conn = conn;
     }
 
+    /**
+     * the main public method used to generate different reports of country population
+     */
     public void generateCountryReport(){
 
         String whereClause = "";
         String whereClause1 = "AND country.Continent = '" + continent + "' ";
         String whereClause2 = "AND country.Region = '" + region + "' ";
 
+        //display the countries in the world needed to be sorted by their number of the population in descending order
         displayCountries(whereClause,"World", "", false);
 
+        //display the countries in the continent needed to be sorted by their number of the population in descending order
         displayCountries(whereClause1,"Continent", continent, false);
 
+        //display the countries in the region needed to be sorted by their number of the population in descending order
         displayCountries(whereClause2,"Region", region, false);
+
+        //display the number of top populated countries in the world that the user provided will be listed
+        displayCountries(whereClause,"World", "", true);
+
+        //display the number of top populated countries in the continent that the user provided will be listed
+        displayCountries(whereClause1,"Continent", continent, true);
+
+        //display the number of top populated countries in the region that the user provided will be listed
+        displayCountries(whereClause2,"Region", region, true);
 
     }
 
+    /**
+     * private method to extract countries data from SQL database using query
+     *
+     * @return the arraylist of extracted countries data
+     */
     public ArrayList<Country> extractCountries(String whereClause, boolean isTop){
 
         try
@@ -84,6 +129,10 @@ public class CountryReport {
         }
     }
 
+    /**
+     * private method to reformat population and
+     * display the extracted countries data in a tabular format
+     */
     public void displayCountries(String whereClause, String type, String name, boolean isTop){
         ArrayList<Country> extractedCountries = extractCountries(whereClause, isTop);
         System.out.println();

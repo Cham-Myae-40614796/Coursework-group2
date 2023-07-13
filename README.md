@@ -19,15 +19,15 @@ There are a number of tools which are using in the project and. They are:
 
 # Code Review 1
 
-The aim of this code review is to set-up the development enviroment for the project. 
+The aim of this code review is to set up the development environment for the project. 
 
-1. Set-up the project. 
+1. Set up the project. 
 - Create the repository on GitHUb.
 - Create the project on IntelliJ.
 - Set-up git version control in IntelliJ.
   
 2. Create product backlog.
-- Add issues on GitHub.
+- Add 25 issues on GitHub for product backlog.
 - Login GitHub account on Zube and add the repository to link.
 
 3. Build self-contained JAR with Maven.
@@ -46,6 +46,38 @@ The aim of this code review is to set-up the development enviroment for the proj
 7. Create the release on GitHub.
 
 8. Define code of conduct. 
+
+# Code Review 2
+
+The aim of this code review is to check the setup of task management for the project and to define user stories and use cases. In addition, 25% of coding should be completed together is in requirement.
+
+1. Use issues on GitHub
+* Add remaining 7 issues as a product backlog 
+* Issues are assigned to each contributor and product owner
+
+2. Define tasks as user stories
+* 32 issues are formatted as mentioned in slides in order to transform into formatted user stories
+
+3. Integrate project with Zube.io
+* Project is linked with Zube at week 1
+
+4. Use Kanban/Project Board
+* Kanban Board created 
+* GitHub project tab is no longer use for task management
+
+5. Use Sprint Boards
+* Sprint Board created
+* Priority set for each user story
+* Point assigned
+* Related card linked
+* Epic created and assigned
+
+6. Define full use cases
+* 32 use cases are defined in Use Case Description directory with 32 markdown files
+
+7. Create use case diagram
+
+Additional comments: defined issues 22 out of 32 are queried in week 2.
 
 # Workflow status
 
