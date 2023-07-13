@@ -97,7 +97,7 @@ public class CountryReport {
             String query = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name " +
                     "FROM country " +
                     "INNER JOIN city " +
-                    "ON country.Capital = city.ID" +
+                    "ON country.Capital = city.ID " +
                     whereClause +
                     "ORDER BY country.Population DESC ";
 
