@@ -30,8 +30,8 @@ The organization has asked for information on the population of people, people l
 
 ## Main Success Scenario
 1. Extract all the regions from the world database.
-2. Use sum function to totalize the total population of a region, total city population of a region, total non city population of a region. 
-3. Print the above information.
+2. Use sum function to calculate the total population of each region, total city population of each region, total non-city population of each region.
+3. Print the total population of each region, total city population of each region, total non-city population of each region.
 
 ## Extensions
 None.
