@@ -1,6 +1,6 @@
 # Use Case Description 28
 
-## Use Case: Display the total region's population.
+## Use Case: Display the population of people living and not living in the cities in a region.
 
 ## Characteristic Information
 
@@ -29,9 +29,9 @@ Global Population Archivist.
 The organization has asked for the total population of a region.
 
 ## Main Success Scenario
-1. Extract all the regions and their population from the world database.
-2. Use sum function to totalize the total population of each region.
-3. Print the total population of each region.
+1. Extract a region and its population from the world database.
+2. Use sum function to calculate the total population of a region, total city population of a region, total non-city population of a region.
+3. Print the total population of a region, total city population of a region, total non-city population of a region.
 
 ## Extensions
 None.

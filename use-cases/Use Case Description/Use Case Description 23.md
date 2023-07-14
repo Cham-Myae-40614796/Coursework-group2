@@ -1,6 +1,6 @@
 # Use Case Description 23
 
-## Use Case: Display the population of people living and not living in the cities in each continent
+## Use Case: Display the world's population. 
 
 ## Characteristic Information
 
@@ -30,8 +30,8 @@ The organization has asked for information on the population of people, people l
 
 ## Main Success Scenario
 1. Extract all the continents from the world database.
-2. Use sum function to totalize the total population of a continent, total city population of a continent, total non city population of a continent. 
-3. Print the above information.
+2. Use sum function to calculate the total population of each continent, total city population of each continent, total non-city population of each continent. 
+3. Print the total population of each continent, total city population of each continent, total non-city population of each continent.
 
 ## Extensions
 None. 

@@ -1,6 +1,6 @@
 # Use Case Description 26
 
-## Use Case: Display the total world's population.
+## Use Case: Display the population of people living and not living in the cities in the world.
 
 ## Characteristic Information
 
@@ -30,8 +30,8 @@ The organization has asked for total population of the world.
 
 ## Main Success Scenario
 1. Extract all the population from the world database.
-2. Use sum function to totalize the total population of the world.
-3. Print the total population of the world.
+2. Use sum function to calculate the population of the world.
+3. Print the population of the world.
 
 ## Extensions
 None.

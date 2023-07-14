@@ -1,6 +1,6 @@
 # Use Case Description 30
 
-## Use Case: Display the total district's population.
+## Use Case: Display a district's population.
 
 ## Characteristic Information
 
@@ -29,9 +29,9 @@ Global Population Archivist.
 The organization has asked for the total population of a district.
 
 ## Main Success Scenario
-1. Extract all the districts and their population from the world database.
-2. Use sum function to totalize the total population of each district.
-3. Print the total population of each district. 
+1. Extract a district and its population from the world database.
+2. Use sum function to calculate the total population of a district.
+3. Print the total population of a district.
 
 ## Extensions
 None.

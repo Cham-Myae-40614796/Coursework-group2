@@ -1,6 +1,6 @@
 # Use Case Description 31
 
-## Use Case: Display the total city's population.
+## Use Case: Display a city's population.
 
 ## Characteristic Information
 
@@ -29,9 +29,8 @@ Global Population Archivist.
 The organization has asked for the total population of a city.
 
 ## Main Success Scenario
-1. Extract all the cities and their population from the world database.
-2. Use sum function to totalize the total population of each city.
-3. Print the total population of each city.
+1. Extract a city and its population from the world database.
+2. Print the population of a city.
 
 ## Extensions
 None.
