@@ -1,6 +1,6 @@
 # Use Case Description 29
 
-## Use Case: Display the total country's population.
+## Use Case: Display the population of people living and not living in the cities in a country. 
 
 ## Characteristic Information
 
@@ -29,9 +29,9 @@ Global Population Archivist.
 The organization has asked for the total population of a country.
 
 ## Main Success Scenario
-1. Extract all the countries and their population from the world database.
-2. Use sum function to totalize the total population of each country.
-3. Print the total population of each country.
+1. Extract a country and its population from the world database.
+2. Use sum function to calculate the total population of a country, total city population of a country, total non-city population of a country.
+3. Print the total population of a country, total city population of a country, total non-city population of a country.
 
 ## Extensions
 None.
