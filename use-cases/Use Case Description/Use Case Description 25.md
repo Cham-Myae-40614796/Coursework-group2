@@ -29,9 +29,9 @@ Global Population Archivist.
 The organization has asked for information on the population of people, people living in cities, and people not living in cities in each country.
 
 ## Main Success Scenario
-1. Extract all the country from the world database.
-2. Use sum function to totalize the total population of a country, total city population of a country, total non city population of a country. 
-3. Print the above information.
+1. Extract all the countries from the world database.
+2. Use sum function to calculate the total population of each country, total city population of each country, total non-city population of each country.
+3. Print the total population of each country, total city population of each country, total non-city population of each country.
 
 ## Extensions
 None.
