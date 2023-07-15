@@ -21,6 +21,11 @@ public class CountryReport {
     private Connection conn = null;
 
     /**
+     * Number of query for table titles
+     */
+    private int query_count = 1;
+
+    /**
      * private integer method limiting printed output for top 5 only
      */
     private int topLimit = 5;
@@ -153,6 +158,10 @@ public class CountryReport {
         if (type != "World") {
             title +=  " (" + name + ")";
         }
+        // add numbering to the title
+        title = query_count + ". " + title;
+        // increase the count by one
+        query_count += 1;
         // print out the title
         System.out.printf("| %-110s |%n", title);
         System.out.printf("------------------------------------------------------------------------------------------------------------------%n");
