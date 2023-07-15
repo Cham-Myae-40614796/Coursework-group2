@@ -20,6 +20,11 @@ public class CapitalCityReport {
     private Connection conn = null;
 
     /**
+     * Number of query for table titles
+     */
+    private int query_count = 17;
+
+    /**
      * private integer to set top limit of query
      */
     private int topLimit = 5;
@@ -156,6 +161,10 @@ public class CapitalCityReport {
         if (type != "World") {
             title +=  " (" + name + ")";
         }
+        // add numbering to the title
+        title = query_count + ". " + title;
+        // increase the count by one
+        query_count += 1;
         // print out the title
         System.out.printf("| %-93s |%n", title);
         System.out.printf("-------------------------------------------------------------------------------------------------%n");
