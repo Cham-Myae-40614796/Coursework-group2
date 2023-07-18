@@ -40,6 +40,13 @@ public class App {
         // Generate the reports
         ccr.generateCapitalCityReport();
 
+        // Create a AdditionalPopulationReport Object
+        AdditionalPopulationReport apr = new AdditionalPopulationReport();
+        // Set connection for AdditionalPopulationReport Object
+        apr.setConn(dbConn.getConn());
+        // Generate the reports
+        apr.generateAdditionalPopulationReport();
+
         // Close the connection
         dbConn.disconnect();
 
