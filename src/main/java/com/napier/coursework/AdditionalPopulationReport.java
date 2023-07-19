@@ -25,6 +25,16 @@ public class AdditionalPopulationReport {
     private int query_count = 26;
 
     /**
+     * private string to set continent name of query
+     */
+    private String continent = "Europe";
+
+    /**
+     * private string to set region name of query
+     */
+    private String region = "Southern Europe";
+
+    /**
      * private string to set country name of query
      */
     private String country = "Austria";
@@ -42,7 +52,9 @@ public class AdditionalPopulationReport {
     /**
      * private string method for generating table format for output display
      */
-    private String tableFormat = "| %-30s | %-20s |%n";
+    private String tableFormat1 = "| %-54s |%n";
+    private String tableFormat2 = "| %-30s | %-20s | %-20s | %-21s |%n";
+    private String tableFormat3 = "| %-30s | %-20s |%n";
 
     /**
      * public method to set SQL database Connection
@@ -63,14 +75,166 @@ public class AdditionalPopulationReport {
      * the main public method used to generate different reports of  population
      */
     public void generateAdditionalPopulationReport() {
-        String whereClause1 = "WHERE city.District = '" + district + "' ";
-        String whereClause2 = "WHERE city.Name = '" + city + "' ";
+        String whereClause1 = "WHERE cnty.Continent = '" + continent + "' ";
+        String whereClause2 = "WHERE cnty.Region = '" + region + "' ";
+        String whereClause3 = "WHERE cnty.Name = '" + country + "' ";
+        String whereClause4 = "WHERE city.District = '" + district + "' ";
+        String whereClause5 = "WHERE city.Name = '" + city + "' ";
 
-        displayPopulation("District", whereClause1);
-        displayPopulation("City", whereClause2);
+        displayWorldPopulation();
+        displayCitiesAndNonCitiesPopulation("Continent", whereClause1);
+        displayCitiesAndNonCitiesPopulation("Region", whereClause2);
+        displayCitiesAndNonCitiesPopulation("Country", whereClause3);
+        displayPopulation("District", whereClause4);
+        displayPopulation("City", whereClause5);
     }
 
+    /**
+     * protected method to extract world population data from SQL database using query
+     *
+     * @return the arraylist of extracted world population data
+     */
+    protected ArrayList<Population> extractWorldPopulation() {
+        try {
+            Statement stmt = conn.createStatement();
 
+            String query = "SELECT SUM(country.Population) AS TotalPopulation FROM country";
+
+            ResultSet rset = stmt.executeQuery(query);
+
+            ArrayList<Population> population = new ArrayList<Population>();
+            while (rset.next()) {
+                Population p = new Population();
+                p.setTotalPopulation(rset.getLong("TotalPopulation"));
+                population.add(p);
+            }
+
+            return population;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+            return null;
+        }
+    }
+
+    /**
+     * protected method to reformat population and
+     * display the extracted world population data in a tabular format
+     */
+    protected void displayWorldPopulation() {
+        ArrayList<Population> extractedWorldPopulation = extractWorldPopulation();
+
+        System.out.println();
+        System.out.printf("----------------------------------------------------------%n");
+
+        String title = "Total Number of People Living in the world";
+
+        title = query_count + ". " + title;
+
+        query_count += 1;
+
+        System.out.printf("| %-54s |%n", title);
+        System.out.printf("----------------------------------------------------------%n");
+
+        System.out.printf(tableFormat1, "Total Population");
+        System.out.printf("----------------------------------------------------------%n");
+
+        if (extractedWorldPopulation != null) {
+            for (Population pop : extractedWorldPopulation) {
+                System.out.printf(tableFormat1,
+                        NumberFormat.getInstance(Locale.US).format(pop.getTotalPopulation()));
+            }
+        } else {
+            System.out.printf("| %-54s |%n", "No records");
+        }
+        System.out.printf("----------------------------------------------------------%n");
+        System.out.println();
+    }
+
+    /**
+     * protected method to extract population data from SQL database using query
+     *
+     * @return the arraylist of extracted population data
+     */
+    protected ArrayList<Population> extractCitiesAndNonCitiesPopulation(String type, String whereClause) {
+        try {
+            Statement stmt = conn.createStatement();
+
+            String query = "SELECT cnty." + type + ", SUM(cnty.Population) AS TotalPopulation, cty.TotalCityPopulation, (SUM(cnty.Population) - cty.TotalCityPopulation) AS TotalNonCityPopulation " +
+                    "FROM country AS cnty " +
+                    "INNER JOIN (" +
+                    "SELECT country." + type + ", SUM(city.Population) AS TotalCityPopulation " +
+                    "FROM city " +
+                    "INNER JOIN country " +
+                    "ON CountryCode = country.Code " +
+                    "GROUP BY country." + type + " "+
+                    ") AS cty " +
+                    "ON cty." + type + " = cnty." + type +" " +
+                    whereClause +
+                    "GROUP BY cnty." + type + ";";
+
+            ResultSet rset = stmt.executeQuery(query);
+
+            ArrayList<Population> population = new ArrayList<Population>();
+            while (rset.next()) {
+                Population p = new Population();
+                p.setName(rset.getString("cnty." + type));
+                p.setTotalPopulation(rset.getLong("TotalPopulation"));
+                p.setPopulationInCities(rset.getLong("TotalCityPopulation"));
+                p.setPopulationNotInCities(rset.getLong("TotalNonCityPopulation"));
+                population.add(p);
+            }
+
+            return population;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+            return null;
+        }
+    }
+
+    /**
+     * protected method to reformat population and
+     * display the extracted population data in a tabular format
+     */
+    protected void displayCitiesAndNonCitiesPopulation(String type, String whereClause) {
+        ArrayList<Population> extractedCitiesAndNonCitiesPopulation;
+        if (type == "Country") {
+            extractedCitiesAndNonCitiesPopulation = extractCitiesAndNonCitiesPopulation("Name", whereClause);
+        }else {
+            extractedCitiesAndNonCitiesPopulation = extractCitiesAndNonCitiesPopulation(type, whereClause);
+        }
+        System.out.println();
+        System.out.printf("--------------------------------------------------------------------------------------------------------%n");
+
+        String title = "Number of People Living in the Cities and Not in the Cities in each " + type;
+
+        title = query_count + ". " + title;
+
+        query_count += 1;
+
+        System.out.printf("| %-100s |%n", title);
+        System.out.printf("--------------------------------------------------------------------------------------------------------%n");
+
+        System.out.printf(tableFormat2, type + " Name", "Total Population", "Total Population in", "Total Population not");
+        System.out.printf(tableFormat2, "", "", "Cities", "in Cities");
+        System.out.printf("--------------------------------------------------------------------------------------------------------%n");
+
+        if (extractedCitiesAndNonCitiesPopulation != null) {
+            for (Population pop : extractedCitiesAndNonCitiesPopulation) {
+                System.out.printf(tableFormat2,
+                        pop.getName(),
+                        NumberFormat.getInstance(Locale.US).format(pop.getTotalPopulation()),
+                        NumberFormat.getInstance(Locale.US).format(pop.getPopulationInCities()),
+                        NumberFormat.getInstance(Locale.US).format(pop.getPopulationNotInCities()));
+            }
+        } else {
+            System.out.printf("| %-100s |%n", "No records");
+        }
+        System.out.printf("--------------------------------------------------------------------------------------------------------%n");
+        System.out.println();
+    }
+    
     /**
      * protected method to extract population data from SQL database using query
      *
@@ -126,12 +290,12 @@ public class AdditionalPopulationReport {
         System.out.printf("| %-53s |%n", title);
         System.out.printf("---------------------------------------------------------%n");
 
-        System.out.printf(tableFormat, type + " Name", "Total Population");
+        System.out.printf(tableFormat3, type + " Name", "Total Population");
         System.out.printf("---------------------------------------------------------%n");
 
         if (extractedPopulation != null) {
             for (Population pop : extractedPopulation) {
-                System.out.printf(tableFormat,
+                System.out.printf(tableFormat3,
                         pop.getName(),
                         NumberFormat.getInstance(Locale.US).format(pop.getTotalPopulation()));
             }
