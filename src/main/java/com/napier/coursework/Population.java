@@ -1,6 +1,6 @@
 package com.napier.coursework;
 /**
- *  Represents Population Data
+ * Represents Population Data
  * @author Kyi Phyu Khin
  * @version 0.1.0.3
  * @since 0.1.0.3
