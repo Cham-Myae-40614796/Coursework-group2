@@ -82,11 +82,11 @@ public class AdditionalPopulationReport {
         String whereClause5 = "WHERE city.Name = '" + city + "' ";
 
         displayWorldPopulation();
-        displayCitiesAndNonCitiesPopulation("Continent", whereClause1);
-        displayCitiesAndNonCitiesPopulation("Region", whereClause2);
-        displayCitiesAndNonCitiesPopulation("Country", whereClause3);
-        displayPopulation("District", whereClause4);
-        displayPopulation("City", whereClause5);
+        displayCitiesAndNonCitiesPopulation("Continent", continent, whereClause1);
+        displayCitiesAndNonCitiesPopulation("Region", region, whereClause2);
+        displayCitiesAndNonCitiesPopulation("Country", country, whereClause3);
+        displayPopulation("District", district, whereClause4);
+        displayPopulation("City", city, whereClause5);
     }
 
     /**
@@ -197,7 +197,7 @@ public class AdditionalPopulationReport {
      * protected method to reformat population and
      * display the extracted population data in a tabular format
      */
-    protected void displayCitiesAndNonCitiesPopulation(String type, String whereClause) {
+    protected void displayCitiesAndNonCitiesPopulation(String type, String name, String whereClause) {
         ArrayList<Population> extractedCitiesAndNonCitiesPopulation;
         if (type == "Country") {
             extractedCitiesAndNonCitiesPopulation = extractCitiesAndNonCitiesPopulation("Name", whereClause);
@@ -207,8 +207,11 @@ public class AdditionalPopulationReport {
         System.out.println();
         System.out.printf("--------------------------------------------------------------------------------------------------------%n");
 
-        String title = "Number of People Living in the Cities and Not in the Cities in each " + type;
-
+        String title = "Number of People Living in the Cities and Not in the Cities in a " + type;
+        // if the type is not world, add some more text in title
+        if (type != "World") {
+            title +=  " (" + name + ")";
+        }
         title = query_count + ". " + title;
 
         query_count += 1;
@@ -271,7 +274,7 @@ public class AdditionalPopulationReport {
      * protected method to reformat population and
      * display the extracted population data in a tabular format
      */
-    protected void displayPopulation(String type, String whereClause) {
+    protected void displayPopulation(String type, String name, String whereClause) {
         ArrayList<Population> extractedPopulation;
         if (type == "City") {
             extractedPopulation = extractPopulation("Name", whereClause);
@@ -281,7 +284,7 @@ public class AdditionalPopulationReport {
         System.out.println();
         System.out.printf("---------------------------------------------------------%n");
 
-        String title = "Total Number of People Living in " + type;
+        String title = "Total Number of People Living in a " + type;
 
         title = query_count + ". " + title;
 
