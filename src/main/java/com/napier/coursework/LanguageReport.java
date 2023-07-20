@@ -13,7 +13,7 @@ public class LanguageReport {
 
     private int query_count = 32;
 
-    private String tableFormat = "| %-35s | %-15s | %-22s | %-37s |%n";
+    private String tableFormat = "| %-35s | %-37s | %-37s |%n";
 
 
     public void setConn(Connection conn) {
@@ -96,7 +96,7 @@ public class LanguageReport {
         System.out.printf("| %-118s |%n", title);
         System.out.printf("--------------------------------------------------------------------------------------------------------------------------%n");
         // print out table headings
-        System.out.printf(tableFormat, "Language", "Percentage", "Population", "Country");
+        System.out.printf(tableFormat, "Language", "Percentage", "Population");
         System.out.printf("--------------------------------------------------------------------------------------------------------------------------%n");
 
 
