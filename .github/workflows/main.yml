@@ -34,7 +34,7 @@ jobs:
       - name: Set up Database Container
         run: |
           docker build -t database ./db 
-          docker run --name world-db/world -dp 33060:3306 database
+          docker run --name world -dp 33060:3306 database
       - name: Integration Tests
         run: mvn -Dtest=com.napier.coursework.AppIntegrationTest test
       - name: Remove Database
