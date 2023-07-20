@@ -96,9 +96,9 @@ public class PopulationReport {
                 p.setName(rset.getString("cnty." + type));
                 p.setTotalPopulation(rset.getLong("TotalContinentPopulation"));
                 p.setPopulationInCities(rset.getLong("TotalCityPopulation"));
-                p.setCityPopulationPercentage(rset.getLong("CityPopulationPercentage"));
+                p.setCityPopulationPercentage(rset.getString("CityPopulationPercentage"));
                 p.setPopulationNotInCities(rset.getLong("TotalNonCityPopulation"));
-                p.setNonCityPopulationPercentage(rset.getLong("NonCityPopulationPercentage"));
+                p.setNonCityPopulationPercentage(rset.getString("NonCityPopulationPercentage"));
                 population.add(p);
             }
 
