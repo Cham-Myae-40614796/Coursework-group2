@@ -17,16 +17,6 @@ public class DatabaseConnection {
     private Connection conn = null;
 
     /**
-     * conn is used in SQL data extraction. It has a default value of null.
-     * This can be set to use existing database connection.
-     *
-     * @param conn the SQL database connection
-     */
-    public void setConn(Connection conn) {
-        this.conn = conn;
-    }
-
-    /**
      *
      * @return conn is returned to execute query and extract data from SQL database.
      */
@@ -54,7 +44,7 @@ public class DatabaseConnection {
                 // Wait a bit for db to start
                 Thread.sleep(10000);
                 // Connect to database
-                conn = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:33060/world?useSSL=false&allowPublicKeyRetrieval=true", "root", "example");
                 System.out.println("Successfully connected");
                 // Exit retry loop
                 break;
