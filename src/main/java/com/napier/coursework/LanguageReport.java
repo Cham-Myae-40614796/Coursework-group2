@@ -96,7 +96,7 @@ public class LanguageReport {
         System.out.printf("| %-118s |%n", title);
         System.out.printf("--------------------------------------------------------------------------------------------------------------------------%n");
         // print out table headings
-        System.out.printf(tableFormat, "Language", "Percentage", "Population");
+        System.out.printf(tableFormat, "Language", "Population", "Percentage");
         System.out.printf("--------------------------------------------------------------------------------------------------------------------------%n");
 
 
