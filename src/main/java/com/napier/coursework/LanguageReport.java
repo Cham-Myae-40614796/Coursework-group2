@@ -56,10 +56,10 @@ public class LanguageReport {
                 // create new object to add to language array list
                 Language lan = new Language();
                 // add the extracted data to language object
-                lan.setCountryLanguage(resultData.getString("countrylanguage.Language"));
-                lan.setPercentage(resultData.getString("countrylanguage.Percentage"));
-                lan.setCountryPopulation(resultData.getString("country.Population"));
-                lan.setCountryName(resultData.getString("country.Name"));
+                lan.setCountryLanguage(resultData.getString("cl.Language"));
+                lan.setPercentage(resultData.getString("cl.Percentage"));
+                lan.setCountryPopulation(resultData.getString("c.Population"));
+                lan.setCountryName(resultData.getString("c.Name"));
 
                 // add the language object to language array list
                 languages.add(lan);
