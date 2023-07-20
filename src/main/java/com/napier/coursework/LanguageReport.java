@@ -31,13 +31,13 @@ public class LanguageReport {
         try
         {
             // define query
-            String query = "SELECT \n" +
-                    "    cl.language, \n" +
-                    "    ROUND(SUM(cl.percentage * c.population) / 100, 2) AS TotalNumberOfPeople, \n" +
-                    "    CONCAT(ROUND(SUM(c.population * cl.percentage) / (SELECT SUM(population) FROM country), 2), ' %') AS PercentageOftheWorldPopulation \n" +
-                    "FROM countrylanguage cl, country c \n" +
-                    "WHERE cl.countrycode = c.code AND cl.language IN ('English', 'Arabic', 'Hindi', 'Chinese', 'Spanish') \n" +
-                    "GROUP BY cl.language \n" +
+            String query = "SELECT " +
+                    "    cl.language, " +
+                    "    ROUND(SUM(cl.percentage * c.population) / 100, 2) AS TotalNumberOfPeople, " +
+                    "    CONCAT(ROUND(SUM(c.population * cl.percentage) / (SELECT SUM(population) FROM country), 2), ' %') AS PercentageOftheWorldPopulation " +
+                    "FROM countrylanguage cl, country c " +
+                    "WHERE cl.countrycode = c.code AND cl.language IN ('English', 'Arabic', 'Hindi', 'Chinese', 'Spanish') " +
+                    "GROUP BY cl.language " +
                     "ORDER BY TotalNumberOfPeople DESC;";
 
 
