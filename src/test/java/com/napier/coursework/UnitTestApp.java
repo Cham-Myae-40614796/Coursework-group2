@@ -24,6 +24,9 @@ public class UnitTestApp {
     @BeforeAll
     static void init(){
         cotyr = new CountryReport();
+        cr = new CityReport();
+        ccr = new CapitalCityReport();
+
         country = new Country();
         country.setCountryCode("IND");
         country.setCountryName("India");

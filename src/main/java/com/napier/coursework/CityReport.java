@@ -81,56 +81,56 @@ public class CityReport {
 
 
         // create new arraylist to store the arraylist of extracted cities data
-        ArrayList<City> extractCities = extractCities(whereClause, false);
+        ArrayList<City> extractedCities = extractCities(whereClause, false);
         // display a table of information on cities in the world organized by their population in descending order
-        displayCities(extractCities,"World", "", false);
+        displayCities(extractedCities,"World", "", false);
 
         // store the arraylist of extracted cities data
-        extractCities = extractCities(whereClause1, false);
+        extractedCities = extractCities(whereClause1, false);
         // display a table of information on cities in a continent organized by their population in descending order
-        displayCities(extractCities,"Continent", continent, false);
+        displayCities(extractedCities,"Continent", continent, false);
 
         // store the arraylist of extracted cities data
-        extractCities = extractCities(whereClause2, false);
+        extractedCities = extractCities(whereClause2, false);
         // display a table of information on cities in a region organized by their population in descending order
-        displayCities(extractCities,"Region", region, false);
+        displayCities(extractedCities,"Region", region, false);
 
         // store the arraylist of extracted cities data
-        extractCities = extractCities(whereClause3, false);
+        extractedCities = extractCities(whereClause3, false);
         // display a table of information on cities in a country organized by their population in descending order
-        displayCities(extractCities,"Country", country, false);
+        displayCities(extractedCities,"Country", country, false);
 
         // store the arraylist of extracted cities data
-        extractCities = extractCities(whereClause4, false);
+        extractedCities = extractCities(whereClause4, false);
         // display a table of information on cities in a district organized by their population in descending order
-        displayCities(extractCities,"District", district, false);
+        displayCities(extractedCities,"District", district, false);
 
 
 
         // store the arraylist of extracted cities data
-        extractCities = extractCities(whereClause, true);
+        extractedCities = extractCities(whereClause, true);
         // display a table of information on top populated cities in the world
-        displayCities(extractCities,"World", "", true);
+        displayCities(extractedCities,"World", "", true);
 
         // store the arraylist of extracted cities data
-        extractCities = extractCities(whereClause1, true);
+        extractedCities = extractCities(whereClause1, true);
         // display a table of information on top populated cities in a continent
-        displayCities(extractCities,"Continent", continent, true);
+        displayCities(extractedCities,"Continent", continent, true);
 
         // store the arraylist of extracted cities data
-        extractCities = extractCities(whereClause2, true);
+        extractedCities = extractCities(whereClause2, true);
         // display a table of information on top populated cities in a region
-        displayCities(extractCities,"Region", region, true);
+        displayCities(extractedCities,"Region", region, true);
 
         // store the arraylist of extracted cities data
-        extractCities = extractCities(whereClause3, true);
+        extractedCities = extractCities(whereClause3, true);
         // display a table of information on top populated cities in a country
-        displayCities(extractCities,"Country", country, true);
+        displayCities(extractedCities,"Country", country, true);
 
         // store the arraylist of extracted cities data
-        extractCities = extractCities(whereClause4, true);
+        extractedCities = extractCities(whereClause4, true);
         // display a table of information on top populated cities in a district
-        displayCities(extractCities,"District", district, true);
+        displayCities(extractedCities,"District", district, true);
 
     }
 
