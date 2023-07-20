@@ -27,7 +27,7 @@ public class PopulationReport {
     /**
      * private string method for generating table format for output display
      */
-    private String tableFormat = "| %-40s | %-20s | %-20s | %-10s | %-21s | %-10s |%n";
+    private String tableFormat = "| %-20s | %-20s | %-20s | %-10s | %-21s | %-10s |%n";
 
     /**
      * public method to set SQL database Connection
@@ -96,7 +96,9 @@ public class PopulationReport {
                 p.setName(rset.getString("cnty." + type));
                 p.setTotalPopulation(rset.getLong("TotalContinentPopulation"));
                 p.setPopulationInCities(rset.getLong("TotalCityPopulation"));
+                p.setCityPopulationPercentage(rset.getLong("CityPopulationPercentage"));
                 p.setPopulationNotInCities(rset.getLong("TotalNonCityPopulation"));
+                p.setNonCityPopulationPercentage(rset.getLong("NonCityPopulationPercentage"));
                 population.add(p);
             }
 
@@ -125,7 +127,7 @@ public class PopulationReport {
 
         query_count += 1;
 
-        System.out.printf("| %-136s |%n", title);
+        System.out.printf("| %-116s |%n", title);
         System.out.printf("------------------------------------------------------------------------------------------------------------------%n");
         // print out table headings
         System.out.printf(tableFormat, type + " Name", "Total Population", "Total Population in", "Percentage", "Total Population not", "Percentage");
@@ -140,17 +142,32 @@ public class PopulationReport {
 
         if (extractedPopulation == null || extractedPopulation.size() == 0) {
             // handles null records
-            System.out.printf("| %-136s |%n", "No records");
+            System.out.printf("| %-116s |%n", "No records");
         } else {
             // print out table records
             for (Population pop : extractedPopulation){
+                String eNameText = pop.getName();
+                String extraENameText = "";
+                if (eNameText.length() > 20){
+                    extraENameText = eNameText.substring(20);
+                    eNameText = eNameText.substring(0, 20);
+                }
                 System.out.printf(tableFormat,
-                        pop.getName(),
+                        eNameText,
                         NumberFormat.getInstance(Locale.US).format(pop.getTotalPopulation()),
                         NumberFormat.getInstance(Locale.US).format(pop.getPopulationInCities()),
                         pop.getCityPopulationPercentage(),
                         NumberFormat.getInstance(Locale.US).format(pop.getPopulationNotInCities()),
                         pop.getNonCityPopulationPercentage());
+                if (extraENameText != ""){
+                    System.out.printf(tableFormat,
+                            extraENameText,
+                            "",
+                            "",
+                            "",
+                            "",
+                            "");
+                }
             }
         }
         System.out.printf("------------------------------------------------------------------------------------------------------------------%n");
