@@ -84,9 +84,9 @@ public class CountryReport {
 
 
         // create new arraylist to store the arraylist of extracted countries data
-        extractedCountries = extractCountries(whereClause, false);
+        extractedCountries = extractCountries(whereClause, true);
         // display the number of top populated countries in the world that the user provided will be listed
-        displayCountries(extractedCountries,"World", "", false);
+        displayCountries(extractedCountries,"World", "", true);
 
         // create new arraylist to store the arraylist of extracted countries data
         extractedCountries = extractCountries(whereClause1, false);
