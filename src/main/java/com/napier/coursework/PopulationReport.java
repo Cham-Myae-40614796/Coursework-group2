@@ -45,9 +45,17 @@ public class PopulationReport {
      */
     public void generatePopulationReport() {
 
-        displayPopulation("Continent");
-        displayPopulation("Region");
-        displayPopulation("Country");
+        String type = "Continent";
+        ArrayList<Population> extractedPopulation = extractPopulation(type);
+        displayPopulation(extractedPopulation, type);
+
+        type = "Region";
+        extractedPopulation = extractPopulation(type);
+        displayPopulation(extractedPopulation,type);
+
+        type = "Country";
+        extractedPopulation = extractPopulation(type);
+        displayPopulation(extractedPopulation, type);
 
     }
 
@@ -58,11 +66,17 @@ public class PopulationReport {
      */
     protected ArrayList<Population> extractPopulation(String type)
     {
+        if (type == "Country") {
+            type = "Name";
+        }
         try
         {
             Statement stmt = conn.createStatement();
 
-            String query = "SELECT cnty." + type + ", SUM(cnty.Population) AS TotalContinentPopulation, cty.TotalCityPopulation, (SUM(cnty.Population) - cty.TotalCityPopulation) AS TotalNonCityPopulation " +
+            String query = "SELECT cnty." + type + ", SUM(cnty.Population) AS TotalContinentPopulation, cty.TotalCityPopulation," +
+                    " CONCAT(((cty.TotalCityPopulation/SUM(cnty.Population)) * 100), ' %') AS CityPopulationPercentage," +
+                    " (SUM(cnty.Population) - cty.TotalCityPopulation) AS TotalNonCityPopulation, " +
+                    "CONCAT((100 - (cty.TotalCityPopulation/SUM(cnty.Population)) * 100), ' %') AS NonCityPopulationPercentage " +
                     "FROM country AS cnty " +
                     "INNER JOIN (" +
                     "SELECT country." + type + ", SUM(city.Population) AS TotalCityPopulation " +
@@ -100,14 +114,8 @@ public class PopulationReport {
          * protected method to reformat population and
          * display the extracted population data in a tabular format
          */
-    protected void displayPopulation(String type) {
+    protected void displayPopulation(ArrayList<Population> extractedPopulation, String type) {
         // create new arraylist to store the arraylist of extracted population data
-        ArrayList<Population> extractedPopulation;
-        if (type == "Country") {
-            extractedPopulation = extractPopulation("Name");
-        }else {
-            extractedPopulation = extractPopulation(type);
-        }
         System.out.println();
         System.out.printf("------------------------------------------------------------------------------------------------------------------%n");
 
@@ -120,11 +128,21 @@ public class PopulationReport {
         System.out.printf("| %-110s |%n", title);
         System.out.printf("------------------------------------------------------------------------------------------------------------------%n");
         // print out table headings
-
         System.out.printf(tableFormat, type + " Name", "Total Population", "Total Population in", "Total Population not");
         System.out.printf(tableFormat, "", "", "Cities", "in Cities");
         System.out.printf("------------------------------------------------------------------------------------------------------------------%n");
-        if(extractedPopulation != null){
+
+        if (extractedPopulation != null) {
+            while(extractedPopulation.remove(null)){
+
+            }
+        }
+
+        if (extractedPopulation == null || extractedPopulation.size() == 0) {
+            // handles null records
+            System.out.printf("| %-110s |%n", "No records");
+        } else {
+            // print out table records
             for (Population pop : extractedPopulation){
                 System.out.printf(tableFormat,
                         pop.getName(),
@@ -132,8 +150,6 @@ public class PopulationReport {
                         NumberFormat.getInstance(Locale.US).format(pop.getPopulationInCities()),
                         NumberFormat.getInstance(Locale.US).format(pop.getPopulationNotInCities()));
             }
-        } else {
-            System.out.printf("| %-110s |%n", "No records");
         }
         System.out.printf("------------------------------------------------------------------------------------------------------------------%n");
         System.out.println();
