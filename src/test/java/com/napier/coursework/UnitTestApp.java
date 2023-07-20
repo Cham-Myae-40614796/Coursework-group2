@@ -15,17 +15,20 @@ public class UnitTestApp {
 
     static CapitalCityReport ccr;
 
+    static PopulationReport popr;
+
     static Country country;
 
     static City city;
 
-    static City capitalCity;
+    static Population population;
 
     @BeforeAll
     static void init(){
         cotyr = new CountryReport();
         cr = new CityReport();
         ccr = new CapitalCityReport();
+        popr = new PopulationReport();
 
         country = new Country();
         country.setCountryCode("IND");
@@ -295,6 +298,79 @@ public class UnitTestApp {
 
 
 
+
+
+
+
+
+
+
+
+    @Test
+    void displayPopulationNullTest(){
+
+        popr.displayPopulation(null, "Continent");
+    }
+
+    @Test
+    void displayPopulationEmptyTest(){
+        ArrayList<Population> extractedPopulation = new ArrayList<>();
+        popr.displayPopulation(extractedPopulation, "Continent");
+    }
+
+    @Test
+    void displayPopulationContainsNullTest(){
+        ArrayList<Population> extractedPopulation = new ArrayList<>();
+        extractedPopulation.add(null);
+        extractedPopulation.add(null);
+
+        popr.displayPopulation(extractedPopulation, "Continent");
+    }
+
+    @Test
+    void displayPopulationInContinentTest() {
+        ArrayList<Population> extractedPopulation = new ArrayList<>();
+        population = new Population();
+        population.setName("Asia");
+        population.setTotalPopulation(3705025700L);
+        population.setPopulationInCities(697604103L);
+        population.setCityPopulationPercentage("18.8286 %");
+        population.setPopulationNotInCities(3007421597L);
+        population.setNonCityPopulationPercentage("81.1714 %");
+
+        extractedPopulation.add(population);
+        popr.displayPopulation(extractedPopulation, "Continent");
+    }
+
+    @Test
+    void displayPopulationInRegionTest() {
+        ArrayList<Population> extractedPopulation = new ArrayList<>();
+        population = new Population();
+        population.setName("Eastern Europe");
+        population.setTotalPopulation(307026000L);
+        population.setPopulationInCities(123384516L);
+        population.setCityPopulationPercentage("40.1870 %");
+        population.setPopulationNotInCities(183641484L);
+        population.setNonCityPopulationPercentage("59.8130 %");
+
+        extractedPopulation.add(population);
+        popr.displayPopulation(extractedPopulation, "Region");
+    }
+
+    @Test
+    void displayPopulationInCountryTest() {
+        ArrayList<Population> extractedPopulation = new ArrayList<>();
+        population = new Population();
+        population.setName("Denmark");
+        population.setTotalPopulation(5330000L);
+        population.setPopulationInCities(1215945L);
+        population.setCityPopulationPercentage("22.8132 %");
+        population.setPopulationNotInCities(4114055L);
+        population.setNonCityPopulationPercentage("77.1868 %");
+
+        extractedPopulation.add(population);
+        popr.displayPopulation(extractedPopulation, "Country");
+    }
 
 }
 
