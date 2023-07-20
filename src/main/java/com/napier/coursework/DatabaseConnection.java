@@ -44,7 +44,11 @@ public class DatabaseConnection {
                 // Wait a bit for db to start
                 Thread.sleep(10000);
                 // Connect to database
-                conn = DriverManager.getConnection("jdbc:mysql://localhost:33060/world?useSSL=false&allowPublicKeyRetrieval=true", "root", "example");
+                if (i%2 ==0) {
+                    conn = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false&allowPublicKeyRetrieval=true", "root", "example");
+                } else {
+                    conn = DriverManager.getConnection("jdbc:mysql://localhost:33060/world?useSSL=false&allowPublicKeyRetrieval=true", "root", "example");
+                }
                 System.out.println("Successfully connected");
                 // Exit retry loop
                 break;
