@@ -19,26 +19,26 @@ public class App {
         // Make connection to database
         dbConn.connect();
 
-        // Create a CountryReport Object
-        CountryReport cotyr = new CountryReport();
-        // Set connection for CountryReport Object
-        cotyr.setConn(dbConn.getConn());
-        // Generate the reports
-        cotyr.generateCountryReport();
-        
-        // Create a CityReport Object
-        CityReport cr = new CityReport();
-        // Set connection for CityReport Object
-        cr.setConn(dbConn.getConn());
-        // Generate the reports
-        cr.generateCityReport();
-
-        // Create a CapitalCityReport Object
-        CapitalCityReport ccr = new CapitalCityReport();
-        // Set connection for CapitalCityReport Object
-        ccr.setConn(dbConn.getConn());
-        // Generate the reports
-        ccr.generateCapitalCityReport();
+//        // Create a CountryReport Object
+//        CountryReport cotyr = new CountryReport();
+//        // Set connection for CountryReport Object
+//        cotyr.setConn(dbConn.getConn());
+//        // Generate the reports
+//        cotyr.generateCountryReport();
+//
+//        // Create a CityReport Object
+//        CityReport cr = new CityReport();
+//        // Set connection for CityReport Object
+//        cr.setConn(dbConn.getConn());
+//        // Generate the reports
+//        cr.generateCityReport();
+//
+//        // Create a CapitalCityReport Object
+//        CapitalCityReport ccr = new CapitalCityReport();
+//        // Set connection for CapitalCityReport Object
+//        ccr.setConn(dbConn.getConn());
+//        // Generate the reports
+//        ccr.generateCapitalCityReport();
 
         // Create a CapitalCityReport Object
         LanguageReport lgr = new LanguageReport();

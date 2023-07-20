@@ -1,8 +1,6 @@
 package com.napier.coursework;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -13,7 +11,7 @@ public class LanguageReport {
 
     private int query_count = 32;
 
-    private String tableFormat = "| %-35s | %-37s | %-37s |%n";
+    private String tableFormat = "| %-30s | %-30s | %-30s |%n";
 
 
     public void setConn(Connection conn) {
@@ -22,7 +20,8 @@ public class LanguageReport {
 
 
     public void generateLanguageReport() {
-        displayLanguage();
+        ArrayList<Language> extractedLanguage = extractLanguage();
+        displayLanguage(extractedLanguage);
 
     }
 
@@ -56,10 +55,9 @@ public class LanguageReport {
                 // create new object to add to language array list
                 Language lan = new Language();
                 // add the extracted data to language object
-                lan.setCountryLanguage(resultData.getString("cl.Language"));
-                lan.setPercentage(resultData.getString("TotalNumberOfPeople"));
-                lan.setCountryPopulation(resultData.getString("PercentageOftheWorldPopulation"));
-//                lan.setCountryName(resultData.getString("c.Name"));
+                lan.setLanguage(resultData.getString("cl.Language"));
+                lan.setPopulation(resultData.getLong("TotalNumberOfPeople"));
+                lan.setPercentage(resultData.getString("PercentageOftheWorldPopulation"));
 
                 // add the language object to language array list
                 languages.add(lan);
@@ -74,15 +72,14 @@ public class LanguageReport {
         }
     }
 
-    protected void displayLanguage()
+    protected void displayLanguage(ArrayList<Language> extractedLanguage)
     {
-        ArrayList<Language> extractedLanguage = extractLanguage();
         // create new arraylist to store the arraylist of extracted cities data
         // ArrayList<Language> extractedLanguage = extractLanguage(whereClause);
 
         // skip a line and make a table
         System.out.println();
-        System.out.printf("--------------------------------------------------------------------------------------------------------------------------%n");
+        System.out.printf("----------------------------------------------------------------------------------------------------%n");
 
         // define title of table
         String title = "World percentage of people who speak Chinese, English, Hindi, Spanish, Arabic";
@@ -93,29 +90,11 @@ public class LanguageReport {
         // increase the count by one
         query_count += 1;
         // print out the title
-        System.out.printf("| %-118s |%n", title);
-        System.out.printf("--------------------------------------------------------------------------------------------------------------------------%n");
+        System.out.printf("| %-96s |%n", title);
+        System.out.printf("----------------------------------------------------------------------------------------------------%n");
         // print out table headings
         System.out.printf(tableFormat, "Language", "Population", "Percentage");
-        System.out.printf("--------------------------------------------------------------------------------------------------------------------------%n");
-
-
-
-//         print out table records
-//        if (extractedLanguage != null) {
-//            for (int i = 0; i < extractedLanguage.size(); i++) {
-//                System.out.printf(tableFormat,
-//                        extractedLanguage.get(i).getCountryLanguage(),
-//                        extractedLanguage.get(i).getPercentage(),
-//                        extractedLanguage.get(i).getCountryPopulation(),
-//                        extractedLanguage.get(i).getCountryName());
-//            }
-//        } else {
-//            // handles null records
-//            System.out.printf("| %-118s |%n", "No records");
-//        }
-
-
+        System.out.printf("----------------------------------------------------------------------------------------------------%n");
 
         if (extractedLanguage != null) {
             while(extractedLanguage.remove(null)){
@@ -125,7 +104,7 @@ public class LanguageReport {
 
         if (extractedLanguage == null || extractedLanguage.size() == 0) {
             // handles null records
-            System.out.printf("| %-118s |%n", "No records");
+            System.out.printf("| %-107s |%n", "No records");
         } else {
             // print out table records
             for (Language elan : extractedLanguage) {
@@ -135,17 +114,12 @@ public class LanguageReport {
                 }
 
                 System.out.printf(tableFormat,
-                        elan.getCountryLanguage(),
-                        elan.getPercentage(),
-                        elan.getCountryPopulation(),
-                        elan.getCountryName());
+                        elan.getLanguage(),
+                        NumberFormat.getInstance(Locale.US).format(elan.getPopulation()),
+                        elan.getPercentage());
             }
         }
-
-
-
-
-        System.out.printf("--------------------------------------------------------------------------------------------------------------------------%n");
+        System.out.printf("----------------------------------------------------------------------------------------------------%n");
         System.out.println();
     }
 
