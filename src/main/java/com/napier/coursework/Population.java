@@ -53,9 +53,19 @@ public class Population {
     private long PopulationInCities;
 
     /**
+     * private string to store people living in the city percentage
+     */
+    private String CityPopulationPercentage;
+
+    /**
      * private long to store people who are not living in the city
      */
     private long PopulationNotInCities;
+
+    /**
+     * private string to store people not living in the city percentage
+     */
+    private String NonCityPopulationPercentage;
 
     /**
      * public method to set name of the country and city
@@ -139,12 +149,30 @@ public class Population {
     }
 
     /**
+     * public method to set people living in the cities with percentage
+     *
+     * @param cityPopulationPercentage
+     */
+    public void setCityPopulationPercentage(String cityPopulationPercentage) {
+        CityPopulationPercentage = cityPopulationPercentage;
+    }
+
+    /**
      * public method to set people who are not living in the cities
      *
      * @param populationNotInCities
      */
     public void setPopulationNotInCities(long populationNotInCities) {
         PopulationNotInCities = populationNotInCities;
+    }
+
+    /**
+     * public method to set people living in the cities with percentage
+     *
+     * @param nonCityPopulationPercentage
+     */
+    public void setNonCityPopulationPercentage(String nonCityPopulationPercentage) {
+        NonCityPopulationPercentage = nonCityPopulationPercentage;
     }
 
     /**
@@ -229,11 +257,29 @@ public class Population {
     }
 
     /**
+     * public method to return population of people living in cities with percentage
+     *
+     * @return people living in the cities with percentage
+     */
+    public String getCityPopulationPercentage() {
+        return CityPopulationPercentage;
+    }
+
+    /**
      * public method to return population not in cities
      *
      * @return people not living in the cities
      */
     public long getPopulationNotInCities() {
         return PopulationNotInCities;
+    }
+
+    /**
+     * public method to return population not in cities with percentage
+     *
+     * @return people not living in the cities with percentage
+     */
+    public String getNonCityPopulationPercentage() {
+        return NonCityPopulationPercentage;
     }
 }
