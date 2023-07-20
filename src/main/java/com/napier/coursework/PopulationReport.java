@@ -119,7 +119,7 @@ public class PopulationReport {
     protected void displayPopulation(ArrayList<Population> extractedPopulation, String type) {
         // create new arraylist to store the arraylist of extracted population data
         System.out.println();
-        System.out.printf("------------------------------------------------------------------------------------------------------------------%n");
+        System.out.printf("------------------------------------------------------------------------------------------------------------------------%n");
 
         String title = "Number of People Living in the Cities and Not in the Cities in each " + type;
 
@@ -128,11 +128,11 @@ public class PopulationReport {
         query_count += 1;
 
         System.out.printf("| %-116s |%n", title);
-        System.out.printf("------------------------------------------------------------------------------------------------------------------%n");
+        System.out.printf("------------------------------------------------------------------------------------------------------------------------%n");
         // print out table headings
         System.out.printf(tableFormat, type + " Name", "Total Population", "Total Population in", "Percentage", "Total Population not", "Percentage");
         System.out.printf(tableFormat, "", "", "Cities", "", "in Cities", "");
-        System.out.printf("------------------------------------------------------------------------------------------------------------------%n");
+        System.out.printf("------------------------------------------------------------------------------------------------------------------------%n");
 
         if (extractedPopulation != null) {
             while(extractedPopulation.remove(null)){
@@ -170,7 +170,7 @@ public class PopulationReport {
                 }
             }
         }
-        System.out.printf("------------------------------------------------------------------------------------------------------------------%n");
+        System.out.printf("------------------------------------------------------------------------------------------------------------------------%n");
         System.out.println();
     }
 
