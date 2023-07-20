@@ -40,6 +40,13 @@ public class App {
         // Generate the reports
         ccr.generateCapitalCityReport();
 
+        // Create a CapitalCityReport Object
+        LanguageReport lgr = new LanguageReport();
+        // Set connection for CapitalCityReport Object
+        lgr.setConn(dbConn.getConn());
+        // Generate the reports
+        lgr.generateLanguageReport();
+
         // Close the connection
         dbConn.disconnect();
 
