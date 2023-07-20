@@ -52,7 +52,6 @@ public class LanguageReport {
             // loop until all the extracted data is added to language array list
             while (resultData.next())
             {
-                System.out.println(resultData);
                 // create new object to add to language array list
                 Language lan = new Language();
                 // add the extracted data to language object
