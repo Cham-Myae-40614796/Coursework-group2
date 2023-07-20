@@ -31,7 +31,7 @@ public class LanguageReport {
         {
             // define query
             String query = "SELECT " +
-                    "    cl.language, " +
+                    "    cl.language As Language, " +
                     "    ROUND(SUM(cl.percentage * c.population) / 100, 2) AS TotalNumberOfPeople, " +
                     "    CONCAT(ROUND(SUM(c.population * cl.percentage) / (SELECT SUM(population) FROM country), 2), ' %') AS PercentageOftheWorldPopulation " +
                     "FROM countrylanguage cl, country c " +
@@ -55,7 +55,7 @@ public class LanguageReport {
                 // create new object to add to language array list
                 Language lan = new Language();
                 // add the extracted data to language object
-                lan.setLanguage(resultData.getString("cl.language"));
+                lan.setCountryLanguage(resultData.getString("Language"));
                 lan.setPopulation(resultData.getLong("TotalNumberOfPeople"));
                 lan.setPercentage(resultData.getString("PercentageOftheWorldPopulation"));
 
@@ -114,7 +114,7 @@ public class LanguageReport {
                 }
 
                 System.out.printf(tableFormat,
-                        elan.getLanguage(),
+                        elan.getCountryLanguage(),
                         NumberFormat.getInstance(Locale.US).format(elan.getPopulation()),
                         elan.getPercentage());
             }

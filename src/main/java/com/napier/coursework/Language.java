@@ -11,7 +11,7 @@ public class Language {
     /**
      * private string to store country code
      */
-    private String Language;
+    private String CountryLanguage;
 
     /**
      * private string to store country name
@@ -24,8 +24,8 @@ public class Language {
     private long Population;
 
 
-    public void setLanguage(String Language) {
-        Language = Language;
+    public void setCountryLanguage(String countryLanguage) {
+        CountryLanguage = countryLanguage;
     }
 
     public void setPercentage(String percentage) {
@@ -36,8 +36,8 @@ public class Language {
         Population = population;
     }
 
-    public String getLanguage() {
-        return Language;
+    public String getCountryLanguage() {
+        return CountryLanguage;
     }
 
     public String getPercentage() {
