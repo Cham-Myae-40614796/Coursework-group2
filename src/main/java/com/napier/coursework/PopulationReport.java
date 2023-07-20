@@ -27,7 +27,7 @@ public class PopulationReport {
     /**
      * private string method for generating table format for output display
      */
-    private String tableFormat = "| %-40s | %-20s | %-20s | %-21s |%n";
+    private String tableFormat = "| %-40s | %-20s | %-20s | %-10s | %-21s | %-10s |%n";
 
     /**
      * public method to set SQL database Connection
@@ -125,11 +125,11 @@ public class PopulationReport {
 
         query_count += 1;
 
-        System.out.printf("| %-110s |%n", title);
+        System.out.printf("| %-136s |%n", title);
         System.out.printf("------------------------------------------------------------------------------------------------------------------%n");
         // print out table headings
-        System.out.printf(tableFormat, type + " Name", "Total Population", "Total Population in", "Total Population not");
-        System.out.printf(tableFormat, "", "", "Cities", "in Cities");
+        System.out.printf(tableFormat, type + " Name", "Total Population", "Total Population in", "Percentage", "Total Population not", "Percentage");
+        System.out.printf(tableFormat, "", "", "Cities", "", "in Cities", "");
         System.out.printf("------------------------------------------------------------------------------------------------------------------%n");
 
         if (extractedPopulation != null) {
@@ -140,7 +140,7 @@ public class PopulationReport {
 
         if (extractedPopulation == null || extractedPopulation.size() == 0) {
             // handles null records
-            System.out.printf("| %-110s |%n", "No records");
+            System.out.printf("| %-136s |%n", "No records");
         } else {
             // print out table records
             for (Population pop : extractedPopulation){
@@ -148,7 +148,9 @@ public class PopulationReport {
                         pop.getName(),
                         NumberFormat.getInstance(Locale.US).format(pop.getTotalPopulation()),
                         NumberFormat.getInstance(Locale.US).format(pop.getPopulationInCities()),
-                        NumberFormat.getInstance(Locale.US).format(pop.getPopulationNotInCities()));
+                        pop.getCityPopulationPercentage(),
+                        NumberFormat.getInstance(Locale.US).format(pop.getPopulationNotInCities()),
+                        pop.getNonCityPopulationPercentage());
             }
         }
         System.out.printf("------------------------------------------------------------------------------------------------------------------%n");

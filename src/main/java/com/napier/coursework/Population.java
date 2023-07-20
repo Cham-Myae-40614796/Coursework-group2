@@ -16,6 +16,10 @@ public class Population {
 
     private long PopulationNotInCities;
 
+    private long CityPopulationPercentage;
+
+    private long NonCityPopulationPercentage;
+
     public void setName(String name) {
         Name = name;
     }
@@ -42,6 +46,14 @@ public class Population {
 
     public void setPopulationNotInCities(long populationNotInCities) {
         PopulationNotInCities = populationNotInCities;
+    }
+
+    public void setCityPopulationPercentage(long cityPopulationPercentage) {
+        CityPopulationPercentage = cityPopulationPercentage;
+    }
+
+    public void setNonCityPopulationPercentage(long nonCityPopulationPercentage) {
+        NonCityPopulationPercentage = nonCityPopulationPercentage;
     }
 
     public String getName() {
@@ -71,4 +83,13 @@ public class Population {
     public long getPopulationNotInCities() {
         return PopulationNotInCities;
     }
+
+    public long getCityPopulationPercentage() {
+        return CityPopulationPercentage;
+    }
+
+    public long getNonCityPopulationPercentage() {
+        return NonCityPopulationPercentage;
+    }
 }
+
