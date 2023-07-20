@@ -89,7 +89,7 @@ public class CountryReport {
         displayCountries(extractedCountries,"World", "", true);
 
         // create new arraylist to store the arraylist of extracted countries data
-        extractedCountries = extractCountries(whereClause1, false);
+        extractedCountries = extractCountries(whereClause1, true);
         // display the number of top populated countries in the continent that the user provided will be listed
         displayCountries(extractedCountries,"Continent", continent, true);
 

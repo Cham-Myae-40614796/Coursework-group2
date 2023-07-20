@@ -32,23 +32,35 @@ public class IntegrationTestApp {
     void extractCountryInWorldTest(){
         String whereClause = "";
         ArrayList<Country> extractedCountries = cotyr.extractCountries(whereClause, false);
-        assertEquals(extractedCountries.get(0).getCountryName(), "China");
-        assertEquals(extractedCountries.get(0).getCountryCode(), "CHN");
+        assertEquals(extractedCountries.get(6).getCountryName(), "Pakistan");
+        assertEquals(extractedCountries.get(6).getCountryCode(), "PAK");
+        assertEquals(extractedCountries.get(6).getContinent(), "Asia");
+        assertEquals(extractedCountries.get(6).getRegion(), "Southern and Central Asia");
+        assertEquals(extractedCountries.get(6).getPopulation(), 156483000);
+        assertEquals(extractedCountries.get(6).getCapital(), "Islamabad");
     }
 
     @Test
     void extractCountryInContinentTest(){
         String whereClause = "WHERE country.Continent = 'Asia' ";
         ArrayList<Country> extractedCountries = cotyr.extractCountries(whereClause, false);
-        assertEquals(extractedCountries.get(0).getCountryName(), "China");
-        assertEquals(extractedCountries.get(0).getCountryCode(), "CHN");
+        assertEquals(extractedCountries.get(6).getCountryName(), "Japan");
+        assertEquals(extractedCountries.get(6).getCountryCode(), "JPN");
+        assertEquals(extractedCountries.get(6).getContinent(), "Asia");
+        assertEquals(extractedCountries.get(6).getRegion(), "Eastern Asia");
+        assertEquals(extractedCountries.get(6).getPopulation(), 126714000);
+        assertEquals(extractedCountries.get(6).getCapital(), "Tokyo");
     }
     @Test
     void extractCountryInRegionTest(){
         String whereClause = "WHERE country.Region = 'Eastern Asia' ";
         ArrayList<Country> extractedCountries = cotyr.extractCountries(whereClause, false);
-        assertEquals(extractedCountries.get(0).getCountryName(), "China");
-        assertEquals(extractedCountries.get(0).getCountryCode(), "CHN");
+        assertEquals(extractedCountries.get(6).getCountryName(), "Hong Kong");
+        assertEquals(extractedCountries.get(6).getCountryCode(), "HKG");
+        assertEquals(extractedCountries.get(6).getContinent(), "Asia");
+        assertEquals(extractedCountries.get(6).getRegion(), "Eastern Asia");
+        assertEquals(extractedCountries.get(6).getPopulation(), 6782000);
+        assertEquals(extractedCountries.get(6).getCapital(), "Victoria");
     }
 
     @Test
@@ -57,6 +69,10 @@ public class IntegrationTestApp {
         ArrayList<Country> extractedCountries = cotyr.extractCountries(whereClause, true);
         assertEquals(extractedCountries.get(0).getCountryName(), "China");
         assertEquals(extractedCountries.get(0).getCountryCode(), "CHN");
+        assertEquals(extractedCountries.get(0).getContinent(), "Asia");
+        assertEquals(extractedCountries.get(0).getRegion(), "Eastern Asia");
+        assertEquals(extractedCountries.get(0).getPopulation(), 1277558000);
+        assertEquals(extractedCountries.get(0).getCapital(), "Peking");
     }
 
     @Test
@@ -65,6 +81,10 @@ public class IntegrationTestApp {
         ArrayList<Country> extractedCountries = cotyr.extractCountries(whereClause, true);
         assertEquals(extractedCountries.get(0).getCountryName(), "China");
         assertEquals(extractedCountries.get(0).getCountryCode(), "CHN");
+        assertEquals(extractedCountries.get(0).getContinent(), "Asia");
+        assertEquals(extractedCountries.get(0).getRegion(), "Eastern Asia");
+        assertEquals(extractedCountries.get(0).getPopulation(), 1277558000);
+        assertEquals(extractedCountries.get(0).getCapital(), "Peking");
     }
     @Test
     void extractTopCountryInRegionTest(){
@@ -72,6 +92,10 @@ public class IntegrationTestApp {
         ArrayList<Country> extractedCountries = cotyr.extractCountries(whereClause, true);
         assertEquals(extractedCountries.get(0).getCountryName(), "China");
         assertEquals(extractedCountries.get(0).getCountryCode(), "CHN");
+        assertEquals(extractedCountries.get(0).getContinent(), "Asia");
+        assertEquals(extractedCountries.get(0).getRegion(), "Eastern Asia");
+        assertEquals(extractedCountries.get(0).getPopulation(), 1277558000);
+        assertEquals(extractedCountries.get(0).getCapital(), "Peking");
     }
 
 
