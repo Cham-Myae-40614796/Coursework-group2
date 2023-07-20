@@ -105,43 +105,53 @@ public class LanguageReport {
         // print out table headings
         System.out.printf(tableFormat, "Language", "Percentage", "Population", "Country");
         System.out.printf("--------------------------------------------------------------------------------------------------------------------------%n");
-        // print out table records
-//        if (extractedLanguage != null) {
-//            for (int i = 0; i < extractedLanguage.size(); i++) {
-//                System.out.printf(tableFormat,
-//                        extractedLanguage.get(i).getCountryLanguage(),
-//                        extractedLanguage.get(i).getPercentage(),
-//                        extractedLanguage.get(i).getCountryPopulation(),
-//                        extractedLanguage.get(i).getCountryName());
-//            }
-//        } else {
-//            // handles null records
-//            System.out.printf("| %-118s |%n", "No records");
-//        }
+
+
+
+//         print out table records
         if (extractedLanguage != null) {
-            while(extractedLanguage.remove(null)){
-
+            for (int i = 0; i < extractedLanguage.size(); i++) {
+                System.out.printf(tableFormat,
+                        extractedLanguage.get(i).getCountryLanguage(),
+                        extractedLanguage.get(i).getPercentage(),
+                        extractedLanguage.get(i).getCountryPopulation(),
+                        extractedLanguage.get(i).getCountryName());
             }
-        }
-
-        if (extractedLanguage == null || extractedLanguage.size() == 0) {
+        } else {
             // handles null records
             System.out.printf("| %-118s |%n", "No records");
-        } else {
-            // print out table records
-            for (Language elan : extractedLanguage) {
-
-                if (elan == null) {
-                    continue;
-                }
-
-                System.out.printf(tableFormat,
-                        elan.getCountryLanguage(),
-                        elan.getPercentage(),
-                        elan.getCountryPopulation(),
-                        elan.getCountryName());
-            }
         }
+
+
+
+//        if (extractedLanguage != null) {
+//            while(extractedLanguage.remove(null)){
+//
+//            }
+//        }
+//
+//        if (extractedLanguage == null || extractedLanguage.size() == 0) {
+//            // handles null records
+//            System.out.printf("| %-118s |%n", "No records");
+//        } else {
+//            // print out table records
+//            for (Language elan : extractedLanguage) {
+//
+//                if (elan == null) {
+//                    continue;
+//                }
+//
+//                System.out.printf(tableFormat,
+//                        elan.getCountryLanguage(),
+//                        elan.getPercentage(),
+//                        elan.getCountryPopulation(),
+//                        elan.getCountryName());
+//            }
+//        }
+
+
+
+
         System.out.printf("--------------------------------------------------------------------------------------------------------------------------%n");
         System.out.println();
     }
