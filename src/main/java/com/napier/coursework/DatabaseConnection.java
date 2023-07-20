@@ -17,16 +17,6 @@ public class DatabaseConnection {
     private Connection conn = null;
 
     /**
-     * conn is used in SQL data extraction. It has a default value of null.
-     * This can be set to use existing database connection.
-     *
-     * @param conn the SQL database connection
-     */
-    public void setConn(Connection conn) {
-        this.conn = conn;
-    }
-
-    /**
      *
      * @return conn is returned to execute query and extract data from SQL database.
      */
