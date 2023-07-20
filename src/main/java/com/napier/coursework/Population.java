@@ -8,7 +8,7 @@ package com.napier.coursework;
 public class Population {
 
     /**
-     * private string to store name
+     * private string to store country and city name
      */
     private String Name;
 
@@ -58,7 +58,7 @@ public class Population {
     private long PopulationNotInCities;
 
     /**
-     * public method to set name
+     * public method to set name of the country and city
      *
      * @param name
      */
@@ -148,7 +148,7 @@ public class Population {
     }
 
     /**
-     * public method to return name
+     * public method to return name of the country and city
      *
      * @return name
      */

@@ -82,11 +82,21 @@ public class AdditionalPopulationReport {
         String whereClause5 = "WHERE city.Name = '" + city + "' ";
 
         displayWorldPopulation();
-        displayCitiesAndNonCitiesPopulation("Continent", continent, whereClause1);
-        displayCitiesAndNonCitiesPopulation("Region", region, whereClause2);
-        displayCitiesAndNonCitiesPopulation("Country", country, whereClause3);
-        displayPopulation("District", district, whereClause4);
-        displayPopulation("City", city, whereClause5);
+
+        ArrayList<Population> extractedCitiesAndNonCitiesPopulation = extractCitiesAndNonCitiesPopulation("Continent", whereClause1);
+        displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "Continent", continent);
+
+        extractedCitiesAndNonCitiesPopulation = extractCitiesAndNonCitiesPopulation("Region", whereClause2);
+        displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "Region", region);
+
+        extractedCitiesAndNonCitiesPopulation = extractCitiesAndNonCitiesPopulation("Country", whereClause3);
+        displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "Country", country);
+
+        ArrayList<Population> extractedPopulation = extractPopulation("District", whereClause4);
+        displayPopulation(extractedPopulation, "District", district);
+
+        extractedPopulation = extractPopulation ("City", whereClause5);
+        displayPopulation(extractedPopulation, "City", city);
     }
 
     /**
@@ -158,6 +168,9 @@ public class AdditionalPopulationReport {
      */
     protected ArrayList<Population> extractCitiesAndNonCitiesPopulation(String type, String whereClause) {
         try {
+            if (type == "Country") {
+                type = "Name";
+            }
             Statement stmt = conn.createStatement();
 
             String query = "SELECT cnty." + type + ", SUM(cnty.Population) AS TotalPopulation, cty.TotalCityPopulation, (SUM(cnty.Population) - cty.TotalCityPopulation) AS TotalNonCityPopulation " +
@@ -197,13 +210,13 @@ public class AdditionalPopulationReport {
      * protected method to reformat population and
      * display the extracted population data in a tabular format
      */
-    protected void displayCitiesAndNonCitiesPopulation(String type, String name, String whereClause) {
-        ArrayList<Population> extractedCitiesAndNonCitiesPopulation;
-        if (type == "Country") {
-            extractedCitiesAndNonCitiesPopulation = extractCitiesAndNonCitiesPopulation("Name", whereClause);
-        }else {
-            extractedCitiesAndNonCitiesPopulation = extractCitiesAndNonCitiesPopulation(type, whereClause);
-        }
+    protected void displayCitiesAndNonCitiesPopulation(ArrayList<Population> extractedCitiesAndNonCitiesPopulation, String type, String name) {
+////        ArrayList<Population> extractedCitiesAndNonCitiesPopulation;
+//        if (type == "Country") {
+//            extractedCitiesAndNonCitiesPopulation = extractCitiesAndNonCitiesPopulation(type, name);
+//        }else {
+//            extractedCitiesAndNonCitiesPopulation = extractCitiesAndNonCitiesPopulation(type, name);
+//        }
         System.out.println();
         System.out.printf("--------------------------------------------------------------------------------------------------------%n");
 
@@ -245,6 +258,9 @@ public class AdditionalPopulationReport {
      */
     protected ArrayList<Population> extractPopulation(String type, String whereClause) {
         try {
+            if (type == "City") {
+                type = "Name";
+            }
             Statement stmt = conn.createStatement();
 
             String query = "SELECT city." + type + ", SUM(city.Population) AS TotalPopulation " +
@@ -274,13 +290,13 @@ public class AdditionalPopulationReport {
      * protected method to reformat population and
      * display the extracted population data in a tabular format
      */
-    protected void displayPopulation(String type, String name, String whereClause) {
-        ArrayList<Population> extractedPopulation;
-        if (type == "City") {
-            extractedPopulation = extractPopulation("Name", whereClause);
-        }else {
-            extractedPopulation = extractPopulation(type, whereClause);
-        }
+    protected void displayPopulation(ArrayList<Population> extractedPopulation, String type, String name) {
+//        ArrayList<Population> extractedPopulation;
+//        if (type == "City") {
+//            extractedPopulation = extractPopulation/*("Name", whereClause)*/;
+//        }else {
+//            extractedPopulation = extractPopulation/*(type, whereClause)*/;
+//        }
         System.out.println();
         System.out.printf("---------------------------------------------------------%n");
 
