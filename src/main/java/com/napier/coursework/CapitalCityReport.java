@@ -67,19 +67,39 @@ public class CapitalCityReport {
         String whereClause1 = "WHERE country.Continent = '" + continent + "' ";
         String whereClause2 = "WHERE country.Region = '" + region + "' ";
 
-        // display a table of information on capital cities in the world organized by their population in descending order
-        displayCapitalCities(whereClause,"World", "", false);
-        // display a table of information on capital cities in a continent organized by their population in descending order
-        displayCapitalCities(whereClause1, "Continent", continent, false);
-        // display a table of information on capital cities in a region organized by their population in descending order
-        displayCapitalCities(whereClause2, "Region", region, false);
 
+        // create new arraylist to store the arraylist of extracted cities data
+        ArrayList<City> extractedCapitalCities = extractCapitalCities(whereClause, false);
+        // display a table of information on cities in the world organized by their population in descending order
+        displayCapitalCities(extractedCapitalCities,"World", "", false);
+
+        // store the arraylist of extracted cities data
+        extractedCapitalCities = extractCapitalCities(whereClause1, false);
+        // display a table of information on cities in a continent organized by their population in descending order
+        displayCapitalCities(extractedCapitalCities,"Continent", continent, false);
+
+        // store the arraylist of extracted cities data
+        extractedCapitalCities = extractCapitalCities(whereClause2, false);
+        // display a table of information on cities in a region organized by their population in descending order
+        displayCapitalCities(extractedCapitalCities,"Region", region, false);
+
+
+
+
+        // store the arraylist of extracted cities data
+        extractedCapitalCities = extractCapitalCities(whereClause, true);
         // display a table of information on top populated capital cities in the world
-        displayCapitalCities(whereClause,"World", "", true);
+        displayCapitalCities(extractedCapitalCities,"World", "", true);
+
+        // store the arraylist of extracted cities data
+        extractedCapitalCities = extractCapitalCities(whereClause1, true);
         // display a table of information on top populated capital cities in a continent
-        displayCapitalCities(whereClause1, "Continent", continent, true);
+        displayCapitalCities(extractedCapitalCities,"Continent", continent, true);
+
+        // store the arraylist of extracted cities data
+        extractedCapitalCities = extractCapitalCities(whereClause2, true);
         // display a table of information on top populated capital cities in a region
-        displayCapitalCities(whereClause2, "Region", region, true);
+        displayCapitalCities(extractedCapitalCities,"Region", region, true);
 
     }
 
@@ -88,7 +108,7 @@ public class CapitalCityReport {
      *
      * @return the arraylist of extracted capital cities data
      */
-    private ArrayList<City> extractCapitalCities(String whereClause, boolean isTop)
+    protected ArrayList<City> extractCapitalCities(String whereClause, boolean isTop)
     {
         try
         {
@@ -141,10 +161,10 @@ public class CapitalCityReport {
      * private method to reformat population and
      * display the extracted capital cities data in a tabular format
      */
-    private void displayCapitalCities(String whereClause, String type, String name, boolean isTop)
+    protected void displayCapitalCities(ArrayList<City> extractedCapitalCities, String type, String name, boolean isTop)
     {
         // create new arraylist to store the arraylist of extracted capital cities data
-        ArrayList<City> extractedCapitalCities = extractCapitalCities(whereClause, isTop);
+//        ArrayList<City> extractedCapitalCities = extractCapitalCities(whereClause, isTop);
 
         // skip a line and make a table
         System.out.println();
@@ -171,21 +191,33 @@ public class CapitalCityReport {
         // print out table headings
         System.out.printf(tableFormat, "City Name", "Country Name", "Population");
         System.out.printf("-------------------------------------------------------------------------------------------------%n");
-        // print out table records
         if (extractedCapitalCities != null) {
-            for (int i = 0; i < extractedCapitalCities.size(); i++) {
-                String cityNameText = extractedCapitalCities.get(i).getCityName();
+            while(extractedCapitalCities.remove(null)){
+
+            }
+        }
+
+        if (extractedCapitalCities == null || extractedCapitalCities.size() == 0) {
+            // handles null records
+            System.out.printf("| %-93s |%n", "No records");
+        }
+        else {
+            // print out table records
+            for (City eCaptial : extractedCapitalCities) {
+
+                if (eCaptial == null) {
+                    continue;
+                }
+
+                String cityNameText = eCaptial.getCityName();
                 if (cityNameText == null) {
                     cityNameText = "-";
                 }
                 System.out.printf(tableFormat,
                         cityNameText,
-                        extractedCapitalCities.get(i).getCountryName(),
-                        NumberFormat.getInstance(Locale.US).format(extractedCapitalCities.get(i).getPopulation()));
+                        eCaptial.getCountryName(),
+                        NumberFormat.getInstance(Locale.US).format(eCaptial.getPopulation()));
             }
-        } else {
-            // handles null records
-            System.out.printf("| %-93s |%n", "No records");
         }
         System.out.printf("-------------------------------------------------------------------------------------------------%n");
         System.out.println();

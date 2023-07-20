@@ -45,7 +45,7 @@ public class CountryReport {
      */
     private String tableFormat = "| %-5s | %-20s | %-15s | %-20s | %-15s | %-20s |%n";
 
-  
+
     /**
      * public method to set SQL database Connection
      * conn has a default value of null.
@@ -66,23 +66,37 @@ public class CountryReport {
         String whereClause1 = "WHERE country.Continent = '" + continent + "' ";
         String whereClause2 = "WHERE country.Region = '" + region + "' ";
 
+        // create new arraylist to store the arraylist of extracted countries data
+        ArrayList<Country> extractedCountries = extractCountries(whereClause, false);
         //display the countries in the world needed to be sorted by their number of the population in descending order
-        displayCountries(whereClause,"World", "", false);
+        displayCountries(extractedCountries,"World", "", false);
 
+        // create new arraylist to store the arraylist of extracted countries data
+        extractedCountries = extractCountries(whereClause1, false);
         //display the countries in the continent needed to be sorted by their number of the population in descending order
-        displayCountries(whereClause1,"Continent", continent, false);
+        displayCountries(extractedCountries,"Continent", continent, false);
 
+        // create new arraylist to store the arraylist of extracted countries data
+        extractedCountries = extractCountries(whereClause2, false);
         //display the countries in the region needed to be sorted by their number of the population in descending order
-        displayCountries(whereClause2,"Region", region, false);
+        displayCountries(extractedCountries,"Region", region, false);
 
-        //display the number of top populated countries in the world that the user provided will be listed
-        displayCountries(whereClause,"World", "", true);
 
-        //display the number of top populated countries in the continent that the user provided will be listed
-        displayCountries(whereClause1,"Continent", continent, true);
 
-        //display the number of top populated countries in the region that the user provided will be listed
-        displayCountries(whereClause2,"Region", region, true);
+        // create new arraylist to store the arraylist of extracted countries data
+        extractedCountries = extractCountries(whereClause, true);
+        // display the number of top populated countries in the world that the user provided will be listed
+        displayCountries(extractedCountries,"World", "", true);
+
+        // create new arraylist to store the arraylist of extracted countries data
+        extractedCountries = extractCountries(whereClause1, true);
+        // display the number of top populated countries in the continent that the user provided will be listed
+        displayCountries(extractedCountries,"Continent", continent, true);
+
+        // create new arraylist to store the arraylist of extracted countries data
+        extractedCountries = extractCountries(whereClause2, true);
+        // display the number of top populated countries in the region that the user provided will be listed
+        displayCountries(extractedCountries,"Region", region, true);
 
     }
 
@@ -91,7 +105,7 @@ public class CountryReport {
      *
      * @return the arraylist of extracted countries data
      */
-    public ArrayList<Country> extractCountries(String whereClause, boolean isTop){
+    protected ArrayList<Country> extractCountries(String whereClause, boolean isTop){
 
         try
         {
@@ -139,9 +153,9 @@ public class CountryReport {
      * private method to reformat population and
      * display the extracted countries data in a tabular format
      */
-    public void displayCountries(String whereClause, String type, String name, boolean isTop){
-        // create new arraylist to store the arraylist of extracted countries data
-        ArrayList<Country> extractedCountries = extractCountries(whereClause, isTop);
+    protected void displayCountries(ArrayList<Country> extractedCountries, String type, String name, boolean isTop){
+//        // create new arraylist to store the arraylist of extracted countries data
+//        ArrayList<Country> extractedCountries = extractCountries(whereClause, isTop);
 
         // skip a line and make a table
         System.out.println();
@@ -169,11 +183,23 @@ public class CountryReport {
         System.out.printf(tableFormat, "Code", "Country Name", "Continent", "Region", "Population", "Capital");
         System.out.printf("------------------------------------------------------------------------------------------------------------------%n");
         if (extractedCountries != null) {
-            for (int i = 0; i < extractedCountries.size(); i++) {
+            while(extractedCountries.remove(null)){
 
-                String countryNameText = extractedCountries.get(i).getCountryName();
-                String regionText = extractedCountries.get(i).getRegion();
-                String capitalText = extractedCountries.get(i).getCapital();
+            }
+        }
+        if (extractedCountries == null || extractedCountries.size() == 0) {
+            // handles null records
+            System.out.printf("| %-110s |%n", "No records");
+        } else {
+            for (Country eCountry : extractedCountries) {
+
+                if (eCountry == null) {
+                    continue;
+                }
+
+                String countryNameText = eCountry.getCountryName();
+                String regionText = eCountry.getRegion();
+                String capitalText = eCountry.getCapital();
 
                 String extraCountryNameText = "";
                 String extraRegionText = "";
@@ -182,9 +208,9 @@ public class CountryReport {
                 // checks for any exceeding letter limit
                 if (countryNameText.length() > 20) {
                     extraCountryNameText = countryNameText.substring(20);
-                    countryNameText = countryNameText.substring(0,20);
+                    countryNameText = countryNameText.substring(0, 20);
                 }
-                if (regionText.length() > 20){
+                if (regionText.length() > 20) {
                     extraRegionText = regionText.substring(20);
                     regionText = regionText.substring(0, 20);
 
@@ -196,14 +222,14 @@ public class CountryReport {
 
                 // print the record
                 System.out.printf(tableFormat,
-                        extractedCountries.get(i).getCountryCode(),
+                        eCountry.getCountryCode(),
                         countryNameText,
-                        extractedCountries.get(i).getContinent(),
+                        eCountry.getContinent(),
                         regionText,
-                        NumberFormat.getInstance(Locale.US).format(extractedCountries.get(i).getPopulation()),
+                        NumberFormat.getInstance(Locale.US).format(eCountry.getPopulation()),
                         capitalText);
                 // print an extra row if needed
-                if (extraCountryNameText != "" || extraRegionText != "" || extraCapitalText != ""){
+                if (extraCountryNameText != "" || extraRegionText != "" || extraCapitalText != "") {
                     System.out.printf(tableFormat,
                             "",
                             extraCountryNameText,
@@ -213,9 +239,6 @@ public class CountryReport {
                             extraCapitalText);
                 }
             }
-        } else {
-            // handles null records
-            System.out.printf("| %-110s |%n", "No records");
         }
         System.out.printf("------------------------------------------------------------------------------------------------------------------%n");
         System.out.println();
