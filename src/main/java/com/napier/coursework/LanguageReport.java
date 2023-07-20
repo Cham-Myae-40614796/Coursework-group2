@@ -11,7 +11,7 @@ public class LanguageReport {
 
     private Connection conn = null;
 
-    private int query_count = 1;
+    private int query_count = 32;
 
     private String tableFormat = "| %-35s | %-15s | %-22s | %-37s |%n";
 
@@ -22,19 +22,11 @@ public class LanguageReport {
 
 
     public void generateLanguageReport() {
-
-
-        String whereClause = "";
-
-
-        ArrayList<Language> extractedLanguage = extractLanguage(whereClause);
-        displayLanguage(extractedLanguage, "World", "");
-
-
+        displayLanguage();
 
     }
 
-    protected ArrayList<Language> extractLanguage(String whereClause)
+    protected ArrayList<Language> extractLanguage()
     {
         try
         {
@@ -82,8 +74,9 @@ public class LanguageReport {
         }
     }
 
-    protected void displayLanguage(ArrayList<Language> extractedLanguage, String type, String name)
+    protected void displayLanguage()
     {
+        ArrayList<Language> extractedLanguage = extractLanguage();
         // create new arraylist to store the arraylist of extracted cities data
         // ArrayList<Language> extractedLanguage = extractLanguage(whereClause);
 
@@ -94,8 +87,8 @@ public class LanguageReport {
         // define title of table
         String title = "World percentage of people who speak Chinese, English, Hindi, Spanish, Arabic";
 
-//        // add numbering to the title
-//        title = query_count + ". " + title;
+        // add numbering to the title
+        title = query_count + ". " + title;
 
         // increase the count by one
         query_count += 1;
@@ -109,45 +102,45 @@ public class LanguageReport {
 
 
 //         print out table records
-        if (extractedLanguage != null) {
-            for (int i = 0; i < extractedLanguage.size(); i++) {
-                System.out.printf(tableFormat,
-                        extractedLanguage.get(i).getCountryLanguage(),
-                        extractedLanguage.get(i).getPercentage(),
-                        extractedLanguage.get(i).getCountryPopulation(),
-                        extractedLanguage.get(i).getCountryName());
-            }
-        } else {
-            // handles null records
-            System.out.printf("| %-118s |%n", "No records");
-        }
-
-
-
 //        if (extractedLanguage != null) {
-//            while(extractedLanguage.remove(null)){
-//
+//            for (int i = 0; i < extractedLanguage.size(); i++) {
+//                System.out.printf(tableFormat,
+//                        extractedLanguage.get(i).getCountryLanguage(),
+//                        extractedLanguage.get(i).getPercentage(),
+//                        extractedLanguage.get(i).getCountryPopulation(),
+//                        extractedLanguage.get(i).getCountryName());
 //            }
-//        }
-//
-//        if (extractedLanguage == null || extractedLanguage.size() == 0) {
+//        } else {
 //            // handles null records
 //            System.out.printf("| %-118s |%n", "No records");
-//        } else {
-//            // print out table records
-//            for (Language elan : extractedLanguage) {
-//
-//                if (elan == null) {
-//                    continue;
-//                }
-//
-//                System.out.printf(tableFormat,
-//                        elan.getCountryLanguage(),
-//                        elan.getPercentage(),
-//                        elan.getCountryPopulation(),
-//                        elan.getCountryName());
-//            }
 //        }
+
+
+
+        if (extractedLanguage != null) {
+            while(extractedLanguage.remove(null)){
+
+            }
+        }
+
+        if (extractedLanguage == null || extractedLanguage.size() == 0) {
+            // handles null records
+            System.out.printf("| %-118s |%n", "No records");
+        } else {
+            // print out table records
+            for (Language elan : extractedLanguage) {
+
+                if (elan == null) {
+                    continue;
+                }
+
+                System.out.printf(tableFormat,
+                        elan.getCountryLanguage(),
+                        elan.getPercentage(),
+                        elan.getCountryPopulation(),
+                        elan.getCountryName());
+            }
+        }
 
 
 
