@@ -22,7 +22,7 @@ jobs:
         with:
           token: 5acf7dfe-ba00-4503-ad58-629e38b0a756 # not required for public repos
           directory: ./target/site/jacoco
-          flags: IntegrationTests # optional
+          flags: UnitTests # optional
           verbose: true # optional (default = false)
 
   IntegrationTests:
