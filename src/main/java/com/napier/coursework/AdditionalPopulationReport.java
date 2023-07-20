@@ -53,7 +53,7 @@ public class AdditionalPopulationReport {
      * private string method for generating table format for output display
      */
     private String tableFormat1 = "| %-54s |%n";
-    private String tableFormat2 = "| %-30s | %-20s | %-20s | %-21s |%n";
+    private String tableFormat2 = "| %-20s | %-20s | %-20s | %-10s | %-21s | %-10s |%n";
     private String tableFormat3 = "| %-30s | %-20s |%n";
 
     /**
@@ -173,7 +173,10 @@ public class AdditionalPopulationReport {
             }
             Statement stmt = conn.createStatement();
 
-            String query = "SELECT cnty." + type + ", SUM(cnty.Population) AS TotalPopulation, cty.TotalCityPopulation, (SUM(cnty.Population) - cty.TotalCityPopulation) AS TotalNonCityPopulation " +
+            String query = "SELECT cnty." + type + ", SUM(cnty.Population) AS TotalPopulation, cty.TotalCityPopulation, " +
+                    "CONCAT(((cty.TotalCityPopulation/SUM(cnty.Population)) * 100), ' %') AS CityPopulationPercentage, " +
+                    "(SUM(cnty.Population) - cty.TotalCityPopulation) AS TotalNonCityPopulation, " +
+                    "CONCAT((100 - (cty.TotalCityPopulation/SUM(cnty.Population)) * 100), ' %') AS NonCityPopulationPercentage " +
                     "FROM country AS cnty " +
                     "INNER JOIN (" +
                     "SELECT country." + type + ", SUM(city.Population) AS TotalCityPopulation " +
@@ -194,7 +197,9 @@ public class AdditionalPopulationReport {
                 p.setName(rset.getString("cnty." + type));
                 p.setTotalPopulation(rset.getLong("TotalPopulation"));
                 p.setPopulationInCities(rset.getLong("TotalCityPopulation"));
+                p.setCityPopulationPercentage(rset.getString("CityPopulationPercentage"));
                 p.setPopulationNotInCities(rset.getLong("TotalNonCityPopulation"));
+                p.setNonCityPopulationPercentage(rset.getString("NonCityPopulationPercentage"));
                 population.add(p);
             }
 
@@ -211,14 +216,9 @@ public class AdditionalPopulationReport {
      * display the extracted population data in a tabular format
      */
     protected void displayCitiesAndNonCitiesPopulation(ArrayList<Population> extractedCitiesAndNonCitiesPopulation, String type, String name) {
-////        ArrayList<Population> extractedCitiesAndNonCitiesPopulation;
-//        if (type == "Country") {
-//            extractedCitiesAndNonCitiesPopulation = extractCitiesAndNonCitiesPopulation(type, name);
-//        }else {
-//            extractedCitiesAndNonCitiesPopulation = extractCitiesAndNonCitiesPopulation(type, name);
-//        }
+
         System.out.println();
-        System.out.printf("--------------------------------------------------------------------------------------------------------%n");
+        System.out.printf("------------------------------------------------------------------------------------------------------------------------%n");
 
         String title = "Number of People Living in the Cities and Not in the Cities in a " + type;
         // if the type is not world, add some more text in title
@@ -229,28 +229,53 @@ public class AdditionalPopulationReport {
 
         query_count += 1;
 
-        System.out.printf("| %-100s |%n", title);
-        System.out.printf("--------------------------------------------------------------------------------------------------------%n");
+        System.out.printf("| %-116s |%n", title);
+        System.out.printf("------------------------------------------------------------------------------------------------------------------------%n");
 
-        System.out.printf(tableFormat2, type + " Name", "Total Population", "Total Population in", "Total Population not");
-        System.out.printf(tableFormat2, "", "", "Cities", "in Cities");
-        System.out.printf("--------------------------------------------------------------------------------------------------------%n");
+        System.out.printf(tableFormat2, type + " Name", "Total Population", "Total Population in", "Percentage", "Total Population not", "Percentage");
+        System.out.printf(tableFormat2, "", "", "Cities", "", "in Cities", "");
+        System.out.printf("------------------------------------------------------------------------------------------------------------------------%n");
 
         if (extractedCitiesAndNonCitiesPopulation != null) {
-            for (Population pop : extractedCitiesAndNonCitiesPopulation) {
+            while(extractedCitiesAndNonCitiesPopulation.remove(null)){
+
+            }
+        }
+
+        if (extractedCitiesAndNonCitiesPopulation == null || extractedCitiesAndNonCitiesPopulation.size() == 0) {
+            // handles null records
+            System.out.printf("| %-116s |%n", "No records");
+        } else {
+            // print out table records
+            for (Population pop : extractedCitiesAndNonCitiesPopulation){
+                String eNameText = pop.getName();
+                String extraENameText = "";
+                if (eNameText.length() > 20){
+                    extraENameText = eNameText.substring(20);
+                    eNameText = eNameText.substring(0, 20);
+                }
                 System.out.printf(tableFormat2,
-                        pop.getName(),
+                        eNameText,
                         NumberFormat.getInstance(Locale.US).format(pop.getTotalPopulation()),
                         NumberFormat.getInstance(Locale.US).format(pop.getPopulationInCities()),
-                        NumberFormat.getInstance(Locale.US).format(pop.getPopulationNotInCities()));
+                        pop.getCityPopulationPercentage(),
+                        NumberFormat.getInstance(Locale.US).format(pop.getPopulationNotInCities()),
+                        pop.getNonCityPopulationPercentage());
+                if (extraENameText != ""){
+                    System.out.printf(tableFormat2,
+                            extraENameText,
+                            "",
+                            "",
+                            "",
+                            "",
+                            "");
+                }
             }
-        } else {
-            System.out.printf("| %-100s |%n", "No records");
         }
-        System.out.printf("--------------------------------------------------------------------------------------------------------%n");
+        System.out.printf("------------------------------------------------------------------------------------------------------------------------%n");
         System.out.println();
     }
-    
+
     /**
      * protected method to extract population data from SQL database using query
      *
@@ -291,12 +316,7 @@ public class AdditionalPopulationReport {
      * display the extracted population data in a tabular format
      */
     protected void displayPopulation(ArrayList<Population> extractedPopulation, String type, String name) {
-//        ArrayList<Population> extractedPopulation;
-//        if (type == "City") {
-//            extractedPopulation = extractPopulation/*("Name", whereClause)*/;
-//        }else {
-//            extractedPopulation = extractPopulation/*(type, whereClause)*/;
-//        }
+
         System.out.println();
         System.out.printf("---------------------------------------------------------%n");
 
