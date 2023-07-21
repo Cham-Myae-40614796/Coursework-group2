@@ -1,5 +1,13 @@
 package com.napier.coursework;
 
+/**
+ * Integration testing for the whole coding and queries
+ * mainly test extract methods
+ * @author Thar Htet Nyan, Kyi Phyu khin, Htet Myat Thiri, Cham Myae Pyae Sone
+ * @version 0.1.0.3
+ * @since 0.1.0.3
+ */
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -11,6 +19,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class IntegrationTestApp {
 
+    /**
+     * declaring variable for respective necessary report files
+     */
     static DatabaseConnection dbConn;
   
     static CountryReport cotyr;
@@ -26,8 +37,14 @@ public class IntegrationTestApp {
     static LanguageReport lgr;
 
 
+    /**
+     * init method before performing tests
+     */
     @BeforeAll
     static void init(){
+        /**
+         * setting connection to SQL database for each report
+         */
         dbConn = new DatabaseConnection();
         dbConn.connect();
         cotyr = new CountryReport();
@@ -43,11 +60,23 @@ public class IntegrationTestApp {
         lgr = new LanguageReport();
         lgr.setConn(dbConn.getConn());
     }
+
+    /**
+     * disconnecting connection with SQL database
+     */
     @AfterAll
     static void end(){
         dbConn.disconnect();
     }
 
+    /**
+     * Integration test for country report extract methods
+     * @author Thar Htet Nyan
+     */
+
+    /**
+     * Test for country in the world extraction
+     */
     @Test
     void extractCountryInWorldTest(){
         String whereClause = "";
@@ -60,6 +89,9 @@ public class IntegrationTestApp {
         assertEquals(extractedCountries.get(5).getCapital(), "Islamabad");
     }
 
+    /**
+     * Test for country in the continent extraction
+     */
     @Test
     void extractCountryInContinentTest(){
         String whereClause = "WHERE country.Continent = 'Asia' ";
@@ -71,6 +103,10 @@ public class IntegrationTestApp {
         assertEquals(extractedCountries.get(5).getPopulation(), 126714000);
         assertEquals(extractedCountries.get(5).getCapital(), "Tokyo");
     }
+
+    /**
+     * Test for country in the region extraction
+     */
     @Test
     void extractCountryInRegionTest(){
         String whereClause = "WHERE country.Region = 'Eastern Asia' ";
@@ -83,6 +119,9 @@ public class IntegrationTestApp {
         assertEquals(extractedCountries.get(5).getCapital(), "Victoria");
     }
 
+    /**
+     * Test for top country in the world extraction
+     */
     @Test
     void extractTopCountryInWorldTest(){
         String whereClause = "";
@@ -95,6 +134,9 @@ public class IntegrationTestApp {
         assertEquals(extractedCountries.get(2).getCapital(), "Washington");
     }
 
+    /**
+     * Test for top country in the continent extraction
+     */
     @Test
     void extractTopCountryInContinentTest(){
         String whereClause = "WHERE country.Continent = 'Asia' ";
@@ -106,6 +148,10 @@ public class IntegrationTestApp {
         assertEquals(extractedCountries.get(2).getPopulation(), 212107000);
         assertEquals(extractedCountries.get(2).getCapital(), "Jakarta");
     }
+
+    /**
+     * Test for top country in the region extraction
+     */
     @Test
     void extractTopCountryInRegionTest(){
         String whereClause = "WHERE country.Region = 'Eastern Asia' ";
@@ -118,9 +164,14 @@ public class IntegrationTestApp {
         assertEquals(extractedCountries.get(2).getCapital(), "Seoul");
     }
 
+    /**
+     * Integration tests for city report extract methods
+     * @author Thar Htet Nyan
+     */
 
-
-
+    /**
+     * Test for city in the world extraction
+     */
     @Test
     void extractCityInWorldTest(){
         String whereClause = "";
@@ -131,6 +182,9 @@ public class IntegrationTestApp {
         assertEquals(extractedCities.get(5).getPopulation(),9269265);
     }
 
+    /**
+     * Test for city in the continent extraction
+     */
     @Test
     void extractCityInContinentTest(){
         String whereClause = "WHERE country.Continent = 'Asia' ";
@@ -141,6 +195,9 @@ public class IntegrationTestApp {
         assertEquals(extractedCities.get(5).getPopulation(),8787958);
     }
 
+    /**
+     * Test for city in the region extraction
+     */
     @Test
     void extractCityInRegionTest(){
         String whereClause = "WHERE country.Region = 'Eastern Asia' ";
@@ -151,6 +208,9 @@ public class IntegrationTestApp {
         assertEquals(extractedCities.get(5).getPopulation(),5286800);
     }
 
+    /**
+     * Test for city in the country extraction
+     */
     @Test
     void extractCityInCountryTest(){
         String whereClause = "WHERE country.Name = 'Algeria' ";
@@ -161,6 +221,9 @@ public class IntegrationTestApp {
         assertEquals(extractedCities.get(5).getPopulation(),179055);
     }
 
+    /**
+     * Test for city in the district extraction
+     */
     @Test
     void extractCityInDistrictTest(){
         String whereClause = "WHERE city.District = 'Adana' ";
@@ -171,6 +234,9 @@ public class IntegrationTestApp {
         assertEquals(extractedCities.get(2).getPopulation(),102412);
     }
 
+    /**
+     * Test for top city in the world extraction
+     */
     @Test
     void extractTopCityInWorldTest(){
         String whereClause = "";
@@ -182,6 +248,9 @@ public class IntegrationTestApp {
 
     }
 
+    /**
+     * Test for top city in the continent extraction
+     */
     @Test
     void extractTopCityInContinentTest(){
         String whereClause = "WHERE country.Continent = 'Asia' ";
@@ -192,6 +261,9 @@ public class IntegrationTestApp {
         assertEquals(extractedCities.get(2).getPopulation(),9696300);
     }
 
+    /**
+     * Test for top city in the region extraction
+     */
     @Test
     void extractTopCityInRegionTest(){
         String whereClause = "WHERE country.Region = 'Eastern Asia' ";
@@ -202,6 +274,9 @@ public class IntegrationTestApp {
         assertEquals(extractedCities.get(2).getPopulation(), 7980230);
     }
 
+    /**
+     * Test for top city in the country extraction
+     */
     @Test
     void extractTopCityInCountryTest(){
         String whereClause = "WHERE country.Name = 'Algeria' ";
@@ -212,6 +287,9 @@ public class IntegrationTestApp {
         assertEquals(extractedCities.get(2).getPopulation(),443727);
     }
 
+    /**
+     * Test for top city in the district extraction
+     */
     @Test
     void extractTopCityInDistrictTest() {
         String whereClause = "WHERE city.District = 'Adana' ";
@@ -222,9 +300,14 @@ public class IntegrationTestApp {
         assertEquals(extractedCities.get(2).getPopulation(), 102412);
     }
 
+    /**
+     * Integration tests for capital city report extract methods
+     * @author Thar Htet Nyan
+     */
 
-
-
+    /**
+     * Test for capital city in the world extraction
+     */
     @Test
     void extractCapitalCityInWorldTest(){
         String whereClause = "";
@@ -234,6 +317,9 @@ public class IntegrationTestApp {
         assertEquals(extractedCapitalCites.get(5).getPopulation(), 7472000);
     }
 
+    /**
+     * Test for capital city in the continent extraction
+     */
     @Test
     void extractCapitalCityInContinentTest(){
         String whereClause = "WHERE country.Continent = 'Asia' ";
@@ -243,6 +329,9 @@ public class IntegrationTestApp {
         assertEquals(extractedCapitalCites.get(5).getPopulation(), 6320174);
     }
 
+    /**
+     * Test for capital city in the region extraction
+     */
     @Test
     void extractCapitalCityInRegionTest(){
         String whereClause = "WHERE country.Region = 'Eastern Asia' ";
@@ -252,6 +341,9 @@ public class IntegrationTestApp {
         assertEquals(extractedCapitalCites.get(5).getPopulation(), 1312637);
     }
 
+    /**
+     * Test for top capital city in the world extraction
+     */
     @Test
     void extractTopCapitalCityInWorldTest(){
         String whereClause = "";
@@ -261,6 +353,9 @@ public class IntegrationTestApp {
         assertEquals(extractedCapitalCites.get(2).getPopulation(), 8591309);
     }
 
+    /**
+     * Test for top capital city in the continent extraction
+     */
     @Test
     void extractTopCapitalCityInContinentTest(){
         String whereClause = "WHERE country.Continent = 'Asia' ";
@@ -270,6 +365,9 @@ public class IntegrationTestApp {
         assertEquals(extractedCapitalCites.get(2).getPopulation(), 7980230);
     }
 
+    /**
+     * Test for top capital city in the region extraction
+     */
     @Test
     void extractTopCapitalCityInRegionTest(){
         String whereClause = "WHERE country.Region = 'Eastern Asia' ";
@@ -279,13 +377,14 @@ public class IntegrationTestApp {
         assertEquals(extractedCapitalCites.get(2).getPopulation(), 7472000);
     }
 
+    /**
+     * Integration tests for population report extract methods
+     * @author Kyi Phyu Khin
+     */
 
-
-
-
-
-
-
+    /**
+     * Test for population in continent extraction
+     */
     @Test
     void extractPopulationInContinentTest(){
         ArrayList<Population> extractedPopulation = popr.extractPopulation("Continent");
@@ -297,6 +396,9 @@ public class IntegrationTestApp {
         assertEquals(extractedPopulation.get(0).getNonCityPopulationPercentage(), "65.1650 %");
     }
 
+    /**
+     * Test for population in region extraction
+     */
     @Test
     void extractPopulationInRegionTest(){
         ArrayList<Population> extractedPopulation = popr.extractPopulation("Region");
@@ -308,6 +410,9 @@ public class IntegrationTestApp {
         assertEquals(extractedPopulation.get(0).getNonCityPopulationPercentage(), "70.9818 %");
     }
 
+    /**
+     * Test for population in country extraction
+     */
     @Test
     void extractPopulationInCountryTest(){
         ArrayList<Population> extractedPopulation = popr.extractPopulation("Country");
@@ -318,17 +423,24 @@ public class IntegrationTestApp {
         assertEquals(extractedPopulation.get(0).getPopulationNotInCities(), 73966L);
         assertEquals(extractedPopulation.get(0).getNonCityPopulationPercentage(), "71.8117 %");
     }
-  
-  
-  
-  
 
+    /**
+     * Integration tests for additional population report extract methods
+     * @author Htet Myat Thiri
+     */
+
+    /**
+     * Test for total world population extraction
+     */
     @Test
     void extractWorldPopulationTest(){
         ArrayList<Population> extractedWorldPopulation = apr.extractWorldPopulation();
         assertEquals(extractedWorldPopulation.get(0).getTotalPopulation(), 6078749450L);
     }
 
+    /**
+     * Test for city population and population not in a city for a continent extraction
+     */
     @Test
     void extractCitiesAndNonCitiesPopulationInContinent(){
         String whereClause = "WHERE cnty.Continent = 'Europe' ";
@@ -341,6 +453,9 @@ public class IntegrationTestApp {
         assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getNonCityPopulationPercentage(), "66.8605 %");
     }
 
+    /**
+     * Test for city population and population not in a city for a region extraction
+     */
     @Test
     void extractCitiesAndNonCitiesPopulationInRegion(){
         String whereClause = "WHERE cnty.Region = 'Southern Europe' ";
@@ -353,6 +468,9 @@ public class IntegrationTestApp {
         assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getNonCityPopulationPercentage(), "72.3402 %");
     }
 
+    /**
+     * Test for city population and population not in a city for a country extraction
+     */
     @Test
     void extractCitiesAndNonCitiesPopulationInCountry(){
         String whereClause = "WHERE cnty.Name = 'Austria' ";
@@ -365,6 +483,9 @@ public class IntegrationTestApp {
         assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getNonCityPopulationPercentage(), "70.5347 %");
     }
 
+    /**
+     * Test for population for a district extraction
+     */
     @Test
     void extractPopulationInDistrict(){
         String whereClause = "WHERE city.District = 'Gelderland' ";
@@ -373,6 +494,9 @@ public class IntegrationTestApp {
         assertEquals(extractedPopulation.get(0).getTotalPopulation(), 545548L);
     }
 
+    /**
+     * Test for population for a city extraction
+     */
     @Test
     void extractPopulationInCity(){
         String whereClause = "WHERE city.Name = 'Resistencia' ";
@@ -380,12 +504,15 @@ public class IntegrationTestApp {
         assertEquals(extractedPopulation.get(0).getName(), "Resistencia");
         assertEquals(extractedPopulation.get(0).getTotalPopulation(), 229212L);
     }
-  
-  
-  
-  
-  
-  
+
+    /**
+     * Integration tests for language report extract methods
+     * @author Cham Myae Pyae Sone
+     */
+
+    /**
+     * Test for language extraction
+     */
     @Test
     void extractLanguageTest(){
         ArrayList<Language> extractedLanguage = lgr.extractLanguage();

@@ -1,18 +1,23 @@
 package com.napier.coursework;
-
 /**
- * Creates unit tests for all the methods used to generate different reports
- * @author Thar Htet Nyan, Htet Myat Thiri, Kyi Phyu Khin
+ * for Unit Test where null tests, empty tests, contains null tests are included
+ * mainly test display methods of queries from reports
+ * @author Thar Htet Nyan, Kyi Phyu khin, Htet Myat Thiri, Cham Myae Pyae Sone
  * @version 0.1.0.3
  * @since 0.1.0.3
  */
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
+
 public class UnitTestApp {
 
+    /**
+     * declaring variable for respective necessary report files
+     */
     static CountryReport cotyr;
 
     static CityReport cr;
@@ -33,8 +38,15 @@ public class UnitTestApp {
 
     static Language language;
 
+    /**
+     * init method before performing tests
+     */
     @BeforeAll
     static void init(){
+
+        /**
+         * creating objects for reports
+         */
         cotyr = new CountryReport();
         cr = new CityReport();
         ccr = new CapitalCityReport();
@@ -42,6 +54,9 @@ public class UnitTestApp {
         apr = new AdditionalPopulationReport();
         lgr = new LanguageReport();
 
+        /**
+         * creating new country object to add some sample data
+         */
         country = new Country();
         country.setCountryCode("IND");
         country.setCountryName("India");
@@ -50,30 +65,51 @@ public class UnitTestApp {
         country.setPopulation(3287263);
         country.setCapital("New Delhi");
 
+        /**
+         * creating new city object to add some sample data
+         */
         city = new City();
         city.setCityName("Seoul");
         city.setCountryName("South Korea");
         city.setDistrict("Seoul");
         city.setPopulation(9981619);
 
+        /**
+         * creating new language object to add some sample data
+         */
         language = new Language();
         language.setCountryLanguage("Chinese");
         language.setPopulation(1191843539);
         language.setPercentage("19.61 %");
 
     }
+
+    /**
+     * Unit test for country report related queries and display methods
+     * @author Thar Htet Nyan
+     */
+
+    /**
+     * Null test for country display
+     */
     @Test
     void displayCountryNullTest(){
 
         cotyr.displayCountries(null, "World", "", false);
     }
 
+    /**
+     * Empty test for country display
+     */
     @Test
     void displayCountryEmptyTest(){
         ArrayList<Country> extractedCountries = new ArrayList<>();
         cotyr.displayCountries(extractedCountries, "World", "", false);
     }
 
+    /**
+     * Adding null value to ArrayList to test for country display
+     */
     @Test
     void displayCountryContainsNullTest(){
         ArrayList<Country> extractedCountries = new ArrayList<>();
@@ -83,6 +119,9 @@ public class UnitTestApp {
         cotyr.displayCountries(extractedCountries, "World", "", false);
     }
 
+    /**
+     * Test for country in the world display
+     */
     @Test
     void displayCountryInWorldTest() {
         ArrayList<Country> extractedCountries = new ArrayList<>();
@@ -91,6 +130,9 @@ public class UnitTestApp {
         cotyr.displayCountries(extractedCountries, "World", "", false);
     }
 
+    /**
+     * Test for country in the continent display
+     */
     @Test
     void displayCountryInContinentTest() {
         ArrayList<Country> extractedCountries = new ArrayList<>();
@@ -99,6 +141,9 @@ public class UnitTestApp {
         cotyr.displayCountries(extractedCountries, "Continent", "Asia", false);
     }
 
+    /**
+     * Test for country in the region display
+     */
     @Test
     void displayCountryInRegionTest() {
         ArrayList<Country> extractedCountries = new ArrayList<>();
@@ -107,6 +152,9 @@ public class UnitTestApp {
         cotyr.displayCountries(extractedCountries, "Region", "Southern and Central Asia", false);
     }
 
+    /**
+     * Test for top country in the world display
+     */
     @Test
     void displayTopCountryInWorldTest() {
         ArrayList<Country> extractedCountries = new ArrayList<>();
@@ -115,6 +163,9 @@ public class UnitTestApp {
         cotyr.displayCountries(extractedCountries, "World", "", true);
     }
 
+    /**
+     * Test for top country in the continent display
+     */
     @Test
     void displayTopCountryInContinentTest() {
         ArrayList<Country> extractedCountries = new ArrayList<>();
@@ -123,6 +174,9 @@ public class UnitTestApp {
         cotyr.displayCountries(extractedCountries, "Continent", "Asia", true);
     }
 
+    /**
+     * Test for top country in the region display
+     */
     @Test
     void displayTopCountryInRegionTest() {
         ArrayList<Country> extractedCountries = new ArrayList<>();
@@ -131,23 +185,32 @@ public class UnitTestApp {
         cotyr.displayCountries(extractedCountries, "Region", "Southern and Central Asia", true);
     }
 
+    /**
+     * Unit test for city report related queries and display methods
+     * @author Thar Htet Nyan
+     */
 
-
-
-
-
+    /**
+     * Null test for city display
+     */
     @Test
     void displayCityNullTest(){
 
         cr.displayCities(null, "World", "", false);
     }
 
+    /**
+     * Empty test for city display
+     */
     @Test
     void displayCityEmptyTest(){
         ArrayList<City> extractedCities = new ArrayList<>();
         cr.displayCities(extractedCities, "World", "", false);
     }
 
+    /**
+     * Adding null value to ArrayList to test for city display
+     */
     @Test
     void displayCityContainsNullTest(){
         ArrayList<City> extractedCities = new ArrayList<>();
@@ -157,6 +220,9 @@ public class UnitTestApp {
         cr.displayCities(extractedCities, "World", "", false);
     }
 
+    /**
+     * Test for city in the world display
+     */
     @Test
     void displayCityInWorldTest() {
         ArrayList<City> extractedCities = new ArrayList<>();
@@ -165,6 +231,9 @@ public class UnitTestApp {
         cr.displayCities(extractedCities, "World", "", false);
     }
 
+    /**
+     * Test for city in the continent display
+     */
     @Test
     void displayCityInContinentTest() {
         ArrayList<City> extractedCities = new ArrayList<>();
@@ -173,6 +242,9 @@ public class UnitTestApp {
         cr.displayCities(extractedCities, "Continent", "Asia", false);
     }
 
+    /**
+     * Test for city in the region display
+     */
     @Test
     void displayCityInRegionTest() {
         ArrayList<City> extractedCities = new ArrayList<>();
@@ -181,6 +253,9 @@ public class UnitTestApp {
         cr.displayCities(extractedCities, "Region", "Eastern Asia", false);
     }
 
+    /**
+     * Test for city in the country display
+     */
     @Test
     void displayCityInCountryTest() {
         ArrayList<City> extractedCities = new ArrayList<>();
@@ -189,6 +264,9 @@ public class UnitTestApp {
         cr.displayCities(extractedCities, "Country", "South Korea", false);
     }
 
+    /**
+     * Test for city in the district display
+     */
     @Test
     void displayCityInDistrictTest() {
         ArrayList<City> extractedCities = new ArrayList<>();
@@ -197,6 +275,9 @@ public class UnitTestApp {
         cr.displayCities(extractedCities, "District", "Seoul", false);
     }
 
+    /**
+     * Test for top city in the world display
+     */
     @Test
     void displayTopCityInWorldTest() {
         ArrayList<City> extractedCities = new ArrayList<>();
@@ -205,6 +286,9 @@ public class UnitTestApp {
         cr.displayCities(extractedCities, "World", "", true);
     }
 
+    /**
+     * Test for top city in the continent display
+     */
     @Test
     void displayTopCityInContinentTest() {
         ArrayList<City> extractedCities = new ArrayList<>();
@@ -213,6 +297,9 @@ public class UnitTestApp {
         cr.displayCities(extractedCities, "Continent", "Asia", true);
     }
 
+    /**
+     * Test for top city in the region display
+     */
     @Test
     void displayTopCityInRegionTest() {
         ArrayList<City> extractedCities = new ArrayList<>();
@@ -221,6 +308,9 @@ public class UnitTestApp {
         cr.displayCities(extractedCities, "Region", "Eastern Asia", true);
     }
 
+    /**
+     * Test for top city in the country display
+     */
     @Test
     void displayTopCityInCountryTest() {
         ArrayList<City> extractedCities = new ArrayList<>();
@@ -229,6 +319,9 @@ public class UnitTestApp {
         cr.displayCities(extractedCities, "Country", "South Korea", true);
     }
 
+    /**
+     * Test for top city in the district display
+     */
     @Test
     void displayTopCityInDistrictTest() {
         ArrayList<City> extractedCities = new ArrayList<>();
@@ -237,25 +330,32 @@ public class UnitTestApp {
         cr.displayCities(extractedCities, "District", "Seoul", true);
     }
 
+    /**
+     * Unit tests for capital city report related queries and display methods
+     * @author Thar Htet Nyan
+     */
 
-
-
-
-
-
-
+    /**
+     * Null test for capital city display
+     */
     @Test
     void displayCapitalCityNullTest(){
 
         ccr.displayCapitalCities(null, "World", "", false);
     }
 
+    /**
+     * Empty test for capital city display
+     */
     @Test
     void displayCapitalCityEmptyTest(){
         ArrayList<City> extractedCapitalCities = new ArrayList<>();
         ccr.displayCapitalCities(extractedCapitalCities, "World", "", false);
     }
 
+    /**
+     * Adding null value to ArrayList to test for capital city display
+     */
     @Test
     void displayCapitalCityContainsNullTest(){
         ArrayList<City> extractedCapitalCities = new ArrayList<>();
@@ -265,6 +365,9 @@ public class UnitTestApp {
         ccr.displayCapitalCities(extractedCapitalCities, "World", "", false);
     }
 
+    /**
+     * Test for capital city in the world display
+     */
     @Test
     void displayCapitalCityInWorldTest() {
         ArrayList<City> extractedCapitalCities = new ArrayList<>();
@@ -273,6 +376,9 @@ public class UnitTestApp {
         ccr.displayCapitalCities(extractedCapitalCities, "World", "", false);
     }
 
+    /**
+     * Test for capital city in the continent display
+     */
     @Test
     void displayCapitalCityInContinentTest() {
         ArrayList<City> extractedCapitalCities = new ArrayList<>();
@@ -281,6 +387,9 @@ public class UnitTestApp {
         ccr.displayCapitalCities(extractedCapitalCities, "Continent", "Asia", false);
     }
 
+    /**
+     * Test for capital city in the region display
+     */
     @Test
     void displayCapitalCityInRegionTest() {
         ArrayList<City> extractedCapitalCities = new ArrayList<>();
@@ -289,6 +398,9 @@ public class UnitTestApp {
         ccr.displayCapitalCities(extractedCapitalCities, "Region", "Eastern Asia", false);
     }
 
+    /**
+     * Test for top capital city in the world display
+     */
     @Test
     void displayTopCapitalCityInWorldTest() {
         ArrayList<City> extractedCapitalCities = new ArrayList<>();
@@ -297,6 +409,9 @@ public class UnitTestApp {
         ccr.displayCapitalCities(extractedCapitalCities, "World", "", true);
     }
 
+    /**
+     * Test for top capital city in the continent display
+     */
     @Test
     void displayTopCapitalCityInContinentTest() {
         ArrayList<City> extractedCapitalCities = new ArrayList<>();
@@ -305,6 +420,9 @@ public class UnitTestApp {
         ccr.displayCapitalCities(extractedCapitalCities, "Continent", "Asia", true);
     }
 
+    /**
+     * Test for top capital city in the region display
+     */
     @Test
     void displayTopCapitalCityInRegionTest() {
         ArrayList<City> extractedCapitalCities = new ArrayList<>();
@@ -313,30 +431,32 @@ public class UnitTestApp {
         ccr.displayCapitalCities(extractedCapitalCities, "Region", "Eastern Asia", true);
     }
 
+    /**
+     * Unit test for population report related queries and display methods
+     * @author Kyi Phyu Khin
+     */
 
-
-
-
-
-
-
-
-
-
-
-
+    /**
+     * Null test for population display
+     */
     @Test
     void displayPopulationNullTest(){
 
         popr.displayPopulation(null, "Continent");
     }
 
+    /**
+     * Empty test for population display
+     */
     @Test
     void displayPopulationEmptyTest(){
         ArrayList<Population> extractedPopulation = new ArrayList<>();
         popr.displayPopulation(extractedPopulation, "Continent");
     }
 
+    /**
+     * Adding null value to ArrayList to test for population display
+     */
     @Test
     void displayPopulationContainsNullTest(){
         ArrayList<Population> extractedPopulation = new ArrayList<>();
@@ -346,6 +466,9 @@ public class UnitTestApp {
         popr.displayPopulation(extractedPopulation, "Continent");
     }
 
+    /**
+     * Test for population in the continent display
+     */
     @Test
     void displayPopulationInContinentTest() {
         ArrayList<Population> extractedPopulation = new ArrayList<>();
@@ -361,6 +484,9 @@ public class UnitTestApp {
         popr.displayPopulation(extractedPopulation, "Continent");
     }
 
+    /**
+     * Test for population in the region display
+     */
     @Test
     void displayPopulationInRegionTest() {
         ArrayList<Population> extractedPopulation = new ArrayList<>();
@@ -376,6 +502,9 @@ public class UnitTestApp {
         popr.displayPopulation(extractedPopulation, "Region");
     }
 
+    /**
+     * Test for population in the country display
+     */
     @Test
     void displayPopulationInCountryTest() {
         ArrayList<Population> extractedPopulation = new ArrayList<>();
@@ -391,52 +520,78 @@ public class UnitTestApp {
         popr.displayPopulation(extractedPopulation, "Country");
     }
 
+    /**
+     * Unit test for additional population report related queries and display methods
+     * @author Htet Myat Thiri
+     */
 
-
-
-
+    /**
+     * Empty test for total world population display
+     */
     @Test
-    void displayWorldPopulationEmptyTest(){
+    void displayTotalWorldPopulationEmptyTest(){
         ArrayList<Population> extractedWorldPopulation = new ArrayList<>();
         apr.displayWorldPopulation(extractedWorldPopulation);
     }
 
+    /**
+     * Empty test for city population and population not in the city display
+     */
     @Test
-    void displayCitiesAndNonCitiesPopulationEmptyTest(){
+    void displayAdditionalCitiesAndNonCitiesPopulationEmptyTest(){
         ArrayList<Population> extractedCitiesAndNonCitiesPopulation = new ArrayList<>();
         apr.displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "Continent", "Europe");
     }
 
+    /**
+     * Empty test for population display
+     */
     @Test
     void displayAdditionalPopulationEmptyTest(){
         ArrayList<Population> extractedPopulation = new ArrayList<>();
         apr.displayPopulation(extractedPopulation, "District", "Gederland" );
     }
 
+    /**
+     * Null test for total world population display
+     */
     @Test
-    void displayWorldPopulationNullTest(){
+    void displayTotalWorldPopulationNullTest(){
         apr.displayWorldPopulation(null);
     }
 
+    /**
+     * Null test for city population and population not in the city display
+     */
     @Test
-    void displayCitiesAndNonCitiesPopulationNullTest(){
+    void displayAdditionalCitiesAndNonCitiesPopulationNullTest(){
         apr.displayCitiesAndNonCitiesPopulation(null, "Continent", "Europe");
     }
 
+    /**
+     * Null test for population display
+     */
     @Test
     void displayAdditionalPopulationNullTest(){
         apr.displayPopulation(null, "District", "Gederland");
     }
 
+    /**
+     * Adding null value to ArrayList to test for total world population display
+     */
     @Test
-    void displayWorldPopulationContainsNullTest(){
+    void displayTotalWorldPopulationContainsNullTest(){
         ArrayList<Population> extractedWorldPopulation = new ArrayList<>();
         extractedWorldPopulation.add(null);
 
         apr.displayWorldPopulation(extractedWorldPopulation);
     }
+
+    /**
+     * Adding null value to ArrayList to test for city population and population not in the city display
+     */
     @Test
-    void displayCitiesAndNonCitiesPopulationContainsNullTest(){
+    void displayAdditionalCitiesAndNonCitiesPopulationContainsNullTest(){
         ArrayList<Population> extractedCitiesAndNonCitiesPopulation = new ArrayList<>();
         extractedCitiesAndNonCitiesPopulation.add(null);
         extractedCitiesAndNonCitiesPopulation.add(null);
@@ -444,6 +599,9 @@ public class UnitTestApp {
         apr.displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "Continent", "Europe");
     }
 
+    /**
+     * Adding null value to ArrayList to test for population display
+     */
     @Test
     void displayAdditionalPopulationContainsNullTest(){
         ArrayList<Population> extractedPopulation = new ArrayList<>();
@@ -453,8 +611,11 @@ public class UnitTestApp {
         apr.displayPopulation(extractedPopulation, "District", "Gederland");
     }
 
+    /**
+     * Test for total world population display
+     */
     @Test
-    void displayWorldPopulationTest(){
+    void displayTotalWorldPopulationTest(){
         ArrayList<Population> extractedWorldPopulation = new ArrayList<>();
         population = new Population();
         population.setTotalPopulation(6078749450L);
@@ -462,8 +623,11 @@ public class UnitTestApp {
         apr.displayWorldPopulation(extractedWorldPopulation);
     }
 
+    /**
+     * Test for city population and population not in the city for a continent display
+     */
     @Test
-    void displayCitiesAndNonCitiesPopulationInContinentTest(){
+    void displayAdditionalCitiesAndNonCitiesPopulationInContinentTest(){
         ArrayList<Population> extractedCitiesAndNonCitiesPopulation = new ArrayList<>();
         population = new Population();
         population.setName("Europe");
@@ -477,8 +641,11 @@ public class UnitTestApp {
         apr.displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "Continent", "Europe");
     }
 
+    /**
+     * Test for city population and population not in the city for a region display
+     */
     @Test
-    void displayCitiesAndNonCitiesPopulationInRegionTest(){
+    void displayAdditionalCitiesAndNonCitiesPopulationInRegionTest(){
         ArrayList<Population> extractedCitiesAndNonCitiesPopulation = new ArrayList<>();
         population = new Population();
         population.setName("Southern Europe");
@@ -492,8 +659,11 @@ public class UnitTestApp {
         apr.displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "Region", "Southern Europe");
     }
 
+    /**
+     * Test for city population and population not in the city for a country display
+     */
     @Test
-    void displayCitiesAndNonCitiesPopulationInCountryTest(){
+    void displayAdditionalCitiesAndNonCitiesPopulationInCountryTest(){
         ArrayList<Population> extractedCitiesAndNonCitiesPopulation = new ArrayList<>();
         population = new Population();
         population.setName("Austria");
@@ -507,8 +677,11 @@ public class UnitTestApp {
         apr.displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "Country", "Austria");
     }
 
+    /**
+     * Test for population in a district display
+     */
     @Test
-    void displayPopulationInDistrictTest(){
+    void displayAdditionalPopulationInDistrictTest(){
         ArrayList<Population> extractedPopulation = new ArrayList<>();
         population = new Population();
         population.setName("Gelderland");
@@ -518,8 +691,11 @@ public class UnitTestApp {
         apr.displayPopulation(extractedPopulation, "District", "Gelderland");
     }
 
+    /**
+     * Test for population in a city display
+     */
     @Test
-    void displayPopulationInCityTest(){
+    void displayAdditionalPopulationInCityTest(){
         ArrayList<Population> extractedPopulation = new ArrayList<>();
         population = new Population();
         population.setName("Resistencia");
@@ -529,23 +705,32 @@ public class UnitTestApp {
         apr.displayPopulation(extractedPopulation, "City", "Resistencia");
     }
 
+    /**
+     * Unit tests for language report related query and display methods
+     * @author Cham Myae Pyae Sone
+     */
 
-
-
-  
-  
+    /**
+     * Null test for language display
+     */
     @Test
     void displayLanguageNullTest(){
 
         lgr.displayLanguage(null);
     }
 
+    /**
+     * Empty test for language display
+     */
     @Test
     void displayLanguageEmptyTest(){
         ArrayList<Language> extractedLanguage = new ArrayList<>();
         lgr.displayLanguage(extractedLanguage);
     }
 
+    /**
+     * Adding null value to ArrayList to test for language display
+     */
     @Test
     void displayLanguageContainsNullTest(){
         ArrayList<Language> extractedLanguage = new ArrayList<>();
@@ -555,6 +740,9 @@ public class UnitTestApp {
         lgr.displayLanguage(extractedLanguage);
     }
 
+    /**
+     * Test for language display
+     */
     @Test
     void displayLanguageTest() {
         ArrayList<Language> extractedLanguage = new ArrayList<>();

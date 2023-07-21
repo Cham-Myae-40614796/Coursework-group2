@@ -86,7 +86,8 @@ public class PopulationReport {
                     "GROUP BY country." + type + " "+
                     ") AS cty " +
                     "ON cty." + type + " = cnty." + type +" " +
-                    "GROUP BY cnty." + type + ";";
+                    "GROUP BY cnty." + type + " " +
+                    "ORDER BY cnty." + type + ";";
 
             ResultSet rset = stmt.executeQuery(query);
 
