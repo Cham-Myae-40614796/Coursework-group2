@@ -135,7 +135,7 @@ public class LanguageReport {
 
         if (extractedLanguage == null || extractedLanguage.size() == 0) {
             // handles null records
-            System.out.printf("| %-107s |%n", "No records");
+            System.out.printf("| %-96s |%n", "No records");
         } else {
             // print out table records
             for (Language elan : extractedLanguage) {
