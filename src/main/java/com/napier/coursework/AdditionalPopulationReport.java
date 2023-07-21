@@ -71,9 +71,6 @@ public class AdditionalPopulationReport {
      * the main public method used to generate different reports of
      * additional population reports
      */
-    /**
-     * the main public method used to generate different reports of  population
-     */
     public void generateAdditionalPopulationReport() {
 
         // define WHERE part of query

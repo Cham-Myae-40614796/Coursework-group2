@@ -388,12 +388,12 @@ public class IntegrationTestApp {
     @Test
     void extractPopulationInContinentTest(){
         ArrayList<Population> extractedPopulation = popr.extractPopulation("Continent");
-        assertEquals(extractedPopulation.get(0).getName(), "North America");
-        assertEquals(extractedPopulation.get(0).getTotalPopulation(), 482993000L);
-        assertEquals(extractedPopulation.get(0).getPopulationInCities(), 168250381L);
-        assertEquals(extractedPopulation.get(0).getCityPopulationPercentage(), "34.8350 %");
-        assertEquals(extractedPopulation.get(0).getPopulationNotInCities(), 314742619L);
-        assertEquals(extractedPopulation.get(0).getNonCityPopulationPercentage(), "65.1650 %");
+        assertEquals(extractedPopulation.get(0).getName(), "Asia");
+        assertEquals(extractedPopulation.get(0).getTotalPopulation(), 3705025700L);
+        assertEquals(extractedPopulation.get(0).getPopulationInCities(), 697604103L);
+        assertEquals(extractedPopulation.get(0).getCityPopulationPercentage(), "18.8286 %");
+        assertEquals(extractedPopulation.get(0).getPopulationNotInCities(), 3007421597L);
+        assertEquals(extractedPopulation.get(0).getNonCityPopulationPercentage(), "81.1714 %");
     }
 
     /**
@@ -402,12 +402,12 @@ public class IntegrationTestApp {
     @Test
     void extractPopulationInRegionTest(){
         ArrayList<Population> extractedPopulation = popr.extractPopulation("Region");
-        assertEquals(extractedPopulation.get(0).getName(), "Caribbean");
-        assertEquals(extractedPopulation.get(0).getTotalPopulation(), 38140000L);
-        assertEquals(extractedPopulation.get(0).getPopulationInCities(), 11067550L);
-        assertEquals(extractedPopulation.get(0).getCityPopulationPercentage(), "29.0182 %");
-        assertEquals(extractedPopulation.get(0).getPopulationNotInCities(), 27072450L);
-        assertEquals(extractedPopulation.get(0).getNonCityPopulationPercentage(), "70.9818 %");
+        assertEquals(extractedPopulation.get(0).getName(), "Australia and New Zealand");
+        assertEquals(extractedPopulation.get(0).getTotalPopulation(), 22753100L);
+        assertEquals(extractedPopulation.get(0).getPopulationInCities(), 13163436L);
+        assertEquals(extractedPopulation.get(0).getCityPopulationPercentage(), "57.8534 %");
+        assertEquals(extractedPopulation.get(0).getPopulationNotInCities(), 9589664L);
+        assertEquals(extractedPopulation.get(0).getNonCityPopulationPercentage(), "42.1466 %");
     }
 
     /**
@@ -416,12 +416,12 @@ public class IntegrationTestApp {
     @Test
     void extractPopulationInCountryTest(){
         ArrayList<Population> extractedPopulation = popr.extractPopulation("Country");
-        assertEquals(extractedPopulation.get(0).getName(), "Aruba");
-        assertEquals(extractedPopulation.get(0).getTotalPopulation(), 103000L);
-        assertEquals(extractedPopulation.get(0).getPopulationInCities(), 29034L);
-        assertEquals(extractedPopulation.get(0).getCityPopulationPercentage(), "28.1883 %");
-        assertEquals(extractedPopulation.get(0).getPopulationNotInCities(), 73966L);
-        assertEquals(extractedPopulation.get(0).getNonCityPopulationPercentage(), "71.8117 %");
+        assertEquals(extractedPopulation.get(0).getName(), "Afghanistan");
+        assertEquals(extractedPopulation.get(0).getTotalPopulation(), 22720000L);
+        assertEquals(extractedPopulation.get(0).getPopulationInCities(), 2332100L);
+        assertEquals(extractedPopulation.get(0).getCityPopulationPercentage(), "10.2645 %");
+        assertEquals(extractedPopulation.get(0).getPopulationNotInCities(), 20387900L);
+        assertEquals(extractedPopulation.get(0).getNonCityPopulationPercentage(), "89.7355 %");
     }
 
     /**

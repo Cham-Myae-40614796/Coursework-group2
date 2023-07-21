@@ -3,7 +3,7 @@ package com.napier.coursework;
  * Represents database connection to SQL
  * Handles Connection and Disconnection to database
  * @author Thar Htet Nyan
- * @version 0.1.0.2
+ * @version 0.1.0.3
  * @since 0.1.0.2
  */
 

@@ -3,7 +3,7 @@ package com.napier.coursework;
  * Creates reports related to city
  * Extracts data from database and display reports for each user story
  * @author Thar Htet Nyan, Kyi Phyu Khin
- * @version 0.1.0.2
+ * @version 0.1.0.3
  * @since 0.1.0.2
  */
 
@@ -135,7 +135,7 @@ public class CityReport {
     }
 
     /**
-     * private method to extract cities data from SQL database using query
+     * protected method to extract cities data from SQL database using query
      *
      * @return the arraylist of extracted cities data
      */
@@ -190,7 +190,7 @@ public class CityReport {
     }
 
     /**
-     * private method to reformat population and
+     * protected method to reformat population and
      * display the extracted cities data in a tabular format
      */
     protected void displayCities(ArrayList<City> extractedCities, String type, String name, boolean isTop)

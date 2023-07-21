@@ -13,31 +13,6 @@ public class Population {
      */
     private String Name;
 
-//    /**
-//     * private string to store continent
-//     */
-//    private String Continent;
-
-//    /**
-//     * private string to store region
-//     */
-//    private String Region;
-
-//    /**
-//     * private string to store country
-//     */
-//    private String Country;
-
-//    /**
-//     * private string to store district
-//     */
-//    private String District;
-
-//    /**
-//     * private string to store city
-//     */
-//    private String City;
-
     /**
      * private long to store total population
      */
@@ -71,51 +46,6 @@ public class Population {
     public void setName(String name) {
         Name = name;
     }
-
-//    /**
-//     * public method to set continent
-//     *
-//     * @param continent
-//     */
-//    public void setContinent(String continent) {
-//        Continent = continent;
-//    }
-
-//    /**
-//     * public method to set region
-//     *
-//     * @param region
-//     */
-//    public void setRegion(String region) {
-//        Region = region;
-//    }
-
-//    /**
-//     * public method to set country
-//     *
-//     * @param country
-//     */
-//    public void setCountry(String country) {
-//        Country = country;
-//    }
-
-//    /**
-//     * public method to set district
-//     *
-//     * @param district
-//     */
-//    public void setDistrict(String district) {
-//        District = district;
-//    }
-
-//    /**
-//     * public method to set city
-//     *
-//     * @param city
-//     */
-//    public void setCity(String city) {
-//        District = city;
-//    }
 
     /**
      * public method to set total population
@@ -170,51 +100,6 @@ public class Population {
     public String getName() {
         return Name;
     }
-
-//    /**
-//     * public method to return continent
-//     *
-//     * @return continent
-//     */
-//    public String getContinent() {
-//        return Continent;
-//    }
-
-//    /**
-//     * public method to return region
-//     *
-//     * @return region
-//     */
-//    public String getRegion() {
-//        return Region;
-//    }
-
-//    /**
-//     * public method to return country
-//     *
-//     * @return country
-//     */
-//    public String getCountry() {
-//        return Country;
-//    }
-
-//    /**
-//     * public method to return district
-//     *
-//     * @return district
-//     */
-//    public String getDistrict() {
-//        return District;
-//    }
-
-//    /**
-//     * public method to return city
-//     *
-//     * @return city
-//     */
-//    public String getCity() {
-//        return City;
-//    }
 
     /**
      * public method to return total population

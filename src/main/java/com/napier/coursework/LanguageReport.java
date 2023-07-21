@@ -1,4 +1,11 @@
 package com.napier.coursework;
+/**
+ * Creating report for language related issues
+ * Get the language data and population data to display them in report
+ * @author Cham Myae Pyae Sone
+ * @version 0.1.0.3
+ * @since 0.1.0.3
+ */
 
 import java.sql.*;
 import java.text.NumberFormat;
@@ -7,24 +14,46 @@ import java.util.Locale;
 
 public class LanguageReport {
 
+    /**
+     * private Connection to SQL database
+     */
     private Connection conn = null;
 
+    /**
+     * Number of query for table titles
+     */
     private int query_count = 32;
 
+    /**
+     * private string method for generating table format for output display
+     */
     private String tableFormat = "| %-30s | %-30s | %-30s |%n";
 
-
+    /**
+     * public method to set SQL database Connection
+     * conn has a default value of null.
+     * This can be set to use existing database connection.
+     *
+     * @param conn the SQL database connection
+     */
     public void setConn(Connection conn) {
         this.conn = conn;
     }
 
-
+    /**
+     * the main public method used to generate language report
+     */
     public void generateLanguageReport() {
         ArrayList<Language> extractedLanguage = extractLanguage();
         displayLanguage(extractedLanguage);
 
     }
 
+    /**
+     * protected method to extract language data from SQL database using query
+     *
+     * @return the arraylist of extracted language data
+     */
     protected ArrayList<Language> extractLanguage()
     {
         try
@@ -72,10 +101,12 @@ public class LanguageReport {
         }
     }
 
+    /**
+     * protected method to reformat population and
+     * display the extracted language population data in a tabular format
+     */
     protected void displayLanguage(ArrayList<Language> extractedLanguage)
     {
-        // create new arraylist to store the arraylist of extracted cities data
-        // ArrayList<Language> extractedLanguage = extractLanguage(whereClause);
 
         // skip a line and make a table
         System.out.println();

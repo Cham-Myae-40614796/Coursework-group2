@@ -1,11 +1,11 @@
 package com.napier.coursework;
 
 /**
- * Creating reports for countries related issues
- * Get the country data and population data to display them in report
- * @author Cham Myae Pyae Sone, Htet Myat Thiri
- * @version 0.1.0.2
- * @since 0.1.0.2
+ * Creating reports for population related issues
+ * Get the population data to display them in report
+ * @author Thar Htet Nyan
+ * @version 0.1.0.3
+ * @since 0.1.0.3
  */
 
 import java.sql.*;
@@ -113,10 +113,10 @@ public class PopulationReport {
             return null;
         }
     }
-        /**
-         * protected method to reformat population and
-         * display the extracted population data in a tabular format
-         */
+    /**
+     * protected method to reformat population and
+     * display the extracted population data in a tabular format
+     */
     protected void displayPopulation(ArrayList<Population> extractedPopulation, String type) {
         // create new arraylist to store the arraylist of extracted population data
         System.out.println();

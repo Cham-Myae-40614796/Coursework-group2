@@ -4,7 +4,7 @@ package com.napier.coursework;
  * Creating reports for countries related issues
  * Get the country data and population data to display them in report
  * @author Cham Myae Pyae Sone, Htet Myat Thiri
- * @version 0.1.0.2
+ * @version 0.1.0.3
  * @since 0.1.0.2
  */
 
@@ -101,7 +101,7 @@ public class CountryReport {
     }
 
     /**
-     * private method to extract countries data from SQL database using query
+     * protected method to extract countries data from SQL database using query
      *
      * @return the arraylist of extracted countries data
      */
@@ -150,7 +150,7 @@ public class CountryReport {
     }
 
     /**
-     * private method to reformat population and
+     * protected method to reformat population and
      * display the extracted countries data in a tabular format
      */
     protected void displayCountries(ArrayList<Country> extractedCountries, String type, String name, boolean isTop){
