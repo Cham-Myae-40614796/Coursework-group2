@@ -1,10 +1,11 @@
 package com.napier.coursework;
 /**
  * Represents Population Data
- * @author Kyi Phyu Khin
+ * @author Thar Htet Nyan, Kyi Phyu Khin
  * @version 0.1.0.3
  * @since 0.1.0.3
  */
+
 public class Population {
 
     /**
@@ -36,11 +37,6 @@ public class Population {
      * private string to store city
      */
     private String City;
-
-    /**
-     * private string to store name of the country
-     */
-    private String CountryName;
 
     /**
      * private long to store total population
@@ -122,15 +118,6 @@ public class Population {
     }
 
     /**
-     * public method to set country name
-     *
-     * @param countryName
-     */
-    public void setCountryName(String countryName) {
-        CountryName = countryName;
-    }
-
-    /**
      * public method to set total population
      *
      * @param totalPopulation
@@ -161,13 +148,13 @@ public class Population {
      * public method to set people who are not living in the cities
      *
      * @param populationNotInCities
-     */
+    */
     public void setPopulationNotInCities(long populationNotInCities) {
         PopulationNotInCities = populationNotInCities;
     }
-
+  
     /**
-     * public method to set people living in the cities with percentage
+     * public method to set people not living in the cities with percentage
      *
      * @param nonCityPopulationPercentage
      */
@@ -230,15 +217,6 @@ public class Population {
     }
 
     /**
-     * public method to return country name
-     *
-     * @return the name of the country
-     */
-    public String getCountryName() {
-        return CountryName;
-    }
-
-    /**
      * public method to return total population
      *
      * @return the total population
@@ -283,3 +261,4 @@ public class Population {
         return NonCityPopulationPercentage;
     }
 }
+
