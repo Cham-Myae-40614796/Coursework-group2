@@ -71,7 +71,7 @@ The aim of this code review is to check the setup of task management for the pro
 2. Define tasks as user stories
 * 32 issues are formatted as mentioned in slides in order to transform into formatted user stories
 
-3. Integrate project with Zube.io
+3. Integrate project with zube.io
 * Project is linked with Zube at week 1
 
 4. Use Kanban/Project Board
@@ -97,10 +97,21 @@ Additional comments: defined issues 22 out of 32 are queried in week 2.
 The aim of this code review is to check that testing has been correctly specified.
 
 1. Define unit tests.
+* UnitTestApp.java is created for unit testing.
+* Test cases are written with Junit.  
 
 2. Define integration tests. 
+* IntegrationTestApp.java is created for integration testing.
+* Test cases are written with Junit.
+* Assertion method: assertEquals() is used to check the equality of two objects. 
 
 3. Tests running on GitHub Actions. 
+* Added UnitTests and IntegrationTests in GitHub Actions workflow.
+
+Additional comments: 
+* All 32 reports have been generated. 
+* Install jacoco-maven-plugin to generate code coverage reports. 
+* Link to check code coverage of the project: https://app.codecov.io/gh/Cham-Myae-40614796/Coursework-group2/tree/develop
 
 # Workflow status
 
