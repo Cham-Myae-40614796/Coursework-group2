@@ -53,13 +53,6 @@ public class UnitTestApp {
         city.setDistrict("Seoul");
         city.setPopulation(9981619);
 
-        population = new Population();
-        population.setContinent("Europe");
-        population.setRegion("Southern Europe");
-        population.setCountry("Austria");
-        population.setDistrict("Gelderland");
-        population.setCity("Resistencia");
-
         language = new Language();
         language.setCountryLanguage("Chinese");
         language.setPopulation(1191843539);
