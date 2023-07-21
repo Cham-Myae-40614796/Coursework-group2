@@ -21,11 +21,17 @@ public class UnitTestApp {
 
     static City capitalCity;
 
+
+    static LanguageReport lgr;
+
+    static Language language;
+
     @BeforeAll
     static void init(){
         cotyr = new CountryReport();
         cr = new CityReport();
         ccr = new CapitalCityReport();
+        lgr = new LanguageReport();
 
         country = new Country();
         country.setCountryCode("IND");
@@ -40,6 +46,11 @@ public class UnitTestApp {
         city.setCountryName("South Korea");
         city.setDistrict("Seoul");
         city.setPopulation(9981619);
+
+        language = new Language();
+        language.setCountryLanguage("Chinese");
+        language.setPopulation(1191843539);
+        language.setPercentage("19.61");
 
     }
     @Test
@@ -292,6 +303,39 @@ public class UnitTestApp {
         extractedCapitalCities.add(city);
         ccr.displayCapitalCities(extractedCapitalCities, "Region", "Eastern Africa", true);
     }
+
+
+
+    @Test
+    void displayLanguageNullTest(){
+
+        lgr.displayLanguage(null);
+    }
+
+    @Test
+    void displayLanguageEmptyTest(){
+        ArrayList<Language> extractedLanguage = new ArrayList<>();
+        lgr.displayLanguage(extractedLanguage);
+    }
+
+    @Test
+    void displayLanguageContainsNullTest(){
+        ArrayList<Language> extractedLanguage = new ArrayList<>();
+        extractedLanguage.add(null);
+        extractedLanguage.add(null);
+
+        lgr.displayLanguage(extractedLanguage);
+    }
+
+    @Test
+    void displayLanguageTest() {
+        ArrayList<Language> extractedLanguage = new ArrayList<>();
+
+        extractedLanguage.add(language);
+        lgr.displayLanguage(extractedLanguage);
+    }
+
+
 
 
 

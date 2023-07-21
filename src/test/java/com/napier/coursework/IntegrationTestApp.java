@@ -17,6 +17,8 @@ public class IntegrationTestApp {
     static CityReport cr;
 
     static CapitalCityReport ccr;
+
+    static LanguageReport lgr;
     @BeforeAll
     static void init(){
         dbConn = new DatabaseConnection();
@@ -27,6 +29,9 @@ public class IntegrationTestApp {
         cr.setConn(dbConn.getConn());
         ccr = new CapitalCityReport();
         ccr.setConn(dbConn.getConn());
+
+        lgr = new LanguageReport();
+        lgr.setConn(dbConn.getConn());
     }
     @AfterAll
     static void end(){
@@ -262,6 +267,16 @@ public class IntegrationTestApp {
         assertEquals(extractedCapitalCites.get(2).getCityName(), "Peking");
         assertEquals(extractedCapitalCites.get(2).getCountryName(), "China");
         assertEquals(extractedCapitalCites.get(2).getPopulation(), 7472000);
+    }
+
+
+
+    @Test
+    void extractLanguageTest(){
+        ArrayList<Language> extractedLanguage = lgr.extractLanguage();
+        assertEquals(extractedLanguage.get(0).getCountryLanguage(), "Chinese");
+        assertEquals(extractedLanguage.get(0).getPopulation(), 1191843539);
+        assertEquals(extractedLanguage.get(0).getPercentage(), "19.61 %");
     }
 
 
