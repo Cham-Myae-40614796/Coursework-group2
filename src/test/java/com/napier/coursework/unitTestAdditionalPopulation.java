@@ -29,34 +29,63 @@ public class unitTestAdditionalPopulation {
     }
 
     @Test
-    void displayCitiesAndNonCitiesPopulationEmptyTest(){
-        ArrayList<Population> extractedCitiesAndNonCitiesPopulation = new ArrayList<>();
-        apr.displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "", population.getName());
+    void displayWorldPopulationEmptyTest(){
+        ArrayList<Population> extractedWorldPopulation = new ArrayList<>();
+        apr.displayWorldPopulation(extractedWorldPopulation);
     }
 
-    /*@Test
-    void displayCitiesAndNonCitiesPopulationNullTest(){
+    @Test
+    void displayCitiesAndNonCitiesPopulationEmptyTest(){
         ArrayList<Population> extractedCitiesAndNonCitiesPopulation = new ArrayList<>();
-        extractedCitiesAndNonCitiesPopulation.add(null);
-        extractedCitiesAndNonCitiesPopulation.add(null);
-
-        apr.displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "", population.getName());
-    }*/
+        apr.displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "", "");
+    }
 
     @Test
     void displayPopulationEmptyTest(){
         ArrayList<Population> extractedPopulation = new ArrayList<>();
-        apr.displayPopulation(extractedPopulation, "City", population.getCity() );
+        apr.displayPopulation(extractedPopulation, "", "" );
     }
 
-    /*@Test
+    @Test
+    void displayWorldPopulationNullTest(){
+        apr.displayWorldPopulation(null);
+    }
+
+    @Test
+    void displayCitiesAndNonCitiesPopulationNullTest(){
+        apr.displayCitiesAndNonCitiesPopulation(null, "Continent", "Europe");
+    }
+
+    @Test
     void displayPopulationNullTest(){
+        apr.displayPopulation(null, "District", "Gederland");
+    }
+
+    @Test
+    void displayWorldPopulationContainsNullTest(){
+        ArrayList<Population> extractedWorldPopulation = new ArrayList<>();
+        extractedWorldPopulation.add(null);
+
+        apr.displayWorldPopulation(extractedWorldPopulation);
+    }
+    @Test
+    void displayCitiesAndNonCitiesPopulationContainsNullTest(){
+        ArrayList<Population> extractedCitiesAndNonCitiesPopulation = new ArrayList<>();
+        extractedCitiesAndNonCitiesPopulation.add(null);
+        extractedCitiesAndNonCitiesPopulation.add(null);
+
+        apr.displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "Continent", "Europe");
+    }
+
+    @Test
+    void displayPopulationContainsNullTest(){
         ArrayList<Population> extractedPopulation = new ArrayList<>();
         extractedPopulation.add(null);
         extractedPopulation.add(null);
 
-        apr.displayPopulation(extractedPopulation, "", population.getName());
-    }*/
+        apr.displayPopulation(extractedPopulation, "District", "Gederland");
+    }
+
     @Test
     void displayWorldPopulationTest(){
         ArrayList<Population> extractedWorldPopulation = new ArrayList<>();
@@ -66,33 +95,55 @@ public class unitTestAdditionalPopulation {
     @Test
     void displayCitiesAndNonCitiesPopulationInContinentTest(){
         ArrayList<Population> extractedCitiesAndNonCitiesPopulation = new ArrayList<>();
+        population = new Population();
+        population.setName("Europe");
+        population.setTotalPopulation(730074600L);
+        population.setPopulationInCities(241942813L);
+        population.setCityPopulationPercentage("33.1395 %");
+        population.setPopulationNotInCities(488131787L);
+        population.setNonCityPopulationPercentage("66.8605 %");
 
         extractedCitiesAndNonCitiesPopulation.add(population);
-        apr.displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "Continent", population.getContinent());
-    }
-
-    @Test
-    void displayCitiesAndNonCitiesPopulationInCountryTest(){
-        ArrayList<Population> extractedCitiesAndNonCitiesPopulation = new ArrayList<>();
-
-        extractedCitiesAndNonCitiesPopulation.add(population);
-        apr.displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "Country", population.getCountry());
+        apr.displayPopulation(extractedCitiesAndNonCitiesPopulation, "Continent", "Europe");
     }
 
     @Test
     void displayCitiesAndNonCitiesPopulationInRegionTest(){
         ArrayList<Population> extractedCitiesAndNonCitiesPopulation = new ArrayList<>();
+        population = new Population();
+        population.setName("Southern Europe");
+        population.setTotalPopulation(144674200L);
+        population.setPopulationInCities(40016658L);
+        population.setCityPopulationPercentage("27.6598 %");
+        population.setPopulationNotInCities(104657542l);
+        population.setNonCityPopulationPercentage("72.3402 %");
 
         extractedCitiesAndNonCitiesPopulation.add(population);
-        apr.displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "Region", population.getRegion());
+        apr.displayPopulation(extractedCitiesAndNonCitiesPopulation, "Region", "Southern Europe");
     }
+
+    @Test
+    void displayCitiesAndNonCitiesPopulationInCountryTest(){
+        ArrayList<Population> extractedCitiesAndNonCitiesPopulation = new ArrayList<>();
+        population = new Population();
+        population.setName("Austria");
+        population.setTotalPopulation(8091800L);
+        population.setPopulationInCities(2384273L);
+        population.setCityPopulationPercentage("29.4653 %");
+        population.setPopulationNotInCities(5707527L);
+        population.setNonCityPopulationPercentage("70.5347 %");
+
+        extractedCitiesAndNonCitiesPopulation.add(population);
+        apr.displayPopulation(extractedCitiesAndNonCitiesPopulation, "Country", "Austria");
+    }
+
 
     @Test
     void displayPopulationInDistrictTest(){
         ArrayList<Population> extractedPopulation = new ArrayList<>();
 
         extractedPopulation.add(population);
-        apr.displayPopulation(extractedPopulation, "District", population.getDistrict());
+        apr.displayPopulation(extractedPopulation, "District", "Gelderland");
     }
 
     @Test
@@ -100,6 +151,6 @@ public class unitTestAdditionalPopulation {
         ArrayList<Population> extractedPopulation = new ArrayList<>();
 
         extractedPopulation.add(population);
-        apr.displayPopulation(extractedPopulation, "City", population.getCity());
+        apr.displayPopulation(extractedPopulation, "City", "Resistencia");
     }
 }

@@ -150,12 +150,19 @@ public class AdditionalPopulationReport {
         System.out.printf("----------------------------------------------------------%n");
 
         if (extractedWorldPopulation != null) {
+            while (extractedWorldPopulation.remove(null)){
+
+            }
+        }
+        if (extractedWorldPopulation == null || extractedWorldPopulation.size() == 0){
+            //handles null records
+            System.out.printf("| %-54s |%n", "No records");
+        }
+        else {
             for (Population pop : extractedWorldPopulation) {
                 System.out.printf(tableFormat1,
                         NumberFormat.getInstance(Locale.US).format(pop.getTotalPopulation()));
             }
-        } else {
-            System.out.printf("| %-54s |%n", "No records");
         }
         System.out.printf("----------------------------------------------------------%n");
         System.out.println();
@@ -333,13 +340,20 @@ public class AdditionalPopulationReport {
         System.out.printf("-------------------------------------------------------------------%n");
 
         if (extractedPopulation != null) {
+            while (extractedPopulation.remove(null)) {
+
+            }
+        }
+        if (extractedPopulation == null || extractedPopulation.size() == 0) {
+            //handle null records
+            System.out.printf("| %-63s |%n", "No records");
+        }
+        else {
             for (Population pop : extractedPopulation) {
                 System.out.printf(tableFormat3,
                         pop.getName(),
                         NumberFormat.getInstance(Locale.US).format(pop.getTotalPopulation()));
             }
-        } else {
-            System.out.printf("| %-63s |%n", "No records");
         }
         System.out.printf("-------------------------------------------------------------------%n");
         System.out.println();

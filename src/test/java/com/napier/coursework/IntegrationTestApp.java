@@ -4,8 +4,10 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import javax.xml.namespace.QName;
 import java.util.ArrayList;
 
+import static com.napier.coursework.UnitTestApp.city;
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -24,6 +26,8 @@ public class IntegrationTestApp {
     static LanguageReport lgr;
 
 
+    static AdditionalPopulationReport apr;
+
     @BeforeAll
     static void init(){
         dbConn = new DatabaseConnection();
@@ -36,6 +40,8 @@ public class IntegrationTestApp {
         ccr.setConn(dbConn.getConn());
         popr = new PopulationReport();
         popr.setConn(dbConn.getConn());
+        apr = new AdditionalPopulationReport();
+        apr.setConn(dbConn.getConn());
         lgr = new LanguageReport();
         lgr.setConn(dbConn.getConn());
     }
@@ -318,6 +324,69 @@ public class IntegrationTestApp {
   
   
   
+
+    @Test
+    void extractWorldPopulationTest(){
+        ArrayList<Population> extractedWorldPopulation = apr.extractWorldPopulation();
+        assertEquals(extractedWorldPopulation.get(0).getTotalPopulation(), 6078749450L);
+    }
+
+    @Test
+    void extractCitiesAndNonCitiesPopulationInContinent(){
+        String whereClause = "WHERE cnty.Continent = 'Europe' ";
+        ArrayList<Population> extractedCitiesAndNonCitiesPopulation = apr.extractCitiesAndNonCitiesPopulation("Continent", whereClause);
+        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getName(), "Europe");
+        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getTotalPopulation(), 730074600L);
+        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getPopulationInCities(), 241942813L);
+        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getCityPopulationPercentage(), "33.1395 %");
+        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getPopulationNotInCities(), 488131787L);
+        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getNonCityPopulationPercentage(), "66.8605 %");
+    }
+
+    @Test
+    void extractCitiesAndNonCitiesPopulationInRegion(){
+        String whereClause = "WHERE cnty.Region = 'Southern Europe' ";
+        ArrayList<Population> extractedCitiesAndNonCitiesPopulation = apr.extractCitiesAndNonCitiesPopulation("Region", whereClause);
+        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getName(), "Southern Europe");
+        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getTotalPopulation(), 144674200L);
+        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getPopulationInCities(), 40016658L);
+        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getCityPopulationPercentage(), "27.6598 %");
+        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getPopulationNotInCities(), 104657542l);
+        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getNonCityPopulationPercentage(), "72.3402 %");
+    }
+
+    @Test
+    void extractCitiesAndNonCitiesPopulationInCountry(){
+        String whereClause = "WHERE cnty.Name = 'Austria' ";
+        ArrayList<Population> extractedCitiesAndNonCitiesPopulation = apr.extractCitiesAndNonCitiesPopulation("Country", whereClause);
+        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getName(), "Austria");
+        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getTotalPopulation(), 8091800L);
+        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getPopulationInCities(), 2384273L);
+        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getCityPopulationPercentage(), "29.4653 %");
+        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getPopulationNotInCities(), 5707527L);
+        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getNonCityPopulationPercentage(), "70.5347 %");
+    }
+
+    @Test
+    void extractPopulationInDistrict(){
+        String whereClause = "WHERE city.District = 'Gelderland' ";
+        ArrayList<Population> extractedPopulation = apr.extractPopulation("District", whereClause);
+        assertEquals(extractedPopulation.get(0).getName(), "Gelderland");
+        assertEquals(extractedPopulation.get(0).getTotalPopulation(), 545548L);
+    }
+
+    @Test
+    void extractPopulationInCity(){
+        String whereClause = "WHERE city.Name = 'Resistencia' ";
+        ArrayList<Population> extractedPopulation = apr.extractPopulation("City", whereClause);
+        assertEquals(extractedPopulation.get(0).getName(), "Resistencia");
+        assertEquals(extractedPopulation.get(0).getTotalPopulation(), 229212L);
+    }
+  
+  
+  
+  
+  
   
     @Test
     void extractLanguageTest(){
@@ -326,5 +395,4 @@ public class IntegrationTestApp {
         assertEquals(extractedLanguage.get(0).getPopulation(), 1191843539);
         assertEquals(extractedLanguage.get(0).getPercentage(), "19.61 %");
     }
-
 }
