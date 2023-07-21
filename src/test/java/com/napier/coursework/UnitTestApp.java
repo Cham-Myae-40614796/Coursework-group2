@@ -652,7 +652,7 @@ public class UnitTestApp {
         population.setTotalPopulation(144674200L);
         population.setPopulationInCities(40016658L);
         population.setCityPopulationPercentage("27.6598 %");
-        population.setPopulationNotInCities(104657542l);
+        population.setPopulationNotInCities(104657542L);
         population.setNonCityPopulationPercentage("72.3402 %");
 
         extractedCitiesAndNonCitiesPopulation.add(population);
@@ -685,7 +685,7 @@ public class UnitTestApp {
         ArrayList<Population> extractedPopulation = new ArrayList<>();
         population = new Population();
         population.setName("Gelderland");
-        population.setTotalPopulation(545548);
+        population.setTotalPopulation(545548L);
 
         extractedPopulation.add(population);
         apr.displayPopulation(extractedPopulation, "District", "Gelderland");
@@ -699,7 +699,7 @@ public class UnitTestApp {
         ArrayList<Population> extractedPopulation = new ArrayList<>();
         population = new Population();
         population.setName("Resistencia");
-        population.setTotalPopulation(229212);
+        population.setTotalPopulation(229212L);
 
         extractedPopulation.add(population);
         apr.displayPopulation(extractedPopulation, "City", "Resistencia");
