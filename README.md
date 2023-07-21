@@ -8,6 +8,9 @@ There are a number of tools which are using in the project and. They are:
 - Docker
 - Zube
 
+### Link to Zube
+- https://zube.io/devops-gp2
+
 # Team Members 
 
 |Member               |Matriculation No. | Role  |
@@ -91,14 +94,18 @@ Additional comments: defined issues 22 out of 32 are queried in week 2.
 
 # Workflow status
 
-![workflow](https://github.com/Cham-Myae-40614796/coursework-group2/actions/workflows/main.yml/badge.svg?style=plastic)
+* Workflow Action ![workflow](https://github.com/Cham-Myae-40614796/coursework-group2/actions/workflows/main.yml/badge.svg?style=plastic)
 
-![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/Cham-Myae-40614796/Coursework-group2/main.yml?branch=develop)
+* Master Build ![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/Cham-Myae-40614796/Coursework-group2/main.yml?branch=master)
 
-[![Releases](https://img.shields.io/github/release/Cham-Myae-40614796/coursework-group2/all.svg?style=plastic)](https://github.com/Cham-Myae-40614796/coursework-group2/blob/releases)
+* Develop Build ![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/Cham-Myae-40614796/Coursework-group2/main.yml?branch=develop)
 
-![GitHub commit activity in develop(branch)](https://img.shields.io/github/commit-activity/m/Cham-Myae-40614796/Coursework-group2/develop)
+* Release [![Releases](https://img.shields.io/github/release/Cham-Myae-40614796/coursework-group2/all.svg?style=plastic)](https://github.com/Cham-Myae-40614796/coursework-group2/blob/releases)
 
-![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/Cham-Myae-40614796/Coursework-group2)
+* Code of Conduct [![Code of Conduct](https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat)](https://github.com/Cham-Myae-40614796/coursework-group2/blob/master/Code_of_Conduct.md)
 
-[![LICENSE](https://img.shields.io/github/license/Cham-Myae-40614796/coursework-group2.svg?style=plastic)](https://github.com/Cham-Myae-40614796/coursework-group2/blob/master/LICENSE)
+* Commit Activity in Develop ![GitHub commit activity in develop(branch)](https://img.shields.io/github/commit-activity/m/Cham-Myae-40614796/Coursework-group2/develop)
+
+* Last Commit in Master ![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/Cham-Myae-40614796/Coursework-group2)
+
+* Apache License [![LICENSE](https://img.shields.io/github/license/Cham-Myae-40614796/coursework-group2.svg?style=plastic)](https://github.com/Cham-Myae-40614796/coursework-group2/blob/master/LICENSE)
