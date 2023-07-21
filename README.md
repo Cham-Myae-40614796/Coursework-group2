@@ -114,7 +114,7 @@ The aim of this code review is to check that testing has been correctly specifie
 
 * Code of Conduct [![Code of Conduct](https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat)](https://github.com/Cham-Myae-40614796/coursework-group2/blob/master/Code_of_Conduct.md)
 
-* Code Coverage [![codecov](https://codecov.io/gh/Cham-Myae-40614796/Coursework-group2/branch/master/graph/badge.svg?token=N4I1AGGVJN)](https://codecov.io/gh/Cham-Myae-40614796/Coursework-group2)
+* Code Coverage [![codecov](https://codecov.io/gh/Cham-Myae-40614796/Coursework-group2/branch/develop/graph/badge.svg?token=N4I1AGGVJN)](https://codecov.io/gh/Cham-Myae-40614796/Coursework-group2)
 
 * Commit Activity in Develop ![GitHub commit activity in develop(branch)](https://img.shields.io/github/commit-activity/m/Cham-Myae-40614796/Coursework-group2/develop)
 
