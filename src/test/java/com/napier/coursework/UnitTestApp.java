@@ -460,6 +460,9 @@ public class UnitTestApp {
     @Test
     void displayWorldPopulationTest(){
         ArrayList<Population> extractedWorldPopulation = new ArrayList<>();
+        population = new Population();
+        population.setTotalPopulation(6078749450);
+        extractedWorldPopulation.add(population);
         apr.displayWorldPopulation(extractedWorldPopulation);
     }
 
