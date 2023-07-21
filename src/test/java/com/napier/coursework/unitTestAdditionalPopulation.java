@@ -60,7 +60,7 @@ public class unitTestAdditionalPopulation {
     @Test
     void displayWorldPopulationTest(){
         ArrayList<Population> extractedWorldPopulation = new ArrayList<>();
-        apr.displayWorldPopulation();
+        apr.displayWorldPopulation(extractedWorldPopulation);
     }
 
     @Test

@@ -81,7 +81,8 @@ public class AdditionalPopulationReport {
         String whereClause4 = "WHERE city.District = '" + district + "' ";
         String whereClause5 = "WHERE city.Name = '" + city + "' ";
 
-        displayWorldPopulation();
+        ArrayList<Population> extractedWorldPopulation = extractWorldPopulation();
+        displayWorldPopulation(extractedWorldPopulation);
 
         ArrayList<Population> extractedCitiesAndNonCitiesPopulation = extractCitiesAndNonCitiesPopulation("Continent", whereClause1);
         displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "Continent", continent);
@@ -131,8 +132,7 @@ public class AdditionalPopulationReport {
      * protected method to reformat population and
      * display the extracted world population data in a tabular format
      */
-    protected void displayWorldPopulation() {
-        ArrayList<Population> extractedWorldPopulation = extractWorldPopulation();
+    protected void displayWorldPopulation(ArrayList<Population> extractedWorldPopulation) {
 
         System.out.println();
         System.out.printf("----------------------------------------------------------%n");
@@ -320,7 +320,7 @@ public class AdditionalPopulationReport {
         System.out.println();
         System.out.printf("---------------------------------------------------------%n");
 
-        String title = "Total Number of People Living in a " + type;
+        String title = "Total Number of People Living in a " + type + " (" + name + ")";
 
         title = query_count + ". " + title;
 
