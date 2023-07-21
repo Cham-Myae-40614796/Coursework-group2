@@ -15,10 +15,11 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * declaring variable for respective necessary report files
+ */
 public class UnitTestApp {
-    /**
-     * declaring variable for respective necessary report files
-     */
+
     static CountryReport cotyr;
 
     static CityReport cr;
