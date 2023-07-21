@@ -75,28 +75,42 @@ public class AdditionalPopulationReport {
      * the main public method used to generate different reports of  population
      */
     public void generateAdditionalPopulationReport() {
+
+        // define WHERE part of query
         String whereClause1 = "WHERE cnty.Continent = '" + continent + "' ";
         String whereClause2 = "WHERE cnty.Region = '" + region + "' ";
         String whereClause3 = "WHERE cnty.Name = '" + country + "' ";
         String whereClause4 = "WHERE city.District = '" + district + "' ";
         String whereClause5 = "WHERE city.Name = '" + city + "' ";
 
+        // create new arraylist to store the arraylist of extracted world population data
         ArrayList<Population> extractedWorldPopulation = extractWorldPopulation();
+        // display total world population
         displayWorldPopulation(extractedWorldPopulation);
 
+        // create new arraylist to store the arraylist of extracted cities and non cities population data
         ArrayList<Population> extractedCitiesAndNonCitiesPopulation = extractCitiesAndNonCitiesPopulation("Continent", whereClause1);
+        // display cities and non cities population in a continent
         displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "Continent", continent);
 
+        // store the arraylist of extracted cities and non cities population data
         extractedCitiesAndNonCitiesPopulation = extractCitiesAndNonCitiesPopulation("Region", whereClause2);
+        // display cities and non cities population in a region
         displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "Region", region);
 
+        // store the arraylist of extracted cities and non cities population data
         extractedCitiesAndNonCitiesPopulation = extractCitiesAndNonCitiesPopulation("Country", whereClause3);
+        // display cities and non cities population in a country
         displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "Country", country);
 
+        // create new arraylist to store the arraylist of extracted population data
         ArrayList<Population> extractedPopulation = extractPopulation("District", whereClause4);
+        // display population in a district
         displayPopulation(extractedPopulation, "District", district);
 
+        // store the arraylist of extracted population data
         extractedPopulation = extractPopulation ("City", whereClause5);
+        // display population in a city
         displayPopulation(extractedPopulation, "City", city);
     }
 
