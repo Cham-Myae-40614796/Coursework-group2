@@ -54,7 +54,7 @@ public class AdditionalPopulationReport {
      */
     private String tableFormat1 = "| %-54s |%n";
     private String tableFormat2 = "| %-20s | %-20s | %-20s | %-10s | %-21s | %-10s |%n";
-    private String tableFormat3 = "| %-30s | %-20s |%n";
+    private String tableFormat3 = "| %-40s | %-20s |%n";
 
     /**
      * public method to set SQL database Connection
@@ -318,7 +318,7 @@ public class AdditionalPopulationReport {
     protected void displayPopulation(ArrayList<Population> extractedPopulation, String type, String name) {
 
         System.out.println();
-        System.out.printf("---------------------------------------------------------%n");
+        System.out.printf("-------------------------------------------------------------------%n");
 
         String title = "Total Number of People Living in a " + type + " (" + name + ")";
 
@@ -326,11 +326,11 @@ public class AdditionalPopulationReport {
 
         query_count += 1;
 
-        System.out.printf("| %-53s |%n", title);
-        System.out.printf("---------------------------------------------------------%n");
+        System.out.printf("| %-63s |%n", title);
+        System.out.printf("-------------------------------------------------------------------%n");
 
         System.out.printf(tableFormat3, type + " Name", "Total Population");
-        System.out.printf("---------------------------------------------------------%n");
+        System.out.printf("-------------------------------------------------------------------%n");
 
         if (extractedPopulation != null) {
             for (Population pop : extractedPopulation) {
@@ -339,9 +339,9 @@ public class AdditionalPopulationReport {
                         NumberFormat.getInstance(Locale.US).format(pop.getTotalPopulation()));
             }
         } else {
-            System.out.printf("| %-54s |%n", "No records");
+            System.out.printf("| %-63s |%n", "No records");
         }
-        System.out.printf("---------------------------------------------------------%n");
+        System.out.printf("-------------------------------------------------------------------%n");
         System.out.println();
     }
 }
