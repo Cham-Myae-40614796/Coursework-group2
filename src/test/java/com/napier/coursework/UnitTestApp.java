@@ -461,7 +461,7 @@ public class UnitTestApp {
     void displayWorldPopulationTest(){
         ArrayList<Population> extractedWorldPopulation = new ArrayList<>();
         population = new Population();
-        population.setTotalPopulation(6078749450);
+        population.setTotalPopulation(6078749450L);
         extractedWorldPopulation.add(population);
         apr.displayWorldPopulation(extractedWorldPopulation);
     }
