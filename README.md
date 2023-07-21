@@ -8,6 +8,9 @@ There are a number of tools which are using in the project and. They are:
 - Docker
 - Zube
 
+### Link to Zube
+- https://zube.io/devops-gp2
+
 # Team Members 
 
 |Member               |Matriculation No. | Role  |
@@ -19,13 +22,13 @@ There are a number of tools which are using in the project and. They are:
 
 # Contribution Table
 
-|Member               |Matriculation No. | Code Review 1 | Code Review 2 | Code Review 3 | Code Review 4 |Final Deliverable|
-|:-------------------:|:----------------:|:-------------:|:-------------:|:-------------:|:-------------:|:---------------:|
-| Cham Myae Pyae Sone |40614796          |25             |25             |               |               |                 |
-| Htet Myat Thiri     |40614785          |25             |25             |               |               |                 |
-| Kyi Phyu Khin       |40614804          |25             |25             |               |               |                 |
-| Thar Htet Nyan      |40614795          |25             |25             |               |               |                 |
-| Total               |                  |100            |100            |               |               |                 |
+|Member               | Matriculation No. | Code Review 1 | Code Review 2 | Code Review 3 | Code Review 4 |Final Deliverable|
+|:-------------------:|:-----------------:|:-------------:|:-------------:|:-------------:|:-------------:|:---------------:|
+| Cham Myae Pyae Sone |     40614796      |      25       |      25       |      25       |               |                 |
+| Htet Myat Thiri     |     40614785      |      25       |      25       |      25       |               |                 |
+| Kyi Phyu Khin       |     40614804      |      25       |      25       |      25       |               |                 |
+| Thar Htet Nyan      |     40614795      |      25       |      25       |      25       |               |                 |
+| Total               |                   |      100      |      100      |      100      |               |                 |
 
 # Code Review 1
 
@@ -68,7 +71,7 @@ The aim of this code review is to check the setup of task management for the pro
 2. Define tasks as user stories
 * 32 issues are formatted as mentioned in slides in order to transform into formatted user stories
 
-3. Integrate project with Zube.io
+3. Integrate project with zube.io
 * Project is linked with Zube at week 1
 
 4. Use Kanban/Project Board
@@ -89,16 +92,43 @@ The aim of this code review is to check the setup of task management for the pro
 
 Additional comments: defined issues 22 out of 32 are queried in week 2.
 
+# Code Review 3
+
+The aim of this code review is to check that testing has been correctly specified.
+
+1. Define unit tests.
+* UnitTestApp.java is created for unit testing.
+* Test cases are written with Junit.  
+
+2. Define integration tests. 
+* IntegrationTestApp.java is created for integration testing.
+* Test cases are written with Junit.
+* Assertion method: assertEquals() is used to check the equality of two objects. 
+
+3. Tests running on GitHub Actions. 
+* Added UnitTests and IntegrationTests in GitHub Actions workflow.
+
+Additional comments: 
+* All 32 reports have been generated. 
+* Install jacoco-maven-plugin to generate code coverage reports. 
+* Link to check code coverage of the project: https://app.codecov.io/gh/Cham-Myae-40614796/Coursework-group2/tree/develop
+
 # Workflow status
 
-![workflow](https://github.com/Cham-Myae-40614796/coursework-group2/actions/workflows/main.yml/badge.svg?style=plastic)
+* Workflow Action ![workflow](https://github.com/Cham-Myae-40614796/coursework-group2/actions/workflows/main.yml/badge.svg?style=plastic)
 
-![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/Cham-Myae-40614796/Coursework-group2/main.yml?branch=develop)
+* Master Build ![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/Cham-Myae-40614796/Coursework-group2/main.yml?branch=master)
 
-[![Releases](https://img.shields.io/github/release/Cham-Myae-40614796/coursework-group2/all.svg?style=plastic)](https://github.com/Cham-Myae-40614796/coursework-group2/blob/releases)
+* Develop Build ![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/Cham-Myae-40614796/Coursework-group2/main.yml?branch=develop)
 
-![GitHub commit activity in develop(branch)](https://img.shields.io/github/commit-activity/m/Cham-Myae-40614796/Coursework-group2/develop)
+* Release [![Releases](https://img.shields.io/github/release/Cham-Myae-40614796/coursework-group2/all.svg?style=plastic)](https://github.com/Cham-Myae-40614796/coursework-group2/blob/releases)
 
-![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/Cham-Myae-40614796/Coursework-group2)
+* Code of Conduct [![Code of Conduct](https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat)](https://github.com/Cham-Myae-40614796/coursework-group2/blob/master/Code_of_Conduct.md)
 
-[![LICENSE](https://img.shields.io/github/license/Cham-Myae-40614796/coursework-group2.svg?style=plastic)](https://github.com/Cham-Myae-40614796/coursework-group2/blob/master/LICENSE)
+* Code Coverage [![codecov](https://codecov.io/gh/Cham-Myae-40614796/Coursework-group2/branch/develop/graph/badge.svg?token=N4I1AGGVJN)](https://codecov.io/gh/Cham-Myae-40614796/Coursework-group2)
+
+* Commit Activity in Develop ![GitHub commit activity in develop(branch)](https://img.shields.io/github/commit-activity/m/Cham-Myae-40614796/Coursework-group2/develop)
+
+* Last Commit in Master ![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/Cham-Myae-40614796/Coursework-group2)
+
+* Apache License [![LICENSE](https://img.shields.io/github/license/Cham-Myae-40614796/coursework-group2.svg?style=plastic)](https://github.com/Cham-Myae-40614796/coursework-group2/blob/master/LICENSE)

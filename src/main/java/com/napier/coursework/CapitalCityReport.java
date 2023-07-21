@@ -3,7 +3,7 @@ package com.napier.coursework;
  * Creates reports related to city
  * Extracts data from database and display reports for each user story
  * @author Thar Htet Nyan, Cham Myae Pyae Sone
- * @version 0.1.0.2
+ * @version 0.1.0.3
  * @since 0.1.0.2
  */
 
@@ -18,6 +18,11 @@ public class CapitalCityReport {
      * private Connection to SQL database
      */
     private Connection conn = null;
+
+    /**
+     * Number of query for table titles
+     */
+    private int query_count = 17;
 
     /**
      * private integer to set top limit of query
@@ -62,28 +67,48 @@ public class CapitalCityReport {
         String whereClause1 = "WHERE country.Continent = '" + continent + "' ";
         String whereClause2 = "WHERE country.Region = '" + region + "' ";
 
-        // display a table of information on capital cities in the world organized by their population in descending order
-        displayCapitalCities(whereClause,"World", "", false);
-        // display a table of information on capital cities in a continent organized by their population in descending order
-        displayCapitalCities(whereClause1, "Continent", continent, false);
-        // display a table of information on capital cities in a region organized by their population in descending order
-        displayCapitalCities(whereClause2, "Region", region, false);
 
+        // create new arraylist to store the arraylist of extracted cities data
+        ArrayList<City> extractedCapitalCities = extractCapitalCities(whereClause, false);
+        // display a table of information on cities in the world organized by their population in descending order
+        displayCapitalCities(extractedCapitalCities,"World", "", false);
+
+        // store the arraylist of extracted cities data
+        extractedCapitalCities = extractCapitalCities(whereClause1, false);
+        // display a table of information on cities in a continent organized by their population in descending order
+        displayCapitalCities(extractedCapitalCities,"Continent", continent, false);
+
+        // store the arraylist of extracted cities data
+        extractedCapitalCities = extractCapitalCities(whereClause2, false);
+        // display a table of information on cities in a region organized by their population in descending order
+        displayCapitalCities(extractedCapitalCities,"Region", region, false);
+
+
+
+
+        // store the arraylist of extracted cities data
+        extractedCapitalCities = extractCapitalCities(whereClause, true);
         // display a table of information on top populated capital cities in the world
-        displayCapitalCities(whereClause,"World", "", true);
+        displayCapitalCities(extractedCapitalCities,"World", "", true);
+
+        // store the arraylist of extracted cities data
+        extractedCapitalCities = extractCapitalCities(whereClause1, true);
         // display a table of information on top populated capital cities in a continent
-        displayCapitalCities(whereClause1, "Continent", continent, true);
+        displayCapitalCities(extractedCapitalCities,"Continent", continent, true);
+
+        // store the arraylist of extracted cities data
+        extractedCapitalCities = extractCapitalCities(whereClause2, true);
         // display a table of information on top populated capital cities in a region
-        displayCapitalCities(whereClause2, "Region", region, true);
+        displayCapitalCities(extractedCapitalCities,"Region", region, true);
 
     }
 
     /**
-     * private method to extract capital cities data from SQL database using query
+     * protected method to extract capital cities data from SQL database using query
      *
      * @return the arraylist of extracted capital cities data
      */
-    private ArrayList<City> extractCapitalCities(String whereClause, boolean isTop)
+    protected ArrayList<City> extractCapitalCities(String whereClause, boolean isTop)
     {
         try
         {
@@ -133,13 +158,13 @@ public class CapitalCityReport {
     }
 
     /**
-     * private method to reformat population and
+     * protected method to reformat population and
      * display the extracted capital cities data in a tabular format
      */
-    private void displayCapitalCities(String whereClause, String type, String name, boolean isTop)
+    protected void displayCapitalCities(ArrayList<City> extractedCapitalCities, String type, String name, boolean isTop)
     {
         // create new arraylist to store the arraylist of extracted capital cities data
-        ArrayList<City> extractedCapitalCities = extractCapitalCities(whereClause, isTop);
+//        ArrayList<City> extractedCapitalCities = extractCapitalCities(whereClause, isTop);
 
         // skip a line and make a table
         System.out.println();
@@ -156,27 +181,43 @@ public class CapitalCityReport {
         if (type != "World") {
             title +=  " (" + name + ")";
         }
+        // add numbering to the title
+        title = query_count + ". " + title;
+        // increase the count by one
+        query_count += 1;
         // print out the title
         System.out.printf("| %-93s |%n", title);
         System.out.printf("-------------------------------------------------------------------------------------------------%n");
         // print out table headings
         System.out.printf(tableFormat, "City Name", "Country Name", "Population");
         System.out.printf("-------------------------------------------------------------------------------------------------%n");
-        // print out table records
         if (extractedCapitalCities != null) {
-            for (int i = 0; i < extractedCapitalCities.size(); i++) {
-                String cityNameText = extractedCapitalCities.get(i).getCityName();
+            while(extractedCapitalCities.remove(null)){
+
+            }
+        }
+
+        if (extractedCapitalCities == null || extractedCapitalCities.size() == 0) {
+            // handles null records
+            System.out.printf("| %-93s |%n", "No records");
+        }
+        else {
+            // print out table records
+            for (City eCaptial : extractedCapitalCities) {
+
+                if (eCaptial == null) {
+                    continue;
+                }
+
+                String cityNameText = eCaptial.getCityName();
                 if (cityNameText == null) {
                     cityNameText = "-";
                 }
                 System.out.printf(tableFormat,
                         cityNameText,
-                        extractedCapitalCities.get(i).getCountryName(),
-                        NumberFormat.getInstance(Locale.US).format(extractedCapitalCities.get(i).getPopulation()));
+                        eCaptial.getCountryName(),
+                        NumberFormat.getInstance(Locale.US).format(eCaptial.getPopulation()));
             }
-        } else {
-            // handles null records
-            System.out.printf("| %-93s |%n", "No records");
         }
         System.out.printf("-------------------------------------------------------------------------------------------------%n");
         System.out.println();

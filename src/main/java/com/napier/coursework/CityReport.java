@@ -3,7 +3,7 @@ package com.napier.coursework;
  * Creates reports related to city
  * Extracts data from database and display reports for each user story
  * @author Thar Htet Nyan, Kyi Phyu Khin
- * @version 0.1.0.2
+ * @version 0.1.0.3
  * @since 0.1.0.2
  */
 
@@ -18,6 +18,11 @@ public class CityReport {
      * private Connection to SQL database
      */
     private Connection conn = null;
+
+    /**
+     * Number of query for table titles
+     */
+    private int query_count = 7;
 
     /**
      * private integer to set top limit of query
@@ -74,35 +79,67 @@ public class CityReport {
         String whereClause3 = "WHERE country.Name = '" + country + "' ";
         String whereClause4 = "WHERE city.District = '" + district + "' ";
 
-        // display a table of information on cities in the world organized by their population in descending order
-        displayCities(whereClause, "World", "", false);
-        // display a table of information on cities in a continent organized by their population in descending order
-        displayCities(whereClause1, "Continent", continent, false);
-        // display a table of information on cities in a region organized by their population in descending order
-        displayCities(whereClause2, "Region", region, false);
-        // display a table of information on cities in a country organized by their population in descending order
-        displayCities(whereClause3, "Country", country, false);
-        // display a table of information on cities in a district organized by their population in descending order
-        displayCities(whereClause4, "District", district, false);
 
+        // create new arraylist to store the arraylist of extracted cities data
+        ArrayList<City> extractedCities = extractCities(whereClause, false);
+        // display a table of information on cities in the world organized by their population in descending order
+        displayCities(extractedCities,"World", "", false);
+
+        // store the arraylist of extracted cities data
+        extractedCities = extractCities(whereClause1, false);
+        // display a table of information on cities in a continent organized by their population in descending order
+        displayCities(extractedCities,"Continent", continent, false);
+
+        // store the arraylist of extracted cities data
+        extractedCities = extractCities(whereClause2, false);
+        // display a table of information on cities in a region organized by their population in descending order
+        displayCities(extractedCities,"Region", region, false);
+
+        // store the arraylist of extracted cities data
+        extractedCities = extractCities(whereClause3, false);
+        // display a table of information on cities in a country organized by their population in descending order
+        displayCities(extractedCities,"Country", country, false);
+
+        // store the arraylist of extracted cities data
+        extractedCities = extractCities(whereClause4, false);
+        // display a table of information on cities in a district organized by their population in descending order
+        displayCities(extractedCities,"District", district, false);
+
+
+
+        // store the arraylist of extracted cities data
+        extractedCities = extractCities(whereClause, true);
         // display a table of information on top populated cities in the world
-        displayCities(whereClause, "World", "", true);
+        displayCities(extractedCities,"World", "", true);
+
+        // store the arraylist of extracted cities data
+        extractedCities = extractCities(whereClause1, true);
         // display a table of information on top populated cities in a continent
-        displayCities(whereClause1, "Continent", continent, true);
+        displayCities(extractedCities,"Continent", continent, true);
+
+        // store the arraylist of extracted cities data
+        extractedCities = extractCities(whereClause2, true);
         // display a table of information on top populated cities in a region
-        displayCities(whereClause2, "Region", region, true);
+        displayCities(extractedCities,"Region", region, true);
+
+        // store the arraylist of extracted cities data
+        extractedCities = extractCities(whereClause3, true);
         // display a table of information on top populated cities in a country
-        displayCities(whereClause3, "Country", country, true);
+        displayCities(extractedCities,"Country", country, true);
+
+        // store the arraylist of extracted cities data
+        extractedCities = extractCities(whereClause4, true);
         // display a table of information on top populated cities in a district
-        displayCities(whereClause4, "District", district, true);
+        displayCities(extractedCities,"District", district, true);
+
     }
 
     /**
-     * private method to extract cities data from SQL database using query
+     * protected method to extract cities data from SQL database using query
      *
      * @return the arraylist of extracted cities data
      */
-    private ArrayList<City> extractCities(String whereClause, boolean isTop)
+    protected ArrayList<City> extractCities(String whereClause, boolean isTop)
     {
         try
         {
@@ -153,13 +190,13 @@ public class CityReport {
     }
 
     /**
-     * private method to reformat population and
+     * protected method to reformat population and
      * display the extracted cities data in a tabular format
      */
-    private void displayCities(String whereClause, String type, String name, boolean isTop)
+    protected void displayCities(ArrayList<City> extractedCities, String type, String name, boolean isTop)
     {
         // create new arraylist to store the arraylist of extracted cities data
-        ArrayList<City> extractedCities = extractCities(whereClause, isTop);
+//        ArrayList<City> extractedCities = extractCities(whereClause, isTop);
 
         // skip a line and make a table
         System.out.println();
@@ -176,24 +213,39 @@ public class CityReport {
         if (type != "World") {
             title +=  " (" + name + ")";
         }
+        // add numbering to the title
+        title = query_count + ". " + title;
+        // increase the count by one
+        query_count += 1;
         // print out the title
         System.out.printf("| %-118s |%n", title);
         System.out.printf("--------------------------------------------------------------------------------------------------------------------------%n");
         // print out table headings
         System.out.printf(tableFormat, "City Name", "Country Name", "District", "Population");
         System.out.printf("--------------------------------------------------------------------------------------------------------------------------%n");
-        // print out table records
         if (extractedCities != null) {
-            for (int i = 0; i < extractedCities.size(); i++) {
-                System.out.printf(tableFormat,
-                        extractedCities.get(i).getCityName(),
-                        extractedCities.get(i).getCountryName(),
-                        extractedCities.get(i).getDistrict(),
-                        NumberFormat.getInstance(Locale.US).format(extractedCities.get(i).getPopulation()));
+            while(extractedCities.remove(null)){
+
             }
+        }
+
+        if (extractedCities == null || extractedCities.size() == 0) {
+            // handles null records
+            System.out.printf("| %-118s |%n", "No records");
         } else {
-          // handles null records
-          System.out.printf("| %-118s |%n", "No records");
+            // print out table records
+            for (City eCity : extractedCities) {
+
+                if (eCity == null) {
+                    continue;
+                }
+
+                System.out.printf(tableFormat,
+                        eCity.getCityName(),
+                        eCity.getCountryName(),
+                        eCity.getDistrict(),
+                        NumberFormat.getInstance(Locale.US).format(eCity.getPopulation()));
+            }
         }
         System.out.printf("--------------------------------------------------------------------------------------------------------------------------%n");
         System.out.println();

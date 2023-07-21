@@ -3,7 +3,7 @@ package com.napier.coursework;
  * Represents database connection to SQL
  * Handles Connection and Disconnection to database
  * @author Thar Htet Nyan
- * @version 0.1.0.2
+ * @version 0.1.0.3
  * @since 0.1.0.2
  */
 
@@ -15,16 +15,6 @@ public class DatabaseConnection {
      * Stores SQL database connection
      */
     private Connection conn = null;
-
-    /**
-     * conn is used in SQL data extraction. It has a default value of null.
-     * This can be set to use existing database connection.
-     *
-     * @param conn the SQL database connection
-     */
-    public void setConn(Connection conn) {
-        this.conn = conn;
-    }
 
     /**
      *
@@ -52,9 +42,15 @@ public class DatabaseConnection {
             System.out.println("Connecting to database...");
             try {
                 // Wait a bit for db to start
-                Thread.sleep(30000);
+                Thread.sleep(10000);
                 // Connect to database
-                conn = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
+
+                if (i%2 ==0) {
+                    conn = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false&allowPublicKeyRetrieval=true", "root", "example");
+                } else {
+                    conn = DriverManager.getConnection("jdbc:mysql://localhost:33060/world?useSSL=false&allowPublicKeyRetrieval=true", "root", "example");
+                }
+                
                 System.out.println("Successfully connected");
                 // Exit retry loop
                 break;
