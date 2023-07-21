@@ -408,13 +408,13 @@ public class UnitTestApp {
     @Test
     void displayCitiesAndNonCitiesPopulationEmptyTest(){
         ArrayList<Population> extractedCitiesAndNonCitiesPopulation = new ArrayList<>();
-        apr.displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "", "");
+        apr.displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "for Total", "Queries");
     }
 
     @Test
     void displayAdditionalPopulationEmptyTest(){
         ArrayList<Population> extractedPopulation = new ArrayList<>();
-        apr.displayPopulation(extractedPopulation, "", "" );
+        apr.displayPopulation(extractedPopulation, "for Total", "Queries" );
     }
 
     @Test
