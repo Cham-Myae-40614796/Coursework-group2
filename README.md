@@ -92,6 +92,16 @@ The aim of this code review is to check the setup of task management for the pro
 
 Additional comments: defined issues 22 out of 32 are queried in week 2.
 
+# Code Review 3
+
+The aim of this code review is to check that testing has been correctly specified.
+
+1. Define unit tests.
+
+2. Define integration tests. 
+
+3. Tests running on GitHub Actions. 
+
 # Workflow status
 
 * Workflow Action ![workflow](https://github.com/Cham-Myae-40614796/coursework-group2/actions/workflows/main.yml/badge.svg?style=plastic)
@@ -103,6 +113,8 @@ Additional comments: defined issues 22 out of 32 are queried in week 2.
 * Release [![Releases](https://img.shields.io/github/release/Cham-Myae-40614796/coursework-group2/all.svg?style=plastic)](https://github.com/Cham-Myae-40614796/coursework-group2/blob/releases)
 
 * Code of Conduct [![Code of Conduct](https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat)](https://github.com/Cham-Myae-40614796/coursework-group2/blob/master/Code_of_Conduct.md)
+
+* Code Coverage [![codecov](https://codecov.io/gh/Cham-Myae-40614796/Coursework-group2/branch/master/graph/badge.svg?token=N4I1AGGVJN)](https://codecov.io/gh/Cham-Myae-40614796/Coursework-group2)
 
 * Commit Activity in Develop ![GitHub commit activity in develop(branch)](https://img.shields.io/github/commit-activity/m/Cham-Myae-40614796/Coursework-group2/develop)
 
