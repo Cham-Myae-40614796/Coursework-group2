@@ -33,8 +33,8 @@ public class App {
         cr.setConn(dbConn.getConn());
         // Generate the reports
         cr.generateCityReport();
-
-        // Create a CapitalCityReport Object
+      
+        //Create a CapitalCityReport Object
         CapitalCityReport ccr = new CapitalCityReport();
         // Set connection for CapitalCityReport Object
         ccr.setConn(dbConn.getConn());
@@ -44,7 +44,21 @@ public class App {
         PopulationReport pr = new PopulationReport();
         pr.setConn(dbConn.getConn());
         pr.generatePopulationReport();
-
+      
+        // Create a AdditionalPopulationReport Object
+        AdditionalPopulationReport apr = new AdditionalPopulationReport();
+        // Set connection for AdditionalPopulationReport Object
+        apr.setConn(dbConn.getConn());
+        // Generate the reports
+        apr.generateAdditionalPopulationReport();
+      
+        // Create a CapitalCityReport Object
+        LanguageReport lgr = new LanguageReport();
+        // Set connection for CapitalCityReport Object
+        lgr.setConn(dbConn.getConn());
+        // Generate the reports
+        lgr.generateLanguageReport();
+      
 
         // Close the connection
         dbConn.disconnect();

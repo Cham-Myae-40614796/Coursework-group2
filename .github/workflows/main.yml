@@ -17,6 +17,13 @@ jobs:
           distribution: 'adopt'
       - name: Unit Tests
         run: mvn -Dtest=com.napier.coursework.UnitTestApp test
+      - name: CodeCov
+        uses: codecov/codecov-action@v2
+        with:
+          token: 5acf7dfe-ba00-4503-ad58-629e38b0a756 # not required for public repos
+          directory: ./target/site/jacoco
+          flags: UnitTests # optional
+          verbose: true # optional (default = false)
 
   IntegrationTests:
     name: Integration Tests
@@ -42,6 +49,13 @@ jobs:
           docker stop world
           docker rm world
           docker image rm database
+      - name: CodeCov
+        uses: codecov/codecov-action@v2
+        with:
+          token: 5acf7dfe-ba00-4503-ad58-629e38b0a756 # not required for public repos
+          directory: ./target/site/jacoco
+          flags: IntegrationTests # optional
+          verbose: true # optional (default = false)
 
   build:
     name: Coursework Group2 App Action
@@ -60,4 +74,6 @@ jobs:
         run: mvn package -DskipTests
       - name: Run docker compose
         run: docker-compose up --abort-on-container-exit
+
+
 
