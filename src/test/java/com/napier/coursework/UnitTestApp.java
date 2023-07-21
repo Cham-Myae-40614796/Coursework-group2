@@ -1,12 +1,15 @@
 package com.napier.coursework;
 
+/**
+ * Creates unit tests for all the methods used to generate different reports
+ * @author Thar Htet Nyan, Htet Myat Thiri, Kyi Phyu Khin
+ * @version 0.1.0.3
+ * @since 0.1.0.3
+ */
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import javax.swing.plaf.synth.Region;
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class UnitTestApp {
 
@@ -56,7 +59,7 @@ public class UnitTestApp {
         language = new Language();
         language.setCountryLanguage("Chinese");
         language.setPopulation(1191843539);
-        language.setPercentage("19.61");
+        language.setPercentage("19.61 %");
 
     }
     @Test
@@ -93,7 +96,7 @@ public class UnitTestApp {
         ArrayList<Country> extractedCountries = new ArrayList<>();
 
         extractedCountries.add(country);
-        cotyr.displayCountries(extractedCountries, "Continent", "Europe", false);
+        cotyr.displayCountries(extractedCountries, "Continent", "Asia", false);
     }
 
     @Test
@@ -101,7 +104,7 @@ public class UnitTestApp {
         ArrayList<Country> extractedCountries = new ArrayList<>();
 
         extractedCountries.add(country);
-        cotyr.displayCountries(extractedCountries, "Region", "Eastern Africa", false);
+        cotyr.displayCountries(extractedCountries, "Region", "Southern and Central Asia", false);
     }
 
     @Test
@@ -117,7 +120,7 @@ public class UnitTestApp {
         ArrayList<Country> extractedCountries = new ArrayList<>();
 
         extractedCountries.add(country);
-        cotyr.displayCountries(extractedCountries, "Continent", "Europe", true);
+        cotyr.displayCountries(extractedCountries, "Continent", "Asia", true);
     }
 
     @Test
@@ -125,7 +128,7 @@ public class UnitTestApp {
         ArrayList<Country> extractedCountries = new ArrayList<>();
 
         extractedCountries.add(country);
-        cotyr.displayCountries(extractedCountries, "Region", "Eastern Africa", true);
+        cotyr.displayCountries(extractedCountries, "Region", "Southern and Central Asia", true);
     }
 
 
@@ -167,7 +170,7 @@ public class UnitTestApp {
         ArrayList<City> extractedCities = new ArrayList<>();
 
         extractedCities.add(city);
-        cr.displayCities(extractedCities, "Continent", "Europe", false);
+        cr.displayCities(extractedCities, "Continent", "Asia", false);
     }
 
     @Test
@@ -175,7 +178,7 @@ public class UnitTestApp {
         ArrayList<City> extractedCities = new ArrayList<>();
 
         extractedCities.add(city);
-        cr.displayCities(extractedCities, "Region", "Eastern Africa", false);
+        cr.displayCities(extractedCities, "Region", "Eastern Asia", false);
     }
 
     @Test
@@ -183,7 +186,7 @@ public class UnitTestApp {
         ArrayList<City> extractedCities = new ArrayList<>();
 
         extractedCities.add(city);
-        cr.displayCities(extractedCities, "Country", "Eastern Africa", false);
+        cr.displayCities(extractedCities, "Country", "South Korea", false);
     }
 
     @Test
@@ -191,7 +194,7 @@ public class UnitTestApp {
         ArrayList<City> extractedCities = new ArrayList<>();
 
         extractedCities.add(city);
-        cr.displayCities(extractedCities, "District", "Eastern Africa", false);
+        cr.displayCities(extractedCities, "District", "Seoul", false);
     }
 
     @Test
@@ -207,7 +210,7 @@ public class UnitTestApp {
         ArrayList<City> extractedCities = new ArrayList<>();
 
         extractedCities.add(city);
-        cr.displayCities(extractedCities, "Continent", "Europe", true);
+        cr.displayCities(extractedCities, "Continent", "Asia", true);
     }
 
     @Test
@@ -215,7 +218,7 @@ public class UnitTestApp {
         ArrayList<City> extractedCities = new ArrayList<>();
 
         extractedCities.add(city);
-        cr.displayCities(extractedCities, "Region", "Eastern Africa", true);
+        cr.displayCities(extractedCities, "Region", "Eastern Asia", true);
     }
 
     @Test
@@ -223,7 +226,7 @@ public class UnitTestApp {
         ArrayList<City> extractedCities = new ArrayList<>();
 
         extractedCities.add(city);
-        cr.displayCities(extractedCities, "Country", "Eastern Africa", true);
+        cr.displayCities(extractedCities, "Country", "South Korea", true);
     }
 
     @Test
@@ -231,7 +234,7 @@ public class UnitTestApp {
         ArrayList<City> extractedCities = new ArrayList<>();
 
         extractedCities.add(city);
-        cr.displayCities(extractedCities, "District", "Eastern Africa", true);
+        cr.displayCities(extractedCities, "District", "Seoul", true);
     }
 
 
@@ -275,7 +278,7 @@ public class UnitTestApp {
         ArrayList<City> extractedCapitalCities = new ArrayList<>();
 
         extractedCapitalCities.add(city);
-        ccr.displayCapitalCities(extractedCapitalCities, "Continent", "Europe", false);
+        ccr.displayCapitalCities(extractedCapitalCities, "Continent", "Asia", false);
     }
 
     @Test
@@ -283,7 +286,7 @@ public class UnitTestApp {
         ArrayList<City> extractedCapitalCities = new ArrayList<>();
 
         extractedCapitalCities.add(city);
-        ccr.displayCapitalCities(extractedCapitalCities, "Region", "Eastern Africa", false);
+        ccr.displayCapitalCities(extractedCapitalCities, "Region", "Eastern Asia", false);
     }
 
     @Test
@@ -299,7 +302,7 @@ public class UnitTestApp {
         ArrayList<City> extractedCapitalCities = new ArrayList<>();
 
         extractedCapitalCities.add(city);
-        ccr.displayCapitalCities(extractedCapitalCities, "Continent", "Europe", true);
+        ccr.displayCapitalCities(extractedCapitalCities, "Continent", "Asia", true);
     }
 
     @Test
@@ -307,7 +310,7 @@ public class UnitTestApp {
         ArrayList<City> extractedCapitalCities = new ArrayList<>();
 
         extractedCapitalCities.add(city);
-        ccr.displayCapitalCities(extractedCapitalCities, "Region", "Eastern Africa", true);
+        ccr.displayCapitalCities(extractedCapitalCities, "Region", "Eastern Asia", true);
     }
 
 
@@ -401,13 +404,13 @@ public class UnitTestApp {
     @Test
     void displayCitiesAndNonCitiesPopulationEmptyTest(){
         ArrayList<Population> extractedCitiesAndNonCitiesPopulation = new ArrayList<>();
-        apr.displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "for Total", "Queries");
+        apr.displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "Continent", "Europe");
     }
 
     @Test
     void displayAdditionalPopulationEmptyTest(){
         ArrayList<Population> extractedPopulation = new ArrayList<>();
-        apr.displayPopulation(extractedPopulation, "for Total", "Queries" );
+        apr.displayPopulation(extractedPopulation, "District", "Gederland" );
     }
 
     @Test
@@ -471,7 +474,7 @@ public class UnitTestApp {
         population.setNonCityPopulationPercentage("66.8605 %");
 
         extractedCitiesAndNonCitiesPopulation.add(population);
-        apr.displayPopulation(extractedCitiesAndNonCitiesPopulation, "Continent", "Europe");
+        apr.displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "Continent", "Europe");
     }
 
     @Test
@@ -486,7 +489,7 @@ public class UnitTestApp {
         population.setNonCityPopulationPercentage("72.3402 %");
 
         extractedCitiesAndNonCitiesPopulation.add(population);
-        apr.displayPopulation(extractedCitiesAndNonCitiesPopulation, "Region", "Southern Europe");
+        apr.displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "Region", "Southern Europe");
     }
 
     @Test
@@ -501,12 +504,15 @@ public class UnitTestApp {
         population.setNonCityPopulationPercentage("70.5347 %");
 
         extractedCitiesAndNonCitiesPopulation.add(population);
-        apr.displayPopulation(extractedCitiesAndNonCitiesPopulation, "Country", "Austria");
+        apr.displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "Country", "Austria");
     }
 
     @Test
     void displayPopulationInDistrictTest(){
         ArrayList<Population> extractedPopulation = new ArrayList<>();
+        population = new Population();
+        population.setName("Gelderland");
+        population.setTotalPopulation(545548);
 
         extractedPopulation.add(population);
         apr.displayPopulation(extractedPopulation, "District", "Gelderland");
@@ -515,6 +521,9 @@ public class UnitTestApp {
     @Test
     void displayPopulationInCityTest(){
         ArrayList<Population> extractedPopulation = new ArrayList<>();
+        population = new Population();
+        population.setName("Resistencia");
+        population.setTotalPopulation(229212);
 
         extractedPopulation.add(population);
         apr.displayPopulation(extractedPopulation, "City", "Resistencia");
