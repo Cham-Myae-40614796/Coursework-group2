@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class IntegrationTestApp {
 
     static DatabaseConnection dbConn;
+  
     static CountryReport cotyr;
 
     static CityReport cr;
@@ -21,6 +22,9 @@ public class IntegrationTestApp {
     static CapitalCityReport ccr;
 
     static PopulationReport popr;
+  
+    static LanguageReport lgr;
+
 
     static AdditionalPopulationReport apr;
 
@@ -38,6 +42,8 @@ public class IntegrationTestApp {
         popr.setConn(dbConn.getConn());
         apr = new AdditionalPopulationReport();
         apr.setConn(dbConn.getConn());
+        lgr = new LanguageReport();
+        lgr.setConn(dbConn.getConn());
     }
     @AfterAll
     static void end(){
@@ -281,6 +287,7 @@ public class IntegrationTestApp {
 
 
 
+
     @Test
     void extractPopulationInContinentTest(){
         ArrayList<Population> extractedPopulation = popr.extractPopulation("Continent");
@@ -313,6 +320,10 @@ public class IntegrationTestApp {
         assertEquals(extractedPopulation.get(0).getPopulationNotInCities(), 73966L);
         assertEquals(extractedPopulation.get(0).getNonCityPopulationPercentage(), "71.8117 %");
     }
+  
+  
+  
+  
 
     @Test
     void extractWorldPopulationTest(){
@@ -370,5 +381,18 @@ public class IntegrationTestApp {
         ArrayList<Population> extractedPopulation = apr.extractPopulation("City", whereClause);
         assertEquals(extractedPopulation.get(0).getName(), "Resistencia");
         assertEquals(extractedPopulation.get(0).getTotalPopulation(), 229212L);
+    }
+  
+  
+  
+  
+  
+  
+    @Test
+    void extractLanguageTest(){
+        ArrayList<Language> extractedLanguage = lgr.extractLanguage();
+        assertEquals(extractedLanguage.get(0).getCountryLanguage(), "Chinese");
+        assertEquals(extractedLanguage.get(0).getPopulation(), 1191843539);
+        assertEquals(extractedLanguage.get(0).getPercentage(), "19.61 %");
     }
 }
