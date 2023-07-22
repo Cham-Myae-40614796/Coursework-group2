@@ -150,6 +150,7 @@ public class LanguageReport {
                         elan.getPercentage());
             }
         }
+
         System.out.printf("----------------------------------------------------------------------------------------------------%n");
         System.out.println();
     }
