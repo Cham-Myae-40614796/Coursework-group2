@@ -46,7 +46,7 @@ class IntegrationTestApp {
          * setting connection to SQL database for each report
          */
         dbConn = new DatabaseConnection();
-        dbConn.connect("localhost", 33061);
+        dbConn.connect("localhost", 33060);
         cotyr = new CountryReport();
         cotyr.setConn(dbConn.getConn());
         cr = new CityReport();
@@ -312,9 +312,9 @@ class IntegrationTestApp {
     void extractCapitalCityInWorldTest(){
         String whereClause = "";
         ArrayList<City> extractedCapitalCites = ccr.extractCapitalCities(whereClause, false);
-        assertEquals("Sixth data row of the capital city's name in the world table should be Peking", extractedCapitalCites.get(5).getCityName(), "Peking");
-        assertEquals("Sixth data row of the capital city's country in the world table should be China", extractedCapitalCites.get(5).getCountryName(), "China");
-        assertEquals(7472000, extractedCapitalCites.get(5).getPopulation(), 7472000);
+        assertEquals("Peking", extractedCapitalCites.get(5).getCityName(), "Sixth data row of the capital city's name in the world table should be Peking");
+        assertEquals("China", extractedCapitalCites.get(5).getCountryName(), "Sixth data row of the capital city's country in the world table should be China");
+        assertEquals(7472000, extractedCapitalCites.get(5).getPopulation(), "Sixth data row of the capital city's population in the world table should be 7472000");
     }
 
     /**
@@ -324,9 +324,9 @@ class IntegrationTestApp {
     void extractCapitalCityInContinentTest(){
         String whereClause = "WHERE country.Continent = 'Asia' ";
         ArrayList<City> extractedCapitalCites = ccr.extractCapitalCities(whereClause, false);
-        assertEquals("Sixth data row of the capital city's name in the continent table should be Bangkok", extractedCapitalCites.get(5).getCityName(), "Bangkok");
-        assertEquals("Sixth data row of the capital city's country in the continent table should be Thailand", extractedCapitalCites.get(5).getCountryName(), "Thailand");
-        assertEquals(6320174, extractedCapitalCites.get(5).getPopulation(), 6320174);
+        assertEquals("Bangkok", extractedCapitalCites.get(5).getCityName(),"Sixth data row of the capital city's name in the continent table should be Bangkok");
+        assertEquals("Thailand", extractedCapitalCites.get(5).getCountryName(), "Sixth data row of the capital city's country in the continent table should be Thailand");
+        assertEquals(6320174, extractedCapitalCites.get(5).getPopulation(), "Sixth data row of the capital city's population in the continent table should be 6320174");
     }
 
     /**
