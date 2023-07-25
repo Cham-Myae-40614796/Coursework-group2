@@ -197,17 +197,13 @@ public class CapitalCityReport {
             }
         }
 
-        if (extractedCapitalCities == null || extractedCapitalCities.size() == 0) {
+        if (extractedCapitalCities == null || extractedCapitalCities.isEmpty()) {
             // handles null records
             System.out.printf("| %-93s |%n", "No records");
         }
         else {
             // print out table records
             for (City eCaptial : extractedCapitalCities) {
-
-                if (eCaptial == null) {
-                    continue;
-                }
 
                 String cityNameText = eCaptial.getCityName();
                 if (cityNameText == null) {

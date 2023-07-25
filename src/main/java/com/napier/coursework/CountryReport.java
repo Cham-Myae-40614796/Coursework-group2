@@ -187,15 +187,11 @@ public class CountryReport {
 
             }
         }
-        if (extractedCountries == null || extractedCountries.size() == 0) {
+        if (extractedCountries == null || extractedCountries.isEmpty()) {
             // handles null records
             System.out.printf("| %-110s |%n", "No records");
         } else {
             for (Country eCountry : extractedCountries) {
-
-                if (eCountry == null) {
-                    continue;
-                }
 
                 String countryNameText = eCountry.getCountryName();
                 String regionText = eCountry.getRegion();

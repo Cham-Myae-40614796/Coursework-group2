@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class IntegrationTestApp {
+class IntegrationTestApp {
 
     /**
      * declaring variable for respective necessary report files
@@ -46,7 +46,7 @@ public class IntegrationTestApp {
          * setting connection to SQL database for each report
          */
         dbConn = new DatabaseConnection();
-        dbConn.connect();
+        dbConn.connect("localhost", 33061);
         cotyr = new CountryReport();
         cotyr.setConn(dbConn.getConn());
         cr = new CityReport();

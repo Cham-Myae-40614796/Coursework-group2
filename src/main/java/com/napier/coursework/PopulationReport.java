@@ -54,7 +54,7 @@ public class PopulationReport {
         displayPopulation(extractedPopulation,type);
 
         type = "Country";
-        extractedPopulation = extractPopulation(type);
+        extractedPopulation = extractPopulation("Name");
         displayPopulation(extractedPopulation, type);
 
     }
@@ -66,9 +66,6 @@ public class PopulationReport {
      */
     protected ArrayList<Population> extractPopulation(String type)
     {
-        if (type == "Country") {
-            type = "Name";
-        }
         try
         {
             Statement stmt = conn.createStatement();
@@ -141,7 +138,7 @@ public class PopulationReport {
             }
         }
 
-        if (extractedPopulation == null || extractedPopulation.size() == 0) {
+        if (extractedPopulation == null || extractedPopulation.isEmpty()) {
             // handles null records
             System.out.printf("| %-116s |%n", "No records");
         } else {

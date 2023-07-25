@@ -229,16 +229,12 @@ public class CityReport {
             }
         }
 
-        if (extractedCities == null || extractedCities.size() == 0) {
+        if (extractedCities == null || extractedCities.isEmpty()) {
             // handles null records
             System.out.printf("| %-118s |%n", "No records");
         } else {
             // print out table records
             for (City eCity : extractedCities) {
-
-                if (eCity == null) {
-                    continue;
-                }
 
                 System.out.printf(tableFormat,
                         eCity.getCityName(),

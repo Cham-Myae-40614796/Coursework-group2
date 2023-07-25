@@ -96,7 +96,7 @@ public class AdditionalPopulationReport {
         displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "Region", region);
 
         // store the arraylist of extracted cities and non cities population data
-        extractedCitiesAndNonCitiesPopulation = extractCitiesAndNonCitiesPopulation("Country", whereClause3);
+        extractedCitiesAndNonCitiesPopulation = extractCitiesAndNonCitiesPopulation("Name", whereClause3);
         // display cities and non cities population in a country
         displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "Country", country);
 
@@ -106,7 +106,7 @@ public class AdditionalPopulationReport {
         displayPopulation(extractedPopulation, "District", district);
 
         // store the arraylist of extracted population data
-        extractedPopulation = extractPopulation ("City", whereClause5);
+        extractedPopulation = extractPopulation ("Name", whereClause5);
         // display population in a city
         displayPopulation(extractedPopulation, "City", city);
     }
@@ -165,7 +165,7 @@ public class AdditionalPopulationReport {
 
             }
         }
-        if (extractedWorldPopulation == null || extractedWorldPopulation.size() == 0){
+        if (extractedWorldPopulation == null || extractedWorldPopulation.isEmpty()){
             //handles null records
             System.out.printf("| %-54s |%n", "No records");
         }
@@ -186,9 +186,7 @@ public class AdditionalPopulationReport {
      */
     protected ArrayList<Population> extractCitiesAndNonCitiesPopulation(String type, String whereClause) {
         try {
-            if (type == "Country") {
-                type = "Name";
-            }
+
             Statement stmt = conn.createStatement();
 
             String query = "SELECT cnty." + type + ", SUM(cnty.Population) AS TotalPopulation, cty.TotalCityPopulation, " +
@@ -260,7 +258,7 @@ public class AdditionalPopulationReport {
             }
         }
 
-        if (extractedCitiesAndNonCitiesPopulation == null || extractedCitiesAndNonCitiesPopulation.size() == 0) {
+        if (extractedCitiesAndNonCitiesPopulation == null || extractedCitiesAndNonCitiesPopulation.isEmpty()) {
             // handles null records
             System.out.printf("| %-116s |%n", "No records");
         } else {
@@ -299,11 +297,9 @@ public class AdditionalPopulationReport {
      *
      * @return the arraylist of extracted population data
      */
-    protected ArrayList<Population> extractPopulation(String type, String whereClause) {
+    protected ArrayList<Population> extractPopulation(String type, String whereClause)
+    {
         try {
-            if (type == "City") {
-                type = "Name";
-            }
             Statement stmt = conn.createStatement();
 
             String query = "SELECT city." + type + ", SUM(city.Population) AS TotalPopulation " +
@@ -355,7 +351,7 @@ public class AdditionalPopulationReport {
 
             }
         }
-        if (extractedPopulation == null || extractedPopulation.size() == 0) {
+        if (extractedPopulation == null || extractedPopulation.isEmpty()) {
             //handle null records
             System.out.printf("| %-63s |%n", "No records");
         }

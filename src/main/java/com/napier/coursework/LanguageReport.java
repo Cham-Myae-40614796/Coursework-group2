@@ -128,21 +128,17 @@ public class LanguageReport {
         System.out.printf("----------------------------------------------------------------------------------------------------%n");
 
         if (extractedLanguage != null) {
-            while(extractedLanguage.remove(null)){
+            while(extractedLanguage.remove(null)) {
 
             }
         }
 
-        if (extractedLanguage == null || extractedLanguage.size() == 0) {
+        if (extractedLanguage == null || extractedLanguage.isEmpty()) {
             // handles null records
             System.out.printf("| %-96s |%n", "No records");
         } else {
             // print out table records
             for (Language elan : extractedLanguage) {
-
-                if (elan == null) {
-                    continue;
-                }
 
                 System.out.printf(tableFormat,
                         elan.getCountryLanguage(),

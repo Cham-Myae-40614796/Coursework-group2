@@ -27,7 +27,7 @@ public class DatabaseConnection {
     /**
      * Make a connection to the SQL database.
      */
-    public void connect(){
+    public void connect(String location, int port){
         try {
             // Load Database driver
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -45,11 +45,7 @@ public class DatabaseConnection {
                 Thread.sleep(10000);
                 // Connect to database
 
-                if (i%2 ==0) {
-                    conn = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false&allowPublicKeyRetrieval=true", "root", "example");
-                } else {
-                    conn = DriverManager.getConnection("jdbc:mysql://localhost:33060/world?useSSL=false&allowPublicKeyRetrieval=true", "root", "example");
-                }
+                conn = DriverManager.getConnection("jdbc:mysql://"+location+":"+Integer.toString(port)+"/world?useSSL=false&allowPublicKeyRetrieval=true", "root", "example");
                 
                 System.out.println("Successfully connected");
                 // Exit retry loop
