@@ -133,11 +133,11 @@ public class CapitalCityReport {
             // Execute SQL statement
             ResultSet resultData = stmt.executeQuery(query);
 
-            // create new object to add to capitalCities array list
-            City cty = new City();
             // loop until all the extracted data is added to capitalCities array list
             while (resultData.next())
             {
+                // create new object to add to capitalCities array list
+                City cty = new City();
                 // add the extracted data to city object
                 cty.setCityName(resultData.getString("city.Name"));
                 cty.setCountryName(resultData.getString("country.Name"));
