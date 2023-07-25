@@ -17,7 +17,7 @@ public class PopulationReport {
     /**
      * Connecting to SQL database
      */
-    private Connection conn = null;
+    private Connection conn;
 
     /**
      * Number of query for table titles
@@ -89,8 +89,9 @@ public class PopulationReport {
 
             ResultSet rset = stmt.executeQuery(query);
 
+            Population p = new Population();
+
             while (rset.next()){
-                Population p = new Population();
                 p.setName(rset.getString("cnty." + type));
                 p.setTotalPopulation(rset.getLong("TotalContinentPopulation"));
                 p.setPopulationInCities(rset.getLong("TotalCityPopulation"));
@@ -154,7 +155,7 @@ public class PopulationReport {
                         pop.getCityPopulationPercentage(),
                         NumberFormat.getInstance(Locale.US).format(pop.getPopulationNotInCities()),
                         pop.getNonCityPopulationPercentage());
-                if (extraENameText != ""){
+                if (!extraENameText.equals("")){
                     System.out.printf(tableFormat,
                             extraENameText,
                             "",

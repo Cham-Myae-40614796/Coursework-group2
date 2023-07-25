@@ -17,7 +17,7 @@ public class CityReport {
     /**
      * private Connection to SQL database
      */
-    private Connection conn = null;
+    private Connection conn;
 
     /**
      * Number of query for table titles
@@ -164,11 +164,12 @@ public class CityReport {
             // Execute SQL statement
             ResultSet resultData = stmt.executeQuery(query);
 
+            // create new object to add to cities array list
+            City cty = new City();
+
             // loop until all the extracted data is added to cities array list
             while (resultData.next())
             {
-                // create new object to add to cities array list
-                City cty = new City();
                 // add the extracted data to city object
                 cty.setCityName(resultData.getString("city.Name"));
                 cty.setCountryName(resultData.getString("country.Name"));
@@ -209,7 +210,7 @@ public class CityReport {
         }
 
         // if the type is not world, add some more text in title
-        if (type != "World") {
+        if (!type.equals("World")) {
             title +=  " (" + name + ")";
         }
         // add numbering to the title

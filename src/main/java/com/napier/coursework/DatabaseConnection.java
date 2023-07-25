@@ -14,7 +14,7 @@ public class DatabaseConnection {
     /**
      * Stores SQL database connection
      */
-    private Connection conn = null;
+    private Connection conn;
 
     /**
      *

@@ -17,7 +17,7 @@ public class AdditionalPopulationReport {
     /**
      * private Connection to SQL database
      */
-    private Connection conn = null;
+    private Connection conn;
 
     /**
      * Number of query for table titles
@@ -125,8 +125,8 @@ public class AdditionalPopulationReport {
 
             ResultSet rset = stmt.executeQuery(query);
 
+            Population p = new Population();
             while (rset.next()) {
-                Population p = new Population();
                 p.setTotalPopulation(rset.getLong("TotalPopulation"));
                 population.add(p);
             }
@@ -207,8 +207,8 @@ public class AdditionalPopulationReport {
 
             ResultSet rset = stmt.executeQuery(query);
 
+            Population p = new Population();
             while (rset.next()) {
-                Population p = new Population();
                 p.setName(rset.getString("cnty." + type));
                 p.setTotalPopulation(rset.getLong("TotalPopulation"));
                 p.setPopulationInCities(rset.getLong("TotalCityPopulation"));
@@ -235,7 +235,7 @@ public class AdditionalPopulationReport {
 
         String title = "Number of People Living in the Cities and Not in the Cities in a " + type;
         // if the type is not world, add some more text in title
-        if (type != "World") {
+        if (!type.equals("World")) {
             title +=  " (" + name + ")";
         }
         title = queryCount + ". " + title;
@@ -274,7 +274,7 @@ public class AdditionalPopulationReport {
                         pop.getCityPopulationPercentage(),
                         NumberFormat.getInstance(Locale.US).format(pop.getPopulationNotInCities()),
                         pop.getNonCityPopulationPercentage());
-                if (extraENameText != ""){
+                if (!extraENameText.equals("")){
                     System.out.printf(tableFormat2,
                             extraENameText,
                             "",
@@ -307,8 +307,8 @@ public class AdditionalPopulationReport {
 
             ResultSet rset = stmt.executeQuery(query);
 
+            Population p = new Population();
             while (rset.next()) {
-                Population p = new Population();
                 p.setName(rset.getString("city." + type));
                 p.setTotalPopulation(rset.getLong("TotalPopulation"));
                 population.add(p);

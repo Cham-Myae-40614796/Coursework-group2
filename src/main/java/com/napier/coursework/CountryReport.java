@@ -18,7 +18,7 @@ public class CountryReport {
     /**
      * Connecting to SQL database
      */
-    private Connection conn = null;
+    private Connection conn;
 
     /**
      * Number of query for table titles
@@ -127,9 +127,10 @@ public class CountryReport {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(query);
 
+            Country coty = new Country();
+
             while (rset.next())
             {
-                Country coty = new Country();
                 coty.setCountryCode(rset.getString("country.Code"));
                 coty.setCountryName(rset.getString("country.Name"));
                 coty.setContinent(rset.getString("country.Continent"));
@@ -168,7 +169,7 @@ public class CountryReport {
         }
 
         // if the type is not world, add some more text in title
-        if (type != "World") {
+        if (!type.equals("World")) {
             title +=  " (" + name + ")";
         }
         // add numbering to the title
@@ -224,7 +225,7 @@ public class CountryReport {
                         NumberFormat.getInstance(Locale.US).format(eCountry.getPopulation()),
                         capitalText);
                 // print an extra row if needed
-                if (extraCountryNameText != "" || extraRegionText != "" || extraCapitalText != "") {
+                if ((!extraCountryNameText.equals("")) || (!extraRegionText.equals("")) || (!extraCapitalText.equals(""))) {
                     System.out.printf(tableFormat,
                             "",
                             extraCountryNameText,
