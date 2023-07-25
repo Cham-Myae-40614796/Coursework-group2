@@ -22,7 +22,7 @@ public class CapitalCityReport {
     /**
      * Number of query for table titles
      */
-    private int query_count = 17;
+    private int queryCount = 17;
 
     /**
      * private integer to set top limit of query
@@ -110,6 +110,8 @@ public class CapitalCityReport {
      */
     protected ArrayList<City> extractCapitalCities(String whereClause, boolean isTop)
     {
+        ArrayList<City> capitalCities = new ArrayList<City>();
+
         try
         {
             // define query
@@ -132,7 +134,6 @@ public class CapitalCityReport {
             ResultSet resultData = stmt.executeQuery(query);
 
             // Extract necessary capital cities information
-            ArrayList<City> capitalCities = new ArrayList<City>();
 
             // loop until all the extracted data is added to capitalCities array list
             while (resultData.next())
@@ -147,14 +148,14 @@ public class CapitalCityReport {
                 // add the city object to capitalCities array list
                 capitalCities.add(cty);
             }
-            return capitalCities;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get capital city details");
-            return null;
         }
+        return capitalCities;
+
     }
 
     /**
@@ -182,9 +183,9 @@ public class CapitalCityReport {
             title +=  " (" + name + ")";
         }
         // add numbering to the title
-        title = query_count + ". " + title;
+        title = queryCount + ". " + title;
         // increase the count by one
-        query_count += 1;
+        queryCount += 1;
         // print out the title
         System.out.printf("| %-93s |%n", title);
         System.out.printf("-------------------------------------------------------------------------------------------------%n");

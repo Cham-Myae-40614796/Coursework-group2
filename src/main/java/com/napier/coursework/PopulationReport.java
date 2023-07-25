@@ -22,7 +22,7 @@ public class PopulationReport {
     /**
      * Number of query for table titles
      */
-    private int query_count = 23;
+    private int queryCount = 23;
 
     /**
      * private string method for generating table format for output display
@@ -66,6 +66,7 @@ public class PopulationReport {
      */
     protected ArrayList<Population> extractPopulation(String type)
     {
+        ArrayList<Population> population = new ArrayList<Population>();
         try
         {
             Statement stmt = conn.createStatement();
@@ -88,7 +89,6 @@ public class PopulationReport {
 
             ResultSet rset = stmt.executeQuery(query);
 
-            ArrayList<Population> population = new ArrayList<Population>();
             while (rset.next()){
                 Population p = new Population();
                 p.setName(rset.getString("cnty." + type));
@@ -99,16 +99,13 @@ public class PopulationReport {
                 p.setNonCityPopulationPercentage(rset.getString("NonCityPopulationPercentage"));
                 population.add(p);
             }
-
-            return population;
-
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
-            return null;
         }
+        return population;
     }
     /**
      * protected method to reformat population and
@@ -121,9 +118,9 @@ public class PopulationReport {
 
         String title = "Number of People Living in the Cities and Not in the Cities in each " + type;
 
-        title = query_count + ". " + title;
+        title = queryCount + ". " + title;
 
-        query_count += 1;
+        queryCount += 1;
 
         System.out.printf("| %-116s |%n", title);
         System.out.printf("------------------------------------------------------------------------------------------------------------------------%n");

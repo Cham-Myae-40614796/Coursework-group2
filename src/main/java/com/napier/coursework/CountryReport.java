@@ -23,7 +23,7 @@ public class CountryReport {
     /**
      * Number of query for table titles
      */
-    private int query_count = 1;
+    private int queryCount = 1;
 
     /**
      * private integer method limiting printed output for top 5 only
@@ -106,7 +106,8 @@ public class CountryReport {
      * @return the arraylist of extracted countries data
      */
     protected ArrayList<Country> extractCountries(String whereClause, boolean isTop){
-
+        // Extract country information
+        ArrayList<Country> country = new ArrayList<Country>();
         try
         {
             // Create an SQL statement
@@ -125,8 +126,7 @@ public class CountryReport {
             }
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(query);
-            // Extract country information
-            ArrayList<Country> country = new ArrayList<Country>();
+
             while (rset.next())
             {
                 Country coty = new Country();
@@ -139,14 +139,13 @@ public class CountryReport {
                 country.add(coty);
             }
 
-            return country;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country details");
-            return null;
         }
+        return country;
     }
 
     /**
@@ -173,9 +172,9 @@ public class CountryReport {
             title +=  " (" + name + ")";
         }
         // add numbering to the title
-        title = query_count + ". " + title;
+        title = queryCount + ". " + title;
         // increase the count by one
-        query_count += 1;
+        queryCount += 1;
         // print out the title
         System.out.printf("| %-110s |%n", title);
         System.out.printf("------------------------------------------------------------------------------------------------------------------%n");

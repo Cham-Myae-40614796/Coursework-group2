@@ -10,32 +10,32 @@ public class Country {
     /**
      * private string to store country code
      */
-    private String CountryCode;
+    private String countryCode;
 
     /**
      * private string to store country name
      */
-    private String CountryName;
+    private String countryName;
 
     /**
      * private string to store continent
      */
-    private String Continent;
+    private String continent;
 
     /**
      * private string to store region
      */
-    private String Region;
+    private String region;
 
     /**
      * private integer to store population
      */
-    private int Population;
+    private int population;
 
     /**
      * private string to store capital
      */
-    private String Capital;
+    private String capital;
 
     /**
      * public method to set country code
@@ -43,7 +43,7 @@ public class Country {
      * @param countryCode the code of the country
      */
     public void setCountryCode(String countryCode) {
-        CountryCode = countryCode;
+        this.countryCode = countryCode;
     }
 
     /**
@@ -52,7 +52,7 @@ public class Country {
      * @param countryName the name of the country
      */
     public void setCountryName(String countryName) {
-        CountryName = countryName;
+        this.countryName = countryName;
     }
 
     /**
@@ -61,7 +61,7 @@ public class Country {
      * @param continent the name of the continent
      */
     public void setContinent(String continent) {
-        Continent = continent;
+        this.continent = continent;
     }
 
     /**
@@ -70,7 +70,7 @@ public class Country {
      * @param region the name of the region
      */
     public void setRegion(String region) {
-        Region = region;
+        this.region = region;
     }
 
     /**
@@ -79,7 +79,7 @@ public class Country {
      * @param population the number of population in the country
      */
     public void setPopulation(int population) {
-        Population = population;
+        this.population = population;
     }
 
     /**
@@ -88,7 +88,7 @@ public class Country {
      * @param capital the name of the capital
      */
     public void setCapital(String capital) {
-        Capital = capital;
+        this.capital = capital;
     }
 
     /**
@@ -97,7 +97,7 @@ public class Country {
      * @return the code of the country
      */
     public String getCountryCode() {
-        return CountryCode;
+        return countryCode;
     }
 
     /**
@@ -106,7 +106,7 @@ public class Country {
      * @return the name of the country
      */
     public String getCountryName() {
-        return CountryName;
+        return countryName;
     }
 
     /**
@@ -115,7 +115,7 @@ public class Country {
      * @return the name of the continent
      */
     public String getContinent() {
-        return Continent;
+        return continent;
     }
 
     /**
@@ -124,7 +124,7 @@ public class Country {
      * @return the name of the region
      */
     public String getRegion() {
-        return Region;
+        return region;
     }
 
     /**
@@ -133,7 +133,7 @@ public class Country {
      * @return the population of the country
      */
     public int getPopulation() {
-        return Population;
+        return population;
     }
 
     /**
@@ -142,6 +142,6 @@ public class Country {
      * @return the name of the capital
      */
     public String getCapital() {
-        return Capital;
+        return capital;
     }
 }

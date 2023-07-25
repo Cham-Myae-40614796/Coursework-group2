@@ -22,7 +22,7 @@ public class LanguageReport {
     /**
      * Number of query for table titles
      */
-    private int query_count = 32;
+    private int queryCount = 32;
 
     /**
      * private string method for generating table format for output display
@@ -56,6 +56,8 @@ public class LanguageReport {
      */
     protected ArrayList<Language> extractLanguage()
     {
+        // Extract necessary language information
+        ArrayList<Language> languages = new ArrayList<Language>();
         try
         {
             // define query
@@ -75,9 +77,6 @@ public class LanguageReport {
             // Execute SQL statement
             ResultSet resultData = stmt.executeQuery(query);
 
-            // Extract necessary cities information
-            ArrayList<Language> languages = new ArrayList<Language>();
-
             // loop until all the extracted data is added to language array list
             while (resultData.next())
             {
@@ -91,14 +90,14 @@ public class LanguageReport {
                 // add the language object to language array list
                 languages.add(lan);
             }
-            return languages;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get language details");
-            return null;
         }
+        return languages;
+
     }
 
     /**
@@ -116,10 +115,10 @@ public class LanguageReport {
         String title = "World percentage of people who speak Chinese, English, Hindi, Spanish, Arabic";
 
         // add numbering to the title
-        title = query_count + ". " + title;
+        title = queryCount + ". " + title;
 
         // increase the count by one
-        query_count += 1;
+        queryCount += 1;
         // print out the title
         System.out.printf("| %-96s |%n", title);
         System.out.printf("----------------------------------------------------------------------------------------------------%n");

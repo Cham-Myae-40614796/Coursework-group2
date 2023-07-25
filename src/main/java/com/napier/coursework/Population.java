@@ -11,32 +11,32 @@ public class Population {
     /**
      * private string to store country and city name
      */
-    private String Name;
+    private String name;
 
     /**
      * private long to store total population
      */
-    private long TotalPopulation;
+    private long totalPopulation;
 
     /**
      * private long to store people living in the city
      */
-    private long PopulationInCities;
+    private long populationInCities;
 
     /**
      * private string to store people living in the city percentage
      */
-    private String CityPopulationPercentage;
+    private String cityPopulationPercentage;
 
     /**
      * private long to store people who are not living in the city
      */
-    private long PopulationNotInCities;
+    private long populationNotInCities;
 
     /**
      * private string to store people not living in the city percentage
      */
-    private String NonCityPopulationPercentage;
+    private String nonCityPopulationPercentage;
 
     /**
      * public method to set name of the country and city
@@ -44,7 +44,7 @@ public class Population {
      * @param name
      */
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     /**
@@ -53,7 +53,7 @@ public class Population {
      * @param totalPopulation
      */
     public void setTotalPopulation(long totalPopulation) {
-        TotalPopulation = totalPopulation;
+        this.totalPopulation = totalPopulation;
     }
 
     /**
@@ -62,7 +62,7 @@ public class Population {
      * @param populationInCities
      */
     public void setPopulationInCities(long populationInCities) {
-        PopulationInCities = populationInCities;
+        this.populationInCities = populationInCities;
     }
 
     /**
@@ -71,7 +71,7 @@ public class Population {
      * @param cityPopulationPercentage
      */
     public void setCityPopulationPercentage(String cityPopulationPercentage) {
-        CityPopulationPercentage = cityPopulationPercentage;
+        this.cityPopulationPercentage = cityPopulationPercentage;
     }
 
     /**
@@ -80,7 +80,7 @@ public class Population {
      * @param populationNotInCities
     */
     public void setPopulationNotInCities(long populationNotInCities) {
-        PopulationNotInCities = populationNotInCities;
+        this.populationNotInCities = populationNotInCities;
     }
   
     /**
@@ -89,7 +89,7 @@ public class Population {
      * @param nonCityPopulationPercentage
      */
     public void setNonCityPopulationPercentage(String nonCityPopulationPercentage) {
-        NonCityPopulationPercentage = nonCityPopulationPercentage;
+        this.nonCityPopulationPercentage = nonCityPopulationPercentage;
     }
 
     /**
@@ -98,7 +98,7 @@ public class Population {
      * @return name
      */
     public String getName() {
-        return Name;
+        return name;
     }
 
     /**
@@ -107,7 +107,7 @@ public class Population {
      * @return the total population
      */
     public long getTotalPopulation() {
-        return TotalPopulation;
+        return totalPopulation;
     }
 
     /**
@@ -116,7 +116,7 @@ public class Population {
      * @return people living in the cities
      */
     public long getPopulationInCities() {
-        return PopulationInCities;
+        return populationInCities;
     }
 
     /**
@@ -125,7 +125,7 @@ public class Population {
      * @return people living in the cities with percentage
      */
     public String getCityPopulationPercentage() {
-        return CityPopulationPercentage;
+        return cityPopulationPercentage;
     }
 
     /**
@@ -134,7 +134,7 @@ public class Population {
      * @return people not living in the cities
      */
     public long getPopulationNotInCities() {
-        return PopulationNotInCities;
+        return populationNotInCities;
     }
 
     /**
@@ -143,7 +143,7 @@ public class Population {
      * @return people not living in the cities with percentage
      */
     public String getNonCityPopulationPercentage() {
-        return NonCityPopulationPercentage;
+        return nonCityPopulationPercentage;
     }
 }
 

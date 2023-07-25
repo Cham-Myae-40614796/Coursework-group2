@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-class IntegrationTestApp {
+class IntegrationTest {
 
     /**
      * declaring variable for respective necessary report files
@@ -415,7 +415,7 @@ class IntegrationTestApp {
      */
     @Test
     void extractPopulationInCountryTest(){
-        ArrayList<Population> extractedPopulation = popr.extractPopulation("Country");
+        ArrayList<Population> extractedPopulation = popr.extractPopulation("Name");
         assertEquals(extractedPopulation.get(0).getName(), "Afghanistan");
         assertEquals(extractedPopulation.get(0).getTotalPopulation(), 22720000L);
         assertEquals(extractedPopulation.get(0).getPopulationInCities(), 2332100L);
@@ -474,7 +474,7 @@ class IntegrationTestApp {
     @Test
     void extractCitiesAndNonCitiesPopulationInCountry(){
         String whereClause = "WHERE cnty.Name = 'Austria' ";
-        ArrayList<Population> extractedCitiesAndNonCitiesPopulation = apr.extractCitiesAndNonCitiesPopulation("Country", whereClause);
+        ArrayList<Population> extractedCitiesAndNonCitiesPopulation = apr.extractCitiesAndNonCitiesPopulation("Name", whereClause);
         assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getName(), "Austria");
         assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getTotalPopulation(), 8091800L);
         assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getPopulationInCities(), 2384273L);
@@ -500,7 +500,7 @@ class IntegrationTestApp {
     @Test
     void extractPopulationInCity(){
         String whereClause = "WHERE city.Name = 'Resistencia' ";
-        ArrayList<Population> extractedPopulation = apr.extractPopulation("City", whereClause);
+        ArrayList<Population> extractedPopulation = apr.extractPopulation("Name", whereClause);
         assertEquals(extractedPopulation.get(0).getName(), "Resistencia");
         assertEquals(extractedPopulation.get(0).getTotalPopulation(), 229212L);
     }

@@ -22,7 +22,7 @@ public class CityReport {
     /**
      * Number of query for table titles
      */
-    private int query_count = 7;
+    private int queryCount = 7;
 
     /**
      * private integer to set top limit of query
@@ -141,6 +141,8 @@ public class CityReport {
      */
     protected ArrayList<City> extractCities(String whereClause, boolean isTop)
     {
+        // Extract necessary cities information
+        ArrayList<City> cities = new ArrayList<City>();
         try
         {
             // define query
@@ -162,9 +164,6 @@ public class CityReport {
             // Execute SQL statement
             ResultSet resultData = stmt.executeQuery(query);
 
-            // Extract necessary cities information
-            ArrayList<City> cities = new ArrayList<City>();
-
             // loop until all the extracted data is added to cities array list
             while (resultData.next())
             {
@@ -179,14 +178,14 @@ public class CityReport {
                 // add the city object to cities array list
                 cities.add(cty);
             }
-            return cities;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city details");
-            return null;
         }
+        return cities;
+
     }
 
     /**
@@ -214,9 +213,9 @@ public class CityReport {
             title +=  " (" + name + ")";
         }
         // add numbering to the title
-        title = query_count + ". " + title;
+        title = queryCount + ". " + title;
         // increase the count by one
-        query_count += 1;
+        queryCount += 1;
         // print out the title
         System.out.printf("| %-118s |%n", title);
         System.out.printf("--------------------------------------------------------------------------------------------------------------------------%n");

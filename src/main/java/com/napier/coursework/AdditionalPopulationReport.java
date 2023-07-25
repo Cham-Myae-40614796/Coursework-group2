@@ -22,7 +22,7 @@ public class AdditionalPopulationReport {
     /**
      * Number of query for table titles
      */
-    private int query_count = 26;
+    private int queryCount = 26;
 
     /**
      * private string to set continent name of query
@@ -117,6 +117,7 @@ public class AdditionalPopulationReport {
      * @return the arraylist of extracted world population data
      */
     protected ArrayList<Population> extractWorldPopulation() {
+        ArrayList<Population> population = new ArrayList<Population>();
         try {
             Statement stmt = conn.createStatement();
 
@@ -124,19 +125,17 @@ public class AdditionalPopulationReport {
 
             ResultSet rset = stmt.executeQuery(query);
 
-            ArrayList<Population> population = new ArrayList<Population>();
             while (rset.next()) {
                 Population p = new Population();
                 p.setTotalPopulation(rset.getLong("TotalPopulation"));
                 population.add(p);
             }
 
-            return population;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
-            return null;
         }
+        return population;
     }
 
     /**
@@ -150,9 +149,9 @@ public class AdditionalPopulationReport {
 
         String title = "Total Number of People Living in the world";
 
-        title = query_count + ". " + title;
+        title = queryCount + ". " + title;
 
-        query_count += 1;
+        queryCount += 1;
 
         System.out.printf("| %-54s |%n", title);
         System.out.printf("----------------------------------------------------------%n");
@@ -185,6 +184,7 @@ public class AdditionalPopulationReport {
      * @return the arraylist of extracted population data
      */
     protected ArrayList<Population> extractCitiesAndNonCitiesPopulation(String type, String whereClause) {
+        ArrayList<Population> population = new ArrayList<Population>();
         try {
 
             Statement stmt = conn.createStatement();
@@ -207,7 +207,6 @@ public class AdditionalPopulationReport {
 
             ResultSet rset = stmt.executeQuery(query);
 
-            ArrayList<Population> population = new ArrayList<Population>();
             while (rset.next()) {
                 Population p = new Population();
                 p.setName(rset.getString("cnty." + type));
@@ -218,13 +217,11 @@ public class AdditionalPopulationReport {
                 p.setNonCityPopulationPercentage(rset.getString("NonCityPopulationPercentage"));
                 population.add(p);
             }
-
-            return population;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
-            return null;
         }
+        return population;
     }
 
     /**
@@ -241,9 +238,9 @@ public class AdditionalPopulationReport {
         if (type != "World") {
             title +=  " (" + name + ")";
         }
-        title = query_count + ". " + title;
+        title = queryCount + ". " + title;
 
-        query_count += 1;
+        queryCount += 1;
 
         System.out.printf("| %-116s |%n", title);
         System.out.printf("------------------------------------------------------------------------------------------------------------------------%n");
@@ -299,6 +296,7 @@ public class AdditionalPopulationReport {
      */
     protected ArrayList<Population> extractPopulation(String type, String whereClause)
     {
+        ArrayList<Population> population = new ArrayList<Population>();
         try {
             Statement stmt = conn.createStatement();
 
@@ -309,7 +307,6 @@ public class AdditionalPopulationReport {
 
             ResultSet rset = stmt.executeQuery(query);
 
-            ArrayList<Population> population = new ArrayList<Population>();
             while (rset.next()) {
                 Population p = new Population();
                 p.setName(rset.getString("city." + type));
@@ -317,12 +314,11 @@ public class AdditionalPopulationReport {
                 population.add(p);
             }
 
-            return population;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
-            return null;
         }
+        return population;
     }
 
     /**
@@ -336,9 +332,9 @@ public class AdditionalPopulationReport {
 
         String title = "Total Number of People Living in a " + type + " (" + name + ")";
 
-        title = query_count + ". " + title;
+        title = queryCount + ". " + title;
 
-        query_count += 1;
+        queryCount += 1;
 
         System.out.printf("| %-63s |%n", title);
         System.out.printf("-------------------------------------------------------------------%n");
