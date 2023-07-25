@@ -46,7 +46,7 @@ class IntegrationTest {
          * setting connection to SQL database for each report
          */
         dbConn = new DatabaseConnection();
-        dbConn.connect("localhost", 33061);
+        dbConn.connect("localhost", 33060);
         cotyr = new CountryReport();
         cotyr.setConn(dbConn.getConn());
         cr = new CityReport();
