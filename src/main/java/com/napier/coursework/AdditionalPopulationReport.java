@@ -125,8 +125,8 @@ public class AdditionalPopulationReport {
 
             ResultSet rset = stmt.executeQuery(query);
 
-            Population p = new Population();
             while (rset.next()) {
+                Population p = new Population();
                 p.setTotalPopulation(rset.getLong("TotalPopulation"));
                 population.add(p);
             }
@@ -160,8 +160,9 @@ public class AdditionalPopulationReport {
         System.out.printf("----------------------------------------------------------%n");
 
         if (extractedWorldPopulation != null) {
-            while (extractedWorldPopulation.remove(null)){
-
+            boolean nullCheck = true;
+            while(nullCheck) {
+                nullCheck = extractedWorldPopulation.remove(null);
             }
         }
         if (extractedWorldPopulation == null || extractedWorldPopulation.isEmpty()){
@@ -207,8 +208,8 @@ public class AdditionalPopulationReport {
 
             ResultSet rset = stmt.executeQuery(query);
 
-            Population p = new Population();
             while (rset.next()) {
+                Population p = new Population();
                 p.setName(rset.getString("cnty." + type));
                 p.setTotalPopulation(rset.getLong("TotalPopulation"));
                 p.setPopulationInCities(rset.getLong("TotalCityPopulation"));
@@ -250,8 +251,9 @@ public class AdditionalPopulationReport {
         System.out.printf("------------------------------------------------------------------------------------------------------------------------%n");
 
         if (extractedCitiesAndNonCitiesPopulation != null) {
-            while(extractedCitiesAndNonCitiesPopulation.remove(null)){
-
+            boolean nullCheck = true;
+            while(nullCheck) {
+                nullCheck = extractedCitiesAndNonCitiesPopulation.remove(null);
             }
         }
 
@@ -307,8 +309,8 @@ public class AdditionalPopulationReport {
 
             ResultSet rset = stmt.executeQuery(query);
 
-            Population p = new Population();
             while (rset.next()) {
+                Population p = new Population();
                 p.setName(rset.getString("city." + type));
                 p.setTotalPopulation(rset.getLong("TotalPopulation"));
                 population.add(p);
@@ -343,8 +345,9 @@ public class AdditionalPopulationReport {
         System.out.printf("-------------------------------------------------------------------%n");
 
         if (extractedPopulation != null) {
-            while (extractedPopulation.remove(null)) {
-
+            boolean nullCheck = true;
+            while(nullCheck) {
+                nullCheck = extractedPopulation.remove(null);
             }
         }
         if (extractedPopulation == null || extractedPopulation.isEmpty()) {

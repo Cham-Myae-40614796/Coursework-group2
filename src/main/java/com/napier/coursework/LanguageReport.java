@@ -77,12 +77,11 @@ public class LanguageReport {
             // Execute SQL statement
             ResultSet resultData = stmt.executeQuery(query);
 
-            // create new object to add to language array list
-            Language lan = new Language();
-
             // loop until all the extracted data is added to language array list
             while (resultData.next())
             {
+                // create new object to add to language array list
+                Language lan = new Language();
                 // add the extracted data to language object
                 lan.setCountryLanguage(resultData.getString("Language"));
                 lan.setPopulation(resultData.getLong("TotalNumberOfPeople"));
@@ -128,8 +127,9 @@ public class LanguageReport {
         System.out.printf("----------------------------------------------------------------------------------------------------%n");
 
         if (extractedLanguage != null) {
-            while(extractedLanguage.remove(null)) {
-
+            boolean nullCheck = true;
+            while(nullCheck) {
+                nullCheck = extractedLanguage.remove(null);
             }
         }
 

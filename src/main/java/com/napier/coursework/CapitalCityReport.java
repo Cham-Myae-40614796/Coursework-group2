@@ -191,8 +191,9 @@ public class CapitalCityReport {
         System.out.printf(tableFormat, "City Name", "Country Name", "Population");
         System.out.printf("-------------------------------------------------------------------------------------------------%n");
         if (extractedCapitalCities != null) {
-            while(extractedCapitalCities.remove(null)){
-
+            boolean nullCheck = true;
+            while(nullCheck){
+                nullCheck = extractedCapitalCities.remove(null);
             }
         }
 

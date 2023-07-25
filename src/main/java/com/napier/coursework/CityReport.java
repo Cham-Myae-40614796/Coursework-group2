@@ -164,12 +164,12 @@ public class CityReport {
             // Execute SQL statement
             ResultSet resultData = stmt.executeQuery(query);
 
-            // create new object to add to cities array list
-            City cty = new City();
 
             // loop until all the extracted data is added to cities array list
             while (resultData.next())
             {
+                // create new object to add to cities array list
+                City cty = new City();
                 // add the extracted data to city object
                 cty.setCityName(resultData.getString("city.Name"));
                 cty.setCountryName(resultData.getString("country.Name"));
@@ -224,10 +224,12 @@ public class CityReport {
         System.out.printf(tableFormat, "City Name", "Country Name", "District", "Population");
         System.out.printf("--------------------------------------------------------------------------------------------------------------------------%n");
         if (extractedCities != null) {
-            while(extractedCities.remove(null)){
-
+            boolean nullCheck = true;
+            while(nullCheck) {
+                nullCheck = extractedCities.remove(null);
             }
         }
+
 
         if (extractedCities == null || extractedCities.isEmpty()) {
             // handles null records

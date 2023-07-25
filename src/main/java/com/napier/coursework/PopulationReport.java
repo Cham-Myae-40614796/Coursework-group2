@@ -89,9 +89,8 @@ public class PopulationReport {
 
             ResultSet rset = stmt.executeQuery(query);
 
-            Population p = new Population();
-
             while (rset.next()){
+                Population p = new Population();
                 p.setName(rset.getString("cnty." + type));
                 p.setTotalPopulation(rset.getLong("TotalContinentPopulation"));
                 p.setPopulationInCities(rset.getLong("TotalCityPopulation"));
@@ -131,8 +130,9 @@ public class PopulationReport {
         System.out.printf("------------------------------------------------------------------------------------------------------------------------%n");
 
         if (extractedPopulation != null) {
-            while(extractedPopulation.remove(null)){
-
+            boolean nullCheck = true;
+            while(nullCheck) {
+                nullCheck = extractedPopulation.remove(null);
             }
         }
 

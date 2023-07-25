@@ -127,10 +127,9 @@ public class CountryReport {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(query);
 
-            Country coty = new Country();
-
             while (rset.next())
             {
+                Country coty = new Country();
                 coty.setCountryCode(rset.getString("country.Code"));
                 coty.setCountryName(rset.getString("country.Name"));
                 coty.setContinent(rset.getString("country.Continent"));
@@ -183,8 +182,9 @@ public class CountryReport {
         System.out.printf(tableFormat, "Code", "Country Name", "Continent", "Region", "Population", "Capital");
         System.out.printf("------------------------------------------------------------------------------------------------------------------%n");
         if (extractedCountries != null) {
-            while(extractedCountries.remove(null)){
-
+            boolean nullCheck = true;
+            while(nullCheck) {
+                nullCheck = extractedCountries.remove(null);
             }
         }
         if (extractedCountries == null || extractedCountries.isEmpty()) {

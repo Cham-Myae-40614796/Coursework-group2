@@ -1,4 +1,8 @@
 package com.napier.coursework;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Represents the App
  * @author Thar Htet Nyan
@@ -13,6 +17,8 @@ public class App {
      * @param args
      */
     public static void main(String[] args){
+
+        ArrayList<City>  lol = new ArrayList<>();
 
         // Create a DatabaseConnection Object
         DatabaseConnection dbConn = new DatabaseConnection();
@@ -65,7 +71,6 @@ public class App {
 
         // Close the connection
         dbConn.disconnect();
-
 
     }
 
