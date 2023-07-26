@@ -117,6 +117,7 @@ class IntegrationTest {
         assertEquals("Eastern Asia", extractedCountries.get(5).getRegion(), "Sixth data row of the country's region in the region table should be Eastern Asia");
         assertEquals(6782000, extractedCountries.get(5).getPopulation(), "Sixth data row of the country's population in the region table should be 6782000");
         assertEquals("Victoria", extractedCountries.get(5).getCapital(), "Sixth data row of the country's capital in the region table should be Victoria");
+
     }
 
     /**
@@ -132,6 +133,7 @@ class IntegrationTest {
         assertEquals("North America", extractedCountries.get(2).getRegion(), "Third data row of the top populated country's region in the world table should be North America");
         assertEquals(278357000, extractedCountries.get(2).getPopulation(), "Third data row of the top populated country's population in the world table should be 278357000");
         assertEquals("Washington", extractedCountries.get(2).getCapital(), "Third data row of the top populated country's capital in the world table should be Washington");
+
     }
 
     /**
@@ -162,6 +164,7 @@ class IntegrationTest {
         assertEquals("Eastern Asia", extractedCountries.get(2).getRegion(), "Third data row of the top populated country's region in the region table should be Southern Asia");
         assertEquals(46844000, extractedCountries.get(2).getPopulation(), "Third data row of the top populated country's population in the region table should be 46844000");
         assertEquals("Seoul", extractedCountries.get(2).getCapital(), "Third data row of the top populated country's capital in the region table should be Seoul");
+
     }
 
     /**
@@ -193,6 +196,7 @@ class IntegrationTest {
         assertEquals("Turkey", extractedCities.get(5).getCountryName(), "Sixth data row of the city's country in the continent table should be Turkey");
         assertEquals("Istanbul", extractedCities.get(5).getDistrict(), "Sixth data row of the city's name in the district table should be Istanbul");
         assertEquals(8787958, extractedCities.get(5).getPopulation(),"Sixth data row of the city's population in the continent table should be 8787958");
+
     }
 
     /**
@@ -206,6 +210,7 @@ class IntegrationTest {
         assertEquals("China", extractedCities.get(5).getCountryName(), "Sixth data row of the city's country in the region table should be China");
         assertEquals("Tianjin", extractedCities.get(5).getDistrict(), "Sixth data row of the city's name in the district table should be Tianjin");
         assertEquals(5286800, extractedCities.get(5).getPopulation(),"Sixth data row of the city's population in the region table should be 5286800");
+
     }
 
     /**
@@ -219,6 +224,7 @@ class IntegrationTest {
         assertEquals("Algeria", extractedCities.get(5).getCountryName(), "Sixth data row of the city's country in the country table should be Algeria");
         assertEquals("Sétif", extractedCities.get(5).getDistrict(), "Sixth data row of the city's district in the country table should be Sétif");
         assertEquals(179055, extractedCities.get(5).getPopulation(),"Sixth data row of the city's population in the country table should be 179055");
+
     }
 
     /**
@@ -232,6 +238,7 @@ class IntegrationTest {
         assertEquals("Turkey", extractedCities.get(2).getCountryName(), "Third data row of the city's country in the country table should be Turkey");
         assertEquals("Adana", extractedCities.get(2).getDistrict(), "Third data row of the city's district in the district table should be Adana");
         assertEquals(102412, extractedCities.get(2).getPopulation(),"Third data row of the city's population in the district table should be 102412");
+
     }
 
     /**
@@ -327,6 +334,7 @@ class IntegrationTest {
         assertEquals("Bangkok", extractedCapitalCites.get(5).getCityName(),"Sixth data row of the capital city's name in the continent table should be Bangkok");
         assertEquals("Thailand", extractedCapitalCites.get(5).getCountryName(), "Sixth data row of the capital city's country in the continent table should be Thailand");
         assertEquals(6320174, extractedCapitalCites.get(5).getPopulation(), "Sixth data row of the capital city's population in the continent table should be 6320174");
+
     }
 
     /**
@@ -339,6 +347,7 @@ class IntegrationTest {
         assertEquals("Victoria", extractedCapitalCites.get(5).getCityName(), "Sixth data row of the capital city's name in the region table should be Victoria");
         assertEquals("Hong Kong", extractedCapitalCites.get(5).getCountryName(), "Sixth data row of the capital city's country in the region table should be Hong Kong");
         assertEquals(1312637, extractedCapitalCites.get(5).getPopulation(), "Sixth data row of the capital city's population in the region table should be 1312637");
+
     }
 
     /**
@@ -351,6 +360,7 @@ class IntegrationTest {
         assertEquals("Ciudad de México", extractedCapitalCites.get(2).getCityName(), "Third data row of the top populated capital city's name in the world table should be Ciudad de México");
         assertEquals("Mexico",extractedCapitalCites.get(2).getCountryName(), "Third data row of the top populated capital city's country in the world table should be Mexico");
         assertEquals(8591309, extractedCapitalCites.get(2).getPopulation(), "Third data row of the top populated capital city's population in the world table should be 8591309");
+
     }
 
     /**
@@ -363,6 +373,7 @@ class IntegrationTest {
         assertEquals("Tokyo", extractedCapitalCites.get(2).getCityName(), "Third data row of the top populated capital city's name in the continent table should be Tokyo");
         assertEquals("Japan", extractedCapitalCites.get(2).getCountryName(), "Third data row of the top populated capital city's country in the continent table should be Japan");
         assertEquals(7980230, extractedCapitalCites.get(2).getPopulation(), "Third data row of the top populated capital city's population in the continent table should be 7980230");
+
     }
 
     /**
@@ -375,6 +386,7 @@ class IntegrationTest {
         assertEquals("Peking", extractedCapitalCites.get(2).getCityName(), "Third data row of the top populated capital city's name in the region table should be Peking");
         assertEquals("China", extractedCapitalCites.get(2).getCountryName(), "Third data row of the top populated capital city's country in the continent table should be China");
         assertEquals(7472000, extractedCapitalCites.get(2).getPopulation(), "Third data row of the top populated capital city's population in the region table should be 7472000");
+
     }
 
     /**
@@ -466,6 +478,7 @@ class IntegrationTest {
         assertEquals("27.6598 %", extractedCitiesAndNonCitiesPopulation.get(0).getCityPopulationPercentage(), "First data row of the population percentage of the city in a region table should be 27.6598 %");
         assertEquals(104657542L, extractedCitiesAndNonCitiesPopulation.get(0).getPopulationNotInCities(), "First data row of the non population of the city in a region table should be 104657542L");
         assertEquals("72.3402 %", extractedCitiesAndNonCitiesPopulation.get(0).getNonCityPopulationPercentage(), "First data row of the non population percentage of the city in a region table should be 72.3402 %");
+
     }
 
     /**
@@ -481,6 +494,7 @@ class IntegrationTest {
         assertEquals("29.4653 %", extractedCitiesAndNonCitiesPopulation.get(0).getCityPopulationPercentage(), "First data row of the population percentage of the city in a country table should be 29.4653 %");
         assertEquals(5707527L, extractedCitiesAndNonCitiesPopulation.get(0).getPopulationNotInCities(), "First data row of the non population of the city in a country table should be 5707527L");
         assertEquals("70.5347 %", extractedCitiesAndNonCitiesPopulation.get(0).getNonCityPopulationPercentage(), "First data row of the non population percentage of the city in a country table should be 70.5347 %");
+
     }
 
     /**
@@ -492,6 +506,7 @@ class IntegrationTest {
         ArrayList<Population> extractedPopulation = apr.extractPopulation("District", whereClause);
         assertEquals("Gelderland", extractedPopulation.get(0).getName(), "First data row of the population in a district table should be Gelderland");
         assertEquals(545548L, extractedPopulation.get(0).getTotalPopulation(), "First data row of the population in a district table should be 545548L");
+
     }
 
     /**
@@ -503,6 +518,7 @@ class IntegrationTest {
         ArrayList<Population> extractedPopulation = apr.extractPopulation("Name", whereClause);
         assertEquals("Resistencia", extractedPopulation.get(0).getName(), "First data row of the population in a city table should be Resistencia");
         assertEquals(229212L, extractedPopulation.get(0).getTotalPopulation(), "First data row of the population in a city table should be 229212L");
+
     }
 
     /**

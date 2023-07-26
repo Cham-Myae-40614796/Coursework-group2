@@ -1,4 +1,8 @@
 package com.napier.coursework;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Represents the App
  * @author Thar Htet Nyan
@@ -65,7 +69,6 @@ public class App {
 
         // Close the connection
         dbConn.disconnect();
-
 
     }
 
