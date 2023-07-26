@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 
-class UnitTestApp {
+class UnitTest {
 
     /**
      * declaring variable for respective necessary report files

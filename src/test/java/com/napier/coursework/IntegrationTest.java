@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-class IntegrationTestApp {
+class IntegrationTest {
 
     /**
      * declaring variable for respective necessary report files
