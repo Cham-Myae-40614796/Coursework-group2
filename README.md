@@ -13,25 +13,24 @@ There are a number of tools which are using in the project and. They are:
 
 # Team Members 
 
-|Member               |Matriculation No. | Role  |
-|:-------------------:|:----------------:|:-----:|
-| Cham Myae Pyae Sone |40614796 |Product owner   |
-| Htet Myat Thiri     |40614785 |   Member       |
-| Kyi Phyu Khin       |40614804 |   Member       |
-| Thar Htet Nyan      |40614795 |Scrum master    |
+|Member               | Matriculation No. |     Role      |
+|:-------------------:|:-----------------:|:-------------:|
+| Cham Myae Pyae Sone |    40614796       | Product owner |
+| Htet Myat Thiri     |     40614785      |    Member     |
+| Kyi Phyu Khin       |     40614804      |    Member     |
+| Thar Htet Nyan      |     40614795      | Scrum master  |
 
 # Contribution Table
 
-|Member               | Matriculation No. | Code Review 1 | Code Review 2 | Code Review 3 | Code Review 4 |Final Deliverable|
+|       Member        | Matriculation No. | Code Review 1 | Code Review 2 | Code Review 3 | Code Review 4 |Final Deliverable|
 |:-------------------:|:-----------------:|:-------------:|:-------------:|:-------------:|:-------------:|:---------------:|
-| Cham Myae Pyae Sone |     40614796      |      25       |      25       |      25       |               |                 |
-| Htet Myat Thiri     |     40614785      |      25       |      25       |      25       |               |                 |
-| Kyi Phyu Khin       |     40614804      |      25       |      25       |      25       |               |                 |
-| Thar Htet Nyan      |     40614795      |      25       |      25       |      25       |               |                 |
-| Total               |                   |      100      |      100      |      100      |               |                 |
+| Cham Myae Pyae Sone |     40614796      |      25       |      25       |      25       |      25       |                 |
+|   Htet Myat Thiri   |     40614785      |      25       |      25       |      25       |      25       |                 |
+|    Kyi Phyu Khin    |     40614804      |      25       |      25       |      25       |      25       |                 |
+|   Thar Htet Nyan    |     40614795      |      25       |      25       |      25       |      25       |                 |
+|        Total        |                   |      100      |      100      |      100      |      100      |                 |
 
 # Code Review 1
-
 The aim of this code review is to set up the development environment for the project. 
 
 1. Set up the project. 
@@ -132,3 +131,43 @@ Additional comments:
 * Last Commit in Master ![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/Cham-Myae-40614796/Coursework-group2)
 
 * Apache License [![LICENSE](https://img.shields.io/github/license/Cham-Myae-40614796/coursework-group2.svg?style=plastic)](https://github.com/Cham-Myae-40614796/coursework-group2/blob/master/LICENSE)
+
+# Details the Requirements Met
+
+- There are 32 requirements in total. 
+- 32 requirements of 32 have been implemented, which is 100%. 
+
+| ID | Name                                                                                                                                                        | Met | Screenshot               |
+|----|-------------------------------------------------------------------------------------------------------------------------------------------------------------|-----|--------------------------|
+| 1  | All the countries in the world organised by largest population to smallest.                                                                                 | Yes | ![Issue1](img/img1.png)  |
+| 2  | All the countries in a continent organised by largest population to smallest.                                                                               | Yes | ![Issue1](img/img2.png)  |
+| 3  | All the countries in a region organised by largest population to smallest.                                                                                  | Yes | ![Issue1](img/img3.png)  |
+| 4  | The top N populated countries in the world where N is provided by the user.                                                                                 | Yes | ![Issue1](img/img4.png)  |
+| 5  | The top N populated countries in a continent where N is provided by the user.                                                                               | Yes | ![Issue1](img/img5.png)  |
+| 6  | The top N populated countries in a region where N is provided by the user.                                                                                  | Yes | ![Issue1](img/img6.png)  |
+| 7  | All the cities in the world organised by largest population to smallest.                                                                                    | Yes | ![Issue1](img/img7.png)  |
+| 8  | All the cities in a continent organised by largest population to smallest.                                                                                  | Yes | ![Issue1](img/img8.png)  |
+| 9  | All the cities in a region organised by largest population to smallest.                                                                                     | Yes | ![Issue1](img/img9.png)  |
+| 10 | All the cities in a country organised by largest population to smallest.                                                                                    | Yes | ![Issue1](img/img10.png) |
+| 11 | All the cities in a district organised by largest population to smallest.                                                                                   | Yes | ![Issue1](img/img11.png) |
+| 12 | The top N populated cities in the world where N is provided by the user.                                                                                    | Yes | ![Issue1](img/img12.png) |
+| 13 | The top N populated cities in a continent where N is provided by the user.                                                                                  | Yes | ![Issue1](img/img13.png) |
+| 14 | The top N populated cities in a region where N is provided by the user.                                                                                     | Yes | ![Issue1](img/img14.png) |
+| 15 | The top N populated cities in a country where N is provided by the user.                                                                                    | Yes | ![Issue1](img/img15.png) |
+| 16 | The top N populated cities in a district where N is provided by the user.                                                                                   | Yes | ![Issue1](img/img16.png) |
+| 17 | All the capital cities in the world organised by largest population to smallest.                                                                            | Yes | ![Issue1](img/img17.png) |
+| 18 | All the capital cities in a continent organised by largest population to smallest.                                                                          | Yes | ![Issue1](img/img18.png) |
+| 19 | All the capital cities in a region organised by largest to smallest.                                                                                        | Yes | ![Issue1](img/img19.png) |
+| 20 | The top N populated capital cities in the world where N is provided by the user.                                                                            | Yes | ![Issue1](img/img20.png) |
+| 21 | The top N populated capital cities in a continent where N is provided by the user.                                                                          | Yes | ![Issue1](img/img21.png) |
+| 22 | The top N populated capital cities in a region where N is provided by the user.                                                                             | Yes | ![Issue1](img/img22.png) |
+| 23 | The population of people, people living in cities, and people not living in cities in each continent.                                                       | Yes | ![Issue1](img/img23.png) |
+| 24 | The population of people, people living in cities, and people not living in cities in each region.                                                          | Yes | ![Issue1](img/img24.png) |
+| 25 | The population of people, people living in cities, and people not living in cities in each country.                                                         | Yes | ![Issue1](img/img25.png) |
+| 26 | The population of the world.                                                                                                                                | Yes | ![Issue1](img/img26.png) |
+| 27 | The population of a continent.                                                                                                                              | Yes | ![Issue1](img/img27.png) |
+| 28 | The population of a region.                                                                                                                                 | Yes | ![Issue1](img/img28.png) |
+| 29 | The population of a country.                                                                                                                                | Yes | ![Issue1](img/img29.png) |
+| 30 | The population of a district.                                                                                                                               | Yes | ![Issue1](img/img30.png) |
+| 31 | The population of a city.                                                                                                                                   | Yes | ![Issue1](img/img31.png) |
+| 32 | The number of people who speak Chinese, English, Hindi, Spanish, Arabic from greatest number to smallest, including the percentage of the world population. | Yes | ![Issue1](img/img32.png) |
