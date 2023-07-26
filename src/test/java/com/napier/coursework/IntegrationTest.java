@@ -81,12 +81,12 @@ class IntegrationTest {
     void extractCountryInWorldTest(){
         String whereClause = "";
         ArrayList<Country> extractedCountries = cotyr.extractCountries(whereClause, false);
-        assertEquals(extractedCountries.get(5).getCountryName(), "Pakistan");
-        assertEquals(extractedCountries.get(5).getCountryCode(), "PAK");
-        assertEquals(extractedCountries.get(5).getContinent(), "Asia");
-        assertEquals(extractedCountries.get(5).getRegion(), "Southern and Central Asia");
-        assertEquals(extractedCountries.get(5).getPopulation(), 156483000);
-        assertEquals(extractedCountries.get(5).getCapital(), "Islamabad");
+        assertEquals("Pakistan",extractedCountries.get(5).getCountryName(), "Sixth data row of the country's name in the world table should be Pakistan");
+        assertEquals("PAK", extractedCountries.get(5).getCountryCode(), "Sixth data row of the country's code in the world table should be PAK");
+        assertEquals("Asia", extractedCountries.get(5).getContinent(), "Sixth data row of the country's continent in the world table should be Asia");
+        assertEquals("Southern and Central Asia", extractedCountries.get(5).getRegion(), "Sixth data row of the country's region in the world table should be Southern and Central Asia");
+        assertEquals(156483000, extractedCountries.get(5).getPopulation(), "Sixth data row of the country's population in the world table should be 156483000");
+        assertEquals("Islamabad",extractedCountries.get(5).getCapital(), "Sixth data row of the country's capital in the world table should be Islamabad");
     }
 
     /**
@@ -96,12 +96,12 @@ class IntegrationTest {
     void extractCountryInContinentTest(){
         String whereClause = "WHERE country.Continent = 'Asia' ";
         ArrayList<Country> extractedCountries = cotyr.extractCountries(whereClause, false);
-        assertEquals(extractedCountries.get(5).getCountryName(), "Japan");
-        assertEquals(extractedCountries.get(5).getCountryCode(), "JPN");
-        assertEquals(extractedCountries.get(5).getContinent(), "Asia");
-        assertEquals(extractedCountries.get(5).getRegion(), "Eastern Asia");
-        assertEquals(extractedCountries.get(5).getPopulation(), 126714000);
-        assertEquals(extractedCountries.get(5).getCapital(), "Tokyo");
+        assertEquals("Japan", extractedCountries.get(5).getCountryName(), "Sixth data row of the country's name in the continent table should be Japan");
+        assertEquals("JPN", extractedCountries.get(5).getCountryCode(), "Sixth data row of the country's code in the continent table should be JPN");
+        assertEquals("Asia", extractedCountries.get(5).getContinent(), "Sixth data row of the country's continent in the continent table should be Asia");
+        assertEquals("Eastern Asia", extractedCountries.get(5).getRegion(), "Sixth data row of the country's region in the continent table should be Eastern Asia");
+        assertEquals(126714000, extractedCountries.get(5).getPopulation(), "Sixth data row of the country's population in the continent table should be 126714000");
+        assertEquals("Tokyo", extractedCountries.get(5).getCapital(), "Sixth data row of the country's capital in the continent table should be Tokyo");
     }
 
     /**
@@ -111,12 +111,13 @@ class IntegrationTest {
     void extractCountryInRegionTest(){
         String whereClause = "WHERE country.Region = 'Eastern Asia' ";
         ArrayList<Country> extractedCountries = cotyr.extractCountries(whereClause, false);
-        assertEquals(extractedCountries.get(5).getCountryName(), "Hong Kong");
-        assertEquals(extractedCountries.get(5).getCountryCode(), "HKG");
-        assertEquals(extractedCountries.get(5).getContinent(), "Asia");
-        assertEquals(extractedCountries.get(5).getRegion(), "Eastern Asia");
-        assertEquals(extractedCountries.get(5).getPopulation(), 6782000);
-        assertEquals(extractedCountries.get(5).getCapital(), "Victoria");
+        assertEquals("Hong Kong", extractedCountries.get(5).getCountryName(), "Sixth data row of the country's name in the region table should be Hong Kong");
+        assertEquals("HKG", extractedCountries.get(5).getCountryCode(), "Sixth data row of the country's code in the region table should be HKG");
+        assertEquals("Asia", extractedCountries.get(5).getContinent(), "Sixth data row of the country's continent in the region table should be Asia");
+        assertEquals("Eastern Asia", extractedCountries.get(5).getRegion(), "Sixth data row of the country's region in the region table should be Eastern Asia");
+        assertEquals(6782000, extractedCountries.get(5).getPopulation(), "Sixth data row of the country's population in the region table should be 6782000");
+        assertEquals("Victoria", extractedCountries.get(5).getCapital(), "Sixth data row of the country's capital in the region table should be Victoria");
+
     }
 
     /**
@@ -126,12 +127,13 @@ class IntegrationTest {
     void extractTopCountryInWorldTest(){
         String whereClause = "";
         ArrayList<Country> extractedCountries = cotyr.extractCountries(whereClause, true);
-        assertEquals(extractedCountries.get(2).getCountryName(), "United States");
-        assertEquals(extractedCountries.get(2).getCountryCode(), "USA");
-        assertEquals(extractedCountries.get(2).getContinent(), "North America");
-        assertEquals(extractedCountries.get(2).getRegion(), "North America");
-        assertEquals(extractedCountries.get(2).getPopulation(), 278357000);
-        assertEquals(extractedCountries.get(2).getCapital(), "Washington");
+        assertEquals("United States", extractedCountries.get(2).getCountryName(), "Third data row of the top populated country's name in the world table should be United States");
+        assertEquals("USA", extractedCountries.get(2).getCountryCode(), "Third data row of the top populated country's code in the world table should be USA");
+        assertEquals("North America", extractedCountries.get(2).getContinent(), "Third data row of the top populated country's continent in the world table should be North America");
+        assertEquals("North America", extractedCountries.get(2).getRegion(), "Third data row of the top populated country's region in the world table should be North America");
+        assertEquals(278357000, extractedCountries.get(2).getPopulation(), "Third data row of the top populated country's population in the world table should be 278357000");
+        assertEquals("Washington", extractedCountries.get(2).getCapital(), "Third data row of the top populated country's capital in the world table should be Washington");
+
     }
 
     /**
@@ -141,12 +143,12 @@ class IntegrationTest {
     void extractTopCountryInContinentTest(){
         String whereClause = "WHERE country.Continent = 'Asia' ";
         ArrayList<Country> extractedCountries = cotyr.extractCountries(whereClause, true);
-        assertEquals(extractedCountries.get(2).getCountryName(), "Indonesia");
-        assertEquals(extractedCountries.get(2).getCountryCode(), "IDN");
-        assertEquals(extractedCountries.get(2).getContinent(), "Asia");
-        assertEquals(extractedCountries.get(2).getRegion(), "Southeast Asia");
-        assertEquals(extractedCountries.get(2).getPopulation(), 212107000);
-        assertEquals(extractedCountries.get(2).getCapital(), "Jakarta");
+        assertEquals("Indonesia", extractedCountries.get(2).getCountryName(), "Third data row of the top populated country's name in the continent table should be Indonesia");
+        assertEquals("IDN", extractedCountries.get(2).getCountryCode(), "Third data row of the top populated country's code in the continent table should be IND");
+        assertEquals("Asia", extractedCountries.get(2).getContinent(), "Third data row of the top populated continent's name in the continent table should be Asia");
+        assertEquals("Southeast Asia", extractedCountries.get(2).getRegion(), "Third data row of the top populated country's name in the region table should be Southeast Asia");
+        assertEquals(212107000, extractedCountries.get(2).getPopulation(), "Third data row of the top populated country's population in the continent table should be 212107000");
+        assertEquals("Jakarta", extractedCountries.get(2).getCapital(), "Third data row of the top populated country's capital in the continent table should be Jakarta");
     }
 
     /**
@@ -156,12 +158,13 @@ class IntegrationTest {
     void extractTopCountryInRegionTest(){
         String whereClause = "WHERE country.Region = 'Eastern Asia' ";
         ArrayList<Country> extractedCountries = cotyr.extractCountries(whereClause, true);
-        assertEquals(extractedCountries.get(2).getCountryName(), "South Korea");
-        assertEquals(extractedCountries.get(2).getCountryCode(), "KOR");
-        assertEquals(extractedCountries.get(2).getContinent(), "Asia");
-        assertEquals(extractedCountries.get(2).getRegion(), "Eastern Asia");
-        assertEquals(extractedCountries.get(2).getPopulation(), 46844000);
-        assertEquals(extractedCountries.get(2).getCapital(), "Seoul");
+        assertEquals("South Korea", extractedCountries.get(2).getCountryName(), "Third data row of the top populated country's name in the region table should be South Korea");
+        assertEquals("KOR", extractedCountries.get(2).getCountryCode(), "Third data row of the top populated country's code in the region table should be KOR");
+        assertEquals("Asia", extractedCountries.get(2).getContinent(), "Third data row of the top populated country's continent in the region table should be Asia");
+        assertEquals("Eastern Asia", extractedCountries.get(2).getRegion(), "Third data row of the top populated country's region in the region table should be Southern Asia");
+        assertEquals(46844000, extractedCountries.get(2).getPopulation(), "Third data row of the top populated country's population in the region table should be 46844000");
+        assertEquals("Seoul", extractedCountries.get(2).getCapital(), "Third data row of the top populated country's capital in the region table should be Seoul");
+
     }
 
     /**
@@ -176,10 +179,10 @@ class IntegrationTest {
     void extractCityInWorldTest(){
         String whereClause = "";
         ArrayList<City> extractedCities = cr.extractCities(whereClause, false);
-        assertEquals(extractedCities.get(5).getCityName(), "Karachi");
-        assertEquals(extractedCities.get(5).getCountryName(), "Pakistan");
-        assertEquals(extractedCities.get(5).getDistrict(), "Sindh");
-        assertEquals(extractedCities.get(5).getPopulation(),9269265);
+        assertEquals("Karachi", extractedCities.get(5).getCityName(), "Sixth data row of the city's name in the world table should be Karachi");
+        assertEquals("Pakistan", extractedCities.get(5).getCountryName(), "Sixth data row of the city's country in the world table should be Pakistan");
+        assertEquals("Sindh", extractedCities.get(5).getDistrict(), "Sixth data row of the city's district in the world table should be Sindh");
+        assertEquals(9269265, extractedCities.get(5).getPopulation(),"Sixth data row of the city's population in the world table should be 9269265");
     }
 
     /**
@@ -189,10 +192,11 @@ class IntegrationTest {
     void extractCityInContinentTest(){
         String whereClause = "WHERE country.Continent = 'Asia' ";
         ArrayList<City> extractedCities = cr.extractCities(whereClause, false);
-        assertEquals(extractedCities.get(5).getCityName(), "Istanbul");
-        assertEquals(extractedCities.get(5).getCountryName(), "Turkey");
-        assertEquals(extractedCities.get(5).getDistrict(), "Istanbul");
-        assertEquals(extractedCities.get(5).getPopulation(),8787958);
+        assertEquals("Istanbul", extractedCities.get(5).getCityName(), "Sixth data row of the city's name in the continent table should be Istanbul");
+        assertEquals("Turkey", extractedCities.get(5).getCountryName(), "Sixth data row of the city's country in the continent table should be Turkey");
+        assertEquals("Istanbul", extractedCities.get(5).getDistrict(), "Sixth data row of the city's name in the district table should be Istanbul");
+        assertEquals(8787958, extractedCities.get(5).getPopulation(),"Sixth data row of the city's population in the continent table should be 8787958");
+
     }
 
     /**
@@ -202,10 +206,11 @@ class IntegrationTest {
     void extractCityInRegionTest(){
         String whereClause = "WHERE country.Region = 'Eastern Asia' ";
         ArrayList<City> extractedCities = cr.extractCities(whereClause, false);
-        assertEquals(extractedCities.get(5).getCityName(), "Tianjin");
-        assertEquals(extractedCities.get(5).getCountryName(), "China");
-        assertEquals(extractedCities.get(5).getDistrict(), "Tianjin");
-        assertEquals(extractedCities.get(5).getPopulation(),5286800);
+        assertEquals("Tianjin", extractedCities.get(5).getCityName(), "Sixth data row of the city's name in the region table should be Tianjin");
+        assertEquals("China", extractedCities.get(5).getCountryName(), "Sixth data row of the city's country in the region table should be China");
+        assertEquals("Tianjin", extractedCities.get(5).getDistrict(), "Sixth data row of the city's name in the district table should be Tianjin");
+        assertEquals(5286800, extractedCities.get(5).getPopulation(),"Sixth data row of the city's population in the region table should be 5286800");
+
     }
 
     /**
@@ -215,10 +220,11 @@ class IntegrationTest {
     void extractCityInCountryTest(){
         String whereClause = "WHERE country.Name = 'Algeria' ";
         ArrayList<City> extractedCities = cr.extractCities(whereClause, false);
-        assertEquals(extractedCities.get(5).getCityName(), "Sétif");
-        assertEquals(extractedCities.get(5).getCountryName(), "Algeria");
-        assertEquals(extractedCities.get(5).getDistrict(), "Sétif");
-        assertEquals(extractedCities.get(5).getPopulation(),179055);
+        assertEquals("Sétif", extractedCities.get(5).getCityName(), "Sixth data row of the city's name in the country table should be Sétif");
+        assertEquals("Algeria", extractedCities.get(5).getCountryName(), "Sixth data row of the city's country in the country table should be Algeria");
+        assertEquals("Sétif", extractedCities.get(5).getDistrict(), "Sixth data row of the city's district in the country table should be Sétif");
+        assertEquals(179055, extractedCities.get(5).getPopulation(),"Sixth data row of the city's population in the country table should be 179055");
+
     }
 
     /**
@@ -228,10 +234,11 @@ class IntegrationTest {
     void extractCityInDistrictTest(){
         String whereClause = "WHERE city.District = 'Adana' ";
         ArrayList<City> extractedCities = cr.extractCities(whereClause, false);
-        assertEquals(extractedCities.get(2).getCityName(), "Ceyhan");
-        assertEquals(extractedCities.get(2).getCountryName(), "Turkey");
-        assertEquals(extractedCities.get(2).getDistrict(), "Adana");
-        assertEquals(extractedCities.get(2).getPopulation(),102412);
+        assertEquals("Ceyhan", extractedCities.get(2).getCityName(), "Third data row of the city's name in the district table should be Ceyhan");
+        assertEquals("Turkey", extractedCities.get(2).getCountryName(), "Third data row of the city's country in the country table should be Turkey");
+        assertEquals("Adana", extractedCities.get(2).getDistrict(), "Third data row of the city's district in the district table should be Adana");
+        assertEquals(102412, extractedCities.get(2).getPopulation(),"Third data row of the city's population in the district table should be 102412");
+
     }
 
     /**
@@ -241,10 +248,10 @@ class IntegrationTest {
     void extractTopCityInWorldTest(){
         String whereClause = "";
         ArrayList<City> extractedCities = cr.extractCities(whereClause, true);
-        assertEquals(extractedCities.get(2).getCityName(), "São Paulo");
-        assertEquals(extractedCities.get(2).getCountryName(), "Brazil");
-        assertEquals(extractedCities.get(2).getDistrict(), "São Paulo");
-        assertEquals(extractedCities.get(2).getPopulation(),9968485);
+        assertEquals("São Paulo", extractedCities.get(2).getCityName(), "Third data row of the top populated city's name in the world table should be São Paulo");
+        assertEquals("Brazil", extractedCities.get(2).getCountryName(), "Third data row of the top populated city's country in the world table should be Brazil");
+        assertEquals("São Paulo", extractedCities.get(2).getDistrict(), "Third data row of the top populated city's district in the world table should be São Paulo");
+        assertEquals(9968485, extractedCities.get(2).getPopulation(),"Third data row of the top populated city's population in the world table should be 9968485");
 
     }
 
@@ -255,10 +262,10 @@ class IntegrationTest {
     void extractTopCityInContinentTest(){
         String whereClause = "WHERE country.Continent = 'Asia' ";
         ArrayList<City> extractedCities = cr.extractCities(whereClause, true);
-        assertEquals(extractedCities.get(2).getCityName(), "Shanghai");
-        assertEquals(extractedCities.get(2).getCountryName(), "China");
-        assertEquals(extractedCities.get(2).getDistrict(), "Shanghai");
-        assertEquals(extractedCities.get(2).getPopulation(),9696300);
+        assertEquals("Shanghai", extractedCities.get(2).getCityName(), "Third data row of the top populated city's name in the continent table should be Shanghai");
+        assertEquals("China", extractedCities.get(2).getCountryName(), "Third data row of the top populated city's country in the continent table should be China");
+        assertEquals("Shanghai", extractedCities.get(2).getDistrict(), "Third data row of the top populated city's district in the continent table should be Shanghai");
+        assertEquals(9696300, extractedCities.get(2).getPopulation(),"Third data row of the top populated city's population in the continent table should be 9696300");
     }
 
     /**
@@ -268,10 +275,10 @@ class IntegrationTest {
     void extractTopCityInRegionTest(){
         String whereClause = "WHERE country.Region = 'Eastern Asia' ";
         ArrayList<City> extractedCities = cr.extractCities(whereClause, true);
-        assertEquals(extractedCities.get(2).getCityName(), "Tokyo");
-        assertEquals(extractedCities.get(2).getCountryName(), "Japan");
-        assertEquals(extractedCities.get(2).getDistrict(), "Tokyo-to");
-        assertEquals(extractedCities.get(2).getPopulation(), 7980230);
+        assertEquals("Tokyo", extractedCities.get(2).getCityName(), "Third data row of the top populated city's name in the region table should be Tokyo");
+        assertEquals("Japan", extractedCities.get(2).getCountryName(), "Third data row of the top populated city's country in the region table should be Japan");
+        assertEquals("Tokyo-to", extractedCities.get(2).getDistrict(), "Third data row of the top populated city's district in the region table should be Tokyo-to");
+        assertEquals(7980230, extractedCities.get(2).getPopulation(), "Third data row of the top populated city's population in the region table should be 7980230");
     }
 
     /**
@@ -281,10 +288,10 @@ class IntegrationTest {
     void extractTopCityInCountryTest(){
         String whereClause = "WHERE country.Name = 'Algeria' ";
         ArrayList<City> extractedCities = cr.extractCities(whereClause, true);
-        assertEquals(extractedCities.get(2).getCityName(), "Constantine");
-        assertEquals(extractedCities.get(2).getCountryName(), "Algeria");
-        assertEquals(extractedCities.get(2).getDistrict(), "Constantine");
-        assertEquals(extractedCities.get(2).getPopulation(),443727);
+        assertEquals("Constantine", extractedCities.get(2).getCityName(), "Third data row of the top populated city's name in the country table should be Constantine");
+        assertEquals("Algeria", extractedCities.get(2).getCountryName(), "Third data row of the top populated city's country in the country table should be Algeria");
+        assertEquals("Constantine", extractedCities.get(2).getDistrict(), "Third data row of the top populated city's district in the country table should be Constantine");
+        assertEquals(443727, extractedCities.get(2).getPopulation(),"Third data row of the top populated city's population in the country table should be 443727");
     }
 
     /**
@@ -294,10 +301,10 @@ class IntegrationTest {
     void extractTopCityInDistrictTest() {
         String whereClause = "WHERE city.District = 'Adana' ";
         ArrayList<City> extractedCities = cr.extractCities(whereClause, true);
-        assertEquals(extractedCities.get(2).getCityName(), "Ceyhan");
-        assertEquals(extractedCities.get(2).getCountryName(), "Turkey");
-        assertEquals(extractedCities.get(2).getDistrict(), "Adana");
-        assertEquals(extractedCities.get(2).getPopulation(), 102412);
+        assertEquals("Ceyhan", extractedCities.get(2).getCityName(), "Third data row of the top populated city's name in the district table should be Ceyhan");
+        assertEquals("Turkey", extractedCities.get(2).getCountryName(), "Third data row of the top populated city's country in the district table should be Turkey");
+        assertEquals("Adana",extractedCities.get(2).getDistrict(), "Third data row of the top populated city's district in the district table should be Adana");
+        assertEquals(102412, extractedCities.get(2).getPopulation(), "Third data row of the top populated city's population in the district table should be 102412");
     }
 
     /**
@@ -312,9 +319,9 @@ class IntegrationTest {
     void extractCapitalCityInWorldTest(){
         String whereClause = "";
         ArrayList<City> extractedCapitalCites = ccr.extractCapitalCities(whereClause, false);
-        assertEquals(extractedCapitalCites.get(5).getCityName(), "Peking");
-        assertEquals(extractedCapitalCites.get(5).getCountryName(), "China");
-        assertEquals(extractedCapitalCites.get(5).getPopulation(), 7472000);
+        assertEquals("Peking", extractedCapitalCites.get(5).getCityName(), "Sixth data row of the capital city's name in the world table should be Peking");
+        assertEquals("China", extractedCapitalCites.get(5).getCountryName(), "Sixth data row of the capital city's country in the world table should be China");
+        assertEquals(7472000, extractedCapitalCites.get(5).getPopulation(), "Sixth data row of the capital city's population in the world table should be 7472000");
     }
 
     /**
@@ -324,9 +331,10 @@ class IntegrationTest {
     void extractCapitalCityInContinentTest(){
         String whereClause = "WHERE country.Continent = 'Asia' ";
         ArrayList<City> extractedCapitalCites = ccr.extractCapitalCities(whereClause, false);
-        assertEquals(extractedCapitalCites.get(5).getCityName(), "Bangkok");
-        assertEquals(extractedCapitalCites.get(5).getCountryName(), "Thailand");
-        assertEquals(extractedCapitalCites.get(5).getPopulation(), 6320174);
+        assertEquals("Bangkok", extractedCapitalCites.get(5).getCityName(),"Sixth data row of the capital city's name in the continent table should be Bangkok");
+        assertEquals("Thailand", extractedCapitalCites.get(5).getCountryName(), "Sixth data row of the capital city's country in the continent table should be Thailand");
+        assertEquals(6320174, extractedCapitalCites.get(5).getPopulation(), "Sixth data row of the capital city's population in the continent table should be 6320174");
+
     }
 
     /**
@@ -336,9 +344,10 @@ class IntegrationTest {
     void extractCapitalCityInRegionTest(){
         String whereClause = "WHERE country.Region = 'Eastern Asia' ";
         ArrayList<City> extractedCapitalCites = ccr.extractCapitalCities(whereClause, false);
-        assertEquals(extractedCapitalCites.get(5).getCityName(), "Victoria");
-        assertEquals(extractedCapitalCites.get(5).getCountryName(), "Hong Kong");
-        assertEquals(extractedCapitalCites.get(5).getPopulation(), 1312637);
+        assertEquals("Victoria", extractedCapitalCites.get(5).getCityName(), "Sixth data row of the capital city's name in the region table should be Victoria");
+        assertEquals("Hong Kong", extractedCapitalCites.get(5).getCountryName(), "Sixth data row of the capital city's country in the region table should be Hong Kong");
+        assertEquals(1312637, extractedCapitalCites.get(5).getPopulation(), "Sixth data row of the capital city's population in the region table should be 1312637");
+
     }
 
     /**
@@ -348,9 +357,10 @@ class IntegrationTest {
     void extractTopCapitalCityInWorldTest(){
         String whereClause = "";
         ArrayList<City> extractedCapitalCites = ccr.extractCapitalCities(whereClause, true);
-        assertEquals(extractedCapitalCites.get(2).getCityName(), "Ciudad de México");
-        assertEquals(extractedCapitalCites.get(2).getCountryName(), "Mexico");
-        assertEquals(extractedCapitalCites.get(2).getPopulation(), 8591309);
+        assertEquals("Ciudad de México", extractedCapitalCites.get(2).getCityName(), "Third data row of the top populated capital city's name in the world table should be Ciudad de México");
+        assertEquals("Mexico",extractedCapitalCites.get(2).getCountryName(), "Third data row of the top populated capital city's country in the world table should be Mexico");
+        assertEquals(8591309, extractedCapitalCites.get(2).getPopulation(), "Third data row of the top populated capital city's population in the world table should be 8591309");
+
     }
 
     /**
@@ -360,9 +370,10 @@ class IntegrationTest {
     void extractTopCapitalCityInContinentTest(){
         String whereClause = "WHERE country.Continent = 'Asia' ";
         ArrayList<City> extractedCapitalCites = ccr.extractCapitalCities(whereClause, true);
-        assertEquals(extractedCapitalCites.get(2).getCityName(), "Tokyo");
-        assertEquals(extractedCapitalCites.get(2).getCountryName(), "Japan");
-        assertEquals(extractedCapitalCites.get(2).getPopulation(), 7980230);
+        assertEquals("Tokyo", extractedCapitalCites.get(2).getCityName(), "Third data row of the top populated capital city's name in the continent table should be Tokyo");
+        assertEquals("Japan", extractedCapitalCites.get(2).getCountryName(), "Third data row of the top populated capital city's country in the continent table should be Japan");
+        assertEquals(7980230, extractedCapitalCites.get(2).getPopulation(), "Third data row of the top populated capital city's population in the continent table should be 7980230");
+
     }
 
     /**
@@ -372,9 +383,10 @@ class IntegrationTest {
     void extractTopCapitalCityInRegionTest(){
         String whereClause = "WHERE country.Region = 'Eastern Asia' ";
         ArrayList<City> extractedCapitalCites = ccr.extractCapitalCities(whereClause, true);
-        assertEquals(extractedCapitalCites.get(2).getCityName(), "Peking");
-        assertEquals(extractedCapitalCites.get(2).getCountryName(), "China");
-        assertEquals(extractedCapitalCites.get(2).getPopulation(), 7472000);
+        assertEquals("Peking", extractedCapitalCites.get(2).getCityName(), "Third data row of the top populated capital city's name in the region table should be Peking");
+        assertEquals("China", extractedCapitalCites.get(2).getCountryName(), "Third data row of the top populated capital city's country in the continent table should be China");
+        assertEquals(7472000, extractedCapitalCites.get(2).getPopulation(), "Third data row of the top populated capital city's population in the region table should be 7472000");
+
     }
 
     /**
@@ -388,12 +400,12 @@ class IntegrationTest {
     @Test
     void extractPopulationInContinentTest(){
         ArrayList<Population> extractedPopulation = popr.extractPopulation("Continent");
-        assertEquals(extractedPopulation.get(0).getName(), "Asia");
-        assertEquals(extractedPopulation.get(0).getTotalPopulation(), 3705025700L);
-        assertEquals(extractedPopulation.get(0).getPopulationInCities(), 697604103L);
-        assertEquals(extractedPopulation.get(0).getCityPopulationPercentage(), "18.8286 %");
-        assertEquals(extractedPopulation.get(0).getPopulationNotInCities(), 3007421597L);
-        assertEquals(extractedPopulation.get(0).getNonCityPopulationPercentage(), "81.1714 %");
+        assertEquals("Asia", extractedPopulation.get(0).getName(), "First data row of the population in the continent table should be of Asia Continent");
+        assertEquals(3705025700L, extractedPopulation.get(0).getTotalPopulation(), "First data row of the total population in the Asia continent should be 3705025700L");
+        assertEquals(697604103L, extractedPopulation.get(0).getPopulationInCities(), "First data row of the population in the city of Asia continent should be 697604103L");
+        assertEquals("18.8286 %", extractedPopulation.get(0).getCityPopulationPercentage(), "First data row of the population percentage in the Asia continent table should be 18.8286 %");
+        assertEquals(3007421597L, extractedPopulation.get(0).getPopulationNotInCities(), "First data row of the population not in the city of Asia continent should be 3007421597L");
+        assertEquals("81.1714 %", extractedPopulation.get(0).getNonCityPopulationPercentage(), "First data row of the population percentage in the Asia continent table should be 81.1714 %");
     }
 
     /**
@@ -402,12 +414,12 @@ class IntegrationTest {
     @Test
     void extractPopulationInRegionTest(){
         ArrayList<Population> extractedPopulation = popr.extractPopulation("Region");
-        assertEquals(extractedPopulation.get(0).getName(), "Australia and New Zealand");
-        assertEquals(extractedPopulation.get(0).getTotalPopulation(), 22753100L);
-        assertEquals(extractedPopulation.get(0).getPopulationInCities(), 13163436L);
-        assertEquals(extractedPopulation.get(0).getCityPopulationPercentage(), "57.8534 %");
-        assertEquals(extractedPopulation.get(0).getPopulationNotInCities(), 9589664L);
-        assertEquals(extractedPopulation.get(0).getNonCityPopulationPercentage(), "42.1466 %");
+        assertEquals("Australia and New Zealand", extractedPopulation.get(0).getName(), "First data row of the population in the region table should be Australia and New Zealand");
+        assertEquals(22753100L, extractedPopulation.get(0).getTotalPopulation(), "First data row of the total population in the region table should be 22753100L");
+        assertEquals(13163436L, extractedPopulation.get(0).getPopulationInCities(), "First data row of the population of the city in the region table should be 13163436L");
+        assertEquals("57.8534 %", extractedPopulation.get(0).getCityPopulationPercentage(), "First data row of the population percentage in the region table should be 57.8534 %");
+        assertEquals(9589664L, extractedPopulation.get(0).getPopulationNotInCities(), "First data row of the population not in the city of the region table should be 9589664L");
+        assertEquals("42.1466 %", extractedPopulation.get(0).getNonCityPopulationPercentage(), "First data row of the population percentage in the region table should be 42.1466 %");
     }
 
     /**
@@ -416,12 +428,12 @@ class IntegrationTest {
     @Test
     void extractPopulationInCountryTest(){
         ArrayList<Population> extractedPopulation = popr.extractPopulation("Name");
-        assertEquals(extractedPopulation.get(0).getName(), "Afghanistan");
-        assertEquals(extractedPopulation.get(0).getTotalPopulation(), 22720000L);
-        assertEquals(extractedPopulation.get(0).getPopulationInCities(), 2332100L);
-        assertEquals(extractedPopulation.get(0).getCityPopulationPercentage(), "10.2645 %");
-        assertEquals(extractedPopulation.get(0).getPopulationNotInCities(), 20387900L);
-        assertEquals(extractedPopulation.get(0).getNonCityPopulationPercentage(), "89.7355 %");
+        assertEquals("Afghanistan", extractedPopulation.get(0).getName(), "First data row of the population in the country table should be Afghanistan");
+        assertEquals(22720000L, extractedPopulation.get(0).getTotalPopulation(), "First data row of the total population in the country table should be 22720000L");
+        assertEquals(2332100L, extractedPopulation.get(0).getPopulationInCities(), "First data row of the population of the city in the country table should be 2332100L");
+        assertEquals("10.2645 %", extractedPopulation.get(0).getCityPopulationPercentage(), "First data row of the population percentage in the country table should be 10.2645 %");
+        assertEquals(20387900L, extractedPopulation.get(0).getPopulationNotInCities(), "First data row of the population not in the city of the country table should be 20387900L");
+        assertEquals("89.7355 %", extractedPopulation.get(0).getNonCityPopulationPercentage(), "First data row of the population percentage in the country table should be 89.7355 %");
     }
 
     /**
@@ -435,7 +447,7 @@ class IntegrationTest {
     @Test
     void extractWorldPopulationTest(){
         ArrayList<Population> extractedWorldPopulation = apr.extractWorldPopulation();
-        assertEquals(extractedWorldPopulation.get(0).getTotalPopulation(), 6078749450L);
+        assertEquals(6078749450L, extractedWorldPopulation.get(0).getTotalPopulation(), "First data row of the total world population should be 6078749450L");
     }
 
     /**
@@ -445,12 +457,12 @@ class IntegrationTest {
     void extractCitiesAndNonCitiesPopulationInContinent(){
         String whereClause = "WHERE cnty.Continent = 'Europe' ";
         ArrayList<Population> extractedCitiesAndNonCitiesPopulation = apr.extractCitiesAndNonCitiesPopulation("Continent", whereClause);
-        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getName(), "Europe");
-        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getTotalPopulation(), 730074600L);
-        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getPopulationInCities(), 241942813L);
-        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getCityPopulationPercentage(), "33.1395 %");
-        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getPopulationNotInCities(), 488131787L);
-        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getNonCityPopulationPercentage(), "66.8605 %");
+        assertEquals("Europe", extractedCitiesAndNonCitiesPopulation.get(0).getName(), "First data row of the population and non population of the city in a continent table should be Europe");
+        assertEquals(730074600L, extractedCitiesAndNonCitiesPopulation.get(0).getTotalPopulation(), "First data row of the total population and non population of the city in a continent table should be 730074600L");
+        assertEquals(241942813L, extractedCitiesAndNonCitiesPopulation.get(0).getPopulationInCities(), "First data row of the population of the city in a continent table should be 241942813L");
+        assertEquals("33.1395 %", extractedCitiesAndNonCitiesPopulation.get(0).getCityPopulationPercentage(), "First data row of the population percentage of the city in a continent table should be 33.1395 %");
+        assertEquals(488131787L, extractedCitiesAndNonCitiesPopulation.get(0).getPopulationNotInCities(), "First data row of the non population of the city in a continent table should be 488131787L");
+        assertEquals("66.8605 %", extractedCitiesAndNonCitiesPopulation.get(0).getNonCityPopulationPercentage(), "First data row of the non population percentage of the city in a continent table should be 66.8605 %");
     }
 
     /**
@@ -460,12 +472,13 @@ class IntegrationTest {
     void extractCitiesAndNonCitiesPopulationInRegion(){
         String whereClause = "WHERE cnty.Region = 'Southern Europe' ";
         ArrayList<Population> extractedCitiesAndNonCitiesPopulation = apr.extractCitiesAndNonCitiesPopulation("Region", whereClause);
-        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getName(), "Southern Europe");
-        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getTotalPopulation(), 144674200L);
-        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getPopulationInCities(), 40016658L);
-        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getCityPopulationPercentage(), "27.6598 %");
-        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getPopulationNotInCities(), 104657542l);
-        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getNonCityPopulationPercentage(), "72.3402 %");
+        assertEquals("Southern Europe", extractedCitiesAndNonCitiesPopulation.get(0).getName(), "First data row of the population and non population of the city in a region table should be Southern Europe");
+        assertEquals(144674200L, extractedCitiesAndNonCitiesPopulation.get(0).getTotalPopulation(), "First data row of the total population and non population of the city in a region table should be 144674200L");
+        assertEquals(40016658L, extractedCitiesAndNonCitiesPopulation.get(0).getPopulationInCities(), "First data row of the population of the city in a region table should be 40016658L");
+        assertEquals("27.6598 %", extractedCitiesAndNonCitiesPopulation.get(0).getCityPopulationPercentage(), "First data row of the population percentage of the city in a region table should be 27.6598 %");
+        assertEquals(104657542L, extractedCitiesAndNonCitiesPopulation.get(0).getPopulationNotInCities(), "First data row of the non population of the city in a region table should be 104657542L");
+        assertEquals("72.3402 %", extractedCitiesAndNonCitiesPopulation.get(0).getNonCityPopulationPercentage(), "First data row of the non population percentage of the city in a region table should be 72.3402 %");
+
     }
 
     /**
@@ -475,12 +488,13 @@ class IntegrationTest {
     void extractCitiesAndNonCitiesPopulationInCountry(){
         String whereClause = "WHERE cnty.Name = 'Austria' ";
         ArrayList<Population> extractedCitiesAndNonCitiesPopulation = apr.extractCitiesAndNonCitiesPopulation("Name", whereClause);
-        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getName(), "Austria");
-        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getTotalPopulation(), 8091800L);
-        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getPopulationInCities(), 2384273L);
-        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getCityPopulationPercentage(), "29.4653 %");
-        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getPopulationNotInCities(), 5707527L);
-        assertEquals(extractedCitiesAndNonCitiesPopulation.get(0).getNonCityPopulationPercentage(), "70.5347 %");
+        assertEquals("Austria", extractedCitiesAndNonCitiesPopulation.get(0).getName(), "First data row of the population and non population of the city in a country table should be Austria");
+        assertEquals(8091800L, extractedCitiesAndNonCitiesPopulation.get(0).getTotalPopulation(), "First data row of the total population and non population of the city in a country table should be 8091800L");
+        assertEquals(2384273L, extractedCitiesAndNonCitiesPopulation.get(0).getPopulationInCities(), "First data row of the population of the city in a country table should be 2384273L");
+        assertEquals("29.4653 %", extractedCitiesAndNonCitiesPopulation.get(0).getCityPopulationPercentage(), "First data row of the population percentage of the city in a country table should be 29.4653 %");
+        assertEquals(5707527L, extractedCitiesAndNonCitiesPopulation.get(0).getPopulationNotInCities(), "First data row of the non population of the city in a country table should be 5707527L");
+        assertEquals("70.5347 %", extractedCitiesAndNonCitiesPopulation.get(0).getNonCityPopulationPercentage(), "First data row of the non population percentage of the city in a country table should be 70.5347 %");
+
     }
 
     /**
@@ -490,8 +504,9 @@ class IntegrationTest {
     void extractPopulationInDistrict(){
         String whereClause = "WHERE city.District = 'Gelderland' ";
         ArrayList<Population> extractedPopulation = apr.extractPopulation("District", whereClause);
-        assertEquals(extractedPopulation.get(0).getName(), "Gelderland");
-        assertEquals(extractedPopulation.get(0).getTotalPopulation(), 545548L);
+        assertEquals("Gelderland", extractedPopulation.get(0).getName(), "First data row of the population in a district table should be Gelderland");
+        assertEquals(545548L, extractedPopulation.get(0).getTotalPopulation(), "First data row of the population in a district table should be 545548L");
+
     }
 
     /**
@@ -501,8 +516,9 @@ class IntegrationTest {
     void extractPopulationInCity(){
         String whereClause = "WHERE city.Name = 'Resistencia' ";
         ArrayList<Population> extractedPopulation = apr.extractPopulation("Name", whereClause);
-        assertEquals(extractedPopulation.get(0).getName(), "Resistencia");
-        assertEquals(extractedPopulation.get(0).getTotalPopulation(), 229212L);
+        assertEquals("Resistencia", extractedPopulation.get(0).getName(), "First data row of the population in a city table should be Resistencia");
+        assertEquals(229212L, extractedPopulation.get(0).getTotalPopulation(), "First data row of the population in a city table should be 229212L");
+
     }
 
     /**
@@ -516,8 +532,8 @@ class IntegrationTest {
     @Test
     void extractLanguageTest(){
         ArrayList<Language> extractedLanguage = lgr.extractLanguage();
-        assertEquals(extractedLanguage.get(0).getCountryLanguage(), "Chinese");
-        assertEquals(extractedLanguage.get(0).getPopulation(), 1191843539);
-        assertEquals(extractedLanguage.get(0).getPercentage(), "19.61 %");
+        assertEquals("Chinese", extractedLanguage.get(0).getCountryLanguage(), "First data row of the population who speak Chinese among world population");
+        assertEquals(1191843539L, extractedLanguage.get(0).getPopulation(), "First data row of the population who speak Chinese among world 1191843539L");
+        assertEquals("19.61 %", extractedLanguage.get(0).getPercentage(), "First data row of the population percentage who speak Chinese among world population");
     }
 }

@@ -18,8 +18,6 @@ public class App {
      */
     public static void main(String[] args){
 
-        ArrayList<City>  lol = new ArrayList<>();
-
         // Create a DatabaseConnection Object
         DatabaseConnection dbConn = new DatabaseConnection();
         // Make connection to database
