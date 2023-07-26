@@ -1,4 +1,8 @@
 package com.napier.coursework;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Represents the App
  * @author Thar Htet Nyan
@@ -17,7 +21,7 @@ public class App {
         // Create a DatabaseConnection Object
         DatabaseConnection dbConn = new DatabaseConnection();
         // Make connection to database
-        dbConn.connect();
+        dbConn.connect("db", 3306);
 
 
         // Create a CountryReport Object
@@ -65,7 +69,6 @@ public class App {
 
         // Close the connection
         dbConn.disconnect();
-
 
     }
 

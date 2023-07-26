@@ -17,12 +17,12 @@ public class AdditionalPopulationReport {
     /**
      * private Connection to SQL database
      */
-    private Connection conn = null;
+    private Connection conn;
 
     /**
      * Number of query for table titles
      */
-    private int query_count = 26;
+    private int queryCount = 26;
 
     /**
      * private string to set continent name of query
@@ -96,7 +96,7 @@ public class AdditionalPopulationReport {
         displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "Region", region);
 
         // store the arraylist of extracted cities and non cities population data
-        extractedCitiesAndNonCitiesPopulation = extractCitiesAndNonCitiesPopulation("Country", whereClause3);
+        extractedCitiesAndNonCitiesPopulation = extractCitiesAndNonCitiesPopulation("Name", whereClause3);
         // display cities and non cities population in a country
         displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "Country", country);
 
@@ -106,7 +106,7 @@ public class AdditionalPopulationReport {
         displayPopulation(extractedPopulation, "District", district);
 
         // store the arraylist of extracted population data
-        extractedPopulation = extractPopulation ("City", whereClause5);
+        extractedPopulation = extractPopulation ("Name", whereClause5);
         // display population in a city
         displayPopulation(extractedPopulation, "City", city);
     }
@@ -117,6 +117,7 @@ public class AdditionalPopulationReport {
      * @return the arraylist of extracted world population data
      */
     protected ArrayList<Population> extractWorldPopulation() {
+        ArrayList<Population> population = new ArrayList<Population>();
         try {
             Statement stmt = conn.createStatement();
 
@@ -124,19 +125,17 @@ public class AdditionalPopulationReport {
 
             ResultSet rset = stmt.executeQuery(query);
 
-            ArrayList<Population> population = new ArrayList<Population>();
             while (rset.next()) {
                 Population p = new Population();
                 p.setTotalPopulation(rset.getLong("TotalPopulation"));
                 population.add(p);
             }
 
-            return population;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
-            return null;
         }
+        return population;
     }
 
     /**
@@ -150,9 +149,9 @@ public class AdditionalPopulationReport {
 
         String title = "Total Number of People Living in the world";
 
-        title = query_count + ". " + title;
+        title = queryCount + ". " + title;
 
-        query_count += 1;
+        queryCount += 1;
 
         System.out.printf("| %-54s |%n", title);
         System.out.printf("----------------------------------------------------------%n");
@@ -161,11 +160,12 @@ public class AdditionalPopulationReport {
         System.out.printf("----------------------------------------------------------%n");
 
         if (extractedWorldPopulation != null) {
-            while (extractedWorldPopulation.remove(null)){
-
+            boolean nullCheck = true;
+            while(nullCheck) {
+                nullCheck = extractedWorldPopulation.remove(null);
             }
         }
-        if (extractedWorldPopulation == null || extractedWorldPopulation.size() == 0){
+        if (extractedWorldPopulation == null || extractedWorldPopulation.isEmpty()){
             //handles null records
             System.out.printf("| %-54s |%n", "No records");
         }
@@ -185,10 +185,9 @@ public class AdditionalPopulationReport {
      * @return the arraylist of extracted population data
      */
     protected ArrayList<Population> extractCitiesAndNonCitiesPopulation(String type, String whereClause) {
+        ArrayList<Population> population = new ArrayList<Population>();
         try {
-            if (type == "Country") {
-                type = "Name";
-            }
+
             Statement stmt = conn.createStatement();
 
             String query = "SELECT cnty." + type + ", SUM(cnty.Population) AS TotalPopulation, cty.TotalCityPopulation, " +
@@ -209,7 +208,6 @@ public class AdditionalPopulationReport {
 
             ResultSet rset = stmt.executeQuery(query);
 
-            ArrayList<Population> population = new ArrayList<Population>();
             while (rset.next()) {
                 Population p = new Population();
                 p.setName(rset.getString("cnty." + type));
@@ -220,13 +218,11 @@ public class AdditionalPopulationReport {
                 p.setNonCityPopulationPercentage(rset.getString("NonCityPopulationPercentage"));
                 population.add(p);
             }
-
-            return population;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
-            return null;
         }
+        return population;
     }
 
     /**
@@ -240,12 +236,12 @@ public class AdditionalPopulationReport {
 
         String title = "Number of People Living in the Cities and Not in the Cities in a " + type;
         // if the type is not world, add some more text in title
-        if (type != "World") {
+        if (!type.equals("World")) {
             title +=  " (" + name + ")";
         }
-        title = query_count + ". " + title;
+        title = queryCount + ". " + title;
 
-        query_count += 1;
+        queryCount += 1;
 
         System.out.printf("| %-116s |%n", title);
         System.out.printf("------------------------------------------------------------------------------------------------------------------------%n");
@@ -255,12 +251,13 @@ public class AdditionalPopulationReport {
         System.out.printf("------------------------------------------------------------------------------------------------------------------------%n");
 
         if (extractedCitiesAndNonCitiesPopulation != null) {
-            while(extractedCitiesAndNonCitiesPopulation.remove(null)){
-
+            boolean nullCheck = true;
+            while(nullCheck) {
+                nullCheck = extractedCitiesAndNonCitiesPopulation.remove(null);
             }
         }
 
-        if (extractedCitiesAndNonCitiesPopulation == null || extractedCitiesAndNonCitiesPopulation.size() == 0) {
+        if (extractedCitiesAndNonCitiesPopulation == null || extractedCitiesAndNonCitiesPopulation.isEmpty()) {
             // handles null records
             System.out.printf("| %-116s |%n", "No records");
         } else {
@@ -279,7 +276,7 @@ public class AdditionalPopulationReport {
                         pop.getCityPopulationPercentage(),
                         NumberFormat.getInstance(Locale.US).format(pop.getPopulationNotInCities()),
                         pop.getNonCityPopulationPercentage());
-                if (extraENameText != ""){
+                if (!extraENameText.equals("")){
                     System.out.printf(tableFormat2,
                             extraENameText,
                             "",
@@ -299,11 +296,10 @@ public class AdditionalPopulationReport {
      *
      * @return the arraylist of extracted population data
      */
-    protected ArrayList<Population> extractPopulation(String type, String whereClause) {
+    protected ArrayList<Population> extractPopulation(String type, String whereClause)
+    {
+        ArrayList<Population> population = new ArrayList<Population>();
         try {
-            if (type == "City") {
-                type = "Name";
-            }
             Statement stmt = conn.createStatement();
 
             String query = "SELECT city." + type + ", SUM(city.Population) AS TotalPopulation " +
@@ -313,7 +309,6 @@ public class AdditionalPopulationReport {
 
             ResultSet rset = stmt.executeQuery(query);
 
-            ArrayList<Population> population = new ArrayList<Population>();
             while (rset.next()) {
                 Population p = new Population();
                 p.setName(rset.getString("city." + type));
@@ -321,12 +316,11 @@ public class AdditionalPopulationReport {
                 population.add(p);
             }
 
-            return population;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
-            return null;
         }
+        return population;
     }
 
     /**
@@ -340,9 +334,9 @@ public class AdditionalPopulationReport {
 
         String title = "Total Number of People Living in a " + type + " (" + name + ")";
 
-        title = query_count + ". " + title;
+        title = queryCount + ". " + title;
 
-        query_count += 1;
+        queryCount += 1;
 
         System.out.printf("| %-63s |%n", title);
         System.out.printf("-------------------------------------------------------------------%n");
@@ -351,11 +345,12 @@ public class AdditionalPopulationReport {
         System.out.printf("-------------------------------------------------------------------%n");
 
         if (extractedPopulation != null) {
-            while (extractedPopulation.remove(null)) {
-
+            boolean nullCheck = true;
+            while(nullCheck) {
+                nullCheck = extractedPopulation.remove(null);
             }
         }
-        if (extractedPopulation == null || extractedPopulation.size() == 0) {
+        if (extractedPopulation == null || extractedPopulation.isEmpty()) {
             //handle null records
             System.out.printf("| %-63s |%n", "No records");
         }

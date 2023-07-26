@@ -18,12 +18,12 @@ public class CountryReport {
     /**
      * Connecting to SQL database
      */
-    private Connection conn = null;
+    private Connection conn;
 
     /**
      * Number of query for table titles
      */
-    private int query_count = 1;
+    private int queryCount = 1;
 
     /**
      * private integer method limiting printed output for top 5 only
@@ -106,7 +106,8 @@ public class CountryReport {
      * @return the arraylist of extracted countries data
      */
     protected ArrayList<Country> extractCountries(String whereClause, boolean isTop){
-
+        // Extract country information
+        ArrayList<Country> country = new ArrayList<Country>();
         try
         {
             // Create an SQL statement
@@ -125,8 +126,7 @@ public class CountryReport {
             }
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(query);
-            // Extract country information
-            ArrayList<Country> country = new ArrayList<Country>();
+
             while (rset.next())
             {
                 Country coty = new Country();
@@ -139,14 +139,13 @@ public class CountryReport {
                 country.add(coty);
             }
 
-            return country;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country details");
-            return null;
         }
+        return country;
     }
 
     /**
@@ -169,13 +168,13 @@ public class CountryReport {
         }
 
         // if the type is not world, add some more text in title
-        if (type != "World") {
+        if (!type.equals("World")) {
             title +=  " (" + name + ")";
         }
         // add numbering to the title
-        title = query_count + ". " + title;
+        title = queryCount + ". " + title;
         // increase the count by one
-        query_count += 1;
+        queryCount += 1;
         // print out the title
         System.out.printf("| %-110s |%n", title);
         System.out.printf("------------------------------------------------------------------------------------------------------------------%n");
@@ -183,19 +182,16 @@ public class CountryReport {
         System.out.printf(tableFormat, "Code", "Country Name", "Continent", "Region", "Population", "Capital");
         System.out.printf("------------------------------------------------------------------------------------------------------------------%n");
         if (extractedCountries != null) {
-            while(extractedCountries.remove(null)){
-
+            boolean nullCheck = true;
+            while(nullCheck) {
+                nullCheck = extractedCountries.remove(null);
             }
         }
-        if (extractedCountries == null || extractedCountries.size() == 0) {
+        if (extractedCountries == null || extractedCountries.isEmpty()) {
             // handles null records
             System.out.printf("| %-110s |%n", "No records");
         } else {
             for (Country eCountry : extractedCountries) {
-
-                if (eCountry == null) {
-                    continue;
-                }
 
                 String countryNameText = eCountry.getCountryName();
                 String regionText = eCountry.getRegion();
@@ -229,7 +225,7 @@ public class CountryReport {
                         NumberFormat.getInstance(Locale.US).format(eCountry.getPopulation()),
                         capitalText);
                 // print an extra row if needed
-                if (extraCountryNameText != "" || extraRegionText != "" || extraCapitalText != "") {
+                if ((!extraCountryNameText.equals("")) || (!extraRegionText.equals("")) || (!extraCapitalText.equals(""))) {
                     System.out.printf(tableFormat,
                             "",
                             extraCountryNameText,

@@ -11,22 +11,22 @@ public class City {
     /**
      * private string to store city name
      */
-    private String CityName;
+    private String cityName;
 
     /**
      * private string to store country name
      */
-    private String CountryName;
+    private String countryName;
 
     /**
      * private string to store district
      */
-    private String District;
+    private String district;
 
     /**
      * private integer to store city population
      */
-    private int Population;
+    private int population;
 
     /**
      * public method to set city name
@@ -34,7 +34,7 @@ public class City {
      * @param cityName the name of the city
      */
     public void setCityName(String cityName) {
-        CityName = cityName;
+        this.cityName = cityName;
     }
 
     /**
@@ -43,7 +43,7 @@ public class City {
      * @param countryName the name of the country
      */
     public void setCountryName(String countryName) {
-        CountryName = countryName;
+        this.countryName = countryName;
     }
 
     /**
@@ -52,7 +52,7 @@ public class City {
      * @param district the name of the district
      */
     public void setDistrict(String district) {
-        District = district;
+        this.district = district;
     }
 
     /**
@@ -61,7 +61,7 @@ public class City {
      * @param population the number of population
      */
     public void setPopulation(int population) {
-        Population = population;
+        this.population = population;
     }
 
     /**
@@ -70,7 +70,7 @@ public class City {
      * @return the name of the city
      */
     public String getCityName() {
-        return CityName;
+        return cityName;
     }
 
     /**
@@ -79,7 +79,7 @@ public class City {
      * @return the name of the country
      */
     public String getCountryName() {
-        return CountryName;
+        return countryName;
     }
 
     /**
@@ -88,7 +88,7 @@ public class City {
      * @return the name of the district
      */
     public String getDistrict() {
-        return District;
+        return district;
     }
 
     /**
@@ -97,6 +97,6 @@ public class City {
      * @return the number of population
      */
     public int getPopulation() {
-        return Population;
+        return population;
     }
 }
