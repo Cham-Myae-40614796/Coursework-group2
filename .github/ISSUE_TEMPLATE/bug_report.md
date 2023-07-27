@@ -3,7 +3,7 @@ name: Bug report
 about: Create a report to help us improve
 title: Encounter bug while producing the result.
 labels: bug
-assignees: ''
+assignees: Thar Htet Nyan, Kyi Phyu Khin, Htet Myat Thiri, Cham Myae Pyae Sone
 
 ---
 
