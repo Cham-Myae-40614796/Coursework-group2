@@ -92,7 +92,7 @@ public class CapitalCityReport {
         displayCapitalCities(extractedCapitalCities,"World", "", true);
 
         // store the arraylist of extracted cities data
-        extractedCapitalCities = extractCapitalCities(whereClause1, true);
+        extractedCapitalCities = extractCapitalCities(whereClause1, false);
         // display a table of information on top populated capital cities in a continent
         displayCapitalCities(extractedCapitalCities,"Continent", continent, true);
 

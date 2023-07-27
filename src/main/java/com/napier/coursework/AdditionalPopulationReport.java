@@ -54,7 +54,7 @@ public class AdditionalPopulationReport {
      */
     private String tableFormat1 = "| %-54s |%n";
     private String tableFormat2 = "| %-20s | %-20s | %-20s | %-10s | %-21s | %-10s |%n";
-    private String tableFormat3 = "| %-40s | %-20s |%n";
+    private String tableFormat3 = "| %-54s |%n";
 
     /**
      * public method to set SQL database Connection
@@ -88,7 +88,6 @@ public class AdditionalPopulationReport {
         // create new arraylist to store the arraylist of extracted cities and non cities population data
         ArrayList<Population> extractedCitiesAndNonCitiesPopulation = extractCitiesAndNonCitiesPopulation("Continent", whereClause1);
         // display cities and non cities population in a continent
-        displayCitiesAndNonCitiesPopulation(extractedCitiesAndNonCitiesPopulation, "Continent", continent);
 
         // store the arraylist of extracted cities and non cities population data
         extractedCitiesAndNonCitiesPopulation = extractCitiesAndNonCitiesPopulation("Region", whereClause2);

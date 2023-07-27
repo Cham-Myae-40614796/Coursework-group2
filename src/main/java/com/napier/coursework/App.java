@@ -13,15 +13,20 @@ import java.util.List;
 public class App {
 
     /**
+     * Version of the App
+     */
+    private static String version = "0.1.0.4";
+    /**
      * the main method of Java App
      * @param args
      */
     public static void main(String[] args){
 
+        System.out.println("Version: " + version);
         // Create a DatabaseConnection Object
         DatabaseConnection dbConn = new DatabaseConnection();
         // Make connection to database
-        dbConn.connect("db", 3306);
+        dbConn.connect("localhost", 33061);
 
 
         // Create a CountryReport Object

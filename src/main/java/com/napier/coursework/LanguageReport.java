@@ -44,7 +44,7 @@ public class LanguageReport {
      * the main public method used to generate language report
      */
     public void generateLanguageReport() {
-        ArrayList<Language> extractedLanguage = extractLanguage();
+        ArrayList<Language> extractedLanguage = new ArrayList<>();
         displayLanguage(extractedLanguage);
 
     }
