@@ -26,7 +26,7 @@ public class App {
         // Create a DatabaseConnection Object
         DatabaseConnection dbConn = new DatabaseConnection();
         // Make connection to database
-        dbConn.connect("localhost", 33061);
+        dbConn.connect("db", 3306);
 
 
         // Create a CountryReport Object
