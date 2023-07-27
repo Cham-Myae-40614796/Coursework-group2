@@ -102,6 +102,23 @@ Additional comments:
 * Install jacoco-maven-plugin to generate code coverage reports. 
 * Link to check code coverage of the project: https://app.codecov.io/gh/Cham-Myae-40614796/Coursework-group2/tree/develop
 
+# Code Review 4
+
+The aim of this code review is to report bugs during development and to format standard code style with PMD. This can provide performance increases.
+
+1. Work on deployment 
+* Released after continuous development but only after merging branch
+
+2. Report bugs system setup and bugs report
+* Create a bug report template, derived from default GitHub template
+* Report bugs step by step as in template
+
+3. Additional code quality improvement
+* Add PMD plugin
+* Run PMD
+* Fix some violations such as adding messages in assertEquals, necessary comments, some loose coupling, deleting unused variable and getters/setters, etc.
+
+
 # Workflow status
 
 * Workflow Action ![workflow](https://github.com/Cham-Myae-40614796/coursework-group2/actions/workflows/main.yml/badge.svg?style=plastic)
@@ -161,3 +178,4 @@ Additional comments:
 | 30 | The population of a district.                                                                                                                               | Yes | ![Issue30](img/img30.png) |
 | 31 | The population of a city.                                                                                                                                   | Yes | ![Issue31](img/img31.png) |
 | 32 | The number of people who speak Chinese, English, Hindi, Spanish, Arabic from greatest number to smallest, including the percentage of the world population. | Yes | ![Issue32](img/img32.png) |
+
