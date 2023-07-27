@@ -40,7 +40,7 @@ Please provide how the application respond by encountering bug.
 **Priority**
 - Low, Medium, High
 
-**Screenshots**
+**Attachments**
 If applicable, add screenshots of the bug in the application.
 
 **Desktop (please complete the following information):**
