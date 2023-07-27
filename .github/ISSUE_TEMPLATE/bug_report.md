@@ -2,8 +2,8 @@
 name: Bug report
 about: Create a report to help us improve
 title: Encounter bug while producing the result.
-labels: ''
-assignees: ''
+labels: bug
+assignees: kp-k, 40614785-hmThiri, Cham-Myae-40614796, thar-htet-nyan
 
 ---
 
