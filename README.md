@@ -130,34 +130,34 @@ Additional comments:
 | ID | Name                                                                                                                                                        | Met | Screenshot               |
 |----|-------------------------------------------------------------------------------------------------------------------------------------------------------------|-----|--------------------------|
 | 1  | All the countries in the world organised by largest population to smallest.                                                                                 | Yes | ![Issue1](img/img1.png)  |
-| 2  | All the countries in a continent organised by largest population to smallest.                                                                               | Yes | ![Issue1](img/img2.png)  |
-| 3  | All the countries in a region organised by largest population to smallest.                                                                                  | Yes | ![Issue1](img/img3.png)  |
-| 4  | The top N populated countries in the world where N is provided by the user.                                                                                 | Yes | ![Issue1](img/img4.png)  |
-| 5  | The top N populated countries in a continent where N is provided by the user.                                                                               | Yes | ![Issue1](img/img5.png)  |
-| 6  | The top N populated countries in a region where N is provided by the user.                                                                                  | Yes | ![Issue1](img/img6.png)  |
-| 7  | All the cities in the world organised by largest population to smallest.                                                                                    | Yes | ![Issue1](img/img7.png)  |
-| 8  | All the cities in a continent organised by largest population to smallest.                                                                                  | Yes | ![Issue1](img/img8.png)  |
-| 9  | All the cities in a region organised by largest population to smallest.                                                                                     | Yes | ![Issue1](img/img9.png)  |
-| 10 | All the cities in a country organised by largest population to smallest.                                                                                    | Yes | ![Issue1](img/img10.png) |
-| 11 | All the cities in a district organised by largest population to smallest.                                                                                   | Yes | ![Issue1](img/img11.png) |
-| 12 | The top N populated cities in the world where N is provided by the user.                                                                                    | Yes | ![Issue1](img/img12.png) |
-| 13 | The top N populated cities in a continent where N is provided by the user.                                                                                  | Yes | ![Issue1](img/img13.png) |
-| 14 | The top N populated cities in a region where N is provided by the user.                                                                                     | Yes | ![Issue1](img/img14.png) |
-| 15 | The top N populated cities in a country where N is provided by the user.                                                                                    | Yes | ![Issue1](img/img15.png) |
-| 16 | The top N populated cities in a district where N is provided by the user.                                                                                   | Yes | ![Issue1](img/img16.png) |
-| 17 | All the capital cities in the world organised by largest population to smallest.                                                                            | Yes | ![Issue1](img/img17.png) |
-| 18 | All the capital cities in a continent organised by largest population to smallest.                                                                          | Yes | ![Issue1](img/img18.png) |
-| 19 | All the capital cities in a region organised by largest to smallest.                                                                                        | Yes | ![Issue1](img/img19.png) |
-| 20 | The top N populated capital cities in the world where N is provided by the user.                                                                            | Yes | ![Issue1](img/img20.png) |
-| 21 | The top N populated capital cities in a continent where N is provided by the user.                                                                          | Yes | ![Issue1](img/img21.png) |
-| 22 | The top N populated capital cities in a region where N is provided by the user.                                                                             | Yes | ![Issue1](img/img22.png) |
-| 23 | The population of people, people living in cities, and people not living in cities in each continent.                                                       | Yes | ![Issue1](img/img23.png) |
-| 24 | The population of people, people living in cities, and people not living in cities in each region.                                                          | Yes | ![Issue1](img/img24.png) |
-| 25 | The population of people, people living in cities, and people not living in cities in each country.                                                         | Yes | ![Issue1](img/img25.png) |
-| 26 | The population of the world.                                                                                                                                | Yes | ![Issue1](img/img26.png) |
-| 27 | The population of a continent.                                                                                                                              | Yes | ![Issue1](img/img27.png) |
-| 28 | The population of a region.                                                                                                                                 | Yes | ![Issue1](img/img28.png) |
-| 29 | The population of a country.                                                                                                                                | Yes | ![Issue1](img/img29.png) |
-| 30 | The population of a district.                                                                                                                               | Yes | ![Issue1](img/img30.png) |
-| 31 | The population of a city.                                                                                                                                   | Yes | ![Issue1](img/img31.png) |
-| 32 | The number of people who speak Chinese, English, Hindi, Spanish, Arabic from greatest number to smallest, including the percentage of the world population. | Yes | ![Issue1](img/img32.png) |
+| 2  | All the countries in a continent organised by largest population to smallest.                                                                               | Yes | ![Issue2](img/img2.png)  |
+| 3  | All the countries in a region organised by largest population to smallest.                                                                                  | Yes | ![Issue3](img/img3.png)  |
+| 4  | The top N populated countries in the world where N is provided by the user.                                                                                 | Yes | ![Issue4](img/img4.png)  |
+| 5  | The top N populated countries in a continent where N is provided by the user.                                                                               | Yes | ![Issue5](img/img5.png)  |
+| 6  | The top N populated countries in a region where N is provided by the user.                                                                                  | Yes | ![Issue6](img/img6.png)  |
+| 7  | All the cities in the world organised by largest population to smallest.                                                                                    | Yes | ![Issue7](img/img7.png)  |
+| 8  | All the cities in a continent organised by largest population to smallest.                                                                                  | Yes | ![Issue8](img/img8.png)  |
+| 9  | All the cities in a region organised by largest population to smallest.                                                                                     | Yes | ![Issue9](img/img9.png)  |
+| 10 | All the cities in a country organised by largest population to smallest.                                                                                    | Yes | ![Issue10](img/img10.png) |
+| 11 | All the cities in a district organised by largest population to smallest.                                                                                   | Yes | ![Issue11](img/img11.png) |
+| 12 | The top N populated cities in the world where N is provided by the user.                                                                                    | Yes | ![Issue12](img/img12.png) |
+| 13 | The top N populated cities in a continent where N is provided by the user.                                                                                  | Yes | ![Issue13](img/img13.png) |
+| 14 | The top N populated cities in a region where N is provided by the user.                                                                                     | Yes | ![Issue14](img/img14.png) |
+| 15 | The top N populated cities in a country where N is provided by the user.                                                                                    | Yes | ![Issue15](img/img15.png) |
+| 16 | The top N populated cities in a district where N is provided by the user.                                                                                   | Yes | ![Issue16](img/img16.png) |
+| 17 | All the capital cities in the world organised by largest population to smallest.                                                                            | Yes | ![Issue17](img/img17.png) |
+| 18 | All the capital cities in a continent organised by largest population to smallest.                                                                          | Yes | ![Issue18](img/img18.png) |
+| 19 | All the capital cities in a region organised by largest to smallest.                                                                                        | Yes | ![Issue19](img/img19.png) |
+| 20 | The top N populated capital cities in the world where N is provided by the user.                                                                            | Yes | ![Issue20](img/img20.png) |
+| 21 | The top N populated capital cities in a continent where N is provided by the user.                                                                          | Yes | ![Issue21](img/img21.png) |
+| 22 | The top N populated capital cities in a region where N is provided by the user.                                                                             | Yes | ![Issue22](img/img22.png) |
+| 23 | The population of people, people living in cities, and people not living in cities in each continent.                                                       | Yes | ![Issue23](img/img23.png) |
+| 24 | The population of people, people living in cities, and people not living in cities in each region.                                                          | Yes | ![Issue24](img/img24.png) |
+| 25 | The population of people, people living in cities, and people not living in cities in each country.                                                         | Yes | ![Issue25](img/img25.png) |
+| 26 | The population of the world.                                                                                                                                | Yes | ![Issue26](img/img26.png) |
+| 27 | The population of a continent.                                                                                                                              | Yes | ![Issue27](img/img27.png) |
+| 28 | The population of a region.                                                                                                                                 | Yes | ![Issue28](img/img28.png) |
+| 29 | The population of a country.                                                                                                                                | Yes | ![Issue29](img/img29.png) |
+| 30 | The population of a district.                                                                                                                               | Yes | ![Issue30](img/img30.png) |
+| 31 | The population of a city.                                                                                                                                   | Yes | ![Issue31](img/img31.png) |
+| 32 | The number of people who speak Chinese, English, Hindi, Spanish, Arabic from greatest number to smallest, including the percentage of the world population. | Yes | ![Issue32](img/img32.png) |
