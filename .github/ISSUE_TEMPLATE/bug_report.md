@@ -3,7 +3,7 @@ name: Bug report
 about: Create a report to help us improve
 title: Encounter bug while producing the result.
 labels: bug
-assignees: Thar Htet Nyan, Kyi Phyu Khin, Htet Myat Thiri, Cham Myae Pyae Sone
+assignees: kp-k, 40614785-hmThiri, Cham-Myae-40614796, thar-htet-nyan
 
 ---
 
@@ -28,8 +28,17 @@ Please provide how you encounter the bug. (Step by step)
 3. Scroll down to '....'
 4. See error
 
+**Severity Level**
+- Critical, Major, Minor
+
 **Expected behavior**
 Please provide how the application should have respond instead of encountering bug.
+
+**Actual behavior**
+Please provide how the application respond by encountering bug.
+
+**Priority**
+- Low, Medium, High
 
 **Screenshots**
 If applicable, add screenshots of the bug in the application.
