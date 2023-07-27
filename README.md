@@ -21,6 +21,7 @@ There are a number of tools which are using in the project and. They are:
 | Thar Htet Nyan      |     40614795      | Scrum master  |
 
 # Code Review 1
+###### *(3<sup>rd</sup> July 2023 ~ 7<sup>th</sup> July 2023)*
 The aim of this code review is to set up the development environment for the project. 
 
 1. Set up the project. 
@@ -50,7 +51,7 @@ The aim of this code review is to set up the development environment for the pro
 8. Define code of conduct. 
 
 # Code Review 2
-
+###### *(10<sup>th</sup> July 2023 ~ 14<sup>th</sup> July 2023)*
 The aim of this code review is to check the setup of task management for the project and to define user stories and use cases. In addition, 25% of coding should be completed together is in requirement.
 
 1. Use issues on GitHub
@@ -82,7 +83,7 @@ The aim of this code review is to check the setup of task management for the pro
 Additional comments: defined issues 22 out of 32 are queried in week 2.
 
 # Code Review 3
-
+###### *(17<sup>th</sup> July 2023 ~ 22<sup>nd</sup> July 2023)*
 The aim of this code review is to check that testing has been correctly specified.
 
 1. Define unit tests.
@@ -103,7 +104,7 @@ Additional comments:
 * Link to check code coverage of the project: https://app.codecov.io/gh/Cham-Myae-40614796/Coursework-group2/tree/develop
 
 # Code Review 4
-
+###### *(24<sup>th</sup> July 2023 ~ 28<sup>th</sup> July 2023)*
 The aim of this code review is to report bugs during development and to format standard code style with PMD. This can provide performance increases.
 
 1. Work on deployment 
