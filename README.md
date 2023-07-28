@@ -7,6 +7,10 @@ There are a number of tools which are using in the project and. They are:
 - Git and GitHub
 - Docker
 - Zube
+- Diagram.net Integration Plugin
+- JUnit Plugin
+- PMD Plugin
+- CodeCov
 
 ### Link to Zube
 - https://zube.io/devops-gp2
