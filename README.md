@@ -21,6 +21,7 @@ There are a number of tools which are using in the project and. They are:
 | Thar Htet Nyan      |     40614795      | Scrum master  |
 
 # Code Review 1
+###### *(3<sup>rd</sup> July 2023 ~ 7<sup>th</sup> July 2023)*
 The aim of this code review is to set up the development environment for the project. 
 
 1. Set up the project. 
@@ -50,7 +51,7 @@ The aim of this code review is to set up the development environment for the pro
 8. Define code of conduct. 
 
 # Code Review 2
-
+###### *(10<sup>th</sup> July 2023 ~ 14<sup>th</sup> July 2023)*
 The aim of this code review is to check the setup of task management for the project and to define user stories and use cases. In addition, 25% of coding should be completed together is in requirement.
 
 1. Use issues on GitHub
@@ -82,7 +83,7 @@ The aim of this code review is to check the setup of task management for the pro
 Additional comments: defined issues 22 out of 32 are queried in week 2.
 
 # Code Review 3
-
+###### *(17<sup>th</sup> July 2023 ~ 22<sup>nd</sup> July 2023)*
 The aim of this code review is to check that testing has been correctly specified.
 
 1. Define unit tests.
@@ -101,6 +102,23 @@ Additional comments:
 * All 32 reports have been generated. 
 * Install jacoco-maven-plugin to generate code coverage reports. 
 * Link to check code coverage of the project: https://app.codecov.io/gh/Cham-Myae-40614796/Coursework-group2/tree/develop
+
+# Code Review 4
+###### *(24<sup>th</sup> July 2023 ~ 28<sup>th</sup> July 2023)*
+The aim of this code review is to report bugs during development and to format standard code style with PMD. This can provide performance increases.
+
+1. Work on deployment 
+* Released after continuous development but only after merging branch
+
+2. Report bugs system setup and bugs report
+* Create a bug report template, derived from default GitHub template
+* Report bugs step by step as in template
+
+3. Additional code quality improvement
+* Add PMD plugin
+* Run PMD
+* Fix some violations such as adding messages in assertEquals, necessary comments, some loose coupling, deleting unused variable and getters/setters, etc.
+
 
 # Workflow status
 
@@ -161,3 +179,4 @@ Additional comments:
 | 30 | The population of a district.                                                                                                                               | Yes | ![Issue30](img/img30.png) |
 | 31 | The population of a city.                                                                                                                                   | Yes | ![Issue31](img/img31.png) |
 | 32 | The number of people who speak Chinese, English, Hindi, Spanish, Arabic from greatest number to smallest, including the percentage of the world population. | Yes | ![Issue32](img/img32.png) |
+
