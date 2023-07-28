@@ -7,6 +7,10 @@ There are a number of tools which are using in the project and. They are:
 - Git and GitHub
 - Docker
 - Zube
+- Diagram.net Integration Plugin
+- JUnit Plugin
+- PMD Plugin
+- CodeCov
 
 ### Link to Zube
 - https://zube.io/devops-gp2
@@ -107,8 +111,9 @@ Additional comments:
 ###### *(24<sup>th</sup> July 2023 ~ 28<sup>th</sup> July 2023)*
 The aim of this code review is to report bugs during development and to format standard code style with PMD. This can provide performance increases.
 
-1. Work on deployment 
-* Released after continuous development but only after merging branch
+1. Work on deployment
+* Add changes to workflow configuration
+* Release after continuous development but only after merging branch
 
 2. Report bugs system setup and bugs report
 * Create a bug report template, derived from default GitHub template
