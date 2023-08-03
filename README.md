@@ -124,6 +124,9 @@ The aim of this code review is to report bugs during development and to format s
 * Run PMD
 * Fix some violations such as adding messages in assertEquals, necessary comments, some loose coupling, deleting unused variable and getters/setters, etc.
 
+# Final Deliverable
+###### *(31<sup>st</sup> July 2023 ~ 4<sup>th</sup> July 2023)*
+All bugs are fixed during code review 4. Major requirements are done during code review 3. No changes occurred during final week.
 
 # Workflow status
 
